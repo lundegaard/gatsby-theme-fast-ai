@@ -1,0 +1,35 @@
+{
+	"name": "@fast-ai/storybook",
+	"version": "0.0.1",
+	"private": true,
+	"license": "UNLICENSED",
+	"description": "Storybook application for documentation of our UI components",
+	"main": "src/index.js",
+	"devDependencies": {
+		"@babel/core": "^7.7.5",
+		"babel-loader": "^8.0.5",
+		"fs-extra": "^8.1.0",
+		"webpack": "^4.41.4"
+	},
+	"dependencies": {
+		"@fast-ai/ui-components": "^0.0.1",
+		"@storybook/addon-actions": "5.0.6 <5.1.8",
+		"@storybook/addon-info": "5.0.6 <5.1.8",
+		"@storybook/addon-knobs": "5.0.6 <5.1.8",
+		"@storybook/addon-options": "5.0.6 <5.1.8",
+		"@storybook/react": "5.0.6 <5.1.8",
+		"@storybook/theming": "5.0.6 <5.1.8",
+		"prop-types": "^15.6.2",
+		"ramda": "^0.26.1",
+		"ramda-extension": "^0.10.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-powerplug": "^1.0.0"
+	},
+	"scripts": {
+		"build": "yarn build:ui",
+		"build:ui": "build-storybook -o ../../build/storybook -c .storybook-ui",
+		"start": "yarn start:ui",
+		"start:ui": "start-storybook -p 8001 -c .storybook-ui"
+	}
+}

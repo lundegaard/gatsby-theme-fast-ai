@@ -1,0 +1,15 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const {{ pascalCase name }} = ({ children, ...rest }) => (
+	<div {...rest}>
+		{children}
+	</div>
+);
+
+{{ pascalCase name }}.propTypes = {
+	/** Children to be rendered in the main container. */
+	children: PropTypes.node,
+};
+
+export default {{ pascalCase name }};

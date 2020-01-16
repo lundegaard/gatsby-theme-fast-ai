@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  display="block"
+  sx={
+    Object {
+      "backgroundColor": "white",
+      "borderColor": "transparent",
+      "borderRadius": 9999,
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "fontWeight": "bold",
+      "height": 35,
+      "lineHeight": Array [
+        "35px",
+      ],
+      "textAlign": "center",
+      "width": 35,
+    }
+  }
+/>
+`;

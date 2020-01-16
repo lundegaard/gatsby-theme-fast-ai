@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MonospacedText /> matches snapshot when shallowly rendered 1`] = `
+<Text
+  fontFamily="mono"
+  letterSpacing="mono"
+/>
+`;

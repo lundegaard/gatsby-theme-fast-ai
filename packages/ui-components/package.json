@@ -1,0 +1,32 @@
+{
+	"name": "@fast-ai/ui-components",
+	"version": "0.0.1",
+	"license": "MIT",
+	"description": "Common UI components",
+	"main": "src/index.js",
+	"devDependencies": {
+		"@babel/core": "^7.7.5",
+		"bootstrap": "^4.3.0",
+		"enzyme": "^3.11.0",
+		"fs-extra": "^8.1.0",
+		"react-intl": "^3.2.0"
+	},
+	"dependencies": {
+		"@rebass/preset": "^4.0.5",
+		"@restart/hooks": "^0.3.19",
+		"emotion-theming": "^10.0.19",
+		"invariant": "^2.2.4",
+		"ramda": "^0.26.1",
+		"ramda-extension": "^0.10.0",
+		"react-text-mask": "^5.4.3",
+		"react-transition-group": "^2.7.0",
+		"rebass": "^4.0.7"
+	},
+	"peerDependencies": {
+		"@emotion/core": "^10.0.0",
+		"prop-types": "^15.6.2",
+		"react": "^16.8.6",
+		"react-dom": "^16.6.0",
+		"react-intl": "^3.2.0"
+	}
+}

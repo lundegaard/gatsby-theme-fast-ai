@@ -1,0 +1,66 @@
+{
+	"private": true,
+	"version": "0.0.1",
+	"main": "index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.7.5",
+		"babel-eslint": "^10.0.3",
+		"babel-jest": "^24.9.0",
+		"babel-preset-react-union": "^0.15.1",
+		"concurrently": "^4.1.1",
+		"core-js": "^3.6.0",
+		"enzyme": "^3.11.0",
+		"enzyme-adapter-react-16": "^1.15.2",
+		"enzyme-to-json": "^3.4.3",
+		"eslint": "^6.7.2",
+		"eslint-config-react-union": "^0.15.0",
+		"eslint-plugin-babel": "^5.2.0",
+		"eslint-plugin-import": "^2.19.1",
+		"eslint-plugin-react": "^7.17.0",
+		"eslint-plugin-react-hooks": "^2.3.0",
+		"husky": "^3.1.0",
+		"jest": "^24.9.0",
+		"lerna": "^3.19.0",
+		"lint-staged": "^9.5.0",
+		"nodemon": "^2.0.2",
+		"npm-package-json-lint": "^4.5.0",
+		"npm-package-json-lint-config-default": "^2.0.0",
+		"plop": "^2.5.3",
+		"prettier": "^1.18.2",
+		"prop-types": "^15.7.2",
+		"ramda": "^0.26.1",
+		"ramda-extension": "^0.10.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
+	},
+	"scripts": {
+		"build": "yarn build:node-packages && yarn zoe build",
+		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn zoe start\"",
+		"build:node-packages": "lerna run build --ignore @fast-ai/zoe --ignore @fast-ai/storybook",
+		"start:node-packages": "lerna run start --parallel --ignore @fast-ai/zoe --ignore @fast-ai/storybook",
+		"lint": "yarn lint:pkg && yarn lint:js",
+		"lint:pkg": "npmPkgJsonLint .",
+		"lint:js": "eslint --cache --ignore-path .gitignore --ext .js ./",
+		"prebuild": "yarn build:node-packages",
+		"test": "jest",
+		"prepare": "lerna run prepare",
+		"format": "prettier --ignore-path .gitignore --write '**/*.{js,mdx,json}' && yarn lint:js --fix",
+		"generate": "plop --plopfile \"./.plop/plopfile.js\"",
+		"zoe": "yarn workspace @fast-ai/zoe",
+		"storybook": "yarn workspace @fast-ai/storybook",
+		"ui-components": "yarn workspace @fast-ai/ui-components",
+		"gatsby-theme-fast-ai": "yarn workspace gatsby-theme-fast-ai",
+		"gatsby-plugin-setup": "yarn workspace @fast-ai/gatsby-plugin-setup"
+	},
+	"workspaces": [
+		"packages/*",
+		"apps/*"
+	],
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"pre-push": "yarn lint && yarn test"
+		}
+	}
+}

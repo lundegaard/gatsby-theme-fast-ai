@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CssBaseline /> matches snapshot when shallowly rendered 1`] = `
+<ForwardRef(render)
+  styles={
+    Object {
+      "map": undefined,
+      "name": "g7n2yr",
+      "next": undefined,
+      "styles": "
+			html {
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				height: 100%;
+			}
+			*,
+			*::before,
+			*::after {
+				box-sizing: inherit;
+			}
+			strong,
+			b {
+				font-weight: bolder;
+			}
+			body {
+				margin: 0;
+			}
+			
+		",
+      "toString": [Function],
+    }
+  }
+/>
+`;

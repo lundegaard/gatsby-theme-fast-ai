@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AvatarLink /> matches snapshot when shallowly rendered 1`] = `
+<Avatar
+  as={[Function]}
+  sx={
+    Object {
+      "&, :visited": Object {
+        "opacity": 1,
+        "transition": "background-color 200ms ease-in-out, border 200ms ease-in-out, color 200ms ease-in-out",
+      },
+      ":hover,:focus": Object {
+        "backgroundColor": "transparent",
+        "borderColor": "white",
+        "color": "contrast",
+      },
+      "textDecoration": "none",
+    }
+  }
+/>
+`;

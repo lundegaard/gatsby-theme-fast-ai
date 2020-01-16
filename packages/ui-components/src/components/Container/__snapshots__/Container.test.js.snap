@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Container /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  mx="auto"
+  px={2}
+  sx={
+    Object {
+      "maxWidth": Array [
+        "none",
+        undefined,
+      ],
+    }
+  }
+  width={1}
+/>
+`;
