@@ -3,9 +3,12 @@ module.exports = themeOptions => {
 		intlOptions,
 		assetsPath = 'content/assets',
 		faviconPath = 'static/favicon.png',
+		// Fallback non-translated site metadata.
+		siteMetadata,
 	} = themeOptions;
 
 	return {
+		siteMetadata,
 		plugins: [
 			'gatsby-plugin-react-helmet',
 			{
