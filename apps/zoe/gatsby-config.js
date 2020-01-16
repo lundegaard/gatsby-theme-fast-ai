@@ -1,7 +1,13 @@
+const { author } = require('./package.json');
+
+const siteMetadata = {
+	author,
+	description: '',
+	title: 'Zoe.ai',
+};
+
 module.exports = {
-	siteMetadata: {
-		title: 'Zoe',
-	},
+	siteMetadata,
 	plugins: [
 		{
 			resolve: require.resolve('gatsby-theme-fast-ai'),
@@ -11,6 +17,7 @@ module.exports = {
 					path: `${__dirname}/src/intl`,
 					defaultLanguage: 'cs',
 				},
+				siteMetadata,
 			},
 		},
 	],

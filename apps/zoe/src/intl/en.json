@@ -1,3 +1,6 @@
 {
-	"home.title": "Gatsby English"
+	"home.title": "Gatsby English",
+	"siteMetadata.author": "Lundegaard a.s.",
+	"siteMetadata.title": "Zoe.ai",
+	"siteMetadata.description": "Real-time online loan approval prediction based on digital online data"
 }

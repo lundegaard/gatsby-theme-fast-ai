@@ -1,8 +1,9 @@
 import React from 'react';
-import { FormattedMessage, Page } from 'gatsby-theme-fast-ai';
+import { FormattedMessage, Page, Seo } from 'gatsby-theme-fast-ai';
 
 const Index = () => (
 	<Page>
+		<Seo title="Demo" />
 		<FormattedMessage id="home.title" />
 	</Page>
 );
