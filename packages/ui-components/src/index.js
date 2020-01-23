@@ -31,3 +31,4 @@ export { default as Row } from './components/Row';
 export { default as Avatar } from './components/Avatar';
 export { default as AvatarLink } from './components/AvatarLink';
 export { default as MonospacedText } from './components/MonospacedText';
+export { default as SuperField } from './components/SuperField';
