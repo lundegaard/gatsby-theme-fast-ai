@@ -1,10 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
-import { SelectField } from '@lundegaard/ui-components';
+import { SelectField } from '@fast-ai/ui-components';
 
 storiesOf('SelectField', module)
 	.addDecorator(withKnobs)
-	.addParameters({ info: ''})
+	.addParameters({ info: '' })
 	.add('in default', () => <SelectField />);

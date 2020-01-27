@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuperField /> matches snapshot when shallowly rendered 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "hasError": undefined,
+      "id": "field-0",
+      "isDisabled": undefined,
+      "isFocused": false,
+      "isInputFilledIn": false,
+      "isLabelShrank": false,
+      "isReadOnly": undefined,
+      "onBlur": [Function],
+      "onEmpty": [Function],
+      "onFill": [Function],
+      "onFocus": [Function],
+      "onLabelExpand": [Function],
+      "onLabelShrank": [Function],
+    }
+  }
+>
+  <Box
+    sx={
+      Object {
+        "color": "gray",
+        "fontFamily": "body",
+        "position": "relative",
+        "pt": 3,
+      }
+    }
+  />
+</ContextProvider>
+`;
