@@ -2,10 +2,10 @@
 
 exports[`<TextField /> matches snapshot when shallowly rendered 1`] = `
 <SuperField>
-  <Label />
+  <SuperFieldLabel />
   <Input
     type="text"
   />
-  <Hint />
+  <SuperFieldHint />
 </SuperField>
 `;

@@ -2,8 +2,8 @@
 
 exports[`<SelectField /> matches snapshot when shallowly rendered 1`] = `
 <SuperField>
-  <Label />
+  <SuperFieldLabel />
   <Select />
-  <Hint />
+  <SuperFieldHint />
 </SuperField>
 `;

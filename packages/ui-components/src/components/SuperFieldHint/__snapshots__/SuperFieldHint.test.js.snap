@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuperFieldHint /> matches snapshot when shallowly rendered 1`] = `
+<Text
+  sx={
+    Object {
+      "fontSize": 0,
+      "letterSpacing": "mono",
+      "minHeight": "16px",
+    }
+  }
+/>
+`;
