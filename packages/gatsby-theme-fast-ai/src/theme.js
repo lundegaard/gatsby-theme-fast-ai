@@ -34,6 +34,7 @@ const theme = createTheme({
 		secondary: '#33d08e',
 		muted: '#e7e7e7',
 		contrast: '#ffffff',
+		danger: '#ff0000',
 		gray,
 		lightGray,
 		highlight: 'hsla(205, 100%, 40%, 0.125)',
@@ -81,6 +82,11 @@ const theme = createTheme({
 			':hover,:focus,.active': {
 				color: ['#fff', '#fff', 'primary'],
 			},
+		},
+	},
+	forms: {
+		input: {
+			fontFamily: 'body',
 		},
 	},
 });

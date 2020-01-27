@@ -1,5 +1,11 @@
-import React, { forwardRef, useCallback, useState } from 'react';
-import { Col, Row, SuperField as SuperFieldUI } from '@fast-ai/ui-components';
+import React, { Fragment, forwardRef, useCallback, useState } from 'react';
+import {
+	Col,
+	SelectField as FASelectField,
+	TextField as FATextField,
+	Heading,
+	Row,
+} from '@fast-ai/ui-components';
 import { FormattedMessage, Page, Seo } from 'gatsby-theme-fast-ai';
 
 const useSa = () => (...args) => console.log('SA', args);
@@ -51,36 +57,149 @@ const useSaFieldTracker = ({
 	return { getInputProps };
 };
 
-// const SuperField = withSaInputTracker(TextFieldUI);
-const SuperField = forwardRef((props, ref) => {
+const TextField = forwardRef((props, ref) => {
 	const { getInputProps } = useSaFieldTracker();
 
 	const inputProps = getInputProps({ ref, ...props });
 
-	console.log({ inputProps });
-
-	return <SuperFieldUI {...inputProps} />;
+	return <FATextField {...inputProps} />;
 });
+
+const SelectField = forwardRef((props, ref) => {
+	const { getInputProps } = useSaFieldTracker();
+
+	const inputProps = getInputProps({ ref, ...props });
+
+	return <FASelectField {...inputProps} />;
+});
+
+const FormRow = props => <Row mb={2} {...props} />;
+const FormHeading = props => <Heading mb={4} {...props} />;
 
 const Form = () => {
 	// TODO
 	const [name, setName] = useState('');
+	const [surname, setSurname] = useState('filled');
+	const [surnameError, setSurnameError] = useState(null);
+	const [education, setEducation] = useState('');
 
 	return (
-		<Row>
-			<Col span={6}>
-				<SuperField name="name" onChange={event => setName(event.target.name)} value={name} />
-			</Col>
-			<Col span={6}>
-				<FormattedMessage id="home.title" />
-			</Col>
-		</Row>
+		<Fragment>
+			<FormRow>
+				<Col span={6}>
+					<TextField
+						label="Name"
+						name="name"
+						onChange={event => setName(event.target.value)}
+						value={name}
+					/>
+				</Col>
+				<Col span={6}>
+					<TextField
+						label="Surname"
+						name="surname"
+						onChange={event => {
+							if (event.target.value === 'x') {
+								setSurnameError('Error!');
+							}
+							setSurname(event.target.value);
+						}}
+						value={surname}
+						hasError={!!surnameError}
+						hint={surnameError}
+						placeholder="Fill in a surname"
+					/>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<TextField
+						label="Personal ID"
+						name="id"
+						onChange={event => setName(event.target.value)}
+						value={name}
+						hint="with hint"
+					/>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<TextField
+						disabled
+						label="Personal ID"
+						name="id"
+						onChange={event => setName(event.target.value)}
+						value={name}
+						hint="disabled"
+					/>
+				</Col>
+				<Col span={12}>
+					<TextField
+						label="Personal ID"
+						name="id"
+						onChange={event => setName(event.target.value)}
+						value={name}
+						readOnly
+						hint="readOnly"
+					/>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={6}>
+					<SelectField
+						label="Education"
+						name="education"
+						onChange={event => setEducation(event.target.value)}
+						value={education}
+						placeholder="None"
+						items={[
+							{ value: '1', label: 'Elementary' },
+							{ value: '2', label: 'High-school' },
+						]}
+						hint="Your highest education"
+					/>
+				</Col>
+				<Col span={6}>
+					<SelectField
+						label="Education"
+						name="education"
+						onChange={event => setEducation(event.target.value)}
+						value={education}
+						items={[
+							{ value: '', label: '' },
+							{ value: '1', label: 'Elementary' },
+							{ value: '2', label: 'High-school' },
+						]}
+						hint="Your highest education"
+					/>
+				</Col>
+			</FormRow>
+		</Fragment>
 	);
 };
 const Index = () => (
 	<Page>
 		<Seo title="Demo" />
-		<Form />
+		<form
+			onSubmit={event => {
+				event.preventDefault();
+				console.log('submit');
+			}}
+		>
+			<Row>
+				<Col span={6}>
+					<FormHeading>
+						<FormattedMessage id="home.title" />
+					</FormHeading>
+
+					<Form />
+				</Col>
+				<Col span={6}>
+					<FormattedMessage id="home.title" />
+					<button>Submit</button>
+				</Col>
+			</Row>
+		</form>
 	</Page>
 );
 
