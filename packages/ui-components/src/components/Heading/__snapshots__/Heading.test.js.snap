@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> matches snapshot when shallowly rendered 1`] = `
+<ForwardRef
+  as="h1"
+  fontFamily="heading"
+  fontSize={
+    Array [
+      8,
+      9,
+    ]
+  }
+  mb={
+    Array [
+      5,
+      6,
+    ]
+  }
+/>
+`;
