@@ -2,7 +2,6 @@ export { useTheme } from './hooks/useTheme';
 export { useBreakpoint } from './hooks/useBreakpoint';
 
 export { default as createTheme } from './createTheme';
-export { default as Label } from './components/Label';
 export { default as messages } from './messages';
 export { default as Box } from './components/Box';
 export { default as Icon } from './components/Icon';
@@ -23,3 +22,7 @@ export { default as SuperField } from './components/SuperField';
 export { default as Heading } from './components/Heading';
 export { default as TextField } from './components/TextField';
 export { default as SelectField } from './components/SelectField';
+export { default as SuperFieldHint } from './components/SuperFieldHint';
+export { default as SuperFieldLabel } from './components/SuperFieldLabel';
+export { default as Select } from './components/Select';
+export { default as Input } from './components/Input';
