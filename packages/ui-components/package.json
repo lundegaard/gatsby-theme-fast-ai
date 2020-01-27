@@ -12,6 +12,7 @@
 		"react-intl": "^3.2.0"
 	},
 	"dependencies": {
+		"@rebass/forms": "^4.0.6",
 		"@rebass/preset": "^4.0.5",
 		"@restart/hooks": "^0.3.19",
 		"emotion-theming": "^10.0.19",
