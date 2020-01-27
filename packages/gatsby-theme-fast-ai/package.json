@@ -7,9 +7,11 @@
 	"dependencies": {
 		"@emotion/core": "^10.0.0",
 		"@fast-ai/ui-components": "^0.0.1",
+		"@mdx-js/react": "^1.5.4",
 		"fontfaceobserver": "^2.1.0",
 		"gatsby-image": "^2.2.37",
 		"gatsby-plugin-intl": "^0.3.2",
+		"prism-react-renderer": "^1.0.2",
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.1",
 		"react-helmet": "^5.2.1",

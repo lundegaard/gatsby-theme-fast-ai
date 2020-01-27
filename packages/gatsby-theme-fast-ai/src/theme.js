@@ -1,7 +1,8 @@
 import { createTheme } from '@fast-ai/ui-components';
 import color from 'tinycolor2';
 
-const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 96];
+const fontSizes = [12, 14, 18, 20, 22, 24, 27, 36, 49, 85];
+const space = [0, 4, 8, 16, 32, 64, 96, 128, 256];
 
 const breakpoints = ['40em', '52em', '76em'];
 breakpoints.sm = breakpoints[0];
@@ -28,12 +29,14 @@ const getStripesGradient = (width, alpha = 1) =>
 const theme = createTheme({
 	breakpoints,
 	fontSizes,
+	space,
 	colors: {
 		background: '#f6f6f6',
 		primary: '#0018ff',
 		secondary: '#33d08e',
 		muted: '#e7e7e7',
 		contrast: '#ffffff',
+		body: '#3b3b3b',
 		gray,
 		lightGray,
 		highlight: 'hsla(205, 100%, 40%, 0.125)',
@@ -81,6 +84,21 @@ const theme = createTheme({
 			':hover,:focus,.active': {
 				color: ['#fff', '#fff', 'primary'],
 			},
+		},
+		table: {
+			overflowX: 'auto',
+			border: '1px solid',
+			borderCollapse: 'collapse',
+		},
+		tableCol: {
+			p: [1, 2],
+			border: '1px solid',
+			fontSize: [0, 1, 2],
+			wordWrap: 'break-word',
+			maxWidth: '240px',
+		},
+		tableRow: {
+			border: '1px solid',
 		},
 	},
 });
