@@ -17,7 +17,7 @@ const getVariant = ({ hasError, readOnly, disabled }) => {
 
 const CheckboxField = ({ label, hasError, disabled, readOnly, hint, ...rest }) => (
 	<Box variant={getVariant({ hasError, readOnly, disabled })} pb={2}>
-		<Label fontSize={1} alignItems="center">
+		<Label alignItems="center">
 			<Checkbox {...rest} />
 			{label}
 		</Label>

@@ -1,15 +1,18 @@
 import React, { Fragment, forwardRef, useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
 	Col,
 	CheckboxField as FACheckboxField,
 	RadioGroupField as FARadioGroupField,
 	SelectField as FASelectField,
+	SliderField as FASliderField,
 	TextField as FATextField,
 	Heading,
 	Radio,
 	Row,
+	Text,
 } from '@fast-ai/ui-components';
-import { FormattedMessage, Page, Seo } from 'gatsby-theme-fast-ai';
+import { FormattedMessage, FormattedNumber, Page, Seo } from 'gatsby-theme-fast-ai';
 
 const useSa = () => (...args) => console.log('SA', args);
 // const useSa = () => window.sa;
@@ -19,6 +22,26 @@ const getEventCallbackName = eventName =>
 	`on${eventName.charAt(0).toUpperCase() + eventName.slice(1)}`;
 
 const defaultGetEvent = (eventName, firstArg) => firstArg && firstArg.nativeEvent;
+
+const AmountFormatter = ({ children }) => {
+	if (children == null) {
+		return '-';
+	}
+
+	return children ? (
+		<Fragment>
+			<FormattedNumber value={children} minimumFractionDigits={2}>
+				{value => value.replace(/00$/, '-')}
+			</FormattedNumber>
+		</Fragment>
+	) : (
+		'-'
+	);
+};
+AmountFormatter.propTypes = { children: PropTypes.node };
+
+const AgeFormatter = ({ children }) => (children ? `${children} years` : '-');
+AgeFormatter.propTypes = { children: PropTypes.node };
 
 const useSaFieldTracker = ({
 	/**
@@ -92,10 +115,18 @@ const RadioGroupField = forwardRef((props, ref) => {
 	return <FARadioGroupField {...inputProps} />;
 });
 
+const SliderField = forwardRef((props, ref) => {
+	const { getInputProps } = useSaFieldTracker();
+
+	const inputProps = getInputProps({ ref, ...props });
+
+	return <FASliderField {...inputProps} />;
+});
+
 const FormRow = props => <Row mb={2} {...props} />;
 const FormHeading = props => <Heading mb={4} {...props} />;
 
-const Form = () => {
+const PersonalInfo = () => {
 	// TODO
 	const [name, setName] = useState('');
 	const [partner, setPartner] = useState('');
@@ -199,7 +230,7 @@ const Form = () => {
 			<FormRow>
 				<Col span={12}>
 					<CheckboxField
-						label="I agreee with terms and conditions"
+						label={<Text fontSize={1}>I agreee with terms and conditions</Text>}
 						name="terms"
 						checked={terms}
 						onChange={event => setTerms(event.target.checked)}
@@ -290,6 +321,73 @@ const Form = () => {
 		</Fragment>
 	);
 };
+
+const LoanInfo = () => {
+	const [amount, setAmount] = useState(200000);
+	const [paymentPeriod, setPaymentPeriod] = useState(24);
+
+	return (
+		<Fragment>
+			<FormRow>
+				<Col span={12}>
+					<SliderField
+						label="Fill in loan amount"
+						name="amount"
+						onChange={event => setAmount(event.target.value)}
+						value={amount}
+						renderValue={AmountFormatter}
+						min={0}
+						max={1000000}
+						step={1}
+						hint="with hint"
+					/>
+				</Col>
+			</FormRow>
+
+			<FormRow>
+				<Col span={12}>
+					<SliderField
+						label="Select payment period"
+						name="paymentPeriod"
+						onChange={event => setPaymentPeriod(event.target.value)}
+						value={paymentPeriod}
+						renderValue={AgeFormatter}
+						min={0}
+						max={100}
+						hint="with hint"
+					/>
+				</Col>
+			</FormRow>
+
+			<FormRow>
+				<Col span={12}>
+					<SliderField
+						label="Select payment interval"
+						name="paymentPeriod"
+						onChange={event => setPaymentPeriod(event.target.value)}
+						value={paymentPeriod}
+						renderValue={AgeFormatter}
+						hint="error"
+						hasError
+					/>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<SliderField
+						label="Select payment interval"
+						name="paymentPeriod"
+						onChange={event => setPaymentPeriod(event.target.value)}
+						value={paymentPeriod}
+						renderValue={AgeFormatter}
+						hint="disabled"
+						disabled
+					/>
+				</Col>
+			</FormRow>
+		</Fragment>
+	);
+};
 const Index = () => (
 	<Page>
 		<Seo title="Demo" />
@@ -304,11 +402,14 @@ const Index = () => (
 						<FormattedMessage id="home.title" />
 					</FormHeading>
 
-					<Form />
+					<PersonalInfo />
 				</Col>
 				<Col span={6}>
-					<FormattedMessage id="home.title" />
-					<button>Submit</button>
+					<FormHeading>
+						<FormattedMessage id="home.title" />
+					</FormHeading>
+
+					<LoanInfo />
 				</Col>
 			</Row>
 		</form>
