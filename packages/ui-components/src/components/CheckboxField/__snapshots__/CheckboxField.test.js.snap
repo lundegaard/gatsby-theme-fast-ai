@@ -6,7 +6,6 @@ exports[`<CheckboxField /> matches snapshot when shallowly rendered 1`] = `
 >
   <Label
     alignItems="center"
-    fontSize={1}
   >
     <Checkbox />
   </Label>

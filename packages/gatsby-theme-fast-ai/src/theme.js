@@ -26,6 +26,17 @@ const getStripesGradient = (width, alpha = 1) =>
 		transparent ${width}
 	)`;
 
+const getSliderStyles = color => ({
+	height: '1px',
+	color,
+	'&:focus': {
+		color,
+	},
+	'&::-webkit-slider-thumb': {
+		color,
+	},
+});
+
 const theme = createTheme({
 	breakpoints,
 	fontSizes,
@@ -66,6 +77,9 @@ const theme = createTheme({
 			'input:focus ~ *': {
 				color: 'gray',
 			},
+		},
+		secondary: {
+			color: 'secondary',
 		},
 		stripes: {
 			backgroundImage: [
@@ -125,6 +139,17 @@ const theme = createTheme({
 		},
 		label: {
 			color: 'inherit',
+		},
+		switch: {
+			thumb: 'secondary',
+		},
+		slider: {
+			error: getSliderStyles('danger'),
+			disabled: {
+				cursor: 'default',
+				...getSliderStyles('gray'),
+			},
+			default: getSliderStyles('secondary'),
 		},
 		radio: {
 			'input:checked ~ &': {

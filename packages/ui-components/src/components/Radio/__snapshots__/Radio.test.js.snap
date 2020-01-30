@@ -4,7 +4,6 @@ exports[`<Radio /> matches snapshot when shallowly rendered 1`] = `
 <Label
   alignItems="center"
   color="inherit"
-  fontSize={1}
 >
   <ForwardRef />
 </Label>

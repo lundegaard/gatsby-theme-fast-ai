@@ -32,3 +32,5 @@ export { default as Radio } from './components/Radio';
 export { default as RadioGroup } from './components/RadioGroup';
 export { default as RadioGroupField } from './components/RadioGroupField';
 export { default as Label } from './components/Label';
+export { default as Slider } from './components/Slider';
+export { default as SliderField } from './components/SliderField';

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  pb={2}
+  sx={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <Label
+    htmlFor="field-0"
+  />
+  <Text
+    sx={
+      Object {
+        "color": "secondary",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    variant="secondary"
+  >
+    <Component />
+  </Text>
+  <Slider
+    id="field-0"
+    variant="forms.slider.default"
+  />
+</Box>
+`;
