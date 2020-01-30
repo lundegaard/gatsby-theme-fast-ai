@@ -1,9 +1,12 @@
 import React, { Fragment, forwardRef, useCallback, useState } from 'react';
 import {
 	Col,
+	CheckboxField as FACheckboxField,
+	RadioGroupField as FARadioGroupField,
 	SelectField as FASelectField,
 	TextField as FATextField,
 	Heading,
+	Radio,
 	Row,
 } from '@fast-ai/ui-components';
 import { FormattedMessage, Page, Seo } from 'gatsby-theme-fast-ai';
@@ -73,15 +76,33 @@ const SelectField = forwardRef((props, ref) => {
 	return <FASelectField {...inputProps} />;
 });
 
+const CheckboxField = forwardRef((props, ref) => {
+	const { getInputProps } = useSaFieldTracker();
+
+	const inputProps = getInputProps({ ref, ...props });
+
+	return <FACheckboxField {...inputProps} />;
+});
+
+const RadioGroupField = forwardRef((props, ref) => {
+	const { getInputProps } = useSaFieldTracker();
+
+	const inputProps = getInputProps({ ref, ...props });
+
+	return <FARadioGroupField {...inputProps} />;
+});
+
 const FormRow = props => <Row mb={2} {...props} />;
 const FormHeading = props => <Heading mb={4} {...props} />;
 
 const Form = () => {
 	// TODO
 	const [name, setName] = useState('');
+	const [partner, setPartner] = useState('');
 	const [surname, setSurname] = useState('filled');
 	const [surnameError, setSurnameError] = useState(null);
 	const [education, setEducation] = useState('');
+	const [terms, setTerms] = useState(false);
 
 	return (
 		<Fragment>
@@ -174,6 +195,98 @@ const Form = () => {
 					/>
 				</Col>
 			</FormRow>
+
+			<FormRow>
+				<Col span={12}>
+					<CheckboxField
+						label="I agreee with terms and conditions"
+						name="terms"
+						checked={terms}
+						onChange={event => setTerms(event.target.checked)}
+						value
+					/>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<CheckboxField
+						label="I agreee with terms and conditions"
+						name="terms"
+						checked={terms}
+						onChange={event => setTerms(event.target.checked)}
+						value
+						hasError
+						hint="Error"
+					/>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<CheckboxField
+						label="I agreee with terms and conditions"
+						name="terms"
+						checked={terms}
+						onChange={event => setTerms(event.target.checked)}
+						value
+						disabled
+					/>
+				</Col>
+			</FormRow>
+
+			<FormRow>
+				<Col span={12}>
+					<RadioGroupField
+						legend="Who is your partner?"
+						onChange={event => setPartner(event.target.value)}
+						name="partner"
+						value={partner}
+					>
+						{[
+							{ value: 'individual', label: 'Individual' },
+							{ value: 'with-parner', label: 'With partner' },
+						].map(itemProps => (
+							<Radio key={itemProps.value} {...itemProps} />
+						))}
+					</RadioGroupField>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<RadioGroupField
+						legend="Who is your partner?"
+						onChange={event => setPartner(event.target.value)}
+						name="partner"
+						value={partner}
+						disabled
+					>
+						{[
+							{ value: 'individual', label: 'Individual' },
+							{ value: 'with-parner', label: 'With partner' },
+						].map(itemProps => (
+							<Radio key={itemProps.value} {...itemProps} />
+						))}
+					</RadioGroupField>
+				</Col>
+			</FormRow>
+			<FormRow>
+				<Col span={12}>
+					<RadioGroupField
+						legend="Who is your partner?"
+						onChange={event => setPartner(event.target.value)}
+						name="partner"
+						value={partner}
+						hint="Error"
+						hasError
+					>
+						{[
+							{ value: 'individual', label: 'Individual' },
+							{ value: 'with-parner', label: 'With partner' },
+						].map(itemProps => (
+							<Radio key={itemProps.value} {...itemProps} />
+						))}
+					</RadioGroupField>
+				</Col>
+			</FormRow>
 		</Fragment>
 	);
 };
@@ -183,7 +296,6 @@ const Index = () => (
 		<form
 			onSubmit={event => {
 				event.preventDefault();
-				console.log('submit');
 			}}
 		>
 			<Row>

@@ -18,6 +18,7 @@ const getBorderColor = ({ hasError, disabled, readOnly }) => {
 	}
 };
 
+// TODO: items -> children - Option/OptionGroup
 const Select = forwardRef((props, ref) => {
 	const {
 		value,

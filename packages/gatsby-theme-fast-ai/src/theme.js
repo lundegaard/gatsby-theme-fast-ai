@@ -49,6 +49,24 @@ const theme = createTheme({
 	},
 	letterSpacings: ['-.5px', '0'],
 	variants: {
+		error: {
+			color: 'danger',
+			'input:checked ~ *': {
+				color: 'danger',
+			},
+			'input:focus ~ *': {
+				color: 'danger',
+			},
+		},
+		disabled: {
+			color: 'gray',
+			'input:checked ~ *': {
+				color: 'gray',
+			},
+			'input:focus ~ *': {
+				color: 'gray',
+			},
+		},
 		stripes: {
 			backgroundImage: [
 				getStripesGradient('25%'),
@@ -96,6 +114,25 @@ const theme = createTheme({
 	forms: {
 		input: {
 			fontFamily: 'body',
+		},
+		checkbox: {
+			'input:checked ~ &': {
+				color: 'secondary',
+			},
+			'input:focus ~ &': {
+				color: 'secondary',
+			},
+		},
+		label: {
+			color: 'inherit',
+		},
+		radio: {
+			'input:checked ~ &': {
+				color: 'secondary',
+			},
+			'input:focus ~ &': {
+				color: 'secondary',
+			},
 		},
 	},
 });
