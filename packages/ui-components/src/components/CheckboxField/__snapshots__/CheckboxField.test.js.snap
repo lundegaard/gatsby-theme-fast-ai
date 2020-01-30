@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckboxField /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  pb={2}
+>
+  <Label
+    alignItems="center"
+    fontSize={1}
+  >
+    <Checkbox />
+  </Label>
+</Box>
+`;
