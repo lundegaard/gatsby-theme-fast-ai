@@ -16,6 +16,7 @@
 		"@rebass/preset": "^4.0.5",
 		"@restart/hooks": "^0.3.19",
 		"emotion-theming": "^10.0.19",
+		"tinycolor2": "^1.4.1",
 		"invariant": "^2.2.4",
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.0",

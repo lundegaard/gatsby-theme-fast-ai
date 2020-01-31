@@ -396,7 +396,7 @@ const Index = () => (
 				event.preventDefault();
 			}}
 		>
-			<Row>
+			<FormRow>
 				<Col span={6}>
 					<FormHeading>
 						<FormattedMessage id="home.title" />
@@ -411,7 +411,7 @@ const Index = () => (
 
 					<LoanInfo />
 				</Col>
-			</Row>
+			</FormRow>
 		</form>
 	</Page>
 );

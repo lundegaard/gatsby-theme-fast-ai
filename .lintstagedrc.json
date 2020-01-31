@@ -1,7 +1,5 @@
 {
 	"**/*.js": ["prettier --write", "yarn lint:js --fix", "git add"],
-	"**/*.{mdx,html,json}": ["prettier --write", "git add"],
-	"**/package.json": ["yarn lint:pkg", "git add"],
-	"**/*.css": ["stylelint", "git add"],
-	"**/*.scss": ["stylelint --syntax=scss", "git add"]
+	"**/*.{html,json}": ["prettier --write", "git add"],
+	"**/package.json": ["yarn lint:pkg", "git add"]
 }
