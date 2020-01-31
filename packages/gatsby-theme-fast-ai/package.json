@@ -18,11 +18,7 @@
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.1",
 		"react-helmet": "^5.2.1",
-		"react-intl": "^3.2.0",
-		"tinycolor2": "^1.4.1",
-		"typeface-open-sans": "^0.0.75",
-		"typeface-roboto": "^0.0.75",
-		"typeface-roboto-mono": "^0.0.75"
+		"react-intl": "^3.2.0"
 	},
 	"peerDependencies": {
 		"gatsby": "^2.6.0",

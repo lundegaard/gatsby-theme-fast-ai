@@ -46,8 +46,10 @@ const Layout = ({ theme, children }) => {
 		</Fragment>
 	);
 };
+
 Layout.propTypes = {
 	children: PropTypes.node,
 	theme: PropTypes.object,
 };
+
 export default Layout;
