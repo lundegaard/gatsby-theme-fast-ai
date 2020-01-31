@@ -1,3 +1,13 @@
+const remarkPlugins = [
+	{
+		resolve: 'gatsby-remark-images',
+		options: {
+			maxWidth: 1035,
+			backgroundColor: 'none',
+		},
+	},
+];
+
 module.exports = themeOptions => {
 	const {
 		intlOptions,
@@ -39,6 +49,17 @@ module.exports = themeOptions => {
 					background_color: '#3b3b3b',
 					theme_color: '#0018ff',
 					display: 'standalone',
+				},
+			},
+			{
+				resolve: 'gatsby-plugin-mdx',
+				options: {
+					extensions: ['.mdx', '.md'],
+					defaultLayouts: {
+						default: require.resolve('gatsby-theme-fast-ai/src/templates/MdxPage'),
+					},
+					plugins: remarkPlugins,
+					gatsbyRemarkPlugins: remarkPlugins,
 				},
 			},
 		],

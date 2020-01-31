@@ -1,5 +1,5 @@
 {
-	"name": "@lundegaard/docs-examples",
+	"name": "@fast-ai/docs-examples",
 	"private": true,
 	"version": "0.0.1",
 	"main": "index.js",
@@ -17,11 +17,7 @@
 		"@emotion/core": "^10.0.0",
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^0.0.1",
-		"@mdx-js/mdx": "^1.5.4",
-		"@mdx-js/react": "^1.5.4",
 		"gatsby": "^2.18.11",
-		"gatsby-plugin-mdx": "^1.0.67",
-		"gatsby-remark-images": "^3.1.42",
 		"gatsby-theme-fast-ai": "^0.0.1",
 		"prop-types": "^15.6.2",
 		"ramda": "^0.26.1",

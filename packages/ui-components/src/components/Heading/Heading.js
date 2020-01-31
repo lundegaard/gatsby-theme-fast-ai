@@ -12,7 +12,13 @@ const resolveDefaultProps = cond([
 ]);
 
 const Heading = ({ as = 'h1', ...rest }) => (
-	<RebassHeading as={as} fontFamily="heading" {...resolveDefaultProps(as)} {...rest} />
+	<RebassHeading
+		as={as}
+		fontFamily="heading"
+		fontWeight="800"
+		{...resolveDefaultProps(as)}
+		{...rest}
+	/>
 );
 
 Heading.propTypes = {
