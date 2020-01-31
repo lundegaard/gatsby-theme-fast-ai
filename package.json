@@ -49,6 +49,7 @@
 		"generate": "plop --plopfile \"./.plop/plopfile.js\"",
 		"zoe": "yarn workspace @fast-ai/zoe",
 		"storybook": "yarn workspace @fast-ai/storybook",
+		"examples": "yarn workspace @fast-ai/docs-examples",
 		"ui-components": "yarn workspace @fast-ai/ui-components",
 		"gatsby-theme-fast-ai": "yarn workspace gatsby-theme-fast-ai",
 		"gatsby-plugin-setup": "yarn workspace @fast-ai/gatsby-plugin-setup"

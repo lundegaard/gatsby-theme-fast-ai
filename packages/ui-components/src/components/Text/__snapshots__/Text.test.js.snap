@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Text /> matches snapshot when shallowly rendered 1`] = `<ForwardRef />`;
+exports[`<Text /> matches snapshot when shallowly rendered 1`] = `
+<ForwardRef
+  as="p"
+  fontSize={
+    Array [
+      2,
+      4,
+    ]
+  }
+  mb="3"
+/>
+`;

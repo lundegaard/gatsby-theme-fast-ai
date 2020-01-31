@@ -14,6 +14,7 @@ const Root = props => (
 			fontFamily: 'body',
 			minHeight: '100vh',
 			height: '100%',
+			color: 'body',
 		}}
 		{...props}
 	/>
