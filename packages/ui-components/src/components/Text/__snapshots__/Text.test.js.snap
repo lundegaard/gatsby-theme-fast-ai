@@ -9,5 +9,6 @@ exports[`<Text /> matches snapshot when shallowly rendered 1`] = `
       4,
     ]
   }
+  mb="3"
 />
 `;
