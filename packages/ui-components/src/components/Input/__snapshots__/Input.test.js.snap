@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  sx={
+    Object {
+      "&:after": Object {
+        "borderBottomColor": "secondary",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "2px",
+        "bottom": 0,
+        "content": "\\" \\"",
+        "display": "block",
+        "left": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "right": 0,
+        "transform": "scaleX(0)",
+        "transition": "transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms",
+      },
+      "&:before": Object {
+        "borderBottomColor": "lightGray",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "1px",
+        "bottom": 0,
+        "content": "\\" \\"",
+        "display": "block",
+        "left": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "right": 0,
+      },
+      "&:hover:before": Object {
+        "borderBottomColor": "gray",
+      },
+      "position": "relative",
+    }
+  }
+>
+  <ForwardRef
+    id={null}
+    onAnimationStart={[Function]}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    px={0}
+    sx={
+      Object {
+        "&:-webkit-autofill": Object {
+          "animationDuration": "50000s",
+          "animationName": Object {
+            "anim": 1,
+            "name": "animation-1iev27x",
+            "styles": "@keyframes animation-1iev27x{
+	from {}
+}",
+            "toString": [Function],
+          },
+        },
+        "&::WebkitSearchDecoration": Object {
+          "WebkitAppearance": "none",
+        },
+        "&::placeholder": Object {
+          "opacity": "0 !important",
+        },
+        "&:focus": Object {
+          "outline": 0,
+        },
+        "&:invalid": Object {
+          "boxShadow": "none",
+        },
+        "&:not(:-webkit-autofill)": Object {
+          "animationDuration": "50000s",
+          "animationName": Object {
+            "anim": 1,
+            "name": "animation-ereosx",
+            "styles": "@keyframes animation-ereosx{
+	from {}
+	to: {}
+}",
+            "toString": [Function],
+          },
+        },
+        "WebkitTapHighlightColor": "transparent",
+        "animationDuration": "50000s",
+        "border": "none",
+        "color": "inherit",
+        "width": "100%",
+      }
+    }
+  />
+</Box>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField /> matches snapshot when shallowly rendered 1`] = `
+<SuperField>
+  <SuperFieldLabel />
+  <Input
+    type="text"
+  />
+  <SuperFieldHint />
+</SuperField>
+`;

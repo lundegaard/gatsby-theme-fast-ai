@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuperFieldLabel /> matches snapshot when shallowly rendered 1`] = `
+<ForwardRef
+  htmlFor={null}
+  sx={
+    Object {
+      "color": "inherit",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "transform": "translate(0, 16px)",
+      "transformOrigin": "top left",
+      "transition": "color 200ms ease, transform 200ms ease 0ms",
+    }
+  }
+/>
+`;

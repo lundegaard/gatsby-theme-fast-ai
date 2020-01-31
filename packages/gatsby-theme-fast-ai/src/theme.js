@@ -37,6 +37,7 @@ const theme = createTheme({
 		muted: '#e7e7e7',
 		contrast: '#ffffff',
 		body: '#3b3b3b',
+		danger: '#ff0000',
 		gray,
 		lightGray,
 		highlight: 'hsla(205, 100%, 40%, 0.125)',
@@ -90,6 +91,11 @@ const theme = createTheme({
 		},
 		tableRow: {
 			border: '1px solid',
+		},
+	},
+	forms: {
+		input: {
+			fontFamily: 'body',
 		},
 	},
 });

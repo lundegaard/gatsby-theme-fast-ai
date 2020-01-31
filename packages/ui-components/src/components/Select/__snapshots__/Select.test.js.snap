@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  sx={
+    Object {
+      "&:after": Object {
+        "borderBottomColor": "secondary",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "2px",
+        "bottom": 0,
+        "content": "\\" \\"",
+        "display": "block",
+        "left": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "right": 0,
+        "transform": "scaleX(0)",
+        "transition": "transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms",
+      },
+      "&:before": Object {
+        "borderBottomColor": "lightGray",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "1px",
+        "bottom": 0,
+        "content": "\\" \\"",
+        "display": "block",
+        "left": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "right": 0,
+      },
+      "&:hover:before": Object {
+        "borderBottomColor": "gray",
+      },
+      "position": "relative",
+    }
+  }
+>
+  <ForwardRef
+    id={null}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    px={0}
+    sx={
+      Object {
+        "&:focus": Object {
+          "outline": 0,
+        },
+        "&:invalid": Object {
+          "boxShadow": "none",
+        },
+        "WebkitTapHighlightColor": "transparent",
+        "border": "none",
+        "color": "inherit",
+        "width": "100%",
+      }
+    }
+  />
+</Box>
+`;
