@@ -22,9 +22,7 @@ exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
       }
     }
     variant="secondary"
-  >
-    <Component />
-  </Text>
+  />
   <Slider
     id="field-0"
     variant="forms.slider.default"

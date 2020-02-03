@@ -1,9 +1,10 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
 import { {{ pascalCase name }} } from '@fast-ai/{{ packageName }}';
 
-storiesOf('{{ pascalCase name }}', module)
-	.addDecorator(withKnobs)
-	.addParameters({ info: ''})
-	.add('in default', () => <{{ pascalCase name }} />);
+export default {
+	title: '{{ pascalCase name }}',
+	description: '',
+	component: {{ pascalCase name }},
+};
+
+export const groups = () => (<{{ pascalCase name }} />;

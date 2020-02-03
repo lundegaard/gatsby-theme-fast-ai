@@ -30,6 +30,7 @@ const Root = props => (
 		backgroundColor="background"
 		sx={{
 			fontFamily: 'body',
+			p: 4,
 		}}
 		{...props}
 	/>

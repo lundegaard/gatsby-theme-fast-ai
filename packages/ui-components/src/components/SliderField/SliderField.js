@@ -39,7 +39,7 @@ const SliderField = ({
 				variant={variant ? variant : 'secondary'}
 				sx={{ position: 'absolute', color: variant ? null : 'secondary', right: 0, top: 0 }}
 			>
-				<Value>{value}</Value>
+				{Value ? <Value>{value}</Value> : value}
 			</Text>
 			<Slider
 				variant={variant ? `forms.slider.${variant}` : 'forms.slider.default'}

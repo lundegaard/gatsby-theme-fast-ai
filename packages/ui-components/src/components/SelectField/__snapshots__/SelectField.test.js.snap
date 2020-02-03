@@ -2,7 +2,9 @@
 
 exports[`<SelectField /> matches snapshot when shallowly rendered 1`] = `
 <SuperField>
-  <SuperFieldLabel />
+  <SuperFieldLabel
+    alwaysShrank={false}
+  />
   <Select />
   <SuperFieldHint />
 </SuperField>

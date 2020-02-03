@@ -1,6 +1,8 @@
 const path = require('path');
 const { lstatSync, readdirSync } = require('fs');
 
+const { omit } = require('ramda');
+
 const isDirectory = source => lstatSync(source).isDirectory();
 const getDirectories = source =>
 	readdirSync(source)
@@ -24,6 +26,8 @@ module.exports = {
 		},
 	],
 	webpackFinal: config => {
+		// console.dir(config, { depth: null });
+
 		const apps = getDirectories(path.resolve(__dirname, '../../'));
 		const packages = getDirectories(path.resolve(__dirname, '../../../packages'));
 
@@ -32,9 +36,11 @@ module.exports = {
 
 			if (rule.use && rule.use[0] && /babel/.test(rule.use[0].loader)) {
 				rule.use[0].options = {
+					...rule.use[0].options,
 					root: path.resolve('..'),
 					rootMode: 'upward',
 				};
+				rule.use[0].options = omit(['presets'], rule.use[0].options);
 			}
 
 			if (rule.use && rule.use[0] && /style/.test(rule.use[0])) {
@@ -47,6 +53,7 @@ module.exports = {
 			return rule;
 		});
 
+		// console.dir(config, { depth: null });
 		return config;
 	},
 };
