@@ -29,7 +29,7 @@ const SelectField = ({
 	...rest
 }) => (
 	<SuperField {...rest} disabled={disabled} readOnly={readOnly} hasError={hasError} id={id}>
-		<SuperFieldLabel alwaysShrank={labelAlwaysShrank || placeholder}>{label}</SuperFieldLabel>
+		<SuperFieldLabel alwaysShrank={!!(labelAlwaysShrank || placeholder)}>{label}</SuperFieldLabel>
 		<Select
 			placeholder={placeholder}
 			value={value}

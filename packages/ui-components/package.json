@@ -4,6 +4,7 @@
 	"license": "MIT",
 	"description": "Common UI components",
 	"main": "src/index.js",
+	"module": "src/index.js",
 	"devDependencies": {
 		"@babel/core": "^7.7.5",
 		"bootstrap": "^4.3.0",
