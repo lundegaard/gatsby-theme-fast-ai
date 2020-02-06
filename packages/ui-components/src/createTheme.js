@@ -131,15 +131,6 @@ const componentsPreset = {
 				getStripesGradient('10%', 0.2),
 			],
 		},
-		link: {
-			transition: 'color .175s ease-in-out',
-			fontWeight: 'bold',
-			color: 'primary',
-			textTransform: 'uppercase',
-			':hover,:focus,.active': {
-				color: 'primary',
-			},
-		},
 		nav: {
 			transition: 'color .175s ease-in-out',
 			fontSize: 2,

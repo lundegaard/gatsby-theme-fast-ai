@@ -84,6 +84,10 @@ exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
         "animationDuration": "50000s",
         "border": "none",
         "color": "inherit",
+        "fontSize": Array [
+          2,
+          4,
+        ],
         "width": "100%",
       }
     }

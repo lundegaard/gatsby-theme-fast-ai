@@ -163,6 +163,7 @@ const Input = forwardRef((props, ref) => {
 						outline: 0,
 					},
 					width: '100%',
+					fontSize: [2, 4],
 				}}
 				px={0}
 				id={id}

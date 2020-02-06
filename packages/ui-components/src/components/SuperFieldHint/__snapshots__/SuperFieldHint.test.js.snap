@@ -2,6 +2,12 @@
 
 exports[`<SuperFieldHint /> matches snapshot when shallowly rendered 1`] = `
 <Text
+  fontSize={
+    Array [
+      0,
+      1,
+    ]
+  }
   sx={
     Object {
       "fontSize": 0,
