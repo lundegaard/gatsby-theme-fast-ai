@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Label as RebassLabel } from '@rebass/forms';
 
+import Label from '../Label';
 import useBlockingEffect from '../../hooks/useBlockingEffect';
 import { useSuperFieldContext } from '../SuperField';
 
@@ -24,7 +24,7 @@ const SuperFieldLabel = ({ children, alwaysShrank }) => {
 	}, [isFocused, isInputFilledIn]);
 
 	return (
-		<RebassLabel
+		<Label
 			htmlFor={id}
 			sx={{
 				position: 'absolute',
@@ -37,7 +37,7 @@ const SuperFieldLabel = ({ children, alwaysShrank }) => {
 			}}
 		>
 			{children}
-		</RebassLabel>
+		</Label>
 	);
 };
 SuperFieldLabel.propTypes = {

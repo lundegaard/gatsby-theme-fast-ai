@@ -8,6 +8,7 @@ import {
 	SliderField as FASliderField,
 	TextField as FATextField,
 	Heading,
+	Link,
 	Radio,
 	Row,
 	Text,
@@ -124,7 +125,7 @@ const SliderField = forwardRef((props, ref) => {
 });
 
 const FormRow = props => <Row mb={2} {...props} />;
-const FormHeading = props => <Heading mb={4} {...props} />;
+const FormHeading = props => <Heading as="h2" mt={0} mb={4} {...props} />;
 
 const PersonalInfo = () => {
 	// TODO
@@ -230,7 +231,11 @@ const PersonalInfo = () => {
 			<FormRow>
 				<Col span={12}>
 					<CheckboxField
-						label={<Text fontSize={1}>I agreee with terms and conditions</Text>}
+						label={
+							<Text fontSize={[1, 2]} p={0} m={0}>
+								I agreee with <Link href="#">terms and conditions</Link>
+							</Text>
+						}
 						name="terms"
 						checked={terms}
 						onChange={event => setTerms(event.target.checked)}
