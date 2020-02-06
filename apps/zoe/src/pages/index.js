@@ -124,7 +124,7 @@ const SliderField = forwardRef((props, ref) => {
 	return <FASliderField {...inputProps} />;
 });
 
-const FormRow = props => <Row mb={2} {...props} />;
+const FormRow = props => <Row mb={2} flexWrap="wrap" {...props} />;
 const FormHeading = props => <Heading as="h2" mt={0} mb={4} {...props} />;
 
 const PersonalInfo = () => {
@@ -139,7 +139,7 @@ const PersonalInfo = () => {
 	return (
 		<Fragment>
 			<FormRow>
-				<Col span={6}>
+				<Col span={[12, 12, 6]}>
 					<TextField
 						label="Name"
 						name="name"
@@ -147,7 +147,7 @@ const PersonalInfo = () => {
 						value={name}
 					/>
 				</Col>
-				<Col span={6}>
+				<Col span={[12, 12, 6]}>
 					<TextField
 						label="Surname"
 						name="surname"
@@ -165,7 +165,7 @@ const PersonalInfo = () => {
 				</Col>
 			</FormRow>
 			<FormRow>
-				<Col span={12}>
+				<Col span={[12, 12, 6]}>
 					<TextField
 						label="Personal ID"
 						name="id"
@@ -176,7 +176,7 @@ const PersonalInfo = () => {
 				</Col>
 			</FormRow>
 			<FormRow>
-				<Col span={12}>
+				<Col span={[12, 12, 6]}>
 					<TextField
 						disabled
 						label="Personal ID"
@@ -186,7 +186,7 @@ const PersonalInfo = () => {
 						hint="disabled"
 					/>
 				</Col>
-				<Col span={12}>
+				<Col span={[12, 12, 6]}>
 					<TextField
 						label="Personal ID"
 						name="id"
@@ -198,7 +198,7 @@ const PersonalInfo = () => {
 				</Col>
 			</FormRow>
 			<FormRow>
-				<Col span={6}>
+				<Col span={[12, 12, 6]}>
 					<SelectField
 						label="Education"
 						name="education"
@@ -212,7 +212,7 @@ const PersonalInfo = () => {
 						hint="Your highest education"
 					/>
 				</Col>
-				<Col span={6}>
+				<Col span={[12, 12, 6]}>
 					<SelectField
 						label="Education"
 						name="education"
@@ -401,15 +401,15 @@ const Index = () => (
 				event.preventDefault();
 			}}
 		>
-			<FormRow>
-				<Col span={6}>
+			<FormRow flexWrap="wrap">
+				<Col span={[12, 12, 6]}>
 					<FormHeading>
 						<FormattedMessage id="home.title" />
 					</FormHeading>
 
 					<PersonalInfo />
 				</Col>
-				<Col span={6}>
+				<Col span={[12, 12, 6]}>
 					<FormHeading>
 						<FormattedMessage id="home.title" />
 					</FormHeading>

@@ -2,20 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import useGeneratedId from '../../hooks/useGeneratedId';
-import Label from '../Label';
 import Slider from '../Slider';
-import Box from '../Box';
 import Text from '../Text';
-import SuperFieldHint from '../SuperFieldHint';
-
-const getVariant = ({ hasError, readOnly, disabled }) => {
-	if (hasError) {
-		return 'error';
-	}
-	if (disabled || readOnly) {
-		return 'disabled';
-	}
-};
+import Box from '../Box';
+import FormGroup, { getVariant } from '../FormGroup';
 
 const SliderField = ({
 	id: idProp,
@@ -31,25 +21,38 @@ const SliderField = ({
 	const generatedStub = useGeneratedId();
 	const generatedId = `field-${generatedStub}`;
 	const id = idProp || generatedId;
-	const variant = getVariant({ hasError, readOnly, disabled });
+	const variant = getVariant({ disabled, readOnly, hasError });
+
 	return (
-		<Box sx={{ position: 'relative' }} variant={variant} pb={2}>
-			<Label htmlFor={id}>{label}</Label>
+		<Box sx={{ position: 'relative' }}>
 			<Text
-				variant={variant ? variant : 'secondary'}
-				sx={{ position: 'absolute', color: variant ? null : 'secondary', right: 0, top: 0 }}
+				sx={{
+					textAlign: 'right',
+					position: ['absolute', 'absolute', 'static'],
+					right: 0,
+					top: 0,
+				}}
+				mb={0}
 			>
 				{Value ? <Value>{value}</Value> : value}
 			</Text>
-			<Slider
-				variant={variant ? `forms.slider.${variant}` : 'forms.slider.default'}
+			<FormGroup
+				id={id}
+				label={label}
+				hint={hint}
 				disabled={disabled}
 				readOnly={readOnly}
-				id={id}
-				value={value}
-				{...rest}
-			/>
-			{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}
+				hasError={hasError}
+			>
+				<Slider
+					variant={variant ? `forms.slider.${variant}` : 'forms.slider.default'}
+					disabled={disabled}
+					readOnly={readOnly}
+					id={id}
+					value={value}
+					{...rest}
+				/>
+			</FormGroup>
 		</Box>
 	);
 };

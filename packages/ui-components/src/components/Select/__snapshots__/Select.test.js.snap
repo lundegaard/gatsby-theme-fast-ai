@@ -53,6 +53,12 @@ exports[`<Select /> matches snapshot when shallowly rendered 1`] = `
         "WebkitTapHighlightColor": "transparent",
         "border": "none",
         "color": "inherit",
+        "fontSize": Array [
+          2,
+          2,
+          2,
+          4,
+        ],
         "width": "100%",
       }
     }

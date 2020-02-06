@@ -19,15 +19,21 @@ const gray = '#b4b4b4';
 
 const transparentStripesColor = color(lightGray);
 
+const getThumbStyles = color => ({
+	color,
+	width: ['18px', '18px', '24px'],
+	height: ['18px', '18px', '24px'],
+});
+
 const getSliderStyles = color => ({
-	height: '1px',
+	height: '2px',
 	color,
 	'&:focus': {
 		color,
 	},
-	'&::-webkit-slider-thumb': {
-		color,
-	},
+	'&::-ms-thumb': getThumbStyles(color),
+	'&::-moz-range-thumb': getThumbStyles(color),
+	'&::-webkit-slider-thumb': getThumbStyles(color),
 });
 
 const getStripesGradient = (width, alpha = 1) =>
@@ -79,7 +85,8 @@ const componentsPreset = {
 			thumb: 'secondary',
 		},
 		slider: {
-			error: getSliderStyles('danger'),
+			...getSliderStyles('body'),
+			danger: getSliderStyles('danger'),
 			disabled: {
 				cursor: 'default',
 				...getSliderStyles('gray'),
@@ -96,7 +103,7 @@ const componentsPreset = {
 		},
 	},
 	variants: {
-		error: {
+		danger: {
 			color: 'danger',
 			'input:checked ~ *': {
 				color: 'danger',

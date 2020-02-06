@@ -3,6 +3,7 @@
 exports[`<RadioGroup /> matches snapshot when shallowly rendered 1`] = `
 <Flex
   flexWrap="wrap"
+  justifyContent="space-between"
   role="radiogroup"
 />
 `;
