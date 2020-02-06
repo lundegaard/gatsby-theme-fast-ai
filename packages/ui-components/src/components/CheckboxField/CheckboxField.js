@@ -8,7 +8,7 @@ import SuperFieldHint from '../SuperFieldHint';
 
 const getVariant = ({ hasError, readOnly, disabled }) => {
 	if (hasError) {
-		return 'error';
+		return 'danger';
 	}
 	if (disabled || readOnly) {
 		return 'disabled';

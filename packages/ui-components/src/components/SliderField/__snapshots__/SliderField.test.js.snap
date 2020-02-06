@@ -2,30 +2,34 @@
 
 exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
 <Box
-  pb={2}
   sx={
     Object {
       "position": "relative",
     }
   }
 >
-  <Label
-    htmlFor="field-0"
-  />
   <Text
+    mb={0}
     sx={
       Object {
-        "color": "secondary",
-        "position": "absolute",
+        "position": Array [
+          "absolute",
+          "absolute",
+          "static",
+        ],
         "right": 0,
+        "textAlign": "right",
         "top": 0,
       }
     }
-    variant="secondary"
   />
-  <Slider
+  <FormGroup
     id="field-0"
-    variant="forms.slider.default"
-  />
+  >
+    <Slider
+      id="field-0"
+      variant="forms.slider.default"
+    />
+  </FormGroup>
 </Box>
 `;

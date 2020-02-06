@@ -13,9 +13,9 @@ const RadioGroup = ({
 	value: valueProp,
 	...rest
 }) => (
-	<Flex flexWrap="wrap" role="radiogroup" {...rest}>
+	<Flex flexWrap="wrap" justifyContent="space-between" role="radiogroup" {...rest}>
 		{Children.map(children, item => {
-			const { value, onChange, ml, width } = item.props;
+			const { value, onChange, width } = item.props;
 
 			if (typeof value === 'undefined') {
 				return item;
@@ -34,7 +34,6 @@ const RadioGroup = ({
 				},
 				checked: value === valueProp,
 				disabled,
-				ml: ml != null ? ml : 2,
 				width: width != null ? width : 'auto',
 				readOnly,
 				hasError,

@@ -8,6 +8,7 @@ exports[`<SuperFieldHint /> matches snapshot when shallowly rendered 1`] = `
       1,
     ]
   }
+  mb={0}
   sx={
     Object {
       "fontSize": 0,

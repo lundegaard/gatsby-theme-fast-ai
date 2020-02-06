@@ -122,6 +122,7 @@ const Select = forwardRef((props, ref) => {
 				sx={{
 					color: 'inherit',
 					border: 'none',
+					fontSize: [2, 2, 2, 4],
 					WebkitTapHighlightColor: 'transparent',
 					// FF
 					'&:invalid': {
