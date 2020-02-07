@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Label as RebassLabel } from '@rebass/forms';
 
-const Label = props => <RebassLabel fontSize={[2, 2, 2, 4]} {...props} />;
+const Label = forwardRef((props, ref) => <RebassLabel ref={ref} fontSize={2} {...props} />);
+
+Label.displayName = 'Label';
 
 export default Label;

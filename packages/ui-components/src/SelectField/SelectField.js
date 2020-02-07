@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import getEventHandlersFromProps from '../utils/getEventHandlersFromProps';
 import Select from '../Select';
 import SuperField from '../SuperField';
 import SuperFieldLabel from '../SuperFieldLabel';
@@ -40,6 +41,7 @@ const SelectField = ({
 			items={items}
 			getLabel={getLabel}
 			getValue={getValue}
+			{...getEventHandlersFromProps(rest)}
 			{...inputProps}
 		/>
 		<SuperFieldHint>{hint}</SuperFieldHint>
@@ -60,6 +62,6 @@ SelectField.propTypes = {
 	onChange: PropTypes.func,
 	placeholder: PropTypes.string,
 	readOnly: PropTypes.bool,
-	value: PropTypes.any.isRequired,
+	value: PropTypes.any,
 };
 export default SelectField;

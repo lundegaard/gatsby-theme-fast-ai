@@ -97,7 +97,7 @@ import { Field } from 'react-powerplug';
 				<Field>
 				{({ set, value }) => (
 					<CheckboxField
-						label={<Text fontSize={1}>I agreee with terms and conditions</Text>}
+						label={<Text fontSize={[1, 1, 1, 2]} p={0} m={0}> I agreee with terms and conditions</Text>}
 						name="terms"
 						checked={value}
 						onChange={event => set(event.target.checked)}

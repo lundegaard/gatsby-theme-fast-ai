@@ -189,6 +189,6 @@ Input.propTypes = {
 	onFocus: PropTypes.func,
 	placeholder: PropTypes.string,
 	readOnly: PropTypes.bool,
-	value: PropTypes.any.isRequired,
+	value: PropTypes.any,
 };
 export default Input;

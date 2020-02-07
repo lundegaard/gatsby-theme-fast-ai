@@ -1,6 +1,8 @@
 export { useTheme } from './hooks/useTheme';
 export { useBreakpoint } from './hooks/useBreakpoint';
 
+export { default as getDisplayName } from './utils/getDisplayName';
+
 export { default as createTheme } from './createTheme';
 export { default as messages } from './messages';
 export { default as Box } from './Box';

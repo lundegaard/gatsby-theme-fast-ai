@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import getEventHandlersFromProps from '../utils/getEventHandlersFromProps';
 import SuperField from '../SuperField';
 import SuperFieldLabel from '../SuperFieldLabel';
 import SuperFieldHint from '../SuperFieldHint';
@@ -35,6 +36,7 @@ export const TextField = ({
 			onChange={onChange}
 			disabled={disabled}
 			readOnly={readOnly}
+			{...getEventHandlersFromProps(rest)}
 			{...inputProps}
 		/>
 		<SuperFieldHint>{hint}</SuperFieldHint>
@@ -52,6 +54,6 @@ TextField.propTypes = {
 	onChange: PropTypes.func,
 	placeholder: PropTypes.string,
 	readOnly: PropTypes.bool,
-	value: PropTypes.any.isRequired,
+	value: PropTypes.any,
 };
 export default TextField;
