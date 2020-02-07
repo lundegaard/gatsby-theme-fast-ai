@@ -21,8 +21,8 @@ const transparentStripesColor = color(lightGray);
 
 const getThumbStyles = color => ({
 	color,
-	width: ['18px', '18px', '24px'],
-	height: ['18px', '18px', '24px'],
+	width: ['18px', '18px', '18px', '24px'],
+	height: ['18px', '18px', '18px', '24px'],
 });
 
 const getSliderStyles = color => ({
@@ -53,6 +53,12 @@ const componentsPreset = {
 	breakpoints,
 	space,
 	fontSizes,
+	buttons: {
+		primary: {
+			textTransform: 'uppercase',
+			py: 3,
+		},
+	},
 	colors: {
 		background: '#f6f6f6',
 		primary: '#0018ff',

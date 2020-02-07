@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isString } from 'ramda-extension';
 
+import getEventHandlersFromProps from '../utils/getEventHandlersFromProps';
 import RadioGroup from '../RadioGroup';
 import FormGroup from '../FormGroup';
 
@@ -33,6 +34,7 @@ const RadioGroupField = ({
 			disabled={disabled}
 			readOnly={readOnly}
 			hasError={hasError}
+			{...getEventHandlersFromProps(rest)}
 		>
 			{children}
 		</RadioGroup>

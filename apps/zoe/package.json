@@ -22,6 +22,7 @@
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.1",
 		"react": "^16.12.0",
-		"react-dom": "^16.12.0"
+		"react-dom": "^16.12.0",
+		"react-form": "^4.0.1"
 	}
 }

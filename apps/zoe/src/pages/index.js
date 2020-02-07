@@ -1,6 +1,6 @@
-import React, { Fragment, forwardRef, useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, forwardRef, useCallback, useMemo } from 'react';
 import {
+	Button,
 	Col,
 	CheckboxField as FACheckboxField,
 	RadioGroupField as FARadioGroupField,
@@ -12,10 +12,16 @@ import {
 	Radio,
 	Row,
 	Text,
+	getDisplayName,
 } from '@fast-ai/ui-components';
-import { FormattedMessage, FormattedNumber, Page, Seo } from 'gatsby-theme-fast-ai';
+import { FormattedMessage, Page, Seo, useIntl } from 'gatsby-theme-fast-ai';
+import { splitFormProps, useField, useForm } from 'react-form';
 
-const useSa = () => (...args) => console.log('SA', args);
+import m from '../intl/messages';
+import { AmountFormatter, DurationFormatter } from '../formatters';
+import { CoborrowerChoice, MaritalStatus, getEducationByLanguage } from '../lookups';
+
+const useSa = () => (/* ...args */) => null; // console.log('SA', args);
 // const useSa = () => window.sa;
 
 // just for a virtual components - only a changeEvent
@@ -23,26 +29,6 @@ const getEventCallbackName = eventName =>
 	`on${eventName.charAt(0).toUpperCase() + eventName.slice(1)}`;
 
 const defaultGetEvent = (eventName, firstArg) => firstArg && firstArg.nativeEvent;
-
-const AmountFormatter = ({ children }) => {
-	if (children == null) {
-		return '-';
-	}
-
-	return children ? (
-		<Fragment>
-			<FormattedNumber value={children} minimumFractionDigits={2}>
-				{value => value.replace(/00$/, '-')}
-			</FormattedNumber>
-		</Fragment>
-	) : (
-		'-'
-	);
-};
-AmountFormatter.propTypes = { children: PropTypes.node };
-
-const AgeFormatter = ({ children }) => (children ? `${children} years` : '-');
-AgeFormatter.propTypes = { children: PropTypes.node };
 
 const mapper = {
 	sForm: {
@@ -95,341 +81,273 @@ const useSaFieldTracker = ({
 	return { getInputProps };
 };
 
-const TextField = forwardRef((props, ref) => {
-	const { getInputProps } = useSaFieldTracker();
+const wrapWithStateAndSA = Comp => {
+	const WrappedComponent = forwardRef((props, ref) => {
+		const [field, fieldOptions, rest] = splitFormProps(props);
 
-	const inputProps = getInputProps({ ref, ...props });
+		const {
+			meta: { error, isTouched },
+			getInputProps,
+		} = useField(field, fieldOptions);
 
-	return <FATextField {...inputProps} />;
-});
+		const { getInputProps: saGetInputProps } = useSaFieldTracker();
 
-const SelectField = forwardRef((props, ref) => {
-	const { getInputProps } = useSaFieldTracker();
+		const inputProps = saGetInputProps(getInputProps({ ref, ...rest }));
 
-	const inputProps = getInputProps({ ref, ...props });
+		const hasError = !!hasError && isTouched;
+		return <Comp {...inputProps} hasError={hasError} hint={hasError && error} />;
+	});
+	WrappedComponent.displayName = `WrappedComponent(${getDisplayName(Comp)})`;
 
-	return <FASelectField {...inputProps} />;
-});
+	return WrappedComponent;
+};
 
-const CheckboxField = forwardRef((props, ref) => {
-	const { getInputProps } = useSaFieldTracker();
+const TextField = wrapWithStateAndSA(FATextField);
+const SelectField = wrapWithStateAndSA(FASelectField);
+const CheckboxField = wrapWithStateAndSA(FACheckboxField);
+const RadioGroupField = wrapWithStateAndSA(FARadioGroupField);
+const SliderField = wrapWithStateAndSA(FASliderField);
 
-	const inputProps = getInputProps({ ref, ...props });
+const NumberTextField = forwardRef((props, ref) => (
+	<TextField
+		ref={ref}
+		inputProps={{
+			pattern: 'd*',
+		}}
+		{...props}
+	/>
+));
+NumberTextField.displayName = 'NumberTextField';
 
-	return <FACheckboxField {...inputProps} />;
-});
-
-const RadioGroupField = forwardRef((props, ref) => {
-	const { getInputProps } = useSaFieldTracker();
-
-	const inputProps = getInputProps({ ref, ...props });
-
-	return <FARadioGroupField {...inputProps} />;
-});
-
-const SliderField = forwardRef((props, ref) => {
-	const { getInputProps } = useSaFieldTracker();
-
-	const inputProps = getInputProps({ ref, ...props });
-
-	return <FASliderField {...inputProps} />;
-});
-
-const FormRow = props => <Row mb={2} flexWrap="wrap" {...props} />;
 const FormHeading = props => <Heading as="h2" mt={0} mb={4} {...props} />;
+const HalfCol = props => <Col span={[12, 12, 6]} mb={4} {...props} />;
+const FullCol = props => <Col span={12} mb={4} {...props} />;
+
+const apply = async values => {
+	await new Promise(resolve => setTimeout(resolve, 1000));
+
+	return values;
+};
 
 const PersonalInfo = () => {
-	// TODO
-	const [name, setName] = useState('');
-	const [partner, setPartner] = useState('');
-	const [surname, setSurname] = useState('filled');
-	const [surnameError, setSurnameError] = useState(null);
-	const [education, setEducation] = useState('');
-	const [terms, setTerms] = useState(false);
+	const intl = useIntl();
+	const Education = useMemo(() => getEducationByLanguage(intl.locale), [intl.locale]);
 
 	return (
 		<Fragment>
-			<FormRow>
-				<Col span={[12, 12, 6]}>
-					<TextField
-						label="Name"
-						name="name"
-						onChange={event => setName(event.target.value)}
-						value={name}
-					/>
-				</Col>
-				<Col span={[12, 12, 6]}>
-					<TextField
-						label="Surname"
-						name="surname"
-						onChange={event => {
-							if (event.target.value === 'x') {
-								setSurnameError('Error!');
-							}
-							setSurname(event.target.value);
-						}}
-						value={surname}
-						hasError={!!surnameError}
-						hint={surnameError}
-						placeholder="Fill in a surname"
-					/>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={[12, 12, 6]}>
-					<TextField
-						label="Personal ID"
-						name="id"
-						onChange={event => setName(event.target.value)}
-						value={name}
-						hint="with hint"
-					/>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={[12, 12, 6]}>
-					<TextField
-						disabled
-						label="Personal ID"
-						name="id"
-						onChange={event => setName(event.target.value)}
-						value={name}
-						hint="disabled"
-					/>
-				</Col>
-				<Col span={[12, 12, 6]}>
-					<TextField
-						label="Personal ID"
-						name="id"
-						onChange={event => setName(event.target.value)}
-						value={name}
-						readOnly
-						hint="readOnly"
-					/>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={[12, 12, 6]}>
-					<SelectField
-						label="Education"
-						name="education"
-						onChange={event => setEducation(event.target.value)}
-						value={education}
-						placeholder="None"
-						items={[
-							{ value: '1', label: 'Elementary' },
-							{ value: '2', label: 'High-school' },
-						]}
-						hint="Your highest education"
-					/>
-				</Col>
-				<Col span={[12, 12, 6]}>
-					<SelectField
-						label="Education"
-						name="education"
-						onChange={event => setEducation(event.target.value)}
-						value={education}
-						items={[
-							{ value: '', label: '' },
-							{ value: '1', label: 'Elementary' },
-							{ value: '2', label: 'High-school' },
-						]}
-						hint="Your highest education"
-					/>
-				</Col>
-			</FormRow>
+			<HalfCol>
+				<TextField label={<FormattedMessage {...m.givenName} />} field="borrower.givenName" />
+			</HalfCol>
 
-			<FormRow>
-				<Col span={12}>
-					<CheckboxField
-						label={
-							<Text fontSize={[1, 2]} p={0} m={0}>
-								I agreee with <Link href="#">terms and conditions</Link>
-							</Text>
-						}
-						name="terms"
-						checked={terms}
-						onChange={event => setTerms(event.target.checked)}
-						value
-					/>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={12}>
-					<CheckboxField
-						label="I agreee with terms and conditions"
-						name="terms"
-						checked={terms}
-						onChange={event => setTerms(event.target.checked)}
-						value
-						hasError
-						hint="Error"
-					/>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={12}>
-					<CheckboxField
-						label="I agreee with terms and conditions"
-						name="terms"
-						checked={terms}
-						onChange={event => setTerms(event.target.checked)}
-						value
-						disabled
-					/>
-				</Col>
-			</FormRow>
+			<HalfCol>
+				<TextField label={<FormattedMessage {...m.familyName} />} field="borrower.familyName" />
+			</HalfCol>
 
-			<FormRow>
-				<Col span={12}>
-					<RadioGroupField
-						legend="Who is your partner?"
-						onChange={event => setPartner(event.target.value)}
-						name="partner"
-						value={partner}
-					>
-						{[
-							{ value: 'individual', label: 'Individual' },
-							{ value: 'with-parner', label: 'With partner' },
-						].map(itemProps => (
-							<Radio key={itemProps.value} {...itemProps} />
-						))}
-					</RadioGroupField>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={12}>
-					<RadioGroupField
-						legend="Who is your partner?"
-						onChange={event => setPartner(event.target.value)}
-						name="partner"
-						value={partner}
-						disabled
-					>
-						{[
-							{ value: 'individual', label: 'Individual' },
-							{ value: 'with-parner', label: 'With partner' },
-						].map(itemProps => (
-							<Radio key={itemProps.value} {...itemProps} />
-						))}
-					</RadioGroupField>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={12}>
-					<RadioGroupField
-						legend="Who is your partner?"
-						onChange={event => setPartner(event.target.value)}
-						name="partner"
-						value={partner}
-						hint="Error"
-						hasError
-					>
-						{[
-							{ value: 'individual', label: 'Individual' },
-							{ value: 'with-parner', label: 'With partner' },
-						].map(itemProps => (
-							<Radio key={itemProps.value} {...itemProps} />
-						))}
-					</RadioGroupField>
-				</Col>
-			</FormRow>
+			<HalfCol>
+				<TextField label={<FormattedMessage {...m.birthNumber} />} field="borrower.birthNumber" />
+			</HalfCol>
+
+			<HalfCol>
+				<TextField
+					label={<FormattedMessage {...m.streetAddress} />}
+					field="borrower.address.streetAddress"
+				/>
+			</HalfCol>
+
+			<HalfCol>
+				<TextField
+					label={<FormattedMessage {...m.streetLocality} />}
+					field="borrower.address.streetLocality"
+				/>
+			</HalfCol>
+
+			<HalfCol>
+				<TextField
+					label={<FormattedMessage {...m.postalCode} />}
+					field="borrower.address.postalCode"
+				/>
+			</HalfCol>
+
+			<HalfCol>
+				<TextField label={<FormattedMessage {...m.phoneNumber} />} field="borrower.phoneNumber" />
+			</HalfCol>
+
+			<HalfCol>
+				<TextField label={<FormattedMessage {...m.email} />} field="borrower.email" />
+			</HalfCol>
+
+			<HalfCol>
+				<SelectField
+					label={<FormattedMessage {...m.maritalStatus} />}
+					field="borrower.maritalStatus"
+					items={['', ...MaritalStatus.values].map(status => ({
+						value: status,
+						label: status ? intl.formatMessage(m[`maritalStatus_${status}`]) : status,
+					}))}
+				/>
+			</HalfCol>
+
+			<HalfCol>
+				<SelectField
+					label={<FormattedMessage {...m.education} />}
+					field="borrower.education"
+					items={['', ...Education.values].map(level => ({
+						value: level,
+						label: level ? intl.formatMessage(m[`${Education.name}_${level}`]) : level,
+					}))}
+				/>
+			</HalfCol>
+
+			<HalfCol>
+				<NumberTextField
+					label={<FormattedMessage {...m.netIncomeMain} />}
+					field="borrower.balance.netIncomeMain"
+				/>
+			</HalfCol>
+
+			<HalfCol>
+				<NumberTextField
+					label={<FormattedMessage {...m.expenditureAnotherInstallment} />}
+					field="borrower.balance.expenditureAnotherInstallment"
+				/>
+			</HalfCol>
 		</Fragment>
 	);
 };
 
-const LoanInfo = () => {
-	const [amount, setAmount] = useState(200000);
-	const [paymentPeriod, setPaymentPeriod] = useState(24);
+const LoanInfo = () => (
+	<Fragment>
+		<FullCol>
+			<SliderField
+				label={<FormattedMessage {...m.loanInfoAmount} />}
+				field="loanInfo.amount"
+				renderValue={AmountFormatter}
+				min={0}
+				max={10000000}
+				step={1}
+			/>
+		</FullCol>
+		<FullCol>
+			<SliderField
+				label={<FormattedMessage {...m.numberOfInstalments} />}
+				field="loanInfo.numberOfInstalments"
+				renderValue={DurationFormatter}
+				min={0}
+				max={10000000}
+				step={1}
+			/>
+		</FullCol>
 
-	return (
-		<Fragment>
-			<FormRow>
-				<Col span={12}>
-					<SliderField
-						label="Fill in loan amount"
-						name="amount"
-						onChange={event => setAmount(event.target.value)}
-						value={amount}
-						renderValue={AmountFormatter}
-						min={0}
-						max={1000000}
-						step={1}
-						hint="with hint"
+		<FullCol>
+			<RadioGroupField
+				legend={<FormattedMessage {...m.coborrowerChoice} />}
+				field="webdata.coborrowerChoice"
+			>
+				{CoborrowerChoice.values.map(value => (
+					<Radio
+						key={value}
+						label={<FormattedMessage {...m[`${CoborrowerChoice.name}_${value}`]} value={value} />}
 					/>
-				</Col>
-			</FormRow>
+				))}
+			</RadioGroupField>
+		</FullCol>
 
-			<FormRow>
-				<Col span={12}>
-					<SliderField
-						label="Select payment period"
-						name="paymentPeriod"
-						onChange={event => setPaymentPeriod(event.target.value)}
-						value={paymentPeriod}
-						renderValue={AgeFormatter}
-						min={0}
-						max={100}
-						hint="with hint"
-					/>
-				</Col>
-			</FormRow>
-
-			<FormRow>
-				<Col span={12}>
-					<SliderField
-						label="Select payment interval"
-						name="paymentPeriod"
-						onChange={event => setPaymentPeriod(event.target.value)}
-						value={paymentPeriod}
-						renderValue={AgeFormatter}
-						hint="error"
-						hasError
-					/>
-				</Col>
-			</FormRow>
-			<FormRow>
-				<Col span={12}>
-					<SliderField
-						label="Select payment interval"
-						name="paymentPeriod"
-						onChange={event => setPaymentPeriod(event.target.value)}
-						value={paymentPeriod}
-						renderValue={AgeFormatter}
-						hint="disabled"
-						disabled
-					/>
-				</Col>
-			</FormRow>
-		</Fragment>
-	);
-};
-const Index = () => (
-	<Page>
-		<Seo title="Demo" />
-		<form
-			onSubmit={event => {
-				event.preventDefault();
-			}}
-		>
-			<FormRow flexWrap="wrap">
-				<Col span={[12, 12, 6]}>
-					<FormHeading>
-						<FormattedMessage id="home.title" />
-					</FormHeading>
-
-					<PersonalInfo />
-				</Col>
-				<Col span={[12, 12, 6]}>
-					<FormHeading>
-						<FormattedMessage id="home.title" />
-					</FormHeading>
-
-					<LoanInfo />
-				</Col>
-			</FormRow>
-		</form>
-	</Page>
+		<FullCol>
+			<CheckboxField
+				label={
+					<Text fontSize={[1, 1, 1, 2]} p={0} m={0}>
+						<FormattedMessage
+							{...m.terms}
+							values={{
+								// eslint-disable-next-line react/display-name
+								a: (...children) => <Link href="#" children={children} />,
+							}}
+						/>
+					</Text>
+				}
+				field="terms"
+			/>
+		</FullCol>
+	</Fragment>
 );
+
+const defaultValues = {
+	loanInfo: {
+		numberOfInstalments: 0,
+		amount: 0,
+	},
+	borrower: {
+		givenName: '',
+		familyName: '',
+		education: '',
+		maritalStatus: '',
+		birthNumber: '',
+		email: '',
+		phoneNumber: '',
+		balance: {
+			netIncomeMain: '',
+			expenditureAnotherInstallment: '',
+		},
+		address: {
+			streetAddress: '',
+			streetLocality: '',
+			postalCode: '',
+		},
+		coborrowerChoice: 'SINGLE',
+	},
+};
+const Index = () => {
+	const {
+		Form,
+		meta: { isSubmitting, canSubmit },
+	} = useForm({
+		defaultValues,
+		onSubmit: async values => {
+			console.log({ values });
+			const response = await apply(values);
+
+			console.log({ response });
+		},
+		// debugForm: true,
+	});
+
+	return (
+		<Page>
+			<Seo title="Demo" />
+			<Form>
+				<Row flexWrap="wrap">
+					<Col span={[12, 12, 6]}>
+						<Row flexWrap="wrap">
+							<FullCol>
+								<FormHeading>
+									<FormattedMessage {...m.personalInfoTitle} />
+								</FormHeading>
+							</FullCol>
+
+							<PersonalInfo />
+						</Row>
+					</Col>
+					<Col span={[12, 12, 6]}>
+						<Row flexWrap="wrap">
+							<FullCol>
+								<FormHeading>
+									<FormattedMessage {...m.setupLoanTitle} />
+								</FormHeading>
+							</FullCol>
+
+							<LoanInfo />
+
+							<FullCol>
+								<Button variant="secondary" width={1} disabled={!canSubmit || isSubmitting}>
+									<FormattedMessage {...m.apply} />
+								</Button>
+							</FullCol>
+						</Row>
+					</Col>
+				</Row>
+			</Form>
+		</Page>
+	);
+};
 
 export default Index;

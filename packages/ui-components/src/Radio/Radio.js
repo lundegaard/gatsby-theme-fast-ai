@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Radio as RebassRadio } from '@rebass/forms';
 
 import Label from '../Label';
 
-const Radio = ({ label, disabled, readOnly, ...rest }) => (
-	<Label color="inherit" alignItems="center" {...rest}>
+const Radio = forwardRef(({ label, disabled, readOnly, ...rest }, ref) => (
+	<Label ref={ref} color="inherit" alignItems="center" {...rest}>
 		<RebassRadio {...rest} disabled={disabled} readOnly={readOnly} />
 		{label}
 	</Label>
-);
+));
+Radio.displayName = 'Radio';
 
 Radio.propTypes = {
 	/** Disabled state */

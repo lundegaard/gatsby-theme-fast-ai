@@ -57,6 +57,7 @@ const Footer = props => (
 						textAlign={{ _: 'center', md: 'left' }}
 						fontSize={{ _: 1, md: 2 }}
 						color="contrast"
+						mb={0}
 					>
 						All rights reserved |{' '}
 						<Link
