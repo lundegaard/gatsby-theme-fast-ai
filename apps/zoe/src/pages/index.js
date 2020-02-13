@@ -44,6 +44,17 @@ AmountFormatter.propTypes = { children: PropTypes.node };
 const AgeFormatter = ({ children }) => (children ? `${children} years` : '-');
 AgeFormatter.propTypes = { children: PropTypes.node };
 
+const mapper = {
+	sForm: {
+		copy: 'clipboard',
+		paste: 'clipboard',
+		cut: 'clipboard',
+	},
+	sBiometrics: {
+		keyUp: 'keyup',
+		keyDown: 'keydown',
+	},
+};
 const useSaFieldTracker = ({
 	/**
 	 * @param {String} eventName - Name of an event - "change", "focus", ...
@@ -66,8 +77,8 @@ const useSaFieldTracker = ({
 					[eventCallbackName]: (...args) => {
 						const event = getEvent(eventName, ...args);
 
-						saInstance(`s-form:${eventName}`, { event });
-						saInstance(`s-biometrics:${eventName}`, { event });
+						saInstance(`s-form:${mapper.sForm[eventName] || eventName}`, { event });
+						saInstance(`s-biometrics:${mapper.sBiometrics[eventName] || eventName}`, { event });
 
 						if (acc[eventCallbackName]) {
 							return acc[eventCallbackName](...args);

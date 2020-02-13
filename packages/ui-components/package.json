@@ -5,6 +5,9 @@
 	"description": "Common UI components",
 	"main": "src/index.js",
 	"module": "src/index.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.7.5",
 		"bootstrap": "^4.3.0",
