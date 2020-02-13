@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/storybook",
-	"version": "0.0.2-alpha.0",
+	"version": "0.0.2-alpha.1",
 	"private": true,
 	"license": "UNLICENSED",
 	"description": "Storybook application for documentation of our UI components",
@@ -13,7 +13,7 @@
 		"webpack": "^4.41.4"
 	},
 	"dependencies": {
-		"@fast-ai/ui-components": "^0.0.2-alpha.0",
+		"@fast-ai/ui-components": "^0.0.2-alpha.1",
 		"@storybook/addon-actions": "^5.3.9",
 		"@storybook/addon-docs": "^5.3.9",
 		"@storybook/addon-info": "^5.3.9",
