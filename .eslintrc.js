@@ -21,6 +21,7 @@ module.exports = {
 			'error',
 			{
 				devDependencies: [
+					'tools/**/*.js',
 					'packages/**/*.test.js',
 					'apps/**/*.test.js',
 					'apps/**/gatsby-config.js',
@@ -29,6 +30,7 @@ module.exports = {
 					'*.config.js',
 					'apps/**/*.config.js',
 					'packages/**/*.config.js',
+					'rollup.config.js',
 				],
 			},
 		],

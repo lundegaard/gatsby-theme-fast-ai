@@ -1,14 +1,47 @@
-module.exports = api => {
-	api.cache.using(() => process.env.NODE_ENV);
+// module.exports = api => {
+// 	api.cache.using(() => process.env.NODE_ENV);
 
-	const presets = [
+// 	const presets = [
+// 		[
+// 			'babel-preset-react-union',
+// 			{ test: process.env.NODE_ENV === 'test', loose: true, library: false, universal: false },
+// 		],
+// 	];
+
+// 	return {
+// 		presets,
+// 	};
+// };
+
+// const defaultAlias = {
+// 	'@fast-ai/ui-components': './packages/ui-components/src',
+// };
+
+const productionPlugins = [];
+
+module.exports = {
+	presets: [
 		[
 			'babel-preset-react-union',
 			{ test: process.env.NODE_ENV === 'test', loose: true, library: false, universal: false },
 		],
-	];
-
-	return {
-		presets,
-	};
+	],
+	ignore: [/@babel[\\|/]runtime/], // Fix a Windows issue.
+	env: {
+		cjs: {
+			plugins: productionPlugins,
+		},
+		esm: {
+			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+		},
+		es: {
+			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+		},
+		production: {
+			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+		},
+		'production-umd': {
+			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+		},
+	},
 };

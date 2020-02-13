@@ -7,6 +7,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"sideEffects": false,
+	"engines": {
+		"node": ">=8.0.0"
+	},
 	"dependencies": {
 		"@emotion/core": "^10.0.0",
 		"@fast-ai/ui-components": "^0.0.2-alpha.0",

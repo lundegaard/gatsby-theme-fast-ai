@@ -1,14 +1,35 @@
-import React, { forwardRef, useCallback } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Select as RebassSelect } from '@rebass/forms';
-import { identity, map, o, prepend, prop } from 'ramda';
-import { noop } from 'ramda-extension';
+import { keyframes } from '@emotion/core';
+import { Input as RebassInput } from '@rebass/forms';
+import { isFunction, noop } from 'ramda-extension';
 
-import useBlockingEffect from '../../hooks/useBlockingEffect';
+import useBlockingEffect from '../hooks/useBlockingEffect';
 import { isInputValueEmpty, useSuperFieldContext } from '../SuperField';
 import Box from '../Box';
 
-const getBorderColor = ({ hasError, disabled, readOnly }) => {
+const placeholderHidden = {
+	opacity: '0 !important',
+};
+const placeholderVisible = {
+	opacity: 0.5,
+};
+
+const mergeRefs = refs => value => {
+	refs.filter(Boolean).forEach(ref => (isFunction(ref) ? ref(value) : (ref.current = value)));
+};
+
+const autofill = keyframes`
+	from {}
+`;
+
+// NOTE: make sure, that contents of `autofill` and `autofillCancel` are not the same. Otherwise emotion actually assings both of them same animation.name.
+const autofillCancel = keyframes`
+	from {}
+	to: {}
+`;
+
+const getBorderColor = ({ hasError, readOnly, disabled }) => {
 	if (hasError) {
 		return 'danger';
 	} else if (disabled || readOnly) {
@@ -18,22 +39,21 @@ const getBorderColor = ({ hasError, disabled, readOnly }) => {
 	}
 };
 
-// TODO: items -> children - Option/OptionGroup
-const Select = forwardRef((props, ref) => {
+const Input = forwardRef((props, ref) => {
+	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } = useSuperFieldContext();
+	const inputRef = useRef();
+	const internalInputRef = mergeRefs([inputRef, ref]);
+
 	const {
 		value,
 		onChange,
-		onFocus: onFocusProp = noop,
-		onBlur: onBlurProp = noop,
+		onFocus: onFocusProp = () => {},
+		onBlur: onBlurProp = () => {},
 		placeholder,
 		disabled,
 		readOnly,
-		items = [],
-		getLabel = prop('label'),
-		getValue = prop('value'),
 		...rest
 	} = props;
-	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } = useSuperFieldContext();
 
 	const checkDirty = useCallback(
 		value => {
@@ -50,8 +70,12 @@ const Select = forwardRef((props, ref) => {
 		checkDirty(value);
 	}, [checkDirty, value]);
 
-	const handleChange = disabled ? noop : onChange;
-
+	const handleAutoFill = event => {
+		// Provide a fake value as Chrome might not let you access it for security reasons.
+		checkDirty(
+			event.animationName.indexOf(autofillCancel.name) !== -1 ? inputRef.current.value : 'x'
+		);
+	};
 	const handleFocus = event => {
 		if (disabled) {
 			return;
@@ -68,20 +92,7 @@ const Select = forwardRef((props, ref) => {
 		return onBlurProp(event);
 	};
 
-	const getItems = o(
-		placeholder
-			? prepend(
-					<option key="" disabled value="">
-						{placeholder}
-					</option>
-			  )
-			: identity,
-		map(item => (
-			<option key={getValue(item)} value={getValue(item)}>
-				{getLabel(item)}
-			</option>
-		))
-	);
+	const handleChange = disabled ? noop : onChange;
 
 	return (
 		<Box
@@ -118,12 +129,32 @@ const Select = forwardRef((props, ref) => {
 				},
 			}}
 		>
-			<RebassSelect
+			<RebassInput
 				sx={{
 					color: 'inherit',
 					border: 'none',
-					fontSize: [2, 2, 2, 4],
+					animationDuration: '50000s',
+					'&:not(:-webkit-autofill)': {
+						animationName: autofillCancel,
+						animationDuration: '50000s',
+					},
+					'&:-webkit-autofill': {
+						animationName: autofill,
+						animationDuration: '50000s',
+					},
 					WebkitTapHighlightColor: 'transparent',
+					'&::placeholder': placeholder,
+					'&::WebkitSearchDecoration': {
+						// Remove the padding when type=search.
+						WebkitAppearance: 'none',
+					},
+					...(!isLabelShrank
+						? {
+								'&::placeholder': placeholderHidden,
+						  }
+						: {
+								'&:placeholder': placeholderVisible,
+						  }),
 					// FF
 					'&:invalid': {
 						boxShadow: 'none',
@@ -132,29 +163,27 @@ const Select = forwardRef((props, ref) => {
 						outline: 0,
 					},
 					width: '100%',
+					fontSize: [2, 4],
 				}}
 				px={0}
 				id={id}
+				onAnimationStart={handleAutoFill}
 				value={value}
 				onChange={handleChange}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
+				placeholder={placeholder}
 				disabled={disabled}
 				readOnly={readOnly}
-				ref={ref}
+				ref={internalInputRef}
 				{...rest}
-			>
-				{getItems(items)}
-			</RebassSelect>
+			/>
 		</Box>
 	);
 });
-Select.displayName = 'Select';
-Select.propTypes = {
+Input.displayName = 'Input';
+Input.propTypes = {
 	disabled: PropTypes.bool,
-	getLabel: PropTypes.func,
-	getValue: PropTypes.func,
-	items: PropTypes.array,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	onFocus: PropTypes.func,
@@ -162,5 +191,4 @@ Select.propTypes = {
 	readOnly: PropTypes.bool,
 	value: PropTypes.any.isRequired,
 };
-
-export default Select;
+export default Input;
