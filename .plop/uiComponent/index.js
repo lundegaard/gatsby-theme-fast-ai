@@ -43,19 +43,19 @@ module.exports = {
 			{
 				type: 'add',
 				data,
-				path: srcDir + '/src/components/{{pascalCase name}}/{{pascalCase name}}.js',
+				path: srcDir + '/src/{{pascalCase name}}/{{pascalCase name}}.js',
 				templateFile: path.join(__dirname, './statelessComponent.js.hbs'),
 			},
 			{
 				type: 'add',
 				data,
-				path: srcDir + '/src/components/{{pascalCase name}}/{{pascalCase name}}.test.js',
+				path: srcDir + '/src/{{pascalCase name}}/{{pascalCase name}}.test.js',
 				templateFile: path.join(__dirname, './test.js.hbs'),
 			},
 			{
 				type: 'add',
 				data,
-				path: srcDir + '/src/components/{{pascalCase name}}/index.js',
+				path: srcDir + '/src/{{pascalCase name}}/index.js',
 				templateFile: path.join(__dirname, './index.js.hbs'),
 			},
 			{

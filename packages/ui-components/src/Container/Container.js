@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../hooks/useTheme';
 import Box from '../Box';
 
 const Container = ({ fullWidth, ...rest }) => {

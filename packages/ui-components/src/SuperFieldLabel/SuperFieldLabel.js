@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../Label';
-import useBlockingEffect from '../../hooks/useBlockingEffect';
+import useBlockingEffect from '../hooks/useBlockingEffect';
 import { useSuperFieldContext } from '../SuperField';
 
 const SuperFieldLabel = ({ children, alwaysShrank }) => {

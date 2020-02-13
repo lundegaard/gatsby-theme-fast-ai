@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import mapResponsiveProperty from '../../utils/mapResponsiveProperty';
-import * as Types from '../../types';
+import mapResponsiveProperty from '../utils/mapResponsiveProperty';
+import * as Types from '../types';
 import Box from '../Box';
 
 const addPx = mapResponsiveProperty(x => `${x}px`);

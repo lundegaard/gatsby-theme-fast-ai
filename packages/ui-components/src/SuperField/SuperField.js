@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import useGeneratedId from '../../hooks/useGeneratedId';
+import useGeneratedId from '../hooks/useGeneratedId';
 import Box from '../Box';
 
 import { SuperFieldContext } from './contexts';

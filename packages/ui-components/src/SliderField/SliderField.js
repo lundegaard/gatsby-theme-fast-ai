@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import useGeneratedId from '../../hooks/useGeneratedId';
+import useGeneratedId from '../hooks/useGeneratedId';
 import Slider from '../Slider';
 import Text from '../Text';
 import Box from '../Box';
