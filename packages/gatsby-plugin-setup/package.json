@@ -6,6 +6,9 @@
 	"browserslist": [
 		"IE 11"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"devDependencies": {
 		"@babel/cli": "^7.7.5",
 		"@babel/core": "^7.7.5",
