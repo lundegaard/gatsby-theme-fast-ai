@@ -18,6 +18,12 @@
 		"gatsby-plugin-intl": "^0.3.2",
 		"gatsby-plugin-mdx": "^1.0.67",
 		"gatsby-remark-images": "^3.1.42",
+		"@fast-ai/gatsby-plugin-setup": "^0.0.2-alpha.2",
+		"gatsby-plugin-manifest": "^2.2.34",
+		"gatsby-plugin-react-helmet": "^3.1.18",
+		"gatsby-plugin-sharp": "^2.3.10",
+		"gatsby-source-filesystem": "^2.1.43",
+		"gatsby-transformer-sharp": "^2.3.9",
 		"prism-react-renderer": "^1.0.2",
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.1",
@@ -29,14 +35,6 @@
 		"prop-types": "^15.6.2",
 		"react": "^16.8.6",
 		"react-dom": "^16.6.0"
-	},
-	"devDependencies": {
-		"@fast-ai/gatsby-plugin-setup": "^0.0.2-alpha.2",
-		"gatsby-plugin-manifest": "^2.2.34",
-		"gatsby-plugin-react-helmet": "^3.1.18",
-		"gatsby-plugin-sharp": "^2.3.10",
-		"gatsby-source-filesystem": "^2.1.43",
-		"gatsby-transformer-sharp": "^2.3.9"
 	},
 	"gitHead": "1462edaf82c393e579bd8d877de6811fe4b4ac38"
 }
