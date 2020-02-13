@@ -1,7 +1,7 @@
 {
 	"name": "@fast-ai/zoe",
 	"private": true,
-	"version": "0.0.1",
+	"version": "0.0.2-alpha.0",
 	"main": "index.js",
 	"contributors": [
 		"Tomas Konrady <tomaskonrady@gmail.com>"
@@ -15,9 +15,9 @@
 	"dependencies": {
 		"@emotion/core": "^10.0.0",
 		"@emotion/styled": "^10.0.0",
-		"@fast-ai/ui-components": "^0.0.1",
+		"@fast-ai/ui-components": "^0.0.2-alpha.0",
 		"gatsby": "^2.18.11",
-		"gatsby-theme-fast-ai": "^0.0.1",
+		"gatsby-theme-fast-ai": "^0.0.2-alpha.0",
 		"prop-types": "^15.6.2",
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.1",
