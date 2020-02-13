@@ -58,6 +58,7 @@ async function createPackageFile() {
 
 	const newPackageData = {
 		...packageDataOther,
+		publishConfig,
 		private: false,
 		main: './index.js',
 		module: './esm/index.js',
