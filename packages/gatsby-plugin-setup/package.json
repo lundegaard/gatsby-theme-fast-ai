@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/gatsby-plugin-setup",
-	"version": "0.0.2-alpha.1",
+	"version": "0.0.2-alpha.2",
 	"license": "MIT",
 	"main": "index.js",
 	"browserslist": [
@@ -32,5 +32,6 @@
 		"build": "babel src --out-dir . --ignore **/*.test.js --root-mode upward",
 		"prepare": "cross-env NODE_ENV=production yarn build",
 		"start": "babel -w src --out-dir . --ignore **/*.test.js --root-mode upward"
-	}
+	},
+	"gitHead": "1462edaf82c393e579bd8d877de6811fe4b4ac38"
 }
