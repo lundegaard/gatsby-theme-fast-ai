@@ -1,11 +1,13 @@
 import React from 'react';
-import { FormattedNumber } from 'gatsby-theme-fast-ai';
+import { FormattedMessage, FormattedNumber } from 'gatsby-theme-fast-ai';
 import PropTypes from 'prop-types';
 
+import m from './intl/messages';
+
 export const AmountFormatter = ({ children }) =>
-	children ? (
-		<FormattedNumber value={children} minimumFractionDigits={2}>
-			{value => value.replace(/00$/, '')}
+	children != null ? (
+		<FormattedNumber value={children} minimumFractionDigits={1} maximumFractionDigits={1}>
+			{value => value.replace(/.$/, '-')}
 		</FormattedNumber>
 	) : (
 		''
@@ -22,17 +24,22 @@ export const DurationFormatter = ({ children }) => {
 	const years = Math.floor(totalMonths / 12);
 	const months = totalMonths - years * 12;
 
-	// TODO: react-form
-	// if (!years) {
-	// return <FormattedMessage {...m.durationMonths} values={{  months }} />;
-	// }
-	// if (!months) {
-	// return <FormattedMessage {...m.durationYears} values={{  years }} />;
-	// }
+	const monthsMessage = <FormattedMessage {...m.durationValueMonths} values={{ months }} />;
+	const yearsMessage = <FormattedMessage {...m.durationValueYears} values={{ years }} />;
 
-	// return <FormattedMessage {...m.duration} values={{ years, months }} />;
+	if (!years) {
+		return monthsMessage;
+	}
+	if (!months) {
+		return yearsMessage;
+	}
 
-	return `${years} years and ${months}`;
+	return (
+		<FormattedMessage
+			{...m.durationValueAnd}
+			values={{ left: yearsMessage, right: monthsMessage }}
+		/>
+	);
 };
 DurationFormatter.propTypes = { children: PropTypes.node };
 

@@ -3,7 +3,7 @@ import { createBreakpointHook } from '@restart/hooks/useBreakpoint';
 import { always, anyPass, equals, ifElse, o, reject, test, when, zipObj } from 'ramda';
 import { alwaysNull, isArray, isNilOrEmpty } from 'ramda-extension';
 
-import { useTheme } from './useTheme';
+import useTheme from './useTheme';
 
 const getStaticPropsFromArray = ifElse(
 	isArray,
@@ -20,7 +20,7 @@ const DEFAULT_ALIASES = ['sm', 'md', 'lg', 'xl'];
 const getAliases = o(when(isNilOrEmpty, always(DEFAULT_ALIASES)), getStaticPropsFromArray);
 
 /** Bridge between current theme (based on styled-system) and @rebass/hooks/useBreakpoint */
-export const useBreakpoint = (...args) => {
+const useBreakpoint = (...args) => {
 	const { breakpoints } = useTheme();
 	const aliases = getAliases(breakpoints);
 
@@ -34,3 +34,5 @@ export const useBreakpoint = (...args) => {
 
 	return useBreakpoint(...args);
 };
+
+export default useBreakpoint;

@@ -19,6 +19,7 @@
 	"example.netIncomeMain": "Monthly net income",
 	"example.expenditureAnotherInstallment": "Monthly expenditure",
 	"example.loanInfoAmount": "Select loan amount",
+	"example.totalAmountPerMonth": "Total monthly fee",
 	"example.numberOfInstalments": "Choose repayment period",
 	"example.terms": "I agreee with <a>terms and conditions</a>",
 	"example.maritalStatus": "Marital status",
@@ -42,5 +43,8 @@
 	"example.coborrowerChoice": "With whom do you apply?",
 	"example.coborrowerChoice_SINGLE": "Only me",
 	"example.coborrowerChoice_NON_SINGLE": "With parther",
-	"example.apply": "Apply"
+	"example.apply": "Apply",
+	"example.durationValueAnd": "{left} and {right}",
+	"example.durationValueMonths": "{months, plural, =0 {0 months} one {1 month} other {# months}}",
+	"example.durationValueYears": "{years, plural, =0 {0 years} one {1 year} other {# years} }"
 }

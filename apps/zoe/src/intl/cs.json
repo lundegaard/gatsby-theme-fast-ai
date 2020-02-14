@@ -19,6 +19,7 @@
 	"example.email": "Email",
 	"example.expenditureAnotherInstallment": "Měsíční výdaje",
 	"example.loanInfoAmount": "Zadejve výši úvěru",
+	"example.totalAmountPerMonth": "Vaše měsíční splátka",
 	"example.numberOfInstalments": "Zvolte dobu splácení",
 	"example.terms": "Souhlasím s <a>obchodními podmínkami</a>",
 	"example.maritalStatus": "Rodinný stav",
@@ -44,5 +45,8 @@
 	"example.coborrowerChoice": "S kám žádáte",
 	"example.coborrowerChoice_SINGLE": "Sám",
 	"example.coborrowerChoice_NON_SINGLE": "S partnerkou/partnerem",
-	"example.apply": "Zažádat"
+	"example.apply": "Zažádat",
+	"example.durationValueAnd": "{left} a {right}",
+	"example.durationValueMonths": "{months, plural, =0 {0 měsíců} one {1 měsíc} two {# měsíce} few {# měsíce} other {# měsíců}}",
+	"example.durationValueYears": "{years, plural, =0 {0 let} one {1 rok} two {# roky} few {#roky} other {# let}}"
 }
