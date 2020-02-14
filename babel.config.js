@@ -1,22 +1,3 @@
-// module.exports = api => {
-// 	api.cache.using(() => process.env.NODE_ENV);
-
-// 	const presets = [
-// 		[
-// 			'babel-preset-react-union',
-// 			{ test: process.env.NODE_ENV === 'test', loose: true, library: false, universal: false },
-// 		],
-// 	];
-
-// 	return {
-// 		presets,
-// 	};
-// };
-
-// const defaultAlias = {
-// 	'@fast-ai/ui-components': './packages/ui-components/src',
-// };
-
 const productionPlugins = [];
 
 module.exports = {
