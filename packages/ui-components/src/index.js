@@ -1,5 +1,7 @@
-export { useTheme } from './hooks/useTheme';
-export { useBreakpoint } from './hooks/useBreakpoint';
+export { default as useTheme } from './hooks/useTheme';
+export { default as useBreakpoint } from './hooks/useBreakpoint';
+export { default as useDebouncedCallback } from './hooks/useDebouncedCallback';
+export { default as useDebounce } from './hooks/useDebounce';
 
 export { default as getDisplayName } from './utils/getDisplayName';
 

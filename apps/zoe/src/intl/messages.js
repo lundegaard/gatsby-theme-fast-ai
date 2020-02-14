@@ -154,6 +154,10 @@ export default defineMessages({
 		id: 'example.loanInfoAmount',
 		defaultMessage: 'Select loan amount',
 	},
+	totalAmountPerMonth: {
+		id: 'example.totalAmountPerMonth',
+		defaultMessage: 'Total monthly fee',
+	},
 	numberOfInstalments: {
 		id: 'example.numberOfInstalments',
 		defaultMessage: 'Choose repayment period',
@@ -165,5 +169,25 @@ export default defineMessages({
 	apply: {
 		id: 'example.apply',
 		defaultMessage: 'Apply',
+	},
+	durationValueAnd: {
+		id: 'example.durationValueAnd',
+		defaultMessage: '{left} and {right}',
+	},
+	durationValueMonths: {
+		id: 'example.durationValueMonths',
+		defaultMessage: `{months, plural,
+			=0 {0 months}
+			one {1 month}
+			other {# months}
+		}`,
+	},
+	durationValueYears: {
+		id: 'example.durationValueYears',
+		defaultMessage: `{years, plural,
+			=0 {0 years}
+			one {1 year}
+			other {# years}
+		}`,
 	},
 });

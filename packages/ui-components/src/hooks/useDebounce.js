@@ -1,12 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { equals } from 'ramda';
 
-import { useDebouncedCallback } from './useDebouncedCallback';
+import useDebouncedCallback from './useDebouncedCallback';
 
-const valueEquality = (left, right) => left === right;
-
-export const useDebounce = (value, delay, { equalityFn, ...restOptions } = {}) => {
-	const eq = equalityFn || valueEquality;
-
+const useDebounce = (value, delay, { equalityFn = equals, ...restOptions } = {}) => {
 	const [state, dispatch] = useState(value);
 	const [callback, cancel, callPending] = useDebouncedCallback(
 		useCallback(value => dispatch(value), []),
@@ -16,11 +13,13 @@ export const useDebounce = (value, delay, { equalityFn, ...restOptions } = {}) =
 	const previousValue = useRef(value);
 
 	useEffect(() => {
-		if (!eq(previousValue.current, value)) {
+		if (!equalityFn(previousValue.current, value)) {
 			callback(value);
 			previousValue.current = value;
 		}
-	}, [value, callback, eq]);
+	}, [value, callback, equalityFn]);
 
 	return [state, cancel, callPending];
 };
+
+export default useDebounce;

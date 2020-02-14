@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-export const useDebouncedCallback = (
+const useDebouncedCallback = (
 	callback,
 	delay,
 	{ maxWait, leading, trailing: optionsTrailing } = {}
@@ -83,3 +83,5 @@ export const useDebouncedCallback = (
 
 	return [debouncedCallback, cancelDebouncedCallback, callPending];
 };
+
+export default useDebouncedCallback;

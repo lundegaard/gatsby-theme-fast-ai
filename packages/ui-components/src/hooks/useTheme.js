@@ -1,1 +1,3 @@
-export { useTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
+
+export default useTheme;

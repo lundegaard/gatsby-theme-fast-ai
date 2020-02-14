@@ -1,121 +1,30 @@
-import React, { Fragment, forwardRef, useCallback, useMemo } from 'react';
+import React, { Fragment, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import {
 	Button,
 	Col,
-	CheckboxField as FACheckboxField,
-	RadioGroupField as FARadioGroupField,
-	SelectField as FASelectField,
-	SliderField as FASliderField,
-	TextField as FATextField,
+	Flex,
 	Heading,
 	Link,
 	Radio,
 	Row,
 	Text,
-	getDisplayName,
+	useDebounce,
 } from '@fast-ai/ui-components';
 import { FormattedMessage, Page, Seo, useIntl } from 'gatsby-theme-fast-ai';
-import { splitFormProps, useField, useForm } from 'react-form';
+import { useForm } from 'react-form';
 
 import m from '../intl/messages';
 import { AmountFormatter, DurationFormatter } from '../formatters';
+import {
+	CheckboxField,
+	NumberTextField,
+	RadioGroupField,
+	SelectField,
+	SliderField,
+	TextField,
+} from '../components/fields';
 import { CoborrowerChoice, MaritalStatus, getEducationByLanguage } from '../lookups';
-
-const useSa = () => (/* ...args */) => null; // console.log('SA', args);
-// const useSa = () => window.sa;
-
-// just for a virtual components - only a changeEvent
-const getEventCallbackName = eventName =>
-	`on${eventName.charAt(0).toUpperCase() + eventName.slice(1)}`;
-
-const defaultGetEvent = (eventName, firstArg) => firstArg && firstArg.nativeEvent;
-
-const mapper = {
-	sForm: {
-		copy: 'clipboard',
-		paste: 'clipboard',
-		cut: 'clipboard',
-	},
-	sBiometrics: {},
-};
-const useSaFieldTracker = ({
-	/**
-	 * @param {String} eventName - Name of an event - "change", "focus", ...
-	 * @param {...any} eventArguments Arguments passed to the handler from which the Event object should be derived.
-	 *
-	 * @return {Object} eventObject - Object that is passed to the appropriate SA methods.
-	 */
-	getEvent = defaultGetEvent,
-	trackedEvents = ['change', 'focus', 'blur', 'keyDown', 'keyUp', 'copy', 'paste', 'cut'],
-} = {}) => {
-	const saInstance = useSa();
-
-	const getInputProps = useCallback(
-		props => {
-			const eventHandlersWithProps = trackedEvents.reduce((currentCallbacks, eventName) => {
-				const eventCallbackName = getEventCallbackName(eventName);
-
-				return {
-					...currentCallbacks,
-					[eventCallbackName]: (...args) => {
-						const event = getEvent(eventName, ...args);
-						const methodName = eventName.toLowerCase();
-
-						saInstance(`s-form:${mapper.sForm[methodName] || methodName}`, { event });
-						saInstance(`s-biometrics:${mapper.sBiometrics[methodName] || methodName}`, { event });
-
-						if (currentCallbacks[eventCallbackName]) {
-							return currentCallbacks[eventCallbackName](...args);
-						}
-					},
-				};
-			}, props);
-
-			return eventHandlersWithProps;
-		},
-		[getEvent, saInstance, trackedEvents]
-	);
-
-	return { getInputProps };
-};
-
-const wrapWithStateAndSA = Comp => {
-	const Field = forwardRef((props, ref) => {
-		const [field, fieldOptions, rest] = splitFormProps(props);
-
-		const {
-			meta: { error, isTouched },
-			getInputProps,
-		} = useField(field, fieldOptions);
-
-		const { getInputProps: saGetInputProps } = useSaFieldTracker();
-
-		const inputProps = saGetInputProps(getInputProps({ ref, ...rest }));
-
-		const hasError = !!error && isTouched;
-		return <Comp {...inputProps} hasError={hasError} hint={hasError && error} />;
-	});
-	Field.displayName = `Field(${getDisplayName(Comp)})`;
-
-	return Field;
-};
-
-const TextField = wrapWithStateAndSA(FATextField);
-const SelectField = wrapWithStateAndSA(FASelectField);
-const CheckboxField = wrapWithStateAndSA(FACheckboxField);
-const RadioGroupField = wrapWithStateAndSA(FARadioGroupField);
-const SliderField = wrapWithStateAndSA(FASliderField);
-
-const NumberTextField = forwardRef((props, ref) => (
-	<TextField
-		ref={ref}
-		inputProps={{
-			pattern: 'd*',
-		}}
-		{...props}
-	/>
-));
-NumberTextField.displayName = 'NumberTextField';
 
 const FormHeading = props => <Heading as="h2" mt={0} mb={4} {...props} />;
 const HalfCol = props => <Col span={[12, 12, 6]} mb={4} {...props} />;
@@ -213,7 +122,7 @@ const PersonalInfo = () => {
 	);
 };
 
-const LoanInfo = () => (
+const LoanInfo = ({ monthlyFee }) => (
 	<Fragment>
 		<FullCol>
 			<SliderField
@@ -230,8 +139,8 @@ const LoanInfo = () => (
 				label={<FormattedMessage {...m.numberOfInstalments} />}
 				field="loanInfo.numberOfInstalments"
 				renderValue={DurationFormatter}
-				min={0}
-				max={10000000}
+				min={1}
+				max={360}
 				step={1}
 			/>
 		</FullCol>
@@ -244,10 +153,22 @@ const LoanInfo = () => (
 				{CoborrowerChoice.values.map(value => (
 					<Radio
 						key={value}
-						label={<FormattedMessage {...m[`${CoborrowerChoice.name}_${value}`]} value={value} />}
+						value={value}
+						label={<FormattedMessage {...m[`${CoborrowerChoice.name}_${value}`]} />}
 					/>
 				))}
 			</RadioGroupField>
+		</FullCol>
+
+		<FullCol>
+			<Flex justifyContent="space-between" alignItems="center">
+				<Heading as="div" mb={0} mt={0}>
+					<FormattedMessage {...m.totalAmountPerMonth} />
+				</Heading>
+				<Heading as="h2" mb={0} mt={0}>
+					<AmountFormatter>{monthlyFee}</AmountFormatter>
+				</Heading>
+			</Flex>
 		</FullCol>
 
 		<FullCol>
@@ -269,10 +190,15 @@ const LoanInfo = () => (
 	</Fragment>
 );
 
+LoanInfo.propTypes = {
+	monthlyFee: PropTypes.node,
+};
+
 const defaultValues = {
+	webdata: { coborrowerChoice: 'SINGLE' },
 	loanInfo: {
-		numberOfInstalments: 0,
-		amount: 0,
+		numberOfInstalments: 12,
+		amount: 100000,
 	},
 	borrower: {
 		givenName: '',
@@ -291,23 +217,27 @@ const defaultValues = {
 			streetLocality: '',
 			postalCode: '',
 		},
-		coborrowerChoice: 'SINGLE',
 	},
 };
 const Index = () => {
 	const {
 		Form,
 		meta: { isSubmitting, canSubmit },
+		getFieldValue,
 	} = useForm({
 		defaultValues,
 		onSubmit: async values => {
 			console.log({ values });
-			const response = await apply(values);
 
+			const response = await apply(values);
 			console.log({ response });
 		},
 		// debugForm: true,
 	});
+
+	const monthlyFee =
+		getFieldValue('loanInfo.amount') / getFieldValue('loanInfo.numberOfInstalments');
+	const [monthlyFeeDebounced] = useDebounce(monthlyFee, 200);
 
 	return (
 		<Page>
@@ -333,7 +263,7 @@ const Index = () => {
 								</FormHeading>
 							</FullCol>
 
-							<LoanInfo />
+							<LoanInfo monthlyFee={monthlyFeeDebounced} />
 
 							<FullCol>
 								<Button variant="secondary" width={1} disabled={!canSubmit || isSubmitting}>
