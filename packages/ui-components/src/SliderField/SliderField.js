@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import useGeneratedId from '../hooks/useGeneratedId';
+import { useDebounce } from '../hooks/useDebounce';
 import Slider from '../Slider';
 import Text from '../Text';
 import Box from '../Box';
@@ -22,6 +23,7 @@ const SliderField = ({
 	const generatedId = `field-${generatedStub}`;
 	const id = idProp || generatedId;
 	const variant = getVariant({ disabled, readOnly, hasError });
+	const [valueDebounced] = useDebounce(value, 200);
 
 	return (
 		<Box sx={{ position: 'relative' }}>
@@ -34,7 +36,7 @@ const SliderField = ({
 				}}
 				mb={0}
 			>
-				{Value ? <Value>{value}</Value> : value}
+				{Value ? <Value>{valueDebounced}</Value> : valueDebounced}
 			</Text>
 			<FormGroup
 				id={id}

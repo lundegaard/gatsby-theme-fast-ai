@@ -36,10 +36,7 @@ const mapper = {
 		paste: 'clipboard',
 		cut: 'clipboard',
 	},
-	sBiometrics: {
-		keyUp: 'keyup',
-		keyDown: 'keydown',
-	},
+	sBiometrics: {},
 };
 const useSaFieldTracker = ({
 	/**
@@ -55,19 +52,20 @@ const useSaFieldTracker = ({
 
 	const getInputProps = useCallback(
 		props => {
-			const eventHandlersWithProps = trackedEvents.reduce((acc, eventName) => {
+			const eventHandlersWithProps = trackedEvents.reduce((currentCallbacks, eventName) => {
 				const eventCallbackName = getEventCallbackName(eventName);
 
 				return {
-					...acc,
+					...currentCallbacks,
 					[eventCallbackName]: (...args) => {
 						const event = getEvent(eventName, ...args);
+						const methodName = eventName.toLowerCase();
 
-						saInstance(`s-form:${mapper.sForm[eventName] || eventName}`, { event });
-						saInstance(`s-biometrics:${mapper.sBiometrics[eventName] || eventName}`, { event });
+						saInstance(`s-form:${mapper.sForm[methodName] || methodName}`, { event });
+						saInstance(`s-biometrics:${mapper.sBiometrics[methodName] || methodName}`, { event });
 
-						if (acc[eventCallbackName]) {
-							return acc[eventCallbackName](...args);
+						if (currentCallbacks[eventCallbackName]) {
+							return currentCallbacks[eventCallbackName](...args);
 						}
 					},
 				};
@@ -82,7 +80,7 @@ const useSaFieldTracker = ({
 };
 
 const wrapWithStateAndSA = Comp => {
-	const WrappedComponent = forwardRef((props, ref) => {
+	const Field = forwardRef((props, ref) => {
 		const [field, fieldOptions, rest] = splitFormProps(props);
 
 		const {
@@ -94,12 +92,12 @@ const wrapWithStateAndSA = Comp => {
 
 		const inputProps = saGetInputProps(getInputProps({ ref, ...rest }));
 
-		const hasError = !!hasError && isTouched;
+		const hasError = !!error && isTouched;
 		return <Comp {...inputProps} hasError={hasError} hint={hasError && error} />;
 	});
-	WrappedComponent.displayName = `WrappedComponent(${getDisplayName(Comp)})`;
+	Field.displayName = `Field(${getDisplayName(Comp)})`;
 
-	return WrappedComponent;
+	return Field;
 };
 
 const TextField = wrapWithStateAndSA(FATextField);
