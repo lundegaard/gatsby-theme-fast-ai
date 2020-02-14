@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/gatsby-plugin-setup",
-	"version": "0.0.2-alpha.3",
+	"version": "0.0.2-alpha.4",
 	"license": "MIT",
 	"main": "index.js",
 	"browserslist": [
@@ -17,8 +17,8 @@
 	"dependencies": {
 		"@babel/cli": "^7.7.5",
 		"@babel/core": "^7.7.5",
-		"babel-preset-react-union": "^0.15.1",
 		"@hot-loader/react-dom": "^16.8.4",
+		"babel-preset-react-union": "^0.15.1",
 		"core-js": "^3.6.0",
 		"gatsby": "^2.18.11",
 		"ramda": "^0.26.1",
