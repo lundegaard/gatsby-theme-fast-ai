@@ -22,9 +22,19 @@ const setBabel = ({ getConfig, stage, loaders, actions }) => {
 			...rule,
 			use: [
 				loaders.js({
-					rootMode: 'upward',
-					configFile: true,
+					configFile: false,
 					compact: PRODUCTION,
+					presets: [
+						[
+							'babel-preset-react-union',
+							{
+								test: process.env.NODE_ENV === 'test',
+								loose: true,
+								library: false,
+								universal: false,
+							},
+						],
+					],
 				}),
 			],
 		},
@@ -35,7 +45,8 @@ const setBabel = ({ getConfig, stage, loaders, actions }) => {
 		config.resolve.alias = omit(['core-js'], config.resolve.alias);
 		config.resolve.modules = rejectNil([
 			...config.resolve.modules,
-			path.resolve(__dirname, '../../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2
+			path.resolve(__dirname, '../../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
+			path.resolve(__dirname, './node_modules'),
 			'node_modules', // your modules w/ core-js@3
 		]);
 	}
