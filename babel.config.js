@@ -1,4 +1,19 @@
-const productionPlugins = [];
+const productionPlugins = [
+	[
+		'@babel/plugin-transform-react-constant-elements',
+		{ allowMutablePropsOnTags: ['FormattedMessage'] },
+	],
+	[
+		'babel-plugin-transform-react-remove-prop-types',
+		{
+			mode: 'unsafe-wrap',
+		},
+	],
+];
+
+const plugins = [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]];
+
+const config = { plugins };
 
 module.exports = {
 	presets: [
@@ -12,17 +27,9 @@ module.exports = {
 		cjs: {
 			plugins: productionPlugins,
 		},
-		esm: {
-			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
-		},
-		es: {
-			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
-		},
-		production: {
-			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
-		},
-		'production-umd': {
-			plugins: [...productionPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
-		},
+		esm: config,
+		es: config,
+		production: config,
+		'production-umd': config,
 	},
 };
