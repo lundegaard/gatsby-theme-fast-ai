@@ -6,6 +6,9 @@ import { pathOr } from 'ramda';
 import { isString, toKebabCase } from 'ramda-extension';
 import { Box, Heading, Image, Link, Text } from '@fast-ai/ui-components';
 
+import warning from '../../content/assets/exclamation-triangle.svg';
+import info from '../../content/assets/info-circle.svg';
+
 import Page from './Page';
 
 const HeadingAnchor = ({ children, ...rest }) => (
@@ -23,7 +26,7 @@ const H3 = props => <HeadingAnchor as="h3" {...props} />;
 const H4 = props => <HeadingAnchor as="h4" {...props} />;
 const H5 = props => <HeadingAnchor as="h5" {...props} />;
 
-const Li = props => <Box as="li" fontSize={[2, 4]} mb="2" mt="2" {...props} />;
+const Li = props => <Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />;
 
 const Table = props => (
 	<Box
@@ -44,12 +47,8 @@ const Code = props => (
 	<Box
 		as="code"
 		sx={{
-			border: '1px',
-			borderRadius: '3px',
-			borderColor: 'grey',
-			p: '2px 5px',
-			backgroundColor: '#3d5249',
-			color: 'secondary',
+			p: '1px 2px',
+			color: '#e8852b',
 		}}
 		{...props}
 	/>
@@ -69,7 +68,15 @@ const HighlightedCode = props => {
 	return (
 		<Highlight {...defaultProps} code={children.trim()} language={language}>
 			{({ style, tokens, getLineProps, getTokenProps }) => (
-				<CodeBox sx={{ ...style, fontSize: 1 }}>
+				<CodeBox
+					sx={{
+						...style,
+						fontSize: 1,
+						maxWidth: '100%',
+						overflowX: 'visible',
+						overflowY: 'hidden',
+					}}
+				>
 					{tokens.map((line, i) => (
 						<Box {...getLineProps({ line, key: i })}>
 							{line.map((token, key) => (
@@ -82,6 +89,42 @@ const HighlightedCode = props => {
 		</Highlight>
 	);
 };
+
+const InfoBox = props => (
+	<Box
+		as="div"
+		fontSize={[2, 2, 2, 4]}
+		sx={{
+			border: '1px solid',
+			borderRadius: '3px',
+			margin: '10px',
+		}}
+		{...props}
+	/>
+);
+
+const resolveIconType = type => {
+	switch (type) {
+		case 'info':
+			return info;
+		case 'warning':
+			return warning;
+		default:
+			return null;
+	}
+};
+
+const Icon = ({ type, ...props }) => (
+	<Image
+		src={resolveIconType(type)}
+		alt="Icon"
+		mr="1"
+		sx={{ width: '17px', height: '15px' }}
+		{...props}
+	/>
+);
+
+Icon.propTypes = { type: PropTypes.string };
 
 const components = {
 	h1: H1,
@@ -99,6 +142,8 @@ const components = {
 	tr: TableRow,
 	td: TableCol,
 	li: Li,
+	Icon,
+	InfoBox,
 };
 
 const MdxPage = ({ children }) => (
