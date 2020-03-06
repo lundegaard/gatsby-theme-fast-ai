@@ -22,7 +22,7 @@ const wrapWithStateAndSA = Comp => {
 
 		const { getInputProps: saGetInputProps } = useSAFieldTracker();
 
-		const inputProps = saGetInputProps(getInputProps({ ref, ...rest }));
+		const inputProps = saGetInputProps(getInputProps({ ref, name: field, ...rest }));
 
 		const hasError = !!error && isTouched;
 		return <Comp {...inputProps} hasError={hasError} hint={hasError && error} />;
