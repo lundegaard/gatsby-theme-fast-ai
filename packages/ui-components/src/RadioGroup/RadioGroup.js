@@ -12,6 +12,7 @@ const RadioGroup = ({
 	hasError,
 	onChange: onChangeProp,
 	value: valueProp,
+	name,
 	...rest
 }) => (
 	<Flex flexWrap="wrap" justifyContent="space-between" role="radiogroup" {...rest}>
@@ -30,6 +31,7 @@ const RadioGroup = ({
 						item,
 						typeof value !== 'undefined'
 							? {
+									name,
 									onChange: (event, ...restArgs) => {
 										if (readOnly || disabled) {
 											return;
@@ -58,6 +60,7 @@ RadioGroup.propTypes = {
 	disabled: PropTypes.bool,
 	/** Error state */
 	hasError: PropTypes.bool,
+	name: PropTypes.string.isRequired,
 	/** Called when `onChange` event is triggered on any of children which has `value` prop set. */
 	onChange: PropTypes.func,
 	/** Read-only state */

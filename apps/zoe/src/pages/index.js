@@ -237,6 +237,7 @@ const Index = () => {
 
 	const monthlyFee =
 		getFieldValue('loanInfo.amount') / getFieldValue('loanInfo.numberOfInstalments');
+
 	const [monthlyFeeDebounced] = useDebounce(monthlyFee, 200);
 
 	return (

@@ -15,7 +15,6 @@ const RadioGroupField = ({
 	hasError,
 	hint,
 	legend,
-	// eslint-disable-next-line react/prop-types,no-unused-vars
 	name,
 	...rest
 }) => (
@@ -34,6 +33,7 @@ const RadioGroupField = ({
 			disabled={disabled}
 			readOnly={readOnly}
 			hasError={hasError}
+			name={name}
 			{...getEventHandlersFromProps(rest)}
 		>
 			{children}
@@ -50,6 +50,7 @@ RadioGroupField.propTypes = {
 	hasError: PropTypes.bool,
 	hint: PropTypes.node,
 	legend: PropTypes.node,
+	name: PropTypes.string,
 	/** Called when `onChange` event is triggered on any of children which has `value` prop set. */
 	onChange: PropTypes.func,
 	/** Read-only state */
