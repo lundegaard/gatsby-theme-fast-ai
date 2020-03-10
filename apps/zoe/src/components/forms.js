@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useCallback, useEffect } from 'react';
 import {
 	CheckboxField as FACheckboxField,
 	RadioGroupField as FARadioGroupField,
@@ -7,9 +7,9 @@ import {
 	TextField as FATextField,
 	getDisplayName,
 } from '@fast-ai/ui-components';
-import { splitFormProps, useField } from 'react-form';
+import { splitFormProps, useField, useForm as useReactForm } from 'react-form';
 
-import { useSAFieldTracker } from '../sa';
+import { useSA, useSAFieldTracker } from '../sa';
 
 const wrapWithStateAndSA = Comp => {
 	const Field = forwardRef((props, ref) => {
@@ -30,6 +30,43 @@ const wrapWithStateAndSA = Comp => {
 	Field.displayName = `Field(${getDisplayName(Comp)})`;
 
 	return Field;
+};
+
+export const useForm = ({ onSubmit, name, ...rest }) => {
+	const { sa } = useSA();
+
+	useEffect(() => {
+		sa('s-form:set', { name });
+		sa('s-form:start');
+	}, [name, sa]);
+
+	const start = useCallback(() => {
+		sa('s-form:start');
+	}, [sa]);
+
+	const end = useCallback(() => {
+		sa('s-form:end');
+	}, [sa]);
+
+	const attemptSubmit = useCallback(() => {
+		sa('s-form:submit');
+	}, [sa]);
+
+	const reactFormOptions = useReactForm({
+		onSubmit: async (...args) => {
+			sa('s-form:end');
+
+			return onSubmit(...args);
+		},
+		...rest,
+	});
+
+	return {
+		...reactFormOptions,
+		end,
+		start,
+		attemptSubmit,
+	};
 };
 
 export const TextField = wrapWithStateAndSA(FATextField);

@@ -57,6 +57,10 @@ const componentsPreset = {
 		primary: {
 			textTransform: 'uppercase',
 			py: 3,
+			'&:disabled, &[disabled]': {
+				color: 'gray',
+				opacity: 0.5,
+			},
 		},
 	},
 	colors: {
@@ -176,10 +180,12 @@ const componentsPreset = {
 	},
 };
 
-export default userTheme =>
+const createTheme = userTheme =>
 	mergeDeepRightAll([
 		preset,
 		componentsPreset,
 		{ breakpointAliases: ['sm', 'md', 'lg', 'xl'] },
 		userTheme,
 	]);
+
+export default createTheme;
