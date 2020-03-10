@@ -16,6 +16,7 @@
 		"@emotion/core": "^10.0.0",
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^0.0.5",
+		"crypto-random-string": "^3.2.0",
 		"gatsby": "^2.18.11",
 		"gatsby-theme-fast-ai": "^0.0.5",
 		"prop-types": "^15.6.2",

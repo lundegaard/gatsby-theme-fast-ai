@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect } from 'react';
+import React, { forwardRef, useCallback, useEffect, useState } from 'react';
 import {
 	CheckboxField as FACheckboxField,
 	RadioGroupField as FARadioGroupField,
@@ -8,8 +8,17 @@ import {
 	getDisplayName,
 } from '@fast-ai/ui-components';
 import { splitFormProps, useField, useForm as useReactForm } from 'react-form';
+import { isEmpty, map, o, reject, when } from 'ramda';
+import { isObject } from 'ramda-extension';
 
 import { useSA, useSAFieldTracker } from '../sa';
+
+const noop = () => {};
+
+const rejectEmpty = reject(isEmpty);
+
+// NOTE: use `data` explictly due to recursion
+const removeEmptyFields = data => o(rejectEmpty, map(when(isObject, removeEmptyFields)))(data);
 
 const wrapWithStateAndSA = Comp => {
 	const Field = forwardRef((props, ref) => {
@@ -32,8 +41,9 @@ const wrapWithStateAndSA = Comp => {
 	return Field;
 };
 
-export const useForm = ({ onSubmit, name, ...rest }) => {
+export const useForm = ({ onSubmit = noop, name, ...rest }) => {
 	const { sa } = useSA();
+	const [applicationId, setApplicationId] = useState();
 
 	useEffect(() => {
 		sa('s-form:set', { name });
@@ -43,6 +53,23 @@ export const useForm = ({ onSubmit, name, ...rest }) => {
 	const start = useCallback(() => {
 		sa('s-form:start');
 	}, [sa]);
+
+	const register = useCallback(
+		applicationId => {
+			setApplicationId(applicationId);
+
+			sa('send', 'register', applicationId);
+		},
+		[sa]
+	);
+
+	const send = useCallback(
+		data => {
+			const model = removeEmptyFields(data);
+			sa('send', 'webdata', { applicationId, ...model });
+		},
+		[applicationId, sa]
+	);
 
 	const end = useCallback(() => {
 		sa('s-form:end');
@@ -63,6 +90,8 @@ export const useForm = ({ onSubmit, name, ...rest }) => {
 
 	return {
 		...reactFormOptions,
+		register,
+		send,
 		end,
 		start,
 		attemptSubmit,
