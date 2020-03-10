@@ -41,3 +41,4 @@ export { default as Slider } from './Slider';
 export { default as SliderField } from './SliderField';
 export { default as Button } from './Button';
 export { default as FormGroup } from './FormGroup';
+export { default as DevConsole, useDevConsole, DevConsoleProvider } from './DevConsole';
