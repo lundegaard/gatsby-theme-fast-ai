@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { Fragment, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Button,
@@ -12,6 +12,7 @@ import {
 	useDebounce,
 } from '@fast-ai/ui-components';
 import { FormattedMessage, useIntl } from 'gatsby-theme-fast-ai';
+import createRandomString from 'crypto-random-string';
 
 import m from '../intl/messages';
 import { AmountFormatter, DurationFormatter } from '../formatters';
@@ -37,6 +38,7 @@ const apply = async values => {
 };
 
 const isRequired = x => (!x ? 'Required' : null);
+
 const PersonalInfo = () => {
 	const intl = useIntl();
 	const Education = useMemo(() => getEducationByLanguage(intl.locale), [intl.locale]);
@@ -224,22 +226,31 @@ const defaultValues = {
 		},
 	},
 };
+
+const applicationId = `demo-${createRandomString({ length: 10, type: 'distinguishable' })}`;
+
 const DemoForm = () => {
 	const {
 		Form,
 		meta: { isSubmitting, canSubmit },
 		getFieldValue,
 		attemptSubmit: handleClickSubmit,
+		send,
+		register,
 	} = useForm({
 		defaultValues,
 		name: 'zoeDemo',
 		onSubmit: async values => {
 			console.log({ values });
+			send(values);
 			const response = await apply(values);
 			console.log({ response });
 		},
-		// debugForm: true,
 	});
+
+	useEffect(() => {
+		register(applicationId);
+	}, [register]);
 
 	const monthlyFee =
 		getFieldValue('loanInfo.amount') / getFieldValue('loanInfo.numberOfInstalments');

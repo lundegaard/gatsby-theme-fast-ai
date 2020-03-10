@@ -2,6 +2,7 @@ export { default as useTheme } from './hooks/useTheme';
 export { default as useBreakpoint } from './hooks/useBreakpoint';
 export { default as useDebouncedCallback } from './hooks/useDebouncedCallback';
 export { default as useDebounce } from './hooks/useDebounce';
+export { default as useGeneratedId } from './hooks/useGeneratedId';
 
 export { default as getDisplayName } from './utils/getDisplayName';
 
