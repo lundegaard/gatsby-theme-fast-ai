@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { mergeAll } from 'ramda';
 
 export const useSA = () => ({ sa: typeof window === 'undefined' ? {} : window.sa });
 
@@ -57,3 +58,21 @@ export const useSAFieldTracker = ({
 
 	return { getInputProps };
 };
+
+const createRequest = url =>
+	fetch(url, {
+		headers: new Headers({
+			Authorization: `Basic ${process.env.GATSBY_TOKEN}`,
+		}),
+	}).then(response => {
+		if (!response.ok) {
+			throw new Error(response.status);
+		}
+		return response.json();
+	});
+
+export const fetchPredictions = applicationId =>
+	Promise.all([
+		createRequest(`${process.env.GATSBY_API_URL}/applications/${applicationId}/prediction`),
+		createRequest(`${process.env.GATSBY_API_URL}/applications/${applicationId}/smart-features`),
+	]).then(mergeAll);

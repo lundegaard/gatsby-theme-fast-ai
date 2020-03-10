@@ -64,9 +64,13 @@ export const useForm = ({ onSubmit = noop, name, ...rest }) => {
 	);
 
 	const send = useCallback(
-		data => {
+		(data, inProgress) => {
 			const model = removeEmptyFields(data);
-			sa('send', 'webdata', { applicationId, ...model });
+			sa('send', 'webdata', {
+				applicationId,
+				status: inProgress ? 'processing' : 'success',
+				...model,
+			});
 		},
 		[applicationId, sa]
 	);

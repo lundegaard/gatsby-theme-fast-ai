@@ -1,4 +1,10 @@
+const path = require('path');
+
 const { author } = require('./package.json');
+
+require('dotenv').config({
+	path: path.join('..', '..', '.env'),
+});
 
 const siteMetadata = {
 	author,

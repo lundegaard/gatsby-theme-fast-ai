@@ -25,5 +25,8 @@
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
 		"react-form": "^4.0.1"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0"
 	}
 }

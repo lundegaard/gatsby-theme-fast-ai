@@ -10,6 +10,7 @@ import {
 	Row,
 	Text,
 	useDebounce,
+	useDevConsole,
 } from '@fast-ai/ui-components';
 import { FormattedMessage, useIntl } from 'gatsby-theme-fast-ai';
 import createRandomString from 'crypto-random-string';
@@ -26,6 +27,7 @@ import {
 	useForm,
 } from '../components/forms';
 import { CoborrowerChoice, MaritalStatus, getEducationByLanguage } from '../lookups';
+import { fetchPredictions } from '../sa';
 
 const FormHeading = props => <Heading as="h2" mt={0} mb={4} {...props} />;
 const HalfCol = props => <Col span={[12, 12, 6]} mb={4} {...props} />;
@@ -244,13 +246,27 @@ const DemoForm = () => {
 			console.log({ values });
 			send(values);
 			const response = await apply(values);
-			console.log({ response });
+			const predictions = await fetchPredictions(applicationId);
+
+			console.log({ predictions, response });
 		},
 	});
+
+	const { log } = useDevConsole();
 
 	useEffect(() => {
 		register(applicationId);
 	}, [register]);
+
+	useEffect(() => {
+		log(['Application ID', applicationId]);
+		log(['Application ID', applicationId]);
+		log(['Application ID', applicationId]);
+		log(['Application ID', applicationId]);
+		log(['Application ID', applicationId]);
+		log(['Application ID', applicationId]);
+		log(['Application ID', applicationId]);
+	}, [log]);
 
 	const monthlyFee =
 		getFieldValue('loanInfo.amount') / getFieldValue('loanInfo.numberOfInstalments');

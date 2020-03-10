@@ -9,6 +9,8 @@ apps/**/public
 apps/**/.cache
 apps/**/.env
 
+.env
+
 
 packages/**/lib
 packages/**/build
