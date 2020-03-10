@@ -1,7 +1,6 @@
-// TODO: this will have its own library
 import { useCallback } from 'react';
 
-const useSA = () => ({ sa: window.sa });
+export const useSA = () => ({ sa: typeof window === 'undefined' ? {} : window.sa });
 
 // just for a virtual components - only a changeEvent
 const getEventCallbackName = eventName =>
