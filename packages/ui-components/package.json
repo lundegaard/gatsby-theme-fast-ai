@@ -33,6 +33,7 @@
 		"invariant": "^2.2.4",
 		"ramda": "^0.26.1",
 		"ramda-extension": "^0.10.0",
+		"react-modal-hook": "^3.0.0",
 		"react-text-mask": "^5.4.3",
 		"react-transition-group": "^2.7.0",
 		"rebass": "^4.0.7",

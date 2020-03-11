@@ -46,5 +46,7 @@
 	"example.apply": "Apply",
 	"example.durationValueAnd": "{left} and {right}",
 	"example.durationValueMonths": "{months, plural, =0 {0 months} one {1 month} other {# months}}",
-	"example.durationValueYears": "{years, plural, =0 {0 years} one {1 year} other {# years} }"
+	"example.durationValueYears": "{years, plural, =0 {0 years} one {1 year} other {# years} }",
+	"example.predictionsModalHeading": "Predictions",
+	"example.tryAgainLabel": "Try again"
 }

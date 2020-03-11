@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
 
@@ -6,31 +6,8 @@ import Box from '../Box';
 import Flex from '../Flex';
 import Text from '../Text';
 
-const DevConsoleApiContext = createContext();
-const DevConsoleLogContext = createContext();
-
-export const DevConsoleProvider = ({ children }) => {
-	const [log, setLog] = useState([]);
-
-	const api = useMemo(
-		() => ({
-			log: line => setLog(prevLog => [...prevLog, line]),
-			clear: () => setLog(() => []),
-		}),
-		[]
-	);
-
-	return (
-		<DevConsoleApiContext.Provider value={api}>
-			<DevConsoleLogContext.Provider value={log}>{children}</DevConsoleLogContext.Provider>
-		</DevConsoleApiContext.Provider>
-	);
-};
-DevConsoleProvider.propTypes = { children: PropTypes.node };
-
-export const useDevConsole = () => useContext(DevConsoleApiContext);
-
-const useDevConsoleLog = () => useContext(DevConsoleLogContext);
+import DevConsoleItem from './DevConsoleItem';
+import { useDevConsoleLog } from './hooks';
 
 const jumpInFromBottom = keyframes`
 	0% {
@@ -68,22 +45,6 @@ const DropdownArrow = props => (
 );
 /* eslint-enable max-len */
 
-const DevConsoleItem = ({ value, label, ...rest }) => (
-	<Flex sx={{ py: 2, px: 3, alignItems: 'center' }} {...rest}>
-		<Text as="span" fontSize={1} mb={0}>
-			{label}
-		</Text>
-		<Text as="span" ml="auto" mb={0} fontSize={1}>
-			{value}
-		</Text>
-	</Flex>
-);
-
-DevConsoleItem.propTypes = {
-	label: PropTypes.string,
-	value: PropTypes.string,
-};
-
 const DevConsole = ({ title, initiallyOpened, ...rest }) => {
 	const [isOpened, setIsOpened] = useState(initiallyOpened);
 	const log = useDevConsoleLog();
@@ -101,6 +62,7 @@ const DevConsole = ({ title, initiallyOpened, ...rest }) => {
 				animationDelay: '.75s',
 				backgroundColor: '#3B3B3B',
 				color: 'background',
+				maxHeight: '100vh',
 				minWidth: ['auto', '400px'],
 				width: ['100%', '33%'],
 			}}
@@ -127,7 +89,7 @@ const DevConsole = ({ title, initiallyOpened, ...rest }) => {
 					sx={{
 						borderTopColor: 'background',
 						overflowY: 'auto',
-						maxHeight: '100px',
+						height: '300px',
 						borderTopStyle: 'solid',
 						borderTopWidth: '1px',
 					}}

@@ -68,7 +68,7 @@ export const useForm = ({ onSubmit = noop, name, ...rest }) => {
 			const model = removeEmptyFields(data);
 			sa('send', 'webdata', {
 				applicationId,
-				status: inProgress ? 'processing' : 'success',
+				status: inProgress ? 'PROCESSING' : 'SUCCESS',
 				...model,
 			});
 		},

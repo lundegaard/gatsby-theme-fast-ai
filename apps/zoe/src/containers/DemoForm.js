@@ -11,6 +11,7 @@ import {
 	Text,
 	useDebounce,
 	useDevConsole,
+	useModal,
 } from '@fast-ai/ui-components';
 import { FormattedMessage, useIntl } from 'gatsby-theme-fast-ai';
 import createRandomString from 'crypto-random-string';
@@ -20,12 +21,13 @@ import { AmountFormatter, DurationFormatter } from '../formatters';
 import {
 	CheckboxField,
 	NumberTextField,
+	PredictionsModal,
 	RadioGroupField,
 	SelectField,
 	SliderField,
 	TextField,
 	useForm,
-} from '../components/forms';
+} from '../components';
 import { CoborrowerChoice, MaritalStatus, getEducationByLanguage } from '../lookups';
 import { fetchPredictions } from '../sa';
 
@@ -33,12 +35,7 @@ const FormHeading = props => <Heading as="h2" mt={0} mb={4} {...props} />;
 const HalfCol = props => <Col span={[12, 12, 6]} mb={4} {...props} />;
 const FullCol = props => <Col span={12} mb={4} {...props} />;
 
-const apply = async values => {
-	await new Promise(resolve => setTimeout(resolve, 1000));
-
-	return values;
-};
-
+// TODO: validations
 const isRequired = x => (!x ? 'Required' : null);
 
 const PersonalInfo = () => {
@@ -232,6 +229,8 @@ const defaultValues = {
 const applicationId = `demo-${createRandomString({ length: 10, type: 'distinguishable' })}`;
 
 const DemoForm = () => {
+	const { openModal } = useModal({ component: PredictionsModal });
+
 	const {
 		Form,
 		meta: { isSubmitting, canSubmit },
@@ -243,12 +242,9 @@ const DemoForm = () => {
 		defaultValues,
 		name: 'zoeDemo',
 		onSubmit: async values => {
-			console.log({ values });
 			send(values);
-			const response = await apply(values);
 			const predictions = await fetchPredictions(applicationId);
-
-			console.log({ predictions, response });
+			openModal({ predictions });
 		},
 	});
 
@@ -260,18 +256,20 @@ const DemoForm = () => {
 
 	useEffect(() => {
 		log(['Application ID', applicationId]);
-		log(['Application ID', applicationId]);
-		log(['Application ID', applicationId]);
-		log(['Application ID', applicationId]);
-		log(['Application ID', applicationId]);
-		log(['Application ID', applicationId]);
-		log(['Application ID', applicationId]);
-	}, [log]);
 
-	const monthlyFee =
-		getFieldValue('loanInfo.amount') / getFieldValue('loanInfo.numberOfInstalments');
+		if (typeof window === 'undefined' || !window.sa) {
+			return;
+		}
+
+		// TODO: Remove
+		const { tid } = window.sa('get', 'userInfo');
+
+		log(['Tenant ID', tid]);
+	}, [getFieldValue, log]);
 
 	const [monthlyFeeDebounced] = useDebounce(monthlyFee, 200);
+	const monthlyFee =
+		getFieldValue('loanInfo.amount') / getFieldValue('loanInfo.numberOfInstalments');
 
 	return (
 		<Form>

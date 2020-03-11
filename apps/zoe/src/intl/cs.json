@@ -48,5 +48,7 @@
 	"example.apply": "Zažádat",
 	"example.durationValueAnd": "{left} a {right}",
 	"example.durationValueMonths": "{months, plural, =0 {0 měsíců} one {1 měsíc} two {# měsíce} few {# měsíce} other {# měsíců}}",
-	"example.durationValueYears": "{years, plural, =0 {0 let} one {1 rok} two {# roky} few {#roky} other {# let}}"
+	"example.durationValueYears": "{years, plural, =0 {0 let} one {1 rok} two {# roky} few {#roky} other {# let}}",
+	"example.predictionsModalHeading": "Predikce",
+	"example.tryAgainLabel": "Začít znovu"
 }

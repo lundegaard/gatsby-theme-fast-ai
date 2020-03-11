@@ -26,6 +26,10 @@ const CssBaseline = ({ styles }) => (
 			body {
 				margin: 0;
 			}
+
+			body.modal--opened {
+				overflow-y: hidden;
+			}
 			${styles}
 		`}
 	/>

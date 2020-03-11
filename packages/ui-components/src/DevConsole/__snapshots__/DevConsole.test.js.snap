@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DevConsole /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  sx={
+    Object {
+      "animationDelay": ".75s",
+      "animationDuration": ".5s",
+      "animationFillMode": "both",
+      "animationName": Object {
+        "anim": 1,
+        "name": "animation-1l35qkc",
+        "styles": "@keyframes animation-1l35qkc{
+	0% {
+		transform: translateY(200px) scaleY(2.5) scaleX(.2);
+		transform-origin: 50% 0%;
+		filter: blur(40px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0) scaleY(1) scaleX(1);
+		transform-origin: 50% 50%;
+		filter: blur(0);
+		opacity: 1;
+	}
+}
+}",
+        "toString": [Function],
+      },
+      "animationTimingFunction": "cubic-bezier(.455, .030, .515, .955)",
+      "backgroundColor": "#3B3B3B",
+      "bottom": 0,
+      "color": "background",
+      "maxHeight": "100vh",
+      "minWidth": Array [
+        "auto",
+        "400px",
+      ],
+      "position": "fixed",
+      "right": "0",
+      "width": Array [
+        "100%",
+        "33%",
+      ],
+    }
+  }
+>
+  <Flex
+    onClick={[Function]}
+    sx={
+      Object {
+        "alignItems": "center",
+        "cursor": "pointer",
+        "px": 3,
+        "py": 2,
+      }
+    }
+  >
+    <Text
+      as="span"
+      fontFamily="mono"
+      fontSize={1}
+      my={0}
+      sx={
+        Object {
+          "pointerEvents": "none",
+        }
+      }
+    />
+    <DropdownArrow
+      sx={
+        Object {
+          "display": "inline",
+          "marginLeft": "auto",
+          "transform": "rotate(180deg)",
+        }
+      }
+    />
+  </Flex>
+</Box>
+`;

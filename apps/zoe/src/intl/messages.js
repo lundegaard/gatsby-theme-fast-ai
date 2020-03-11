@@ -190,4 +190,12 @@ export default defineMessages({
 			other {# years}
 		}`,
 	},
+	predictionsModalHeading: {
+		id: 'example.predictionsModalHeading',
+		defaultMessage: 'Predictions',
+	},
+	tryAgainLabel: {
+		id: 'example.tryAgainLabel',
+		defaultMessage: 'Try again',
+	},
 });

@@ -1,14 +1,19 @@
+import path from 'path';
+
 import React from 'react';
 
+require('dotenv').config({
+	path: path.join('.env'),
+});
+
 const options = {
-	tenantId: 'SA-D0002-1',
+	tenantId: process.env.GATSBY_TENANT_ID,
 	plugins: ['s-apm', 's-form', 's-biometrics'],
-	distributionUrl: 'https://sa-sdp.lnd.bz/versions/stable',
 };
 
 export const onRenderBody = ({ setHeadComponents }) => {
 	const getScriptUrl = isPlugin => scriptName =>
-		`${options.distributionUrl}/${scriptName}${isPlugin ? '.plugin' : ''}.js`;
+		`https://sa-sdp.lnd.bz/versions/stable/${scriptName}${isPlugin ? '.plugin' : ''}.js`;
 
 	const script = `
 (function(i, s, o, g, r, a, m) {
