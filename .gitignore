@@ -7,17 +7,15 @@ apps/**/lib
 apps/**/build
 apps/**/public
 apps/**/.cache
-apps/**/.env
-
-.env
-
-
 packages/**/lib
 packages/**/build
 packages/**/dist
 packages/gatsby-plugin-setup/*.js
 
 .stylelintcache
+
+.env
+apps/**/.env
 
 !/apps/storybook/.storybook-ui
 

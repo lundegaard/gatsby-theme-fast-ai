@@ -5,7 +5,7 @@ exports[`<CssBaseline /> matches snapshot when shallowly rendered 1`] = `
   styles={
     Object {
       "map": undefined,
-      "name": "g7n2yr",
+      "name": "fmdd5m",
       "next": undefined,
       "styles": "
 			html {
@@ -28,6 +28,10 @@ exports[`<CssBaseline /> matches snapshot when shallowly rendered 1`] = `
 			}
 			body {
 				margin: 0;
+			}
+
+			body.modal--opened {
+				overflow-y: hidden;
 			}
 			
 		",

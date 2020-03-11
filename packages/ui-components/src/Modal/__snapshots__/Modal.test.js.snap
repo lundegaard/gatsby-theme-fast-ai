@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  sx={
+    Object {
+      "WebkitOverflowScrolling": "touch",
+      "backgroundColor": "background",
+      "borderRadius": "5px",
+      "overflow": "auto",
+      "width": Array [
+        "100%",
+        "75%",
+      ],
+    }
+  }
+/>
+`;

@@ -25,6 +25,7 @@ module.exports = {
 					'packages/**/*.test.js',
 					'apps/**/*.test.js',
 					'apps/**/gatsby-config.js',
+					'apps/**/gatsby-ssr.js',
 					'apps/**/.storybook-ui/*',
 					'testsSetup.js',
 					'*.config.js',
