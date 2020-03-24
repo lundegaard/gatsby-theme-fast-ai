@@ -1,11 +1,13 @@
 public
 build
 lib
+.env
 
 apps/**/lib
 apps/**/build
 apps/**/public
 apps/**/.cache
+apps/**/.env
 
 
 packages/**/lib
