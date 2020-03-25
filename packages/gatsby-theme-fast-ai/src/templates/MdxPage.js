@@ -13,7 +13,7 @@ import Page from './Page';
 
 const HeadingAnchor = ({ children, ...rest }) => (
 	<Heading
-		{...(isString(children) ? { name: toKebabCase(children) } : {})}
+		{...(isString(children) ? { id: toKebabCase(children) } : {})}
 		{...{ children, ...rest }}
 	/>
 );
