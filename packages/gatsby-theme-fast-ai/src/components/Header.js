@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Flex, Row, useBreakpoint } from '@fast-ai/ui-components';
 
 import AppBar from './AppBar';
@@ -9,6 +9,11 @@ import DesktopNavigation from './DesktopNavigation';
 
 const Header = () => {
 	const shouldUseDesktopNavigation = useBreakpoint('md', 'up');
+	const [useDesktopNavigation, setUseDesktopNavigation] = useState(true);
+
+	useEffect(() => {
+		setUseDesktopNavigation(shouldUseDesktopNavigation);
+	}, [shouldUseDesktopNavigation]);
 
 	return (
 		<Container>
@@ -20,7 +25,7 @@ const Header = () => {
 						</Link>
 					</Col>
 
-					{shouldUseDesktopNavigation ? (
+					{useDesktopNavigation ? (
 						<Col span={{ _: 8, lg: 10 }}>
 							<DesktopNavigation />
 						</Col>
