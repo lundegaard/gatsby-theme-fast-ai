@@ -10,11 +10,11 @@
 
 
 # Introduction
-Following documentation describes **Smart Features** - data points returned from wZoe.ai through [REST API](https://zoe.lundegaard.ai/docs/swagger-ui.html) in near real-time. Smart Features are divided into several categories. Following categories are used as prefix in Smart Feature names:
+Following documentation describes **Smart Features** - data points returned from Zoe.ai through [REST API](https://zoe.lundegaard.ai/docs/swagger-ui.html) in near real-time. Smart Features are divided into several categories. Following categories are used as prefix in Smart Feature names:
 
 * `behavior_` - detailed data points about user's behavior on web page or within application (HTML form). Behavior category also includes user's behavior during several filled applications.
 * `data_` - enriched basic data
-* `device_` - features about user's device which are grabbed from standard or mobile website immediately after user's visit 
+* `device_` - features about user's device which are grabbed from standard or mobile website immediately after user's visit
 * `fingeprint_` - category of several data points fingerprinting user's device in advanced way
 * `location_` - data points derived from several location metrics
 * `person_` - data points derived from personal information
@@ -38,9 +38,9 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 
 
 # Smart Features
- 
+
 ## Behavior Category
- 
+
 |feature_name|type|description|sample_value|released_from|
 |------------|----|-----------|------------|-------------|
 |behavior_application_changes_count_bn_2d|INT|A number of changed fields between all applications that the user applied during the last two days. Typos in text fields are ignored (up to levenshtein distance of 2 - roughly 2 mistakes).|3|v2.00.0|
@@ -168,19 +168,19 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 |behavior_typing_up_to_up_time_min_fields|JSON|The minimum duration [ms] between releasing key1 and releasing key2 for every input field in the form.|"{"borrower_monthly_expenditure_info_fees_for_services":55.0,"borrower_basic_information_surname":47.0}"|v2.00.0|
 |behavior_typing_up_to_up_time_std|FLOAT|The standard deviation duration [ms] between releasing key1 and releasing key2.|21.0982|v2.00.0|
 |behavior_typing_up_to_up_time_std_fields|JSON|The standard deviation of duration [ms] between releasing key1 and releasing key2 for every input field in the form.|"{"borrower_monthly_expenditure_info_fees_for_services":1.4,"borrower_basic_information_surname":1.8}"|v2.00.0|
- 
+
 ## Data Category
- 
+
 |feature_name|type|description|sample_value|released_from|
 |------------|----|-----------|------------|-------------|
 |data_county_crime_index|FLOAT|Index of criminality, is derived from the overall level of crime in a given county.|0.73|v2.00.0|
 |data_county_crime_rate|FLOAT|Number of crimes in given county during last year per 10k inhabitants.|10.7|v2.00.0|
 |data_district_crime_index|FLOAT|Index of criminality, is derived from the overall level of crime in a given district.|0.32|v2.00.0|
 |data_district_crime_rate|FLOAT|Number of crimes in given district during last year per 10k inhabitants.|43593|v2.00.0|
- 
- 
+
+
 ## Device Category
- 
+
 |feature_name|type|description|sample_value|released_from|
 |------------|----|-----------|------------|-------------|
 |device_browser|STRING|The name and version of the user's browser.|Firefox|v2.00.0|
@@ -214,10 +214,10 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 |device_viewport_size_height|INT|Height of the browser's viewport.|657|v2.00.0|
 |device_viewport_size_width|INT|Width of the browser's viewport.|360|v2.00.0|
 |device_vpn|BOOL|Indicating whether a user is using VPN.|True|2.05.2|
- 
- 
+
+
 ## Fingerprint Category
- 
+
 |feature_name|type|description|sample_value|released_from|
 |------------|----|-----------|------------|-------------|
 |fingerprint_audio|STRING|Fingeprint using AudioContext API.|f0ac0b43e0d7766c92628478a6a4f6f07c9df645|2.08.0|
@@ -229,10 +229,10 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 |fingerprint_plugins|STRING|Fingerprint of plugins installed in the browser.|HJpbnRfamF2Y|2.08.0|
 |fingerprint_screen|JSON|List of fingerprints calculated from screen resolutions used during the session.|"["1920x1080:1896x1000x23x0:24:2:1000x900","1920x1080:1896x1000x23x0:24:2:1890x1060","1080x1920:1057x1920x23x0:24:2:1050x1900"]"|v2.06.00|
 |fingerprint_webgl|STRING|Fingerprint of webgl metadata and rendering image using WebGL.|FPVbnRfa57HEs|2.08.0|
- 
- 
+
+
 ## Location Category
- 
+
 |feature_name|type|description|sample_value|released_from|
 |------------|----|-----------|------------|-------------|
 |location_address_county|STRING|County derived from the provided user's contact address (or permanent if no contact address is given).|Vysocina|v2.00.0|
@@ -245,10 +245,10 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 |location_geoip_lat|FLOAT|The approximate latitude of the user's location, derived from his IP address.|14.5104|v2.00.0|
 |location_geoip_lon|FLOAT|The approximate longitude of the user's location, derived from his IP address.|50.0765|v2.00.0|
 |location_time_zone|STRING|The time zone [UTC+offset] configured in user's browser.|UTC+02:00|v2.00.0|
- 
- 
+
+
 ## Person Category
- 
+
 |feature_name|type|description|sample_value|released_from|
 |------------|----|-----------|------------|-------------|
 |person_age_in_months|INT|Person's age in months, derived from birth number.|367|v2.00.0|
@@ -257,5 +257,5 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 |person_email_disposable_domain|BOOL|Indicates that the email address was found on the list of disposables and temporary domain address.|True|v2.00.0|
 |person_gender|STRING|Person's gender derived from birth number.|male|v2.00.0|
 |person_insolvency_isir|BOOL|Indicates that the person was found in the insolvency register.|False|v2.00.0|
- 
+
 Automatically generated on 01-31-2020

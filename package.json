@@ -60,10 +60,10 @@
 		"**/next/terser": "^4.1.2"
 	},
 	"scripts": {
-		"build": "yarn build:node-packages && yarn zoe build",
-		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn zoe start\"",
-		"build:node-packages": "lerna run build --ignore @fast-ai/docs-examples --ignore @fast-ai/zoe --ignore @fast-ai/storybook",
-		"start:node-packages": "lerna run start --parallel --ignore @fast-ai/docs-examples --ignore @fast-ai/zoe --ignore @fast-ai/storybook",
+		"build": "yarn build:node-packages && yarn examples build",
+		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn examples start\"",
+		"build:node-packages": "lerna run build --ignore @fast-ai/docs-examples --ignore @fast-ai/storybook",
+		"start:node-packages": "lerna run start --parallel --ignore @fast-ai/docs-examples --ignore @fast-ai/storybook",
 		"lint": "yarn lint:pkg && yarn lint:js",
 		"lint:pkg": "npmPkgJsonLint .",
 		"lint:js": "eslint --cache --ignore-path .gitignore --ext .js ./",
@@ -72,7 +72,6 @@
 		"prepare": "lerna run prepare",
 		"format": "prettier --ignore-path .gitignore --write '**/*.{js,json}' && yarn lint:js --fix",
 		"generate": "plop --plopfile \"./.plop/plopfile.js\"",
-		"zoe": "yarn workspace @fast-ai/zoe",
 		"storybook": "yarn workspace @fast-ai/storybook",
 		"examples": "yarn workspace @fast-ai/docs-examples",
 		"ui-components": "yarn workspace @fast-ai/ui-components",
