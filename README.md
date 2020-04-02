@@ -70,3 +70,14 @@ yarn start:storybook
 * contains common setup for Gatsby applications
 * configures set of Gatsby plugins
 
+## Related projects
+
+- [zoe-demo](https://github.com/lundegaard/fast-ai-zoe-demo) – React integration of Fast AI - S-Analytics tool.
+- [@redux-tools](https://github.com/lundegaard/redux-tools) – Maintaining large Redux applications with ease.
+- [react-union](https://github.com/lundegaard/react-union) – Integrate React apps into various CMSs seamlessly.
+- [lundium](https://github.com/lundegaard/lundium) – Beautiful React component library.
+
+## License
+
+All packages are distributed under the MIT license. See the license [here](https://github.com/lundegaard/gatsby-theme-fast-ai/blob/master/LICENSE).
+
