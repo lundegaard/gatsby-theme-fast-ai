@@ -43,3 +43,4 @@ export { default as Button } from './Button';
 export { default as FormGroup } from './FormGroup';
 export { default as DevConsole, useDevConsole, DevConsoleProvider } from './DevConsole';
 export { default as Modal, ModalRoot, ModalProvider, useModal } from './Modal';
+export { default as Donut } from './Donut';

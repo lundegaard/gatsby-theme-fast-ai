@@ -226,7 +226,7 @@ const defaultValues = {
 	},
 };
 
-const applicationId = `demo-${createRandomString({ length: 10, type: 'distinguishable' })}`;
+const applicationId = `demo-${createRandomString(10)}`;
 
 const DemoForm = () => {
 	const { openModal } = useModal({ component: PredictionsModal });
