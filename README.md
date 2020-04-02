@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://zoe.lundegaard.ai">
-    <img alt="Zoe.ai logo" src="https://zoe.lundegaard.ai/images/zoe-ai.svg" width="120" />
+    <img alt="Zoe.ai logo" src="zoe-ai-logo.svg" width="120" />
   </a>
 </p>
 <p align="center">
@@ -23,7 +23,7 @@ yarn install
 ## Developping
 
 ```shell
-yarn zoe start
+yarn examples start
 ```
 or
 
@@ -48,41 +48,17 @@ yarn start:storybook
 ```text
 .
 ├── apps
-│   ├── storybook
-│   │   └── src
-│   │       └── components
-│   └── zoe
-│       ├── content
-│       │   └── assets
-│       ├── src
-│       │   ├── components
-│       │   ├── gatsby-theme-fast-ai
-│       │   ├── intl
-│       │   └── pages
-│       └── static
-└── packages
-    ├── gatsby-plugin-setup
-    │   └── src
-    ├── gatsby-theme-fast-ai
-    │   ├── content
-    │   │   └── assets
-    │   └── src
-    │       ├── components
-    │       ├── hooks
-    │       └── templates
-    └── ui-components
-        └── src
-            ├── components
-            ├── contexts
-            ├── hooks
-            ├── messages
-            ├── types
-            └── utils
+│   ├── docs-examples
+│   └── storybook
+├── packages
+│   ├── gatsby-plugin-setup
+│   ├── gatsby-theme-fast-ai
+│   └── ui-components
+└── tools
 ```
 
-### `zoe`
+### `examples`
 * example application
-* shows how to integrate fast-ai's s-analytics module to React application
 
 ### `ui-components`
 * common UI components
