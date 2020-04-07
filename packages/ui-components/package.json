@@ -35,7 +35,7 @@
 		"ramda-extension": "^0.10.0",
 		"react-modal-hook": "^3.0.0",
 		"react-text-mask": "^5.4.3",
-		"react-transition-group": "^2.7.0",
+		"react-transition-group": "^4.3.0",
 		"rebass": "^4.0.7",
 		"tinycolor2": "^1.4.1"
 	},
