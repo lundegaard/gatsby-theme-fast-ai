@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Gauge /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  __css={
+    Object {
+      "height": "256px",
+      "position": "relative",
+      "width": "256px",
+    }
+  }
+>
+  <Text
+    __css={
+      Object {
+        "left": "50%",
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+        "whiteSpace": "nowrap",
+      }
+    }
+    fontSize={8}
+    mb={0}
+    mt={0}
+  >
+    0
+  </Text>
+  <Box
+    __css={
+      Object {
+        "color": "primary",
+      }
+    }
+    aria-valuemax={1}
+    aria-valuemin={0}
+    aria-valuenow={0}
+    as="svg"
+    fill="none"
+    height={256}
+    role="img"
+    stroke="currentcolor"
+    viewBox="0 0 32 32"
+    width={256}
+  >
+    <defs>
+      <linearGradient
+        id="gradient-arc"
+        x1="0%"
+        x2="100%"
+        y1="0%"
+        y2="0%"
+      >
+        <stop
+          offset="0%"
+          stopColor="#33D08E"
+        />
+        <stop
+          offset="33%"
+          stopColor="#2AB0A2"
+        />
+        <stop
+          offset="100%"
+          stopColor="#0018FF"
+        />
+      </linearGradient>
+    </defs>
+    <Text
+      as="text"
+      fill="#000000"
+      fontSize="2px"
+      stroke="none"
+      textAnchor="start"
+      x={4.126311131655841}
+      y={25.96320795014136}
+    >
+      0
+    </Text>
+    <Text
+      as="text"
+      fill="#000000"
+      fontSize="2px"
+      stroke="none"
+      textAnchor="end"
+      x={27.87368886834416}
+      y={25.96320795014136}
+    >
+      1
+    </Text>
+    <circle
+      cx={16}
+      cy={16}
+      opacity={0.8}
+      r={15.5}
+      stroke="url(#gradient-arc)"
+      strokeDasharray={97.38937226128358}
+      strokeDashoffset={32.46312408709453}
+      strokeWidth={1}
+      transform="rotate(-210 16 16)"
+    />
+    <Transition
+      appear={true}
+      enter={true}
+      exit={true}
+      in={false}
+      mountOnEnter={false}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      timeout={
+        Object {
+          "enter": 1000,
+          "exit": 1000,
+        }
+      }
+      unmountOnExit={false}
+    >
+      <Component />
+    </Transition>
+  </Box>
+</Box>
+`;
