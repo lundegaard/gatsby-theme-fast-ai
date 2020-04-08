@@ -19,20 +19,20 @@
 		"prebuild": "rimraf build"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.7.5",
+		"@babel/core": "^7.9.0",
 		"bootstrap": "^4.3.0",
 		"enzyme": "^3.11.0",
-		"fs-extra": "^8.1.0",
-		"react-intl": "^3.2.0"
+		"fs-extra": "^9.0.0",
+		"react-intl": "^4.3.1"
 	},
 	"dependencies": {
 		"@rebass/forms": "^4.0.6",
 		"@rebass/preset": "^4.0.5",
-		"@restart/hooks": "^0.3.19",
+		"@restart/hooks": "^0.3.22",
 		"emotion-theming": "^10.0.19",
 		"invariant": "^2.2.4",
-		"ramda": "^0.26.1",
-		"ramda-extension": "^0.10.0",
+		"ramda": "^0.27.0",
+		"ramda-extension": "^0.10.3",
 		"react-modal-hook": "^3.0.0",
 		"react-text-mask": "^5.4.3",
 		"react-transition-group": "^4.3.0",
@@ -45,6 +45,5 @@
 		"react": "^16.8.6",
 		"react-dom": "^16.6.0",
 		"react-intl": "^3.2.0"
-	},
-	"gitHead": "b85a8c47c930db78eb1e4917e7605e9b6cb5886a"
+	}
 }

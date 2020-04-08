@@ -1,5 +1,5 @@
 {
-	"**/*.js": ["prettier --write", "yarn lint:js --fix", "git add"],
-	"**/*.{html,json}": ["prettier --write", "git add"],
-	"**/package.json": ["yarn lint:pkg", "git add"]
+	"**/*.js": ["prettier --write", "yarn lint:js --fix"],
+	"**/*.{html,json}": ["prettier --write"],
+	"**/package.json": ["yarn lint:pkg"]
 }
