@@ -4,6 +4,7 @@ exports[`<RadioGroupField /> matches snapshot when shallowly rendered 1`] = `
 <FormGroup>
   <RadioGroup
     aria-label={null}
+    name="test"
   />
 </FormGroup>
 `;
