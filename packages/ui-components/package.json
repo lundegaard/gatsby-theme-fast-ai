@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/ui-components",
-	"version": "0.3.2-alpha.1",
+	"version": "0.3.2-alpha.2",
 	"license": "MIT",
 	"description": "Common UI components",
 	"main": "src/index.js",
@@ -11,13 +11,13 @@
 	},
 	"scripts": {
 		"clean": "rimraf build",
-		"build": "yarn clean && yarn build:cjs && yarn build:esm && yarn build:es && yarn build:umd && yarn build:copy-files",
+		"build": "yarn build:cjs && yarn build:esm && yarn build:es && yarn build:umd && yarn build:copy-files",
 		"build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
 		"build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ../../babel.config.js ./src --out-dir ./build/esm --ignore \"**/*.test.js\"",
 		"build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel --config-file ../../babel.config.js ./src --out-dir ./build/es --ignore \"**/*.test.js\"",
 		"build:umd": "cross-env BABEL_ENV=production-umd rollup -c scripts/rollup.config.js",
 		"build:copy-files": "node ../../tools/copy-files.js",
-		"prebuild": "rimraf build"
+		"prebuild": "yarn clean"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
@@ -48,5 +48,5 @@
 		"react-dom": "^16.6.0",
 		"react-intl": "^3.2.0"
 	},
-	"gitHead": "33ca57481497a81cf965d8e4300b8dc4e0ca864e"
+	"gitHead": "975523702d68988c52c1f32dcc5d9500c6adbea6"
 }
