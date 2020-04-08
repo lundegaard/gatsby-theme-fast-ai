@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import RadioGroup from './RadioGroup';
 
 describe('<RadioGroup />', () => {
-	const requiredProps = {};
+	const requiredProps = { name: 'test' };
 
 	it('matches snapshot when shallowly rendered', () => {
 		const wrapper = shallow(<RadioGroup {...requiredProps} />);
