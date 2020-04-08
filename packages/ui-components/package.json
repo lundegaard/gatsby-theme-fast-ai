@@ -17,7 +17,8 @@
 		"build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel --config-file ../../babel.config.js ./src --out-dir ./build/es --ignore \"**/*.test.js\"",
 		"build:umd": "cross-env BABEL_ENV=production-umd rollup -c scripts/rollup.config.js",
 		"build:copy-files": "node ../../tools/copy-files.js",
-		"prebuild": "rimraf build"
+		"prebuild": "yarn clean",
+		"prepare": "yarn build"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
