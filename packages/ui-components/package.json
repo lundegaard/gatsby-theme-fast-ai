@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/ui-components",
-	"version": "0.3.2-alpha.0",
+	"version": "0.3.2-alpha.1",
 	"license": "MIT",
 	"description": "Common UI components",
 	"main": "src/index.js",
@@ -48,5 +48,5 @@
 		"react-dom": "^16.6.0",
 		"react-intl": "^3.2.0"
 	},
-	"gitHead": "70140516ddff7fe156820744a1a03127b1a1a8e9"
+	"gitHead": "33ca57481497a81cf965d8e4300b8dc4e0ca864e"
 }
