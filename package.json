@@ -68,7 +68,7 @@
 		"lint": "yarn lint:pkg && yarn lint:js",
 		"lint:pkg": "npmPkgJsonLint .",
 		"lint:js": "eslint --cache --ignore-path .gitignore --ext .js ./",
-		"prepublish": "yarn build:node-packages",
+		"prepublishOnly": "yarn build:node-packages",
 		"test": "jest",
 		"prepare": "lerna run prepare",
 		"format": "prettier --ignore-path .gitignore --write '**/*.{js,json}' && yarn lint:js --fix",
