@@ -37,31 +37,10 @@ exports[`<Select /> matches snapshot when shallowly rendered 1`] = `
     }
   }
 >
-  <ForwardRef
+  <TransparentSelect
     id={null}
     onBlur={[Function]}
     onFocus={[Function]}
-    px={0}
-    sx={
-      Object {
-        "&:focus": Object {
-          "outline": 0,
-        },
-        "&:invalid": Object {
-          "boxShadow": "none",
-        },
-        "WebkitTapHighlightColor": "transparent",
-        "border": "none",
-        "color": "inherit",
-        "fontSize": Array [
-          2,
-          2,
-          2,
-          4,
-        ],
-        "width": "100%",
-      }
-    }
   />
 </Box>
 `;
