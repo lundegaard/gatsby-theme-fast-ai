@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Flex } from '@fast-ai/ui-components';
 import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
+import { isNotEmpty } from 'ramda-extension';
 
 import { links } from '../links';
 
@@ -36,40 +37,43 @@ const MobileNavigationMenu = ({ ...rest }) => (
 			</MenuItem>
 		))}
 		<IntlContextConsumer>
-			{({ languages }) => (
-				<MenuItem
-					sx={{
-						borderTopStyle: 'solid',
-						borderTopWidth: '1px',
-						borderTopColor: 'background',
-					}}
-				>
-					<Flex>
-						{languages.map((language, i) => (
-							<Link
-								key={language}
-								variant="nav"
-								to={`/${language}`}
-								onClick={event => {
-									event.preventDefault();
+			{({ languages }) =>
+				languages &&
+				isNotEmpty(languages) && (
+					<MenuItem
+						sx={{
+							borderTopStyle: 'solid',
+							borderTopWidth: '1px',
+							borderTopColor: 'background',
+						}}
+					>
+						<Flex>
+							{languages.map((language, i) => (
+								<Link
+									key={language}
+									variant="nav"
+									to={`/${language}`}
+									onClick={event => {
+										event.preventDefault();
 
-									changeLocale(language);
-								}}
-								display="block"
-								sx={{
-									width: '100%',
-									borderLeftStyle: 'solid',
-									borderLeftWidth: '1px',
-									borderLeftColor:
-										i === 0 ? 'transparent' : ['background', 'background', 'transparent'],
-								}}
-							>
-								{language}
-							</Link>
-						))}
-					</Flex>
-				</MenuItem>
-			)}
+										changeLocale(language);
+									}}
+									display="block"
+									sx={{
+										width: '100%',
+										borderLeftStyle: 'solid',
+										borderLeftWidth: '1px',
+										borderLeftColor:
+											i === 0 ? 'transparent' : ['background', 'background', 'transparent'],
+									}}
+								>
+									{language}
+								</Link>
+							))}
+						</Flex>
+					</MenuItem>
+				)
+			}
 		</IntlContextConsumer>
 	</Menu>
 );

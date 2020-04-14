@@ -44,3 +44,4 @@ export { default as Button } from './Button';
 export { default as FormGroup } from './FormGroup';
 export { default as Modal, ModalRoot, ModalProvider, useModal } from './Modal';
 export { default as Gauge } from './Gauge';
+export { default as TransparentSelect } from './TransparentSelect';

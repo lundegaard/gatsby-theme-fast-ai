@@ -1,11 +1,11 @@
 import React, { forwardRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Select as RebassSelect } from '@rebass/forms';
 import { identity, map, o, prepend, prop } from 'ramda';
 import { noop } from 'ramda-extension';
 
 import useBlockingEffect from '../hooks/useBlockingEffect';
 import { isInputValueEmpty, useSuperFieldContext } from '../SuperField';
+import TransparentSelect from '../TransparentSelect';
 import Box from '../Box';
 
 const getBorderColor = ({ hasError, disabled, readOnly }) => {
@@ -118,22 +118,7 @@ const Select = forwardRef((props, ref) => {
 				},
 			}}
 		>
-			<RebassSelect
-				sx={{
-					color: 'inherit',
-					border: 'none',
-					fontSize: [2, 2, 2, 4],
-					WebkitTapHighlightColor: 'transparent',
-					// FF
-					'&:invalid': {
-						boxShadow: 'none',
-					},
-					'&:focus': {
-						outline: 0,
-					},
-					width: '100%',
-				}}
-				px={0}
+			<TransparentSelect
 				id={id}
 				value={value}
 				onChange={handleChange}
@@ -145,7 +130,7 @@ const Select = forwardRef((props, ref) => {
 				{...rest}
 			>
 				{getItems(items)}
-			</RebassSelect>
+			</TransparentSelect>
 		</Box>
 	);
 });
