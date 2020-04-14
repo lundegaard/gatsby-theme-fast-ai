@@ -12,12 +12,12 @@ const stages = {
 
 const setBabel = ({ getConfig, stage, loaders, actions }) => {
 	const config = getConfig();
-	const rule = config.module.rules.filter(rule => includes('jsx', String(rule.test)))[0];
+	const rule = config.module.rules.filter((rule) => includes('jsx', String(rule.test)))[0];
 	const PRODUCTION = !stage.includes('develop');
 
 	config.module.rules = [
 		// Omit the default rule for jsx files
-		...config.module.rules.filter(rule => !includes('jsx', String(rule.test))),
+		...config.module.rules.filter((rule) => !includes('jsx', String(rule.test))),
 		{
 			...rule,
 			use: [
@@ -43,8 +43,9 @@ const setBabel = ({ getConfig, stage, loaders, actions }) => {
 	if (config.resolve) {
 		// https://github.com/gatsbyjs/gatsby/issues/15601#issuecomment-530131304
 		config.resolve.alias = omit(['core-js'], config.resolve.alias);
+
 		config.resolve.modules = rejectNil([
-			...config.resolve.modules,
+			...(config.resolve.modules || []),
 			path.resolve(__dirname, '../../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
 			path.resolve(__dirname, './node_modules'),
 			'node_modules', // your modules w/ core-js@3

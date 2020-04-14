@@ -12,7 +12,7 @@ const Container = ({ fullWidth, ...rest }) => {
 			px={2}
 			mx="auto"
 			width={1}
-			sx={{ maxWidth: fullWidth ? 'none' : ['none', ...breakpoints] }}
+			sx={{ maxWidth: fullWidth || !breakpoints ? 'none' : ['none', ...breakpoints] }}
 			{...rest}
 		/>
 	);
