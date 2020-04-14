@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Hamburger } from '@fast-ai/ui-components';
 import { keyframes } from '@emotion/core';
 
-import NavigationMenu from './NavigationMenu';
+import MobileNavigationMenu from './MobileNavigationMenu';
 
 const mobileNavigationKeyframes = keyframes`
 from {
@@ -22,7 +22,10 @@ const MobileNavigation = () => {
 		<Fragment>
 			<Hamburger ml="auto" isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
 			{isOpen && (
-				<NavigationMenu sx={{ animation: `${mobileNavigationKeyframes} .4s ease-out` }} ml="auto" />
+				<MobileNavigationMenu
+					sx={{ animation: `${mobileNavigationKeyframes} .4s ease-out` }}
+					ml="auto"
+				/>
 			)}
 		</Fragment>
 	);

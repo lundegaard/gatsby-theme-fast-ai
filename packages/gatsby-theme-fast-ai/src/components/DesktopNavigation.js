@@ -1,11 +1,11 @@
 import React from 'react';
 import { Flex } from '@fast-ai/ui-components';
 
-import NavigationMenu from './NavigationMenu';
+import DesktopNavigationMenu from './DesktopNavigationMenu';
 
 const DesktopNavigation = () => (
 	<Flex as="nav" alignItems="center" height="100%">
-		<NavigationMenu ml="auto" width={1} />
+		<DesktopNavigationMenu ml="auto" width={1} />
 	</Flex>
 );
 
