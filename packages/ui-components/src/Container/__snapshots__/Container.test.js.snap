@@ -6,10 +6,7 @@ exports[`<Container /> matches snapshot when shallowly rendered 1`] = `
   px={2}
   sx={
     Object {
-      "maxWidth": Array [
-        "none",
-        undefined,
-      ],
+      "maxWidth": "none",
     }
   }
   width={1}
