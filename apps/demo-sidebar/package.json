@@ -20,7 +20,7 @@
 		"@emotion/core": "^10.0.0",
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^0.6.2",
-		"gatsby": "^2.20.13",
+		"gatsby": "^2.20.36",
 		"gatsby-theme-fast-ai-sidebar": "^0.6.3",
 		"prop-types": "^15.6.2",
 		"ramda": "^0.27.0",

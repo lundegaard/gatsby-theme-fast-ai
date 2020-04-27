@@ -5,11 +5,11 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
   sx={
     Object {
       "alignItems": "center",
-      "backgroundColor": "transparent",
       "cursor": "pointer",
       "height": 64,
       "justifyContent": "center",
       "transition": "background-color .25s ease-in",
+      "variant": "hamburger.closed",
       "width": 64,
     }
   }
@@ -20,21 +20,21 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
         "height": "18px",
         "position": "relative",
         "span": Object {
-          "backgroundColor": "primary",
           "display": "block",
           "height": "2px",
           "opacity": 1,
           "position": "absolute",
           "transform": "translateX(0)",
           "transition": "transform .25s ease-in, opacity .25s ease-in",
+          "variant": "hamburgerBar.closed",
           "width": "100%",
         },
         "span:nth-child(1)": Object {
           "top": 0,
+          "variant": "hamburgerBar.closed",
         },
         "span:nth-child(2)": Object {
           "&:after": Object {
-            "backgroundColor": "primary",
             "content": "\\"\\"",
             "display": "block",
             "height": "2px",
@@ -43,12 +43,15 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
             "position": "absolute",
             "transform": "rotate(0) translateX(0)",
             "transition": "opacity .25s ease-in, transform .25s ease-in",
+            "variant": "hamburgerBar.closed",
             "width": "100%",
           },
           "top": "calc(( 100% / 2 ) - 1px )",
+          "variant": "hamburgerBar.closed",
         },
         "span:nth-child(3)": Object {
           "bottom": 0,
+          "variant": "hamburgerBar.closed",
         },
         "transform": "rotate(0deg)",
         "transition": ".3s ease-in-out",
