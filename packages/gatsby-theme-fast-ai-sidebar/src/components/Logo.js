@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Image } from '@fast-ai/ui-components';
 import { keyframes } from '@emotion/core';
 
-import logoSrc from '../../content/assets/zoe-ai-logo.svg';
+import logoSrc from '../../content/assets/lundegaard-logo.svg';
 
 const jumpInFromTop = keyframes`
 	0% {
@@ -22,12 +22,11 @@ const jumpInFromTop = keyframes`
 
 const easing = 'cubic-bezier(.455, .030, .515, .955)';
 
-const ZoeLogo = props => (
+const ZoeLogo = (props) => (
 	<Image
-		height={[35, 35, 46]}
-		title="Zoe.ai - Behavioral Scoring"
-		alt="Zoe.ai logo"
 		src={logoSrc}
+		alt="Logo"
+		title="Fresh theme - Logo"
 		sx={{
 			position: 'relative',
 			animationName: jumpInFromTop,

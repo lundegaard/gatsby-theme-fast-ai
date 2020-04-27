@@ -1,9 +1,9 @@
 import React from 'react';
 import { Select as RebassSelect } from '@rebass/forms';
 
-const TransparentSelect = props => (
+const TransparentSelect = (props) => (
 	<RebassSelect
-		sx={{
+		css={{
 			color: 'inherit',
 			border: 'none',
 			fontSize: [2, 2, 2, 4],

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Box as RebassBox } from 'rebass';
 
-const Box = props => <RebassBox {...props} />;
+const Box = forwardRef((props, ref) => <RebassBox ref={ref} {...props} />);
+Box.displayName = 'Box';
 
 export default Box;
