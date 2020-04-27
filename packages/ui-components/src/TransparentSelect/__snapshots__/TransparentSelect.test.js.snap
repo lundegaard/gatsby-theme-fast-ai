@@ -2,8 +2,7 @@
 
 exports[`<TransparentSelect /> matches snapshot when shallowly rendered 1`] = `
 <ForwardRef
-  px={0}
-  sx={
+  css={
     Object {
       "&:focus": Object {
         "outline": 0,
@@ -23,5 +22,6 @@ exports[`<TransparentSelect /> matches snapshot when shallowly rendered 1`] = `
       "width": "100%",
     }
   }
+  px={0}
 />
 `;

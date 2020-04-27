@@ -42,6 +42,7 @@ const Page = ({ children }) => {
 								fullwidth
 								sx={{
 									minHeight: 'calc(100vh - 64px)',
+									pb: [4, 6],
 								}}
 							>
 								{children}
