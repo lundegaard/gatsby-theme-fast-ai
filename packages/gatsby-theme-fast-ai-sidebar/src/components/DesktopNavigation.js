@@ -49,6 +49,7 @@ const DesktopNavigation = ({ hasSidebar, menu, setMenu, ...rest }) => (
 									sx={{
 										display: 'block',
 										color: match ? 'primary' : 'inherit',
+										whiteSpace: 'nowrap',
 									}}
 									to={to}
 									key={to}

@@ -17,6 +17,7 @@ module.exports = {
 					path: `${__dirname}/src/intl`,
 					defaultLanguage: 'cs',
 				},
+				docsPath: `${__dirname}/content/docs`,
 				siteMetadata,
 			},
 		},
