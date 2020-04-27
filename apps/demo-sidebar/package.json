@@ -1,0 +1,31 @@
+{
+	"name": "@fast-ai/demo-sidebar",
+	"private": true,
+	"version": "0.6.3",
+	"main": "index.js",
+	"contributors": [
+		"Tomas Konrady <tomaskonrady@gmail.com>",
+		"Jakub Kohout <jakub.kohout@lundegaard.eu>"
+	],
+	"author": "Lundegaard a.s.",
+	"license": "MIT",
+	"scripts": {
+		"start": "gatsby clean && gatsby develop",
+		"develop": "gatsby develop",
+		"clean": "gatsby clean",
+		"build": "gatsby clean && gatsby build",
+		"serve": "gatsby serve"
+	},
+	"dependencies": {
+		"@emotion/core": "^10.0.0",
+		"@emotion/styled": "^10.0.0",
+		"@fast-ai/ui-components": "^0.6.2",
+		"gatsby": "^2.20.13",
+		"gatsby-theme-fast-ai-sidebar": "^0.6.3",
+		"prop-types": "^15.6.2",
+		"ramda": "^0.27.0",
+		"ramda-extension": "^0.10.3",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	}
+}

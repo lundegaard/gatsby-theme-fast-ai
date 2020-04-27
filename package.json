@@ -71,8 +71,8 @@
 		"**/@emotion/core": "^10.0.28"
 	},
 	"scripts": {
-		"build": "yarn build:node-packages && yarn examples build",
-		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn examples start\"",
+		"build": "yarn build:node-packages",
+		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn demo-sidebar start\"",
 		"build:node-packages": "lerna run build --ignore @fast-ai/docs-examples --ignore @fast-ai/storybook",
 		"start:node-packages": "lerna run start --parallel --ignore @fast-ai/docs-examples --ignore @fast-ai/storybook",
 		"lint": "yarn lint:pkg && yarn lint:js",
@@ -84,7 +84,8 @@
 		"format": "prettier --ignore-path .gitignore --write '**/*.{js,json}' && yarn lint:js --fix",
 		"generate": "plop --plopfile \"./.plop/plopfile.js\"",
 		"storybook": "yarn workspace @fast-ai/storybook",
-		"examples": "yarn workspace @fast-ai/docs-examples",
+		"demo": "yarn workspace @fast-ai/demo",
+		"demo-sidebar": "yarn workspace @fast-ai/demo-sidebar",
 		"ui-components": "yarn workspace @fast-ai/ui-components",
 		"gatsby-theme-fast-ai": "yarn workspace gatsby-theme-fast-ai",
 		"gatsby-plugin-setup": "yarn workspace @fast-ai/gatsby-plugin-setup"
