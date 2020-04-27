@@ -8,6 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			allMdx {
 				edges {
 					node {
+						id
 						fields {
 							slug
 						}
@@ -33,6 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			path: page.node.fields.slug,
 			component: mdxPage,
 			context: {
+				id: page.node.id,
 				slug: page.node.fields.slug,
 			},
 		});

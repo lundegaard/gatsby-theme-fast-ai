@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { MDXProvider } from '@mdx-js/react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { pathOr } from 'ramda';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { isString, toKebabCase } from 'ramda-extension';
 import { Box, Heading, Image, Link, Text } from '@fast-ai/ui-components';
 
@@ -146,11 +148,25 @@ const components = {
 	InfoBox,
 };
 
-const MdxPage = ({ children }) => (
+const MdxPage = ({ data }) => (
 	<MDXProvider components={components}>
-		<Page>{children}</Page>
+		<Page>
+			<MDXRenderer>{data.mdx.body}</MDXRenderer>
+		</Page>
 	</MDXProvider>
 );
+
+export const pageQuery = graphql`
+	query MdxPageQuery($id: String!) {
+		mdx(id: { eq: $id }) {
+			frontmatter {
+				title
+			}
+			id
+			body
+		}
+	}
+`;
 
 MdxPage.propTypes = { children: PropTypes.node };
 

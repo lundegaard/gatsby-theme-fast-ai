@@ -1,5 +1,5 @@
 export const links = [
-	{ label: 'Typography', to: '/typography' },
+	{ label: 'Typography and text', to: '/typography' },
 	{ label: 'Tables', to: '/tables' },
 	{
 		label: 'Subcategory',
@@ -9,12 +9,6 @@ export const links = [
 			{
 				label: 'Images',
 				to: '/subcategory/images',
-
-				children: [
-					{ label: 'Images', to: '/subcategory/images' },
-					{ label: 'Code', to: '/subcategory/code' },
-					{ label: 'Features', to: '/subcategory/features' },
-				],
 			},
 			{ label: 'Code', to: '/subcategory/code' },
 			{ label: 'Features', to: '/subcategory/features' },

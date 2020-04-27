@@ -12,6 +12,7 @@ module.exports = (themeOptions) => {
 	const {
 		intlOptions,
 		assetsPath = 'content/assets',
+		docsPath = 'content/docs',
 		faviconPath = 'static/favicon.png',
 		pagesPath = 'src/pages',
 		// Fallback non-translated site metadata.
@@ -32,6 +33,13 @@ module.exports = (themeOptions) => {
 			{
 				resolve: 'gatsby-source-filesystem',
 				options: {
+					path: docsPath,
+					name: 'docs',
+				},
+			},
+			{
+				resolve: 'gatsby-source-filesystem',
+				options: {
 					path: pagesPath,
 					name: 'pages',
 				},
@@ -47,9 +55,9 @@ module.exports = (themeOptions) => {
 					extensions: ['.mdx', '.md'],
 					plugins: remarkPlugins,
 					gatsbyRemarkPlugins: remarkPlugins,
-					defaultLayouts: {
-						default: require.resolve('gatsby-theme-fast-ai-sidebar/src/templates/MdxPage'),
-					},
+					// defaultLayouts: {
+					// 	default: require.resolve('gatsby-theme-fast-ai-sidebar/src/templates/MdxPage'),
+					// },
 				},
 			},
 			{
