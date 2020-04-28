@@ -19,13 +19,13 @@ const gray = '#b4b4b4';
 
 const transparentStripesColor = color(lightGray);
 
-const getThumbStyles = (color) => ({
+const getThumbStyles = color => ({
 	color,
 	width: ['18px', '18px', '18px', '24px'],
 	height: ['18px', '18px', '18px', '24px'],
 });
 
-const getSliderStyles = (color) => ({
+const getSliderStyles = color => ({
 	height: '2px',
 	color,
 	'&:focus': {
@@ -173,6 +173,7 @@ const componentsPreset = {
 			p: [3, 3, 0],
 			textTransform: 'uppercase',
 			textDecoration: 'none',
+			whiteSpace: 'nowrap',
 			color: ['#fff', '#fff', 'inherit'],
 			':hover,:focus,.active': {
 				color: ['#fff', '#fff', 'primary'],
@@ -196,7 +197,7 @@ const componentsPreset = {
 	},
 };
 
-const createTheme = (userTheme) =>
+const createTheme = userTheme =>
 	mergeDeepRightAll([
 		preset,
 		componentsPreset,

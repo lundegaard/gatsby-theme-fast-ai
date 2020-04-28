@@ -1,15 +1,16 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Container, Flex } from '@fast-ai/ui-components';
+import { Box, Flex } from '@fast-ai/ui-components';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
+import ContentContainer from '../components/ContentContainer';
 import { links } from '../links';
 import { getSublinks } from '../utils';
 
-const Root = (props) => (
+const Root = props => (
 	<Box
 		variant="stripes"
 		backgroundColor="background"
@@ -31,22 +32,15 @@ const Page = ({ children }) => {
 		<IntlContextConsumer>
 			{({ originalPath }) => {
 				const sublinks = getSublinks(links, originalPath);
+				const fullWidth = !sublinks;
 
 				return (
 					<Root>
-						<Header hasSidebar={!!sublinks} links={links} menu={menu} setMenu={setMenu} />
+						<Header fullWidth={fullWidth} nav={nav} links={links} menu={menu} setMenu={setMenu} />
 
 						<Flex>
-							{sublinks && <Sidebar menu={menu} setMenu={setMenu} nav={nav} links={sublinks} />}
-							<Container
-								fullwidth
-								sx={{
-									minHeight: 'calc(100vh - 64px)',
-									pb: [4, 6],
-								}}
-							>
-								{children}
-							</Container>
+							{!fullWidth && <Sidebar menu={menu} setMenu={setMenu} nav={nav} links={sublinks} />}
+							<ContentContainer fullWidth={fullWidth}>{children}</ContentContainer>
 						</Flex>
 
 						<Footer />

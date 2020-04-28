@@ -8,7 +8,7 @@ const remarkPlugins = [
 	},
 ];
 
-module.exports = (themeOptions) => {
+module.exports = themeOptions => {
 	const {
 		intlOptions,
 		assetsPath = 'content/assets',
@@ -55,9 +55,7 @@ module.exports = (themeOptions) => {
 					extensions: ['.mdx', '.md'],
 					plugins: remarkPlugins,
 					gatsbyRemarkPlugins: remarkPlugins,
-					// defaultLayouts: {
-					// 	default: require.resolve('gatsby-theme-fast-ai-sidebar/src/templates/MdxPage'),
-					// },
+					remarkPlugins: [require('remark-slug')],
 				},
 			},
 			{

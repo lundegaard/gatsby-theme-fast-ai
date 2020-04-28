@@ -28,7 +28,8 @@
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
 		"react-helmet": "^6.0.0",
-		"react-intl": "^4.5.0"
+		"react-intl": "^4.5.0",
+		"remark-slug": "^6.0.0"
 	},
 	"peerDependencies": {
 		"@reach/router": "^1.0.0",

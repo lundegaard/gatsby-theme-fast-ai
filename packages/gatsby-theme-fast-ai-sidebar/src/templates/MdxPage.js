@@ -2,35 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDXProvider } from '@mdx-js/react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
+import prismTheme from 'prism-react-renderer/themes/duotoneLight';
 import { pathOr } from 'ramda';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { isString, toKebabCase } from 'ramda-extension';
-import { Box, Heading, Image, Link, Text } from '@fast-ai/ui-components';
+import { Box, Col, Heading, Image, Link, Row, Text } from '@fast-ai/ui-components';
 
 import warning from '../../content/assets/exclamation-triangle.svg';
 import info from '../../content/assets/info-circle.svg';
+import TableOfContents from '../components/TableOfContents';
 
 import Page from './Page';
 
-const HeadingAnchor = ({ children, ...rest }) => (
-	<Heading
-		{...(isString(children) ? { id: toKebabCase(children) } : {})}
-		{...{ children, ...rest }}
-	/>
-);
+const H1 = props => <Heading as="h1" {...props} />;
+const H2 = props => <Heading as="h2" {...props} />;
+const H3 = props => <Heading as="h3" {...props} />;
+const H4 = props => <Heading as="h4" {...props} />;
+const H5 = props => <Heading as="h5" {...props} />;
+const H6 = props => <Heading as="h6" {...props} />;
 
-HeadingAnchor.propTypes = { children: PropTypes.node };
+const Li = props => <Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />;
 
-const H1 = (props) => <HeadingAnchor as="h1" {...props} />;
-const H2 = (props) => <HeadingAnchor as="h2" {...props} />;
-const H3 = (props) => <HeadingAnchor as="h3" {...props} />;
-const H4 = (props) => <HeadingAnchor as="h4" {...props} />;
-const H5 = (props) => <HeadingAnchor as="h5" {...props} />;
-
-const Li = (props) => <Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />;
-
-const Table = (props) => (
+const Table = props => (
 	<Box
 		sx={{
 			maxWidth: '100%',
@@ -41,11 +34,11 @@ const Table = (props) => (
 		<Box as="table" variant="table" {...props} />
 	</Box>
 );
-const TableHead = (props) => <Box as="th" variant="tableCol" {...props} />;
-const TableRow = (props) => <Box as="tr" variant="tableRow" {...props} />;
-const TableCol = (props) => <Box as="td" variant="tableCol" {...props} />;
+const TableHead = props => <Box as="th" variant="tableCol" {...props} />;
+const TableRow = props => <Box as="tr" variant="tableRow" {...props} />;
+const TableCol = props => <Box as="td" variant="tableCol" {...props} />;
 
-const Code = (props) => (
+const Code = props => (
 	<Box
 		as="code"
 		sx={{
@@ -55,20 +48,25 @@ const Code = (props) => (
 		{...props}
 	/>
 );
-const CodeBox = (props) => <Box as="pre" p={[2, 3, 4]} {...props} />;
+const CodeBox = props => <Box as="pre" p={[2, 3, 4]} {...props} />;
 
 const getClassName = pathOr('', ['children', 'props', 'className']);
 const getChildren = pathOr('', ['children', 'props', 'children']);
 const getLanguage = pathOr('', ['groups', 'lang']);
 
-const HighlightedCode = (props) => {
+const HighlightedCode = props => {
 	const className = getClassName(props);
 	const children = getChildren(props);
 	const matches = className.match(/language-(?<lang>.*)/);
 	const language = getLanguage(matches);
 
 	return (
-		<Highlight {...defaultProps} code={children.trim()} language={language}>
+		<Highlight
+			{...defaultProps}
+			theme={{ ...prismTheme, plain: { ...prismTheme.plain, backgroundColor: '#fff' } }}
+			code={children.trim()}
+			language={language}
+		>
 			{({ style, tokens, getLineProps, getTokenProps }) => (
 				<CodeBox
 					sx={{
@@ -92,7 +90,7 @@ const HighlightedCode = (props) => {
 	);
 };
 
-const InfoBox = (props) => (
+const InfoBox = props => (
 	<Box
 		as="div"
 		fontSize={[2, 2, 2, 4]}
@@ -105,7 +103,7 @@ const InfoBox = (props) => (
 	/>
 );
 
-const resolveIconType = (type) => {
+const resolveIconType = type => {
 	switch (type) {
 		case 'info':
 			return info;
@@ -129,11 +127,11 @@ const Icon = ({ type, ...props }) => (
 Icon.propTypes = { type: PropTypes.string };
 
 const components = {
-	h1: H1,
-	h2: H2,
-	h3: H3,
-	h4: H4,
-	h5: H5,
+	h1: H2,
+	h2: H3,
+	h3: H4,
+	h4: H5,
+	h5: H6,
 	p: Text,
 	a: Link,
 	img: Image,
@@ -148,10 +146,29 @@ const components = {
 	InfoBox,
 };
 
-const MdxPage = ({ data }) => (
+const MdxPage = ({ location, data: { mdx } }) => (
 	<MDXProvider components={components}>
 		<Page>
-			<MDXRenderer>{data.mdx.body}</MDXRenderer>
+			<Row>
+				<Col span={{ _: 12, lg: 8 }}>
+					<H1 mb={2}>{mdx.frontmatter.title}</H1>
+				</Col>
+			</Row>
+			<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>
+				<Col span={{ _: 12, lg: 4 }}>
+					{!mdx.frontmatter.disableTableOfContents && (
+						<TableOfContents
+							maxDepth={mdx.frontmatter.tableOfContentsDepth}
+							sx={{ position: ['static', 'static', 'static', 'sticky'], top: 64, right: 0 }}
+							location={location}
+							items={mdx.tableOfContents.items}
+						/>
+					)}
+				</Col>
+				<Col span={{ _: 12, lg: 8 }}>
+					<MDXRenderer>{mdx.body}</MDXRenderer>
+				</Col>
+			</Row>
 		</Page>
 	</MDXProvider>
 );
@@ -161,13 +178,16 @@ export const pageQuery = graphql`
 		mdx(id: { eq: $id }) {
 			frontmatter {
 				title
+				tableOfContentsDepth
+				disableTableOfContents
 			}
 			id
 			body
+			tableOfContents
 		}
 	}
 `;
 
-MdxPage.propTypes = { children: PropTypes.node };
+MdxPage.propTypes = { children: PropTypes.node, location: PropTypes.object };
 
 export default MdxPage;

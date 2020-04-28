@@ -6,8 +6,9 @@ import { alwaysEmptyObject } from 'ramda-extension';
 
 const resolveDefaultProps = cond([
 	[equals('h1'), always({ fontSize: [7, 8, 9], mb: [5, 6] })],
-	[equals('h2'), always({ fontSize: [3, 4, 7], mb: 3, mt: [4, 5] })],
-	[equals('h3'), always({ fontSize: [4, 5, 6], mb: 2 })],
+	[equals('h2'), always({ fontSize: [3, 4, 7], mb: 3, mt: [2, 3] })],
+	[equals('h3'), always({ fontSize: [4, 5, 6], mb: 2, mt: [2, 3] })],
+	[equals('h4'), always({ fontSize: [4, 5, 6], mb: 1 })],
 	[T, alwaysEmptyObject],
 ]);
 
