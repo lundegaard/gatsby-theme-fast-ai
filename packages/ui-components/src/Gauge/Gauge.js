@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { identity } from 'ramda';
+import { clamp, identity } from 'ramda';
 import { Transition } from 'react-transition-group';
 
 import Box from '../Box';
@@ -61,7 +61,7 @@ const Gauge = forwardRef(
 		const rotateForSymmetryAngle = -alpha - 180;
 
 		// Normalized value between 0-1
-		const valueNormalized = (value - min) / (max - min);
+		const valueNormalized = clamp(0, 1)((value - min) / (max - min));
 
 		// Coords of center of the canvas
 		const center = equalCoord(svgSize / 2);
