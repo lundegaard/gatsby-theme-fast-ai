@@ -48,6 +48,7 @@ const theme = createTheme({
 			alignItems: 'center',
 			height: '100%',
 			width: '100%',
+			px: 2,
 			flexShrink: 1,
 			flexGrow: 1,
 			flexDirection: 'row',

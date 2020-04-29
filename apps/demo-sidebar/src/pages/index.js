@@ -2,8 +2,8 @@ import React from 'react';
 import { Page, Seo } from 'gatsby-theme-fast-ai-sidebar';
 import { Heading } from '@fast-ai/ui-components';
 
-const Index = () => (
-	<Page>
+const Index = props => (
+	<Page {...props}>
 		<Seo title="Home" />
 
 		<Heading>Welcome</Heading>

@@ -13,7 +13,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 const Navigation = ({ fullWidth, nav, menu, setMenu }) => (
 	<Fragment>
-		<Link to="/" display="block" ml={2} sx={{ flexShrink: 0 }}>
+		<Link to="/" display="block" ml={4} sx={{ flexShrink: 0 }}>
 			<Logo />
 		</Link>
 

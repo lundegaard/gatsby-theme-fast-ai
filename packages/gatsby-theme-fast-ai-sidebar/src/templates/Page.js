@@ -24,15 +24,17 @@ const Root = props => (
 	/>
 );
 
-const Page = ({ children }) => {
+const Page = ({ children, location, fullWidth: fullWidthProp }) => {
 	const [menu, setMenu] = useState(true);
 	const nav = useRef(null);
+
+	const fullWidth = fullWidthProp || (location && location.pathname === '/');
 
 	return (
 		<IntlContextConsumer>
 			{({ originalPath }) => {
 				const sublinks = getSublinks(links, originalPath);
-				const fullWidth = !sublinks;
+				// const fullWidth = !sublinks;
 
 				return (
 					<Root>
@@ -51,6 +53,10 @@ const Page = ({ children }) => {
 	);
 };
 
-Page.propTypes = { children: PropTypes.node };
+Page.propTypes = {
+	children: PropTypes.node,
+	fullWidth: PropTypes.bool,
+	location: PropTypes.object,
+};
 
 export default Page;

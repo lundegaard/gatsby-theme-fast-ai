@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Text, useBreakpoint } from '@fast-ai/ui-components';
 import { map } from 'ramda';
 
-import Link from '../components/Link';
+import { NoIntlLink as Link } from '../components/Link';
 
 export const useActiveHash = (itemIds, rootMargin = undefined) => {
 	const [activeHash, setActiveHash] = useState('');
@@ -62,7 +62,14 @@ const getNav = ({
 				</Link>
 				{items &&
 					depth <= maxDepth &&
-					getNav({ location, items, activeHash, maxDepth, depth: depth + 1 })}
+					getNav({
+						location,
+						items,
+						shouldUseDesktopNavigation,
+						activeHash,
+						maxDepth,
+						depth: depth + 1,
+					})}
 			</li>
 		))(itemsProp)}
 	</ul>
@@ -91,7 +98,8 @@ const getHeadingIds = (items, traverseFullDepth = true, depth, recursionDepth = 
 /**
  * @see https://github.com/gatsbyjs/gatsby/blob/master/www/src/components/docs-table-of-contents.js
  */
-const TableOfContents = ({ sx, location, items, maxDepth = 4, ...rest }) => {
+const TableOfContents = ({ sx, location, items, maxDepth: maxDepthProp, ...rest }) => {
+	const maxDepth = maxDepthProp == null ? 4 : maxDepthProp;
 	const headingIds = getHeadingIds(items, true, maxDepth);
 	const activeHash = useActiveHash(headingIds);
 	const shouldUseDesktopNavigation = useBreakpoint('lg', 'up');

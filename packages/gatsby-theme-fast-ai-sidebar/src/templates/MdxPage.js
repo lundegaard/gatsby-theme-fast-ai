@@ -29,9 +29,18 @@ const Table = props => (
 			maxWidth: '100%',
 			overflowX: 'auto',
 			overflowY: 'hidden',
+			maskImage: 'linear-gradient(to right,transparent,white 0.5rem,white 97%,transparent)',
+			px: 1,
 		}}
 	>
-		<Box as="table" variant="table" {...props} />
+		<Box
+			as="table"
+			sx={{
+				minWidth: '100%',
+			}}
+			variant="table"
+			{...props}
+		/>
 	</Box>
 );
 const TableHead = props => <Box as="th" variant="tableCol" {...props} />;
@@ -146,9 +155,9 @@ const components = {
 	InfoBox,
 };
 
-const MdxPage = ({ location, data: { mdx } }) => (
+const MdxPage = ({ location, data: { mdx }, ...rest }) => (
 	<MDXProvider components={components}>
-		<Page>
+		<Page location={location} fullWidth={mdx.frontmatter.fullWidth} {...rest}>
 			<Row>
 				<Col span={{ _: 12, lg: 8 }}>
 					<H1 mb={2}>{mdx.frontmatter.title}</H1>
@@ -184,6 +193,7 @@ export const pageQuery = graphql`
 				title
 				tableOfContentsDepth
 				disableTableOfContents
+				fullWidth
 			}
 			id
 			body
