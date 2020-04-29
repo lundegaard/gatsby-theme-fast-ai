@@ -159,7 +159,11 @@ const MdxPage = ({ location, data: { mdx } }) => (
 					{!mdx.frontmatter.disableTableOfContents && (
 						<TableOfContents
 							maxDepth={mdx.frontmatter.tableOfContentsDepth}
-							sx={{ position: ['static', 'static', 'static', 'sticky'], top: 64, right: 0 }}
+							sx={{
+								position: ['static', 'static', 'static', 'sticky'],
+								top: 112,
+								right: 0,
+							}}
 							location={location}
 							items={mdx.tableOfContents.items}
 						/>

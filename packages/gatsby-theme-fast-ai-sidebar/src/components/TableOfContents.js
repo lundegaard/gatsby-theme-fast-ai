@@ -99,7 +99,6 @@ const TableOfContents = ({ sx, location, items, maxDepth = 4, ...rest }) => {
 	return items ? (
 		<Box
 			sx={{
-				pt: 4,
 				ul: {
 					listStyle: 'none',
 					padding: 0,
@@ -107,6 +106,11 @@ const TableOfContents = ({ sx, location, items, maxDepth = 4, ...rest }) => {
 				'li > ul > li > a': {
 					pl: '24px',
 				},
+				borderBottomColor: ['secondary', 'secondary', 'secondary', 'transparent'],
+				borderBottomStyle: 'solid',
+				borderBottomWidth: '1px',
+				py: [3, 3, 3, 0],
+				mb: 4,
 				...sx,
 			}}
 			{...rest}
