@@ -22,13 +22,14 @@ exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
         "top": 0,
       }
     }
-  />
+  >
+     
+  </Text>
   <FormGroup
     id="field-0"
   >
     <Slider
       id="field-0"
-      variant="forms.slider.default"
     />
   </FormGroup>
 </Box>

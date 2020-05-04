@@ -36,6 +36,7 @@
 		"invariant": "^2.2.4",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
+		"react-compound-slider": "^2.5.0",
 		"react-modal-hook": "^3.0.0",
 		"react-text-mask": "^5.4.3",
 		"react-transition-group": "^4.3.0",

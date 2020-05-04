@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compose, intersperse, map } from 'ramda';
+import { ensureArray } from 'ramda-extension';
 
 import useGeneratedId from '../hooks/useGeneratedId';
 import useDebounce from '../hooks/useDebounce';
@@ -11,6 +13,7 @@ import FormGroup, { getVariant } from '../FormGroup';
 const SliderField = ({
 	id: idProp,
 	renderValue: Value,
+	renderValues = intersperse(' - '),
 	label,
 	hasError,
 	disabled,
@@ -25,6 +28,7 @@ const SliderField = ({
 	const variant = getVariant({ disabled, readOnly, hasError });
 	const [valueDebounced] = useDebounce(value, 200);
 
+	const getValue = (x) => (Value ? <Value>{x}</Value> : x);
 	return (
 		<Box sx={{ position: 'relative' }}>
 			<Text
@@ -36,7 +40,7 @@ const SliderField = ({
 				}}
 				mb={0}
 			>
-				{Value ? <Value>{valueDebounced}</Value> : valueDebounced}
+				{compose(renderValues, map(getValue), ensureArray)(valueDebounced)}{' '}
 			</Text>
 			<FormGroup
 				id={id}
@@ -47,7 +51,7 @@ const SliderField = ({
 				hasError={hasError}
 			>
 				<Slider
-					variant={variant ? `forms.slider.${variant}` : 'forms.slider.default'}
+					variant={variant}
 					disabled={disabled}
 					readOnly={readOnly}
 					id={id}
@@ -76,6 +80,8 @@ SliderField.propTypes = {
 	readOnly: PropTypes.bool,
 	/** Formattting component for the value */
 	renderValue: PropTypes.elementType,
+	/** Formattting for array of values */
+	renderValues: PropTypes.func,
 	/** Current value of checkbox. */
 	value: PropTypes.any,
 };
