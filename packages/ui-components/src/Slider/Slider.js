@@ -43,7 +43,7 @@ Handle.propTypes = {
 	getHandleProps: PropTypes.func.isRequired,
 	handle: PropTypes.shape({ id: PropTypes.any, value: PropTypes.any, percent: PropTypes.number })
 		.isRequired,
-	variant: PropTypes.oneOf(['danger', 'disabled']),
+	variant: PropTypes.oneOf(['forms.slider', 'forms.slider.danger', 'forms.slider.disabled']),
 };
 
 const Track = ({ source, target, getTrackProps, variant }) => (
@@ -64,7 +64,7 @@ Track.propTypes = {
 	getTrackProps: PropTypes.func.isRequired,
 	source: PropTypes.shape({ percent: PropTypes.number.isRequired }),
 	target: PropTypes.shape({ percent: PropTypes.number.isRequired }),
-	variant: PropTypes.oneOf(['danger', 'disabled']),
+	variant: PropTypes.oneOf(['forms.slider', 'forms.slider.danger', 'forms.slider.disabled']),
 };
 
 const SliderRail = ({ getRailProps, variant }) => (
@@ -80,7 +80,7 @@ const SliderRail = ({ getRailProps, variant }) => (
 );
 SliderRail.propTypes = {
 	getRailProps: PropTypes.func.isRequired,
-	variant: PropTypes.oneOf(['danger', 'disabled']),
+	variant: PropTypes.oneOf(['forms.slider', 'forms.slider.danger', 'forms.slider.disabled']),
 };
 
 const Slider = forwardRef(

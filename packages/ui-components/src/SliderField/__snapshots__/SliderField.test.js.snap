@@ -23,7 +23,7 @@ exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
       }
     }
   >
-     
+    <DefaultRenderValues />
   </Text>
   <FormGroup
     id="field-0"

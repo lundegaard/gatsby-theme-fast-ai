@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Children, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { compose, intersperse, map } from 'ramda';
+import { compose, map } from 'ramda';
 import { ensureArray } from 'ramda-extension';
 
 import useGeneratedId from '../hooks/useGeneratedId';
@@ -10,10 +10,18 @@ import Text from '../Text';
 import Box from '../Box';
 import FormGroup, { getVariant } from '../FormGroup';
 
+const DefaultRenderValues = ({ children }) =>
+	Children.map(children, (child, i) => (
+		<Fragment>
+			{i === 0 ? '' : ' - '}
+			{child}
+		</Fragment>
+	));
+
 const SliderField = ({
 	id: idProp,
 	renderValue: Value,
-	renderValues = intersperse(' - '),
+	renderValues: RenderValues = DefaultRenderValues,
 	label,
 	hasError,
 	disabled,
@@ -28,7 +36,7 @@ const SliderField = ({
 	const variant = getVariant({ disabled, readOnly, hasError });
 	const [valueDebounced] = useDebounce(value, 200);
 
-	const getValue = (x) => (Value ? <Value>{x}</Value> : x);
+	const getValue = (x) => (Value ? <Value key={x}>{x}</Value> : x);
 	return (
 		<Box sx={{ position: 'relative' }}>
 			<Text
@@ -40,7 +48,7 @@ const SliderField = ({
 				}}
 				mb={0}
 			>
-				{compose(renderValues, map(getValue), ensureArray)(valueDebounced)}{' '}
+				<RenderValues>{compose(map(getValue), ensureArray)(valueDebounced)}</RenderValues>
 			</Text>
 			<FormGroup
 				id={id}
