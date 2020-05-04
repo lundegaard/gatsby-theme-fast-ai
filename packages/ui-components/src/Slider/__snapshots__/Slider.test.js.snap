@@ -1,3 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Slider /> matches snapshot when shallowly rendered 1`] = `<ForwardRef />`;
+exports[`<Slider /> matches snapshot when shallowly rendered 1`] = `
+<Slider
+  component="div"
+  disabled={false}
+  domain={
+    Array [
+      0,
+      100,
+    ]
+  }
+  flatten={false}
+  mode={1}
+  onChange={[Function]}
+  onSlideEnd={[Function]}
+  onSlideStart={[Function]}
+  onUpdate={[Function]}
+  reversed={false}
+  rootProps={Object {}}
+  rootStyle={
+    Object {
+      "position": "relative",
+      "touchAction": "none",
+      "width": "100%",
+    }
+  }
+  step={1}
+  vertical={false}
+  warnOnChanges={false}
+>
+  <Rail>
+    <Component />
+  </Rail>
+  <Handles>
+    <Component />
+  </Handles>
+  <Tracks
+    left={false}
+    right={false}
+  >
+    <Component />
+  </Tracks>
+</Slider>
+`;

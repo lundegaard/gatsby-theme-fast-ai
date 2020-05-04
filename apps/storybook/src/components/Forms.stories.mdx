@@ -1,4 +1,17 @@
-import { Text, TextField, SelectField, CheckboxField, SuperField, Col, Container, Radio, RadioGroupField, RadioGroup, Row } from '@fast-ai/ui-components';
+import {
+	Text,
+	TextField,
+	SelectField,
+	SliderField,
+	CheckboxField,
+	SuperField,
+	Col,
+	Container,
+	Radio,
+	RadioGroupField,
+	RadioGroup,
+	Row,
+} from '@fast-ai/ui-components';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import { Field } from 'react-powerplug';
 
@@ -11,120 +24,153 @@ import { Field } from 'react-powerplug';
 		<Container>
 			<Row py={2}>
 				<Col span={6}>
-				<Field>
-				{({ set, value }) => (
-					<TextField
-						label="Name"
-						name="name"
-						onChange={event => set(event.target.value)}
-						value={value}
-					/>
-					)}
+					<Field>
+						{({ set, value }) => (
+							<TextField
+								label="Name"
+								name="name"
+								onChange={(event) => set(event.target.value)}
+								value={value}
+							/>
+						)}
 					</Field>
 				</Col>
 				<Col span={6}>
-				<Field>
-				{({ set, value }) => (
-					<TextField
-						label="Surname"
-						name="surname"
-						onChange={event => {
-							set(event.target.value);
-						}}
-						value={value}
-						hint="Hint how to fill your surname"
-						placeholder="Fill in a surname"
-					/>
-					)}
+					<Field>
+						{({ set, value }) => (
+							<TextField
+								label="Surname"
+								name="surname"
+								onChange={(event) => {
+									set(event.target.value);
+								}}
+								value={value}
+								hint="Hint how to fill your surname"
+								placeholder="Fill in a surname"
+							/>
+						)}
 					</Field>
 				</Col>
 			</Row>
 			<Row py={2}>
 				<Col span={12}>
-				<Field>
-				{({ set, value }) => (
-					<TextField
-						label="Personal ID"
-						name="id"
-						onChange={event => set(event.target.value)}
-						value={value}
-						hint="with hint"
-					/>
-					)}
-					</Field>
-				</Col>
-			</Row>
-			<Row py={2}>
-				<Col span={6}>
-				<Field>
-				{({ set, value }) => (
-					<SelectField
-						label="Education"
-						name="education"
-						onChange={event => set(event.target.value)}
-						value={value}
-						placeholder="None"
-						items={[
-							{ value: '1', label: 'Elementary' },
-							{ value: '2', label: 'High-school' },
-						]}
-						hint="Your highest education"
-					/>
-					)}
-					</Field>
-				</Col>
-				<Col span={6}>
-				<Field>
-				{({ set, value }) => (
-					<SelectField
-						label="Education"
-						name="education"
-						onChange={event => set(event.target.value)}
-						value={value}
-						items={[
-							{ value: '', label: '' },
-							{ value: '1', label: 'Elementary' },
-							{ value: '2', label: 'High-school' },
-						]}
-						hint="Your highest education"
-					/>
-					)}
+					<Field>
+						{({ set, value }) => (
+							<TextField
+								label="Personal ID"
+								name="id"
+								onChange={(event) => set(event.target.value)}
+								value={value}
+								hint="with hint"
+							/>
+						)}
 					</Field>
 				</Col>
 			</Row>
 			<Row py={2}>
 				<Col span={12}>
-				<Field>
-				{({ set, value }) => (
-					<CheckboxField
-						label={<Text fontSize={[1, 1, 1, 2]} p={0} m={0}> I agreee with terms and conditions</Text>}
-						name="terms"
-						checked={value}
-						onChange={event => set(event.target.checked)}
-						value
-					/>
-					)}
+					<Field initial={[10, 90]}>
+						{({ set, value }) => (
+							<SliderField
+								label="Amount"
+								name="amount"
+								onChange={(newValue) => {
+									set(newValue);
+								}}
+								value={value}
+							/>
+						)}
+					</Field>
+					<Field initial={[10]}>
+						{({ set, value }) => (
+							<SliderField
+								label="Amount"
+								name="amount-2"
+								onChange={(newValue) => {
+									set(newValue);
+								}}
+								value={value}
+							/>
+						)}
+					</Field>
+				</Col>
+			</Row>
+			<Row py={2}>
+				<Col span={6}>
+					<Field>
+						{({ set, value }) => (
+							<SelectField
+								label="Education"
+								name="education"
+								onChange={(event) => set(event.target.value)}
+								value={value}
+								placeholder="None"
+								items={[
+									{ value: '1', label: 'Elementary' },
+									{ value: '2', label: 'High-school' },
+								]}
+								hint="Your highest education"
+							/>
+						)}
+					</Field>
+				</Col>
+				<Col span={6}>
+					<Field>
+						{({ set, value }) => (
+							<SelectField
+								label="Education"
+								name="education"
+								onChange={(event) => set(event.target.value)}
+								value={value}
+								items={[
+									{ value: '', label: '' },
+									{ value: '1', label: 'Elementary' },
+									{ value: '2', label: 'High-school' },
+								]}
+								hint="Your highest education"
+							/>
+						)}
+					</Field>
+				</Col>
+			</Row>
+			<Row py={2}>
+				<Col span={12}>
+					<Field>
+						{({ set, value }) => (
+							<CheckboxField
+								label={
+									<Text fontSize={[1, 1, 1, 2]} p={0} m={0}>
+										{' '}
+										I agreee with terms and conditions
+									</Text>
+								}
+								name="terms"
+								checked={value}
+								onChange={(event) => set(event.target.checked)}
+								value
+							/>
+						)}
 					</Field>
 				</Col>
 			</Row>
 			<Row>
 				<Col span={12}>
-				<Field>
-				{({ set, value }) => (
-					<RadioGroupField
-						legend="Who is your partner?"
-						onChange={event => set(event.target.value)}
-						name="partner"
-						value={value}
-					>
-						{[
-							{ value: 'individual', label: 'Individual' },
-							{ value: 'with-parner', label: 'With partner' },
-						].map(itemProps => (
-							<Radio key={itemProps.value} {...itemProps} />
-						))}
-					</RadioGroupField>
-					)}
+					<Field>
+						{({ set, value }) => (
+							<RadioGroupField
+								legend="Who is your partner?"
+								onChange={(event) => set(event.target.value)}
+								name="partner"
+								value={value}
+							>
+								{[
+									{ value: 'individual', label: 'Individual' },
+									{ value: 'with-parner', label: 'With partner' },
+								].map((itemProps) => (
+									<Radio key={itemProps.value} {...itemProps} />
+								))}
+							</RadioGroupField>
+						)}
 					</Field>
 				</Col>
 			</Row>
@@ -143,4 +189,3 @@ import { Field } from 'react-powerplug';
 ## RadioGroupField
 
 <Props of={RadioGroupField} />
-

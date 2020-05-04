@@ -15,15 +15,15 @@ export const basic = () => (
 	<Container>
 		<Row>
 			<Col span={12}>
-				<Field>
+				<Field initial={[10]}>
 					{({ set, value }) => (
 						<SliderField
 							label="Fill in loan amount"
 							name="amount"
-							onChange={event => set(event.target.value)}
+							onChange={set}
 							value={value}
 							min={0}
-							max={1000000}
+							max={100}
 							step={1}
 							hint="with hint"
 						/>
@@ -34,12 +34,31 @@ export const basic = () => (
 
 		<Row>
 			<Col span={12}>
-				<Field>
+				<Field initial={[10, 90]}>
+					{({ set, value }) => (
+						<SliderField
+							label="Fill in loan amount"
+							name="amount"
+							onChange={set}
+							value={value}
+							min={0}
+							max={100}
+							step={1}
+							hint="with hint"
+						/>
+					)}
+				</Field>
+			</Col>
+		</Row>
+
+		<Row>
+			<Col span={12}>
+				<Field initial={[10, 90]}>
 					{({ set, value }) => (
 						<SliderField
 							label="Select payment period"
 							name="paymentPeriod"
-							onChange={event => set(event.target.value)}
+							onChange={set}
 							value={value}
 							renderValue={AgeFormatter}
 							min={0}
@@ -53,12 +72,14 @@ export const basic = () => (
 
 		<Row>
 			<Col span={12}>
-				<Field>
+				<Field initial={[10, 90]}>
 					{({ set, value }) => (
 						<SliderField
 							label="Select payment interval"
 							name="paymentPeriod"
-							onChange={event => set(event.target.value)}
+							min={0}
+							max={100}
+							onChange={set}
 							value={value}
 							renderValue={AgeFormatter}
 							hint="error"
@@ -70,12 +91,14 @@ export const basic = () => (
 		</Row>
 		<Row>
 			<Col span={12}>
-				<Field>
+				<Field initial={[10, 50, 90]}>
 					{({ set, value }) => (
 						<SliderField
 							label="Select payment interval"
 							name="paymentPeriod"
-							onChange={event => set(event.target.value)}
+							min={0}
+							max={100}
+							onChange={set}
 							value={value}
 							renderValue={AgeFormatter}
 							hint="disabled"
