@@ -74,18 +74,9 @@ import { Field } from 'react-powerplug';
 							<SliderField
 								label="Amount"
 								name="amount"
-								onChange={(newValue) => {
-									set(newValue);
-								}}
-								value={value}
-							/>
-						)}
-					</Field>
-					<Field initial={[10]}>
-						{({ set, value }) => (
-							<SliderField
-								label="Amount"
-								name="amount-2"
+								min={0}
+								max={100}
+								step={10}
 								onChange={(newValue) => {
 									set(newValue);
 								}}

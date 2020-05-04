@@ -1,4 +1,5 @@
 import preset from '@rebass/preset';
+import { mergeDeepRight } from 'ramda';
 import { mergeDeepRightAll } from 'ramda-extension';
 import color from 'tinycolor2';
 
@@ -26,6 +27,34 @@ const getStripesGradient = (width, alpha = 1) =>
 		transparent 1px,
 		transparent ${width}
 	)`;
+
+const commonSliderProps = {
+	handle: {
+		width: ['18px', '18px', '18px', '24px'],
+		height: ['18px', '18px', '18px', '24px'],
+		borderRadius: '50%',
+		backgroundColor: 'secondary',
+	},
+	handleTouch: {
+		backgroundColor: 'none',
+		cursor: 'pointer',
+		WebkitTapHighlightColor: 'rgba(0,0,0,0)',
+		zIndex: 5,
+		width: 28,
+		height: 42,
+	},
+	track: {
+		backgroundColor: 'secondary',
+		borderRadius: '1000px',
+		cursor: 'pointer',
+		height: '2px',
+	},
+	rail: {
+		cursor: 'pointer',
+		backgroundColor: 'muted',
+		height: '2px',
+	},
+};
 
 const componentsPreset = {
 	fonts: {
@@ -77,7 +106,26 @@ const componentsPreset = {
 		switch: {
 			thumb: 'secondary',
 		},
-		slider: {},
+		slider: {
+			...commonSliderProps,
+			disabled: mergeDeepRight(commonSliderProps, {
+				handle: {
+					backgroundColor: 'muted',
+				},
+				track: {
+					backgroundColor: 'muted',
+				},
+			}),
+			danger: mergeDeepRight(commonSliderProps, {
+				handle: {
+					backgroundColor: 'danger',
+				},
+
+				track: {
+					backgroundColor: 'danger',
+				},
+			}),
+		},
 		radio: {
 			'input:checked ~ &': {
 				color: 'secondary',

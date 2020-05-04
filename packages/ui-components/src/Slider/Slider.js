@@ -15,15 +15,10 @@ const Handle = ({
 	<Fragment>
 		<Box
 			sx={{
+				variant: `${variant}.handleTouch`,
 				left: `${percent}%`,
 				position: 'absolute',
 				transform: 'translate(-50%, -50%)',
-				WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-				zIndex: 5,
-				width: 28,
-				height: 42,
-				cursor: 'pointer',
-				backgroundColor: 'none',
 			}}
 			{...getHandleProps(id)}
 		/>
@@ -33,15 +28,11 @@ const Handle = ({
 			aria-valuemax={max}
 			aria-valuenow={value}
 			sx={{
+				variant: `${variant}.handle`,
 				left: `${percent}%`,
 				position: 'absolute',
 				transform: 'translate(-50%, -50%)',
 				zIndex: 2,
-				width: 24,
-				height: 24,
-				borderRadius: '50%',
-				backgroundColor:
-					variant === 'disabled' ? 'muted' : variant === 'danger' ? 'danger' : 'secondary',
 			}}
 		/>
 	</Fragment>
@@ -58,16 +49,12 @@ Handle.propTypes = {
 const Track = ({ source, target, getTrackProps, variant }) => (
 	<Box
 		sx={{
+			variant: `${variant}.track`,
 			position: 'absolute',
 			transform: 'translate(0%, -50%)',
-			height: '2px',
-			zIndex: 1,
-			backgroundColor:
-				variant === 'disabled' ? 'muted' : variant === 'danger' ? 'danger' : 'secondary',
-			borderRadius: '1000px',
-			cursor: 'pointer',
 			left: `${source.percent}%`,
 			width: `${target.percent - source.percent}%`,
+			zIndex: 1,
 		}}
 		{...getTrackProps()}
 	/>
@@ -80,27 +67,31 @@ Track.propTypes = {
 	variant: PropTypes.oneOf(['danger', 'disabled']),
 };
 
-const SliderRail = ({ getRailProps }) => (
+const SliderRail = ({ getRailProps, variant }) => (
 	<Box
 		sx={{
+			variant: `${variant}.rail`,
 			position: 'absolute',
 			width: '100%',
 			transform: 'translate(0%, -50%)',
-			cursor: 'pointer',
-			backgroundColor: 'muted',
-			height: '2px',
 		}}
 		{...getRailProps()}
 	/>
 );
 SliderRail.propTypes = {
 	getRailProps: PropTypes.func.isRequired,
+	variant: PropTypes.oneOf(['danger', 'disabled']),
 };
 
 const Slider = forwardRef(
-	({ disabled, step = 1, min, variant, max, onChange, onUpdate, value, ...rest }, ref) => {
+	(
+		{ disabled, step = 1, min, variant: variantProp, max, onChange, onUpdate, value, ...rest },
+		ref
+	) => {
 		invariant(isNotNil(min), '`min` is required for Slider component');
 		invariant(isNotNil(max), '`max` is required for Slider component');
+
+		const variant = !variantProp ? 'forms.slider' : `forms.slider.${variantProp}`;
 
 		const domain = [min, max];
 		return (
@@ -120,7 +111,9 @@ const Slider = forwardRef(
 				ref={ref}
 				{...rest}
 			>
-				<Rail>{({ getRailProps }) => <SliderRail getRailProps={getRailProps} />}</Rail>
+				<Rail>
+					{({ getRailProps }) => <SliderRail variant={variant} getRailProps={getRailProps} />}
+				</Rail>
 
 				<Handles>
 					{({ handles, getHandleProps }) => (
