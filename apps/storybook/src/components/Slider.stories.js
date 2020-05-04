@@ -18,7 +18,45 @@ export const basic = () => (
 				<Field initial={[10]}>
 					{({ set, value }) => (
 						<SliderField
-							label="Fill in loan amount"
+							label="One rail"
+							name="amount"
+							onChange={set}
+							value={value}
+							min={0}
+							max={100}
+							step={1}
+							hint="with hint"
+						/>
+					)}
+				</Field>
+			</Col>
+		</Row>
+
+		<Row>
+			<Col span={12}>
+				<Field initial={[10]}>
+					{({ set, value }) => (
+						<SliderField
+							label="With step"
+							name="amount"
+							onChange={set}
+							value={value}
+							min={0}
+							max={100}
+							step={10}
+							hint="with hint"
+						/>
+					)}
+				</Field>
+			</Col>
+		</Row>
+
+		<Row>
+			<Col span={12}>
+				<Field initial={[10, 90]}>
+					{({ set, value }) => (
+						<SliderField
+							label="Multiple rails"
 							name="amount"
 							onChange={set}
 							value={value}
@@ -37,26 +75,7 @@ export const basic = () => (
 				<Field initial={[10, 90]}>
 					{({ set, value }) => (
 						<SliderField
-							label="Fill in loan amount"
-							name="amount"
-							onChange={set}
-							value={value}
-							min={0}
-							max={100}
-							step={1}
-							hint="with hint"
-						/>
-					)}
-				</Field>
-			</Col>
-		</Row>
-
-		<Row>
-			<Col span={12}>
-				<Field initial={[10, 90]}>
-					{({ set, value }) => (
-						<SliderField
-							label="Select payment period"
+							label="Formatter"
 							name="paymentPeriod"
 							onChange={set}
 							value={value}
@@ -75,7 +94,7 @@ export const basic = () => (
 				<Field initial={[10, 90]}>
 					{({ set, value }) => (
 						<SliderField
-							label="Select payment interval"
+							label="Error"
 							name="paymentPeriod"
 							min={0}
 							max={100}
@@ -94,7 +113,7 @@ export const basic = () => (
 				<Field initial={[10, 50, 90]}>
 					{({ set, value }) => (
 						<SliderField
-							label="Select payment interval"
+							label="Disabled"
 							name="paymentPeriod"
 							min={0}
 							max={100}
