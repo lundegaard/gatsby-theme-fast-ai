@@ -9,8 +9,8 @@ export default {
 	decorators: [withKnobs],
 };
 
-const toPercent = x => `${(x * 100).toFixed(0)}`;
-const toPercentUnit = x => `${toPercent(x)}%`;
+const toPercent = (x) => `${(x * 100).toFixed(0)}`;
+const toPercentUnit = (x) => `${toPercent(x)}%`;
 
 const props = {
 	formatLegend: toPercent,
@@ -23,6 +23,7 @@ export const groups = () => (
 			<Gauge value={0} {...props} />
 			<Gauge value={1 / 3} {...props} />
 			<Gauge value={1} {...props} />
+			<Gauge variant="danger" value={1} {...props} />
 		</Flex>
 		<Flex justifyContent="space-between" flexWrap="wrap">
 			<Gauge

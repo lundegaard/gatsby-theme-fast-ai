@@ -1,17 +1,19 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { clamp, identity } from 'ramda';
+import { clamp, filter, identity, join, o, path } from 'ramda';
+import { useTheme } from 'emotion-theming';
 import { Transition } from 'react-transition-group';
 
 import Box from '../Box';
 import Text from '../Text';
 import { cos, sin } from '../utils/math';
 
-const getCirmcumference = radius => 2 * radius * Math.PI;
-const getArcCircumference = C => arcAngle => (arcAngle / 360) * C;
+const joinWithDash = o(join('-'), filter(Boolean));
+const getCirmcumference = (radius) => 2 * radius * Math.PI;
+const getArcCircumference = (C) => (arcAngle) => (arcAngle / 360) * C;
 
 const coord = (x, y) => ({ x, y });
-const equalCoord = x => ({ x, y: x });
+const equalCoord = (x) => ({ x, y: x });
 
 const getArcProps = ({ radius, arcAngle }) => {
 	const C = getCirmcumference(radius);
@@ -20,6 +22,23 @@ const getArcProps = ({ radius, arcAngle }) => {
 	const offset = C - CArc;
 
 	return { CArc, C, offset };
+};
+
+export const SvgGradient = ({ variant, ...rest }) => {
+	const theme = useTheme();
+	const gradient = path(['gauge', variant, 'gradient'].filter(Boolean))(theme);
+
+	return (
+		<linearGradient x1="0%" y1="0%" x2="100%" y2="0%" {...rest}>
+			{gradient.map(([offset, stopColor]) => (
+				<stop key={`${offset}-${stopColor}`} {...{ offset, stopColor }} />
+			))}
+		</linearGradient>
+	);
+};
+
+SvgGradient.propTypes = {
+	variant: PropTypes.string,
 };
 
 const Gauge = forwardRef(
@@ -38,6 +57,7 @@ const Gauge = forwardRef(
 			formatLegend = identity,
 			title,
 			legendProps: legendPropsProp,
+			variant,
 			...rest
 		},
 		ref
@@ -92,6 +112,8 @@ const Gauge = forwardRef(
 			exited: { strokeDashoffset: gaugeProps.C },
 		};
 
+		const gradientId = joinWithDash(['gradient-arc', variant]);
+
 		return (
 			<Box
 				ref={ref}
@@ -134,11 +156,7 @@ const Gauge = forwardRef(
 					}}
 				>
 					<defs>
-						<linearGradient id="gradient-arc" x1="0%" y1="0%" x2="100%" y2="0%">
-							<stop offset="0%" stopColor="#33D08E" />
-							<stop offset="33%" stopColor="#2AB0A2" />
-							<stop offset="100%" stopColor="#0018FF" />
-						</linearGradient>
+						<SvgGradient variant={variant} id={gradientId} />
 					</defs>
 
 					{title && <title>{title}</title>}
@@ -169,7 +187,7 @@ const Gauge = forwardRef(
 						cx={center.x}
 						cy={center.y}
 						r={radiusRim}
-						stroke="url(#gradient-arc)"
+						stroke={`url(#${gradientId})`}
 						strokeDasharray={rimProps.C}
 						strokeDashoffset={rimProps.offset}
 						{...circleProps}
@@ -179,14 +197,14 @@ const Gauge = forwardRef(
 						timeout={{ enter: animationDuration, exit: animationDuration }}
 						appear
 					>
-						{state => (
+						{(state) => (
 							<Box
 								as="circle"
 								cx={center.x}
 								cy={center.y}
 								r={radiusGauge}
 								opacity={1 / 3}
-								stroke="url(#gradient-arc)"
+								stroke={`url(#${gradientId})`}
 								strokeWidth={gaugeStrokeWidth}
 								strokeDasharray={gaugeProps.C}
 								__css={{
@@ -219,5 +237,6 @@ Gauge.propTypes = {
 	title: PropTypes.string,
 	value: PropTypes.number,
 	valueProps: PropTypes.object,
+	variant: PropTypes.string,
 };
 export default Gauge;

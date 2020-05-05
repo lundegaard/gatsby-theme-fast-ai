@@ -17,6 +17,19 @@ letterSpacings.normal = letterSpacings[1];
 
 const lightGray = '#e7e7e7';
 const gray = '#b4b4b4';
+const colors = {
+	background: '#f6f6f6',
+	primary: '#0018ff',
+	secondary: '#33d08e',
+	muted: '#e7e7e7',
+	contrast: '#ffffff',
+	body: '#3b3b3b',
+	danger: '#ff0000',
+	success: '#00ff00',
+	gray,
+	lightGray,
+	highlight: 'hsla(205, 100%, 40%, 0.125)',
+};
 
 const transparentStripesColor = color(lightGray);
 
@@ -57,6 +70,7 @@ const commonSliderProps = {
 };
 
 const componentsPreset = {
+	useCustomProperties: true,
 	fonts: {
 		body: 'Roboto',
 		heading: 'Open Sans',
@@ -75,18 +89,7 @@ const componentsPreset = {
 			},
 		},
 	},
-	colors: {
-		background: '#f6f6f6',
-		primary: '#0018ff',
-		secondary: '#33d08e',
-		muted: '#e7e7e7',
-		contrast: '#ffffff',
-		body: '#3b3b3b',
-		danger: '#ff0000',
-		gray,
-		lightGray,
-		highlight: 'hsla(205, 100%, 40%, 0.125)',
-	},
+	colors,
 	letterSpacings: ['-.5px', '0'],
 	forms: {
 		input: {
@@ -133,6 +136,27 @@ const componentsPreset = {
 			'input:focus ~ &': {
 				color: 'secondary',
 			},
+		},
+	},
+	gauge: {
+		gradient: [
+			['0%', '#33D08E'], //
+			['33%', '#2AB0A2'],
+			['100%', '#0018FF'],
+		],
+		danger: {
+			gradient: [
+				['0%', colors.danger],
+				['33%', colors.danger],
+				['100%', '#33D08E'], //
+			],
+		},
+		revert: {
+			gradient: [
+				['0%', '#0018FF'],
+				['33%', '#2AB0A2'],
+				['100%', '#33D08E'], //
+			],
 		},
 	},
 	hamburger: {
