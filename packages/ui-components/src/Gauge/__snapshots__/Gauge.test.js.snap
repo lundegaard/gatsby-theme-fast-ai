@@ -44,26 +44,9 @@ exports[`<Gauge /> matches snapshot when shallowly rendered 1`] = `
     width={256}
   >
     <defs>
-      <linearGradient
+      <SvgGradient
         id="gradient-arc"
-        x1="0%"
-        x2="100%"
-        y1="0%"
-        y2="0%"
-      >
-        <stop
-          offset="0%"
-          stopColor="#33D08E"
-        />
-        <stop
-          offset="33%"
-          stopColor="#2AB0A2"
-        />
-        <stop
-          offset="100%"
-          stopColor="#0018FF"
-        />
-      </linearGradient>
+      />
     </defs>
     <Text
       as="text"
