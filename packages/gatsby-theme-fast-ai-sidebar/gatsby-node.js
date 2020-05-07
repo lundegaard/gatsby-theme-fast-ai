@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
 						}
 						frontmatter {
 							title
+							description
 							tableOfContentsDepth
 							disableTableOfContents
 						}
@@ -29,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	const pages = result.data.allMdx.edges;
 
-	pages.forEach(page => {
+	pages.forEach((page) => {
 		const mdxPage = require.resolve('./src/templates/MdxPage.js');
 
 		createPage({

@@ -46,11 +46,11 @@ const SuperField = ({ id: idProp, hasError, disabled, readOnly, children }) => {
 						if (hasError) {
 							return 'danger';
 						} else if (disabled) {
-							return 'gray';
+							return 'gray.2';
 						} else if (isLabelShrank) {
 							return 'inherit';
 						} else {
-							return 'gray';
+							return 'gray.2';
 						}
 					})(),
 				}}

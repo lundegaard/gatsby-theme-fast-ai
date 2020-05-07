@@ -23,7 +23,7 @@ exports[`<SuperField /> matches snapshot when shallowly rendered 1`] = `
   <Box
     sx={
       Object {
-        "color": "gray",
+        "color": "gray.2",
         "fontFamily": "body",
         "position": "relative",
         "pt": 3,

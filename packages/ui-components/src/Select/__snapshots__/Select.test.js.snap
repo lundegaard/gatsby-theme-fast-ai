@@ -19,7 +19,7 @@ exports[`<Select /> matches snapshot when shallowly rendered 1`] = `
         "transition": "transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms",
       },
       "&:before": Object {
-        "borderBottomColor": "lightGray",
+        "borderBottomColor": "muted",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "1px",
         "bottom": 0,

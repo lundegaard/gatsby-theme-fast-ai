@@ -10,8 +10,8 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
-			entries => {
-				entries.forEach(entry => {
+			(entries) => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						setActiveHash(entry.target.id);
 					}
@@ -21,12 +21,12 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
 		);
 
 		const ids = itemIds;
-		ids.forEach(id => {
+		ids.forEach((id) => {
 			observer.observe(document.getElementById(id));
 		});
 
 		return () => {
-			ids.forEach(id => {
+			ids.forEach((id) => {
 				observer.unobserve(document.getElementById(id));
 			});
 		};
@@ -78,7 +78,7 @@ const getNav = ({
 
 const getHeadingIds = (items, traverseFullDepth = true, depth, recursionDepth = 1) => {
 	const idList = [];
-	const hashToId = str => str.slice(1);
+	const hashToId = (str) => str.slice(1);
 
 	if (items) {
 		for (const item of items) {
@@ -114,6 +114,7 @@ const TableOfContents = ({ sx, location, items, maxDepth: maxDepthProp, ...rest 
 				'li > ul > li > a': {
 					pl: '24px',
 				},
+				color: ['body', 'body', 'body', 'gray.3'],
 				borderBottomColor: ['secondary', 'secondary', 'secondary', 'transparent'],
 				borderBottomStyle: 'solid',
 				borderBottomWidth: '1px',
@@ -123,7 +124,7 @@ const TableOfContents = ({ sx, location, items, maxDepth: maxDepthProp, ...rest 
 			}}
 			{...rest}
 		>
-			<Text>Table of Contents</Text>
+			<Text fontWeight="normal">Table of Contents</Text>
 			{getNav({ items, depth: 1, shouldUseDesktopNavigation, location, maxDepth, activeHash })}
 		</Box>
 	) : null;
