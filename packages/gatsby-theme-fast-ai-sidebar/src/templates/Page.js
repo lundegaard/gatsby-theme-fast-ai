@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { isNilOrEmpty } from 'ramda-extension';
 import { Box, Flex } from '@fast-ai/ui-components';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
 
@@ -10,7 +11,7 @@ import ContentContainer from '../components/ContentContainer';
 import { links } from '../links';
 import { getSublinks } from '../utils';
 
-const Root = props => (
+const Root = (props) => (
 	<Box
 		variant="stripes"
 		backgroundColor="background"
@@ -34,11 +35,15 @@ const Page = ({ children, location, fullWidth: fullWidthProp }) => {
 		<IntlContextConsumer>
 			{({ originalPath }) => {
 				const sublinks = getSublinks(links, originalPath);
-				// const fullWidth = !sublinks;
 
 				return (
 					<Root>
-						<Header fullWidth={fullWidth} nav={nav} links={links} menu={menu} setMenu={setMenu} />
+						<Header
+							fullWidth={fullWidth || isNilOrEmpty(sublinks)}
+							nav={nav}
+							menu={menu}
+							setMenu={setMenu}
+						/>
 
 						<Flex>
 							{!fullWidth && <Sidebar menu={menu} setMenu={setMenu} nav={nav} links={sublinks} />}
