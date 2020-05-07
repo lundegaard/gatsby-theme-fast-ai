@@ -163,6 +163,10 @@ const componentsPreset = {
 			},
 		},
 	},
+	grid: {
+		maxColumns: 12,
+		gutters: [2, 3, 4],
+	},
 	gauge: {
 		gradient: [
 			['0%', '#33D08E'], //

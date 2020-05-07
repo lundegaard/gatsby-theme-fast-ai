@@ -5,11 +5,11 @@ import useTheme from '../hooks/useTheme';
 import Box from '../Box';
 
 const Container = ({ fullWidth, ...rest }) => {
-	const { breakpoints } = useTheme();
+	const { grid: { gutters = 2 } = {}, breakpoints } = useTheme();
 
 	return (
 		<Box
-			px={2}
+			px={gutters}
 			mx="auto"
 			width={1}
 			sx={{ maxWidth: fullWidth || !breakpoints ? 'none' : ['none', ...breakpoints] }}

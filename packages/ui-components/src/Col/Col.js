@@ -1,16 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isNil } from 'ramda';
 
 import mapResponsiveProperty from '../utils/mapResponsiveProperty';
 import * as Types from '../types';
 import Box from '../Box';
+import useTheme from '../hooks/useTheme';
 
-const spanToWidth = maxColumns => columnSpan => columnSpan / maxColumns;
+const spanToWidth = (maxColumns) => (columnSpan) => columnSpan / maxColumns;
 
-// TODO: maxColumns and gutters theamable
-const Col = ({ span, maxColumns = 12, ...rest }) => (
-	<Box px={2} width={mapResponsiveProperty(spanToWidth(maxColumns), span)} {...rest} />
-);
+const Col = ({ span, maxColumns: maxColumnsProp, ...rest }) => {
+	const { grid: { gutters, maxColumns } = {} } = useTheme();
+
+	return (
+		<Box
+			px={gutters}
+			width={mapResponsiveProperty(
+				spanToWidth(isNil(maxColumnsProp) ? maxColumns : maxColumnsProp),
+				span
+			)}
+			{...rest}
+		/>
+	);
+};
 
 Col.propTypes = {
 	maxColumns: PropTypes.number,

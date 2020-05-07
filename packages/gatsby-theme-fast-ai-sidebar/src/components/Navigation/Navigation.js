@@ -65,7 +65,9 @@ const Navigation = ({ fullWidth, nav, menu, setMenu }) => (
 							return;
 						}
 						const navlink = nav.current.querySelector('a');
-						navlink.focus();
+						if (navlink) {
+							navlink.focus();
+						}
 					}}
 				/>
 			</Box>

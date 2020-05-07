@@ -1,9 +1,9 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { clamp, filter, identity, join, o, path } from 'ramda';
-import { useTheme } from 'emotion-theming';
 import { Transition } from 'react-transition-group';
 
+import useTheme from '../hooks/useTheme';
 import Box from '../Box';
 import Text from '../Text';
 import { cos, sin } from '../utils/math';
