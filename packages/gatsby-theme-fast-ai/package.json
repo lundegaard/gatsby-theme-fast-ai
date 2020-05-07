@@ -1,6 +1,6 @@
 {
 	"name": "gatsby-theme-fast-ai",
-	"version": "0.13.0",
+	"version": "0.14.0",
 	"main": "index.js",
 	"author": "Tomas Konrady <tomaskonrady@gmail.com>",
 	"license": "MIT",
@@ -10,8 +10,8 @@
 	},
 	"dependencies": {
 		"@emotion/core": "^10.0.0",
-		"@fast-ai/gatsby-plugin-setup": "^0.13.0",
-		"@fast-ai/ui-components": "^0.13.0",
+		"@fast-ai/gatsby-plugin-setup": "^0.14.0",
+		"@fast-ai/ui-components": "^0.14.0",
 		"@mdx-js/mdx": "^1.5.9",
 		"@mdx-js/react": "^1.5.9",
 		"fontfaceobserver": "^2.1.0",
