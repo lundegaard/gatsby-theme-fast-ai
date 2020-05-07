@@ -22,21 +22,22 @@ const letterSpacings = {
 };
 const fontWeights = { body: 400, heading: 800, bold: 700 };
 
+const gray = [null, '#e7e7e7', '#b4b4b4', '#737373'];
+
 const colors = {
 	background: '#f6f6f6',
 	primary: '#0018ff',
 	secondary: '#33d08e',
-	muted: '#e7e7e7',
 	contrast: '#ffffff',
 	body: '#3b3b3b',
 	danger: '#ff0000',
 	success: '#00ff00',
-	gray: '#b4b4b4',
-	lightGray: '#e7e7e7',
+	gray,
+	muted: gray[1],
 	highlight: 'hsla(205, 100%, 40%, 0.125)',
 };
 
-const transparentStripesColor = color(colors.lightGray);
+const transparentStripesColor = color(colors.gray[1]);
 
 const getStripesGradient = (width, alpha = 1) =>
 	`repeating-linear-gradient(
@@ -90,7 +91,7 @@ const componentsPreset = {
 			textTransform: 'uppercase',
 			py: 3,
 			'&:disabled, &[disabled]': {
-				color: 'gray',
+				color: 'gray.2',
 				opacity: 0.5,
 			},
 		},
@@ -215,12 +216,12 @@ const componentsPreset = {
 			},
 		},
 		disabled: {
-			color: 'gray',
+			color: 'gray.2',
 			'input:checked ~ *': {
-				color: 'gray',
+				color: 'gray.2',
 			},
 			'input:focus ~ *': {
-				color: 'gray',
+				color: 'gray.2',
 			},
 		},
 		secondary: {

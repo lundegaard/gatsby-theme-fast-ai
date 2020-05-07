@@ -36,7 +36,7 @@ const Select = forwardRef((props, ref) => {
 	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } = useSuperFieldContext();
 
 	const checkDirty = useCallback(
-		value => {
+		(value) => {
 			if (isInputValueEmpty(value)) {
 				onEmpty();
 			} else {
@@ -52,7 +52,7 @@ const Select = forwardRef((props, ref) => {
 
 	const handleChange = disabled ? noop : onChange;
 
-	const handleFocus = event => {
+	const handleFocus = (event) => {
 		if (disabled) {
 			return;
 		}
@@ -60,7 +60,7 @@ const Select = forwardRef((props, ref) => {
 		return onFocusProp(event);
 	};
 
-	const handleBlur = event => {
+	const handleBlur = (event) => {
 		if (disabled) {
 			return;
 		}
@@ -76,7 +76,7 @@ const Select = forwardRef((props, ref) => {
 					</option>
 			  )
 			: identity,
-		map(item => (
+		map((item) => (
 			<option key={getValue(item)} value={getValue(item)}>
 				{getLabel(item)}
 			</option>
@@ -96,7 +96,7 @@ const Select = forwardRef((props, ref) => {
 					right: 0,
 					borderBottomStyle: 'solid',
 					borderBottomWidth: '1px',
-					borderBottomColor: 'lightGray',
+					borderBottomColor: 'muted',
 					pointerEvents: 'none',
 				},
 				'&:hover:before': {

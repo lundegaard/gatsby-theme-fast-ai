@@ -15,8 +15,8 @@ const placeholderVisible = {
 	opacity: 0.5,
 };
 
-const mergeRefs = refs => value => {
-	refs.filter(Boolean).forEach(ref => (isFunction(ref) ? ref(value) : (ref.current = value)));
+const mergeRefs = (refs) => (value) => {
+	refs.filter(Boolean).forEach((ref) => (isFunction(ref) ? ref(value) : (ref.current = value)));
 };
 
 const autofill = keyframes`
@@ -33,7 +33,7 @@ const getBorderColor = ({ hasError, readOnly, disabled }) => {
 	if (hasError) {
 		return 'danger';
 	} else if (disabled || readOnly) {
-		return 'lightGray';
+		return 'muted';
 	} else {
 		return 'secondary';
 	}
@@ -56,7 +56,7 @@ const Input = forwardRef((props, ref) => {
 	} = props;
 
 	const checkDirty = useCallback(
-		value => {
+		(value) => {
 			if (isInputValueEmpty(value)) {
 				onEmpty();
 			} else {
@@ -70,13 +70,13 @@ const Input = forwardRef((props, ref) => {
 		checkDirty(value);
 	}, [checkDirty, value]);
 
-	const handleAutoFill = event => {
+	const handleAutoFill = (event) => {
 		// Provide a fake value as Chrome might not let you access it for security reasons.
 		checkDirty(
 			event.animationName.indexOf(autofillCancel.name) !== -1 ? inputRef.current.value : 'x'
 		);
 	};
-	const handleFocus = event => {
+	const handleFocus = (event) => {
 		if (disabled) {
 			return;
 		}
@@ -84,7 +84,7 @@ const Input = forwardRef((props, ref) => {
 		return onFocusProp(event);
 	};
 
-	const handleBlur = event => {
+	const handleBlur = (event) => {
 		if (disabled) {
 			return;
 		}
@@ -107,11 +107,11 @@ const Input = forwardRef((props, ref) => {
 					right: 0,
 					borderBottomStyle: 'solid',
 					borderBottomWidth: '1px',
-					borderBottomColor: 'lightGray',
+					borderBottomColor: 'muted',
 					pointerEvents: 'none',
 				},
 				'&:hover:before': {
-					borderBottomColor: disabled ? 'lightGray' : 'gray',
+					borderBottomColor: disabled ? 'muted' : 'gray.2',
 				},
 				'&:after': {
 					content: '"\u00a0"',
