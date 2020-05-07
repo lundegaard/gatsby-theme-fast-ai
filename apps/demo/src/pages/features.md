@@ -256,6 +256,3 @@ Smart Features names can consist also suffix notation. Suffix denotes how given 
 |person_email_credible|INT|The level of quality of the user's email address. Range from 0 (worst - corrupted or disposable email) to 3 (best - contains part of name or surname).|3|v2.00.0|
 |person_email_disposable_domain|BOOL|Indicates that the email address was found on the list of disposables and temporary domain address.|True|v2.00.0|
 |person_gender|STRING|Person's gender derived from birth number.|male|v2.00.0|
-|person_insolvency_isir|BOOL|Indicates that the person was found in the insolvency register.|False|v2.00.0|
-
-Automatically generated on 01-31-2020

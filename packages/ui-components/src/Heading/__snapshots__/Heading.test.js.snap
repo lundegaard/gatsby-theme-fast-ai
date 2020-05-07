@@ -3,7 +3,6 @@
 exports[`<Heading /> matches snapshot when shallowly rendered 1`] = `
 <ForwardRef
   as="h1"
-  fontFamily="heading"
   fontSize={
     Array [
       7,
@@ -11,7 +10,6 @@ exports[`<Heading /> matches snapshot when shallowly rendered 1`] = `
       9,
     ]
   }
-  fontWeight="800"
   mb={
     Array [
       5,

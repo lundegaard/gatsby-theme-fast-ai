@@ -11,12 +11,17 @@ breakpoints.sm = breakpoints[0];
 breakpoints.md = breakpoints[1];
 breakpoints.lg = breakpoints[2];
 
-const letterSpacings = ['-.5px', '0'];
-letterSpacings.mono = letterSpacings[0];
-letterSpacings.normal = letterSpacings[1];
+const letterSpacings = {
+	tighter: '-0.05em',
+	tight: '-0.025em',
+	mono: '-0.025em',
+	normal: '0',
+	wide: '0.025em',
+	wider: '0.05em',
+	widest: '0.1em',
+};
+const fontWeights = { body: 400, heading: 800, bold: 700 };
 
-const lightGray = '#e7e7e7';
-const gray = '#b4b4b4';
 const colors = {
 	background: '#f6f6f6',
 	primary: '#0018ff',
@@ -26,12 +31,12 @@ const colors = {
 	body: '#3b3b3b',
 	danger: '#ff0000',
 	success: '#00ff00',
-	gray,
-	lightGray,
+	gray: '#b4b4b4',
+	lightGray: '#e7e7e7',
 	highlight: 'hsla(205, 100%, 40%, 0.125)',
 };
 
-const transparentStripesColor = color(lightGray);
+const transparentStripesColor = color(colors.lightGray);
 
 const getStripesGradient = (width, alpha = 1) =>
 	`repeating-linear-gradient(
@@ -77,6 +82,7 @@ const componentsPreset = {
 		mono: 'Roboto Mono',
 	},
 	breakpoints,
+	fontWeights,
 	space,
 	fontSizes,
 	buttons: {
@@ -88,9 +94,28 @@ const componentsPreset = {
 				opacity: 0.5,
 			},
 		},
+		secondary: {
+			bg: 'secondary',
+			color: 'background',
+			variant: 'buttons.primary',
+		},
+		outline: {
+			bg: 'transparent',
+			boxShadow: 'inset 0 0 2px',
+			color: 'primary',
+			variant: 'buttons.primary',
+		},
 	},
+	radii: { default: 4, circle: 99999 },
 	colors,
-	letterSpacings: ['-.5px', '0'],
+	letterSpacings,
+	text: {
+		heading: {
+			fontFamily: 'heading',
+			fontWeight: 'heading',
+			letterSpacing: 'tighter',
+		},
+	},
 	forms: {
 		input: {
 			fontFamily: 'body',
