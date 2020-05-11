@@ -61,7 +61,7 @@ const getNav = ({
 					{title}
 				</Link>
 				{items &&
-					depth <= maxDepth &&
+					depth < maxDepth &&
 					getNav({
 						location,
 						items,
