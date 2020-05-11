@@ -16,12 +16,12 @@ const MdxPage = ({ location, data: { mdx }, ...rest }) => (
 		<Page location={location} fullWidth={mdx.frontmatter.fullWidth} {...rest}>
 			<Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
 			<Row>
-				<Col span={{ _: 12, lg: 8 }}>
+				<Col span={{ _: 12, lg: 9 }}>
 					<H1 mb={2}>{mdx.frontmatter.title}</H1>
 				</Col>
 			</Row>
 			<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>
-				<Col span={{ _: 12, lg: 4 }}>
+				<Col span={{ _: 12, lg: 3 }}>
 					{!mdx.frontmatter.disableTableOfContents && (
 						<TableOfContents
 							maxDepth={mdx.frontmatter.tableOfContentsDepth}
@@ -35,7 +35,7 @@ const MdxPage = ({ location, data: { mdx }, ...rest }) => (
 						/>
 					)}
 				</Col>
-				<Col span={{ _: 12, lg: 8 }}>
+				<Col span={{ _: 12, lg: 9 }}>
 					<MDXRenderer>{mdx.body}</MDXRenderer>
 				</Col>
 			</Row>

@@ -37,17 +37,10 @@ export const Table = (props) => (
 			px: 1,
 		}}
 	>
-		<Box
-			as="table"
-			sx={{
-				minWidth: '100%',
-			}}
-			variant="table"
-			{...props}
-		/>
+		<Box as="table" variant="table" {...props} />
 	</Box>
 );
-export const TableHead = (props) => <Box as="th" variant="tableCol" {...props} />;
+export const TableHeader = (props) => <Box as="th" variant="tableHeader" {...props} />;
 export const TableRow = (props) => <Box as="tr" variant="tableRow" {...props} />;
 export const TableCol = (props) => <Box as="td" variant="tableCol" {...props} />;
 
@@ -151,7 +144,7 @@ export const components = {
 	pre: HighlightedCode,
 	inlineCode: Code,
 	table: Table,
-	th: TableHead,
+	th: TableHeader,
 	tr: TableRow,
 	td: TableCol,
 	li: Li,

@@ -258,18 +258,56 @@ const componentsPreset = {
 		},
 		table: {
 			overflowX: 'auto',
-			border: '1px solid',
+			borderColor: 'transparent',
 			borderCollapse: 'collapse',
+			minWidth: '100%',
+			tr: {
+				border: 'none',
+				'&:hover td': {
+					bg: 'white',
+				},
+				td: {
+					bg: 'background',
+				},
+				'&:nth-child(2n) td': {
+					bg: 'gray.1',
+				},
+				'&:nth-child(2n):hover td': {
+					bg: 'white',
+				},
+			},
+			th: {
+				fontSize: [3, 4, 5],
+			},
 		},
 		tableCol: {
-			p: [1, 2],
-			border: '1px solid',
+			px: [1, 2],
+			py: 2,
 			fontSize: [0, 1, 2],
+			maxWidth: '400px',
 			wordWrap: 'break-word',
-			maxWidth: '240px',
+			borderBottomWidth: '1px',
+			borderBottomStyle: 'solid',
+			borderBottomColor: 'gray.2',
+		},
+		tableHeader: {
+			variant: 'variants.tableCol',
+			py: [2, 4],
+			borderBottomWidth: '2px',
+			borderBottomStyle: 'solid',
+			borderBottomColor: 'gray.3',
+			textAlign: 'left',
 		},
 		tableRow: {
-			border: '1px solid',
+			borderTopWidth: '1px',
+			borderTopStyle: 'solid',
+			borderTopColor: 'gray.2',
+		},
+		links: {
+			color: 'primary',
+			':hover,:focus,.active': {
+				color: 'primary',
+			},
 		},
 	},
 };
