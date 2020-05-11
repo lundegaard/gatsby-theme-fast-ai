@@ -51,7 +51,7 @@ const Sidebar = ({ nav, menu, setMenu, links }) => (
 			top: 0,
 			left: 0,
 			bottom: [0, 'auto'],
-			width: [256, 256, 320],
+			width: [256, 256, 256, 256, 320],
 			minWidth: 0,
 			maxHeight: ['100vh', 'none'],
 			overflowY: 'auto',
