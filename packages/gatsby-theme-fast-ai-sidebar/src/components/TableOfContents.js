@@ -21,13 +21,17 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
 		);
 
 		const ids = itemIds;
-		ids.forEach((id) => {
-			observer.observe(document.getElementById(id));
+		const elements = ids.map((id) => document.getElementById(id));
+
+		elements.forEach((element) => {
+			observer.observe(element);
 		});
 
 		return () => {
-			ids.forEach((id) => {
-				observer.unobserve(document.getElementById(id));
+			elements.forEach((element) => {
+				if (element) {
+					observer.unobserve(element);
+				}
 			});
 		};
 	}, [itemIds, rootMargin]);
