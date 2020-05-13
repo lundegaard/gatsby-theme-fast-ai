@@ -6,8 +6,10 @@ export { default as Page } from './src/templates/Page';
 
 export { default as MdxPage } from './src/templates/MdxPage';
 
-export { default as Link } from './src/components/Link';
+export { default as Link, NoIntlLink } from './src/components/Link';
 
 export { default as Match } from './src/components/Match';
 
 export { default as Seo } from './src/components/Seo';
+
+export { default as HighlightedCode } from './src/components/HighlightedCode';

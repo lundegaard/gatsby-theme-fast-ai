@@ -13,4 +13,12 @@ export default defineMessages({
 		id: 'siteMetadata.author',
 		defaultMessage: '',
 	},
+	copy: {
+		id: 'themeSidebar.copy',
+		defaultMessage: 'Copy',
+	},
+	copied: {
+		id: 'themeSidebar.copied',
+		defaultMessage: 'Copied',
+	},
 });
