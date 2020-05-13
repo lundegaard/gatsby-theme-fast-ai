@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from 'prism-react-renderer/themes/duotoneLight';
 import { pathOr } from 'ramda';
 import { Box, Heading, Image, Link, Text } from '@fast-ai/ui-components';
 
+
 import warning from '../content/assets/exclamation-triangle.svg';
 import info from '../content/assets/info-circle.svg';
+
+import HighlightedCode from './components/HighlightedCode';
 
 const HeadingDivider = (props) => (
 	<Box sx={{ my: 3, height: '4px', bg: 'secondary', width: 'calc(3rem)' }} {...props} />
@@ -54,47 +55,10 @@ export const Code = (props) => (
 		{...props}
 	/>
 );
-export const CodeBox = (props) => <Box as="pre" p={[2, 3, 4]} {...props} />;
 
 export const getClassName = pathOr('', ['children', 'props', 'className']);
 export const getChildren = pathOr('', ['children', 'props', 'children']);
 export const getLanguage = pathOr('', ['groups', 'lang']);
-
-export const HighlightedCode = (props) => {
-	const className = getClassName(props);
-	const children = getChildren(props);
-	const matches = className.match(/language-(?<lang>.*)/);
-	const language = getLanguage(matches);
-
-	return (
-		<Highlight
-			{...defaultProps}
-			theme={{ ...prismTheme, plain: { ...prismTheme.plain, backgroundColor: '#fff' } }}
-			code={children.trim()}
-			language={language}
-		>
-			{({ style, tokens, getLineProps, getTokenProps }) => (
-				<CodeBox
-					sx={{
-						...style,
-						fontSize: 1,
-						maxWidth: '100%',
-						overflowX: 'visible',
-						overflowY: 'hidden',
-					}}
-				>
-					{tokens.map((line, i) => (
-						<Box {...getLineProps({ line, key: i })}>
-							{line.map((token, key) => (
-								<Box as="span" {...getTokenProps({ token, key })} />
-							))}
-						</Box>
-					))}
-				</CodeBox>
-			)}
-		</Highlight>
-	);
-};
 
 const InfoBox = (props) => (
 	<Box
