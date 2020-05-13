@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { pathOr } from 'ramda';
-import { Box, Heading, Image, Link, Text } from '@fast-ai/ui-components';
-
+import { Box, Heading, Image, Text } from '@fast-ai/ui-components';
 
 import warning from '../content/assets/exclamation-triangle.svg';
 import info from '../content/assets/info-circle.svg';
 
 import HighlightedCode from './components/HighlightedCode';
+import MdxLink from './components/MdxLink';
 
 const HeadingDivider = (props) => (
 	<Box sx={{ my: 3, height: '4px', bg: 'secondary', width: 'calc(3rem)' }} {...props} />
@@ -103,7 +103,7 @@ export const components = {
 	h4: H5,
 	h5: H6,
 	p: Text,
-	a: Link,
+	a: MdxLink,
 	img: Image,
 	pre: HighlightedCode,
 	inlineCode: Code,
