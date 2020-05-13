@@ -8,6 +8,7 @@ const siteMetadata = {
 
 module.exports = {
 	siteMetadata,
+	pathPrefix: '/docs',
 	plugins: [
 		{
 			resolve: require.resolve('gatsby-theme-fast-ai-sidebar'),
