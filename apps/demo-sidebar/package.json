@@ -13,8 +13,8 @@
 		"start": "gatsby clean && gatsby develop",
 		"develop": "gatsby develop",
 		"clean": "gatsby clean",
-		"build": "gatsby clean && gatsby build",
-		"serve": "gatsby serve"
+		"build": "gatsby clean && gatsby build --prefix-paths",
+		"serve": "gatsby serve --prefix-paths"
 	},
 	"dependencies": {
 		"@emotion/core": "^10.0.0",

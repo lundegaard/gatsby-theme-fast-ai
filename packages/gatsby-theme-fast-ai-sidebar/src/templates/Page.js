@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { withPrefix } from 'gatsby';
 import { isNilOrEmpty } from 'ramda-extension';
 import { Box, Flex } from '@fast-ai/ui-components';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
@@ -29,7 +30,7 @@ const Page = ({ children, location, fullWidth: fullWidthProp }) => {
 	const [menu, setMenu] = useState(true);
 	const nav = useRef(null);
 
-	const fullWidth = fullWidthProp || (location && location.pathname === '/');
+	const fullWidth = fullWidthProp || (location && location.pathname === withPrefix('/'));
 
 	return (
 		<IntlContextConsumer>
