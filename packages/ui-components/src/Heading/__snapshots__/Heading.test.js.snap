@@ -3,18 +3,5 @@
 exports[`<Heading /> matches snapshot when shallowly rendered 1`] = `
 <ForwardRef
   as="h1"
-  fontSize={
-    Array [
-      7,
-      8,
-      9,
-    ]
-  }
-  mb={
-    Array [
-      5,
-      6,
-    ]
-  }
 />
 `;

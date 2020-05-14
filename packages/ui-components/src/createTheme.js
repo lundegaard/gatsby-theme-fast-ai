@@ -37,6 +37,13 @@ const colors = {
 	highlight: 'hsla(205, 100%, 40%, 0.125)',
 };
 
+const commonHeadingProps = {
+	fontFamily: 'heading',
+	fontWeight: 'heading',
+	letterSpacing: 'tighter',
+	pt: [5],
+};
+
 const transparentStripesColor = color(colors.gray[1]);
 
 const getStripesGradient = (width, alpha = 1) =>
@@ -111,10 +118,45 @@ const componentsPreset = {
 	colors,
 	letterSpacings,
 	text: {
+		body: {
+			fontFamily: 'body',
+			lineHeight: 'body',
+			fontSize: [2, 2, 2, 4],
+		},
 		heading: {
-			fontFamily: 'heading',
-			fontWeight: 'heading',
-			letterSpacing: 'tighter',
+			...commonHeadingProps,
+			fontSize: [7, 7, 8, 9],
+			mt: [0],
+			mb: [2, 2, 4, 5],
+			pt: [0],
+		},
+		subHeading1: {
+			...commonHeadingProps,
+			fontSize: [3, 4, 7],
+			mb: [3, 3],
+		},
+		subHeading2: {
+			...commonHeadingProps,
+			fontSize: [4, 5, 6],
+			mb: [2, 2],
+		},
+		subHeading3: {
+			...commonHeadingProps,
+			fontSize: [3, 4, 4],
+			mb: [2, 2],
+		},
+		subHeading4: {
+			...commonHeadingProps,
+			fontSize: [3, 4, 4],
+			fontWeight: 'normal',
+			mb: [3, 3],
+		},
+		subHeading5: {
+			...commonHeadingProps,
+			variant: 'heading',
+			fontWeight: 'bold',
+			fontSize: [2, 2, 2, 2],
+			mb: [1, 1],
 		},
 	},
 	forms: {
