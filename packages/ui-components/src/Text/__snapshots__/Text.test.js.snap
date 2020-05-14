@@ -2,15 +2,6 @@
 
 exports[`<Text /> matches snapshot when shallowly rendered 1`] = `
 <ForwardRef
-  as="p"
-  fontSize={
-    Array [
-      2,
-      2,
-      2,
-      4,
-    ]
-  }
-  mb="3"
+  variant="body"
 />
 `;

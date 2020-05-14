@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { MDXProvider } from '@mdx-js/react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Col, Row } from '@fast-ai/ui-components';
+import { Col, Heading, Row } from '@fast-ai/ui-components';
 
 import TableOfContents from '../components/TableOfContents';
 import Seo from '../components/Seo';
-import { H1, components } from '../mdxComponents';
+import { components } from '../mdxComponents';
 
 import Page from './Page';
 
@@ -17,7 +17,7 @@ const MdxPage = ({ location, data: { mdx }, ...rest }) => (
 			<Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
 			<Row>
 				<Col span={{ _: 12, lg: 9 }}>
-					<H1 mb={2}>{mdx.frontmatter.title}</H1>
+					<Heading>{mdx.frontmatter.title}</Heading>
 				</Col>
 			</Row>
 			<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>

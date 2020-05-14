@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { pathOr } from 'ramda';
 import { Box, Heading, Image, Text } from '@fast-ai/ui-components';
 
 import warning from '../content/assets/exclamation-triangle.svg';
@@ -10,21 +9,23 @@ import HighlightedCode from './components/HighlightedCode';
 import MdxLink from './components/MdxLink';
 
 const HeadingDivider = (props) => (
-	<Box sx={{ my: 3, height: '4px', bg: 'secondary', width: 'calc(3rem)' }} {...props} />
+	<Box
+		sx={{ bottom: 0, left: 0, height: '4px', bg: 'secondary', width: 'calc(3rem)' }}
+		{...props}
+	/>
 );
 const HeadingWithDivider = (props) => (
-	<Fragment>
+	<Box sx={{ position: 'relative', mb: [3, 3] }}>
 		<Heading {...props} />
 		<HeadingDivider />
-	</Fragment>
+	</Box>
 );
 
-export const H1 = (props) => <Heading as="h1" {...props} />;
-export const H2 = (props) => <HeadingWithDivider as="h2" {...props} />;
-export const H3 = (props) => <Heading as="h3" {...props} />;
-export const H4 = (props) => <Heading as="h4" {...props} />;
-export const H5 = (props) => <Heading as="h5" {...props} />;
-export const H6 = (props) => <Heading as="h6" {...props} />;
+export const H1 = (props) => <HeadingWithDivider as="h2" variant="subHeading1" {...props} />;
+export const H2 = (props) => <Heading as="h3" variant="subHeading2" {...props} />;
+export const H3 = (props) => <Heading as="h4" variant="subHeading3" {...props} />;
+export const H4 = (props) => <Heading as="h5" variant="subHeading4" {...props} />;
+export const H5 = (props) => <Heading as="h6" variant="subHeading5" {...props} />;
 
 export const Li = (props) => <Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />;
 
@@ -56,13 +57,8 @@ export const Code = (props) => (
 	/>
 );
 
-export const getClassName = pathOr('', ['children', 'props', 'className']);
-export const getChildren = pathOr('', ['children', 'props', 'children']);
-export const getLanguage = pathOr('', ['groups', 'lang']);
-
 const InfoBox = (props) => (
 	<Box
-		as="div"
 		fontSize={[2, 2, 2, 4]}
 		sx={{
 			border: '1px solid',
@@ -96,13 +92,15 @@ export const Icon = ({ type, ...props }) => (
 
 Icon.propTypes = { type: PropTypes.string };
 
+export const Paragraph = (props) => <Text as="p" mb={3} {...props} />;
+
 export const components = {
-	h1: H2,
-	h2: H3,
-	h3: H4,
-	h4: H5,
-	h5: H6,
-	p: Text,
+	h1: H1,
+	h2: H2,
+	h3: H3,
+	h4: H4,
+	h5: H5,
+	p: Paragraph,
 	a: MdxLink,
 	img: Image,
 	pre: HighlightedCode,
