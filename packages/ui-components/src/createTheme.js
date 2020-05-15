@@ -351,6 +351,12 @@ const componentsPreset = {
 				color: 'primary',
 			},
 		},
+		container: {
+			maxWidth: ['none', '40em', '52em', '76em'],
+		},
+		containerFluid: {
+			maxWidth: 'none',
+		},
 	},
 };
 
