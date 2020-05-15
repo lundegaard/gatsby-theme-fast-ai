@@ -4,11 +4,7 @@ exports[`<Container /> matches snapshot when shallowly rendered 1`] = `
 <Box
   mx="auto"
   px={2}
-  sx={
-    Object {
-      "maxWidth": "none",
-    }
-  }
+  variant="container"
   width={1}
 />
 `;

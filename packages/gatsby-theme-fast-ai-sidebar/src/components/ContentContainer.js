@@ -1,6 +1,10 @@
 import React from 'react';
-import { Container } from '@fast-ai/ui-components';
+import { Box, Container } from '@fast-ai/ui-components';
 
-const ContentContainer = props => <Container variant="content" {...props} />;
+const ContentContainer = (props) => (
+	<Container>
+		<Box variant="content" {...props} />
+	</Container>
+);
 
 export default ContentContainer;
