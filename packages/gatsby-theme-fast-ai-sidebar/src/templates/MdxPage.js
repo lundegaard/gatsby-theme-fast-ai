@@ -11,38 +11,46 @@ import { components } from '../mdxComponents';
 
 import Page from './Page';
 
-const MdxPage = ({ location, data: { mdx }, ...rest }) => (
-	<MDXProvider components={components}>
-		<Page location={location} fullWidth={mdx.frontmatter.fullWidth} {...rest}>
-			<Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
-			<Row>
-				<Col span={{ _: 12, lg: 9 }}>
-					<Heading>{mdx.frontmatter.title}</Heading>
-				</Col>
-			</Row>
-			<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>
-				<Col span={{ _: 12, lg: 3 }}>
-					{!mdx.frontmatter.disableTableOfContents && (
-						<TableOfContents
-							maxDepth={mdx.frontmatter.tableOfContentsDepth}
-							sx={{
-								position: ['static', 'static', 'static', 'sticky'],
-								top: 112,
-								right: 0,
-							}}
-							location={location}
-							items={mdx.tableOfContents.items}
-						/>
+const MdxPage = ({ location, data: { mdx }, ...rest }) => {
+	const {
+		disableTableOfContents,
+		description,
+		tableOfContentsDepth,
+		fullWidth,
+		title,
+	} = mdx.frontmatter;
+	return (
+		<MDXProvider components={components}>
+			<Page location={location} fullWidth={fullWidth} {...rest}>
+				<Seo title={title} description={description} />
+				<Row>
+					<Col span={{ _: 12, lg: 9 }}>
+						<Heading>{title}</Heading>
+					</Col>
+				</Row>
+				<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>
+					{!disableTableOfContents && (
+						<Col span={{ _: 12, lg: 3 }}>
+							<TableOfContents
+								maxDepth={tableOfContentsDepth}
+								sx={{
+									position: ['static', 'static', 'static', 'sticky'],
+									top: 112,
+									right: 0,
+								}}
+								location={location}
+								items={mdx.tableOfContents.items}
+							/>
+						</Col>
 					)}
-				</Col>
-				<Col span={{ _: 12, lg: 9 }}>
-					<MDXRenderer>{mdx.body}</MDXRenderer>
-				</Col>
-			</Row>
-		</Page>
-	</MDXProvider>
-);
-
+					<Col span={{ _: 12, lg: disableTableOfContents ? 12 : 9 }}>
+						<MDXRenderer>{mdx.body}</MDXRenderer>
+					</Col>
+				</Row>
+			</Page>
+		</MDXProvider>
+	);
+};
 export const pageQuery = graphql`
 	query MdxPageQuery($id: String!) {
 		mdx(id: { eq: $id }) {
