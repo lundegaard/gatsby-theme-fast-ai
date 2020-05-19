@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	const result = await graphql(`
 		{
-			allMdx {
+			allMdx(filter: { fields: { source: { eq: "docs" } } }) {
 				edges {
 					node {
 						id
@@ -51,11 +51,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 	if (node.internal.type === 'Mdx') {
 		const value = createFilePath({ node, getNode });
+		const parent = getNode(node.parent);
+
+		const sourceInstanceName = parent.sourceInstanceName;
 
 		createNodeField({
 			name: 'slug',
 			node,
 			value,
+		});
+
+		createNodeField({
+			name: 'source',
+			node,
+			value: sourceInstanceName,
 		});
 	}
 };
