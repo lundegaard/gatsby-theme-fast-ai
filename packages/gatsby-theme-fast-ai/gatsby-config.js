@@ -8,13 +8,15 @@ const remarkPlugins = [
 	},
 ];
 
-module.exports = themeOptions => {
+module.exports = (themeOptions) => {
 	const {
 		intlOptions,
 		assetsPath = 'content/assets',
 		faviconPath = 'static/favicon.png',
+		pagesPath = 'src/pages',
 		// Fallback non-translated site metadata.
 		siteMetadata,
+		disableMdx,
 	} = themeOptions;
 
 	return {
@@ -34,6 +36,13 @@ module.exports = themeOptions => {
 					name: 'assets',
 				},
 			},
+			{
+				resolve: 'gatsby-source-filesystem',
+				options: {
+					path: pagesPath,
+					name: 'pages',
+				},
+			},
 			'gatsby-plugin-sharp',
 			'gatsby-transformer-sharp',
 			{
@@ -51,17 +60,21 @@ module.exports = themeOptions => {
 					display: 'standalone',
 				},
 			},
-			{
-				resolve: 'gatsby-plugin-mdx',
-				options: {
-					extensions: ['.mdx', '.md'],
-					defaultLayouts: {
-						default: require.resolve('gatsby-theme-fast-ai/src/templates/MdxPage'),
-					},
-					plugins: remarkPlugins,
-					gatsbyRemarkPlugins: remarkPlugins,
-				},
-			},
+			...(!disableMdx
+				? [
+						{
+							resolve: 'gatsby-plugin-mdx',
+							options: {
+								extensions: ['.mdx', '.md'],
+								defaultLayouts: {
+									default: require.resolve('gatsby-theme-fast-ai/src/templates/MdxPage'),
+								},
+								plugins: remarkPlugins,
+								gatsbyRemarkPlugins: remarkPlugins,
+							},
+						},
+				  ]
+				: []),
 		],
 	};
 };

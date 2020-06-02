@@ -15,15 +15,15 @@
 		"cross-env": "^7.0.2"
 	},
 	"dependencies": {
-		"@babel/cli": "^7.7.5",
-		"@babel/core": "^7.9.0",
+		"@babel/cli": "^7.10.1",
+		"@babel/core": "^7.10.2",
 		"@hot-loader/react-dom": "^16.13.0",
-		"babel-preset-react-union": "^0.17.0",
+		"babel-preset-react-union": "^0.18.0",
 		"core-js": "^3.6.0",
-		"gatsby": "^2.20.36",
+		"gatsby": "^2.22.15",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
-		"react-union-polyfills": "^0.17.0",
+		"react-union-polyfills": "^0.18.0",
 		"regenerator-runtime": "^0.13.5",
 		"stylelint": "^13.3.0",
 		"webpack": "^4.42.1"

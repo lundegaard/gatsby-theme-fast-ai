@@ -8,9 +8,10 @@ const remarkPlugins = [
 	},
 ];
 
-module.exports = themeOptions => {
+module.exports = (themeOptions) => {
 	const {
 		intlOptions,
+		disableMdx,
 		assetsPath = 'content/assets',
 		docsPath = 'content/docs',
 		faviconPath = 'static/favicon.png',
@@ -33,30 +34,34 @@ module.exports = themeOptions => {
 			{
 				resolve: 'gatsby-source-filesystem',
 				options: {
-					path: docsPath,
-					name: 'docs',
-				},
-			},
-			{
-				resolve: 'gatsby-source-filesystem',
-				options: {
 					path: pagesPath,
 					name: 'pages',
 				},
 			},
 			'gatsby-plugin-sharp',
 			'gatsby-transformer-sharp',
+			...(!disableMdx
+				? [
+						{
+							resolve: 'gatsby-source-filesystem',
+							options: {
+								path: docsPath,
+								name: 'docs',
+							},
+						},
+						{
+							resolve: 'gatsby-plugin-mdx',
+							options: {
+								extensions: ['.mdx', '.md'],
+								plugins: remarkPlugins,
+								gatsbyRemarkPlugins: remarkPlugins,
+								remarkPlugins: [require('remark-slug')],
+							},
+						},
+				  ]
+				: []),
 			{
 				resolve: require.resolve('@fast-ai/gatsby-plugin-setup'),
-			},
-			{
-				resolve: 'gatsby-plugin-mdx',
-				options: {
-					extensions: ['.mdx', '.md'],
-					plugins: remarkPlugins,
-					gatsbyRemarkPlugins: remarkPlugins,
-					remarkPlugins: [require('remark-slug')],
-				},
 			},
 			{
 				resolve: 'gatsby-plugin-intl',

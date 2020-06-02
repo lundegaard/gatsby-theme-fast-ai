@@ -30,6 +30,8 @@ exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
   >
     <Slider
       id="field-0"
+      max={100}
+      min={0}
     />
   </FormGroup>
 </Box>

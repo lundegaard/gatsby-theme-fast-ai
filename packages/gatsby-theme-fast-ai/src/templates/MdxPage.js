@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDXProvider } from '@mdx-js/react';
 
-import { components } from '../mdxComponents';
+import MdxProvider from '../components/MdxProvider';
 
 import Page from './Page';
 
 const MdxPage = ({ children }) => (
-	<MDXProvider components={components}>
+	<MdxProvider>
 		<Page>{children}</Page>
-	</MDXProvider>
+	</MdxProvider>
 );
 
 MdxPage.propTypes = { children: PropTypes.node };
