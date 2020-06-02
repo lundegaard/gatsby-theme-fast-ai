@@ -1,7 +1,11 @@
 const { createFilePath } = require('gatsby-source-filesystem');
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
 	const { createPage } = actions;
+
+	if (disableMdx) {
+		return;
+	}
 
 	const result = await graphql(`
 		{
@@ -46,10 +50,10 @@ exports.createPages = async ({ graphql, actions }) => {
 	return null;
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode }, { disableMdx }) => {
 	const { createNodeField } = actions;
 
-	if (node.internal.type === 'Mdx') {
+	if (!disableMdx && node.internal.type === 'Mdx') {
 		const value = createFilePath({ node, getNode });
 		const parent = getNode(node.parent);
 

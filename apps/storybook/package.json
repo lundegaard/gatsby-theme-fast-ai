@@ -6,7 +6,7 @@
 	"description": "Storybook application for documentation of our UI components",
 	"main": "src/index.js",
 	"devDependencies": {
-		"@babel/core": "^7.9.0",
+		"@babel/core": "^7.10.2",
 		"babel-loader": "^8.1.0",
 		"fs-extra": "^9.0.0",
 		"react-is": "^16.13.1",
