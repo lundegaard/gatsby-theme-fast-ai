@@ -47,6 +47,7 @@ const setBabel = ({ getConfig, stage, loaders, actions }) => {
 		config.resolve.modules = rejectNil([
 			...(config.resolve.modules || []),
 			path.resolve(__dirname, '../../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
+			path.resolve(__dirname, '../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
 			path.resolve(__dirname, './node_modules'),
 			'node_modules', // your modules w/ core-js@3
 		]);
