@@ -7,7 +7,8 @@ exports[`<Modal /> matches snapshot when shallowly rendered 1`] = `
       "WebkitOverflowScrolling": "touch",
       "backgroundColor": "background",
       "borderRadius": "5px",
-      "overflow": "auto",
+      "overflowX": "hidden",
+      "overflowY": "auto",
       "width": Array [
         "100%",
         "75%",
