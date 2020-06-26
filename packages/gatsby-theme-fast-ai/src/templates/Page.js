@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Content from '../components/Content';
 
-const Root = props => (
+const Root = (props) => (
 	<Flex
 		variant="stripes"
 		backgroundColor="background"
@@ -23,7 +23,7 @@ const Root = props => (
 const Page = ({ children }) => (
 	<Root flexDirection="column">
 		<Header />
-		<Content flex={1}>{children}</Content>
+		<Content flexGrow="1">{children}</Content>
 		<Footer />
 	</Root>
 );

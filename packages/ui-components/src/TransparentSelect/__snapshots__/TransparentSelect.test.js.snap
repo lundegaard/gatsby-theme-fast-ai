@@ -4,6 +4,9 @@ exports[`<TransparentSelect /> matches snapshot when shallowly rendered 1`] = `
 <ForwardRef
   css={
     Object {
+      "&::-ms-expand": Object {
+        "display": "none",
+      },
       "&:focus": Object {
         "outline": 0,
       },

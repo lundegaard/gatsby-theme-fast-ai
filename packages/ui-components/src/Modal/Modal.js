@@ -9,7 +9,8 @@ const Modal = ({ children, sx, ...rest }) => (
 			borderRadius: '5px',
 			backgroundColor: 'background',
 			width: ['100%', '75%'],
-			overflow: 'auto',
+			overflowY: 'auto',
+			overflowX: 'hidden',
 			WebkitOverflowScrolling: 'touch',
 			...sx,
 		}}

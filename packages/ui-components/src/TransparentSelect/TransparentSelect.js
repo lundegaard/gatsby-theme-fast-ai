@@ -4,6 +4,9 @@ import { Select as RebassSelect } from '@rebass/forms';
 const TransparentSelect = (props) => (
 	<RebassSelect
 		css={{
+			'&::-ms-expand': {
+				display: 'none',
+			},
 			color: 'inherit',
 			border: 'none',
 			fontSize: [2, 2, 2, 4],
