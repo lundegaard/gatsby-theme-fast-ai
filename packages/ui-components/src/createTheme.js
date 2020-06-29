@@ -208,7 +208,7 @@ const componentsPreset = {
 	},
 	grid: {
 		maxColumns: 12,
-		gutters: [2, 3, 4],
+		gutters: [1, 2, 2, 3],
 	},
 	gauge: {
 		gradient: [
@@ -311,10 +311,10 @@ const componentsPreset = {
 				td: {
 					bg: 'background',
 				},
-				'&:nth-child(2n) td': {
+				'&:nth-of-type(2n) td': {
 					bg: 'gray.1',
 				},
-				'&:nth-child(2n):hover td': {
+				'&:nth-of-type(2n):hover td': {
 					bg: 'white',
 				},
 			},

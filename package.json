@@ -72,9 +72,10 @@
 	},
 	"scripts": {
 		"build": "yarn build:node-packages",
-		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn demo-sidebar start\"",
-		"build:node-packages": "lerna run build --ignore @fast-ai/docs-examples --ignore @fast-ai/storybook",
-		"start:node-packages": "lerna run start --parallel --ignore @fast-ai/docs-examples --ignore @fast-ai/storybook",
+		"start": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn demo start\"",
+		"start:sidebar": "concurrently -k -n \"NODE,APP\" \"yarn start:node-packages\" \"yarn demo-sidebar start\"",
+		"build:node-packages": "lerna run build --ignore @fast-ai/storybook --ignore @fast-ai/demo-sidebar --ignore @fast-ai/demo",
+		"start:node-packages": "lerna run start --parallel --ignore @fast-ai/storybook --ignore @fast-ai/demo-sidebar --ignore @fast-ai/demo",
 		"lint": "yarn lint:pkg && yarn lint:js",
 		"lint:pkg": "npmPkgJsonLint .",
 		"lint:js": "eslint --cache --ignore-path .gitignore --ext .js ./",
