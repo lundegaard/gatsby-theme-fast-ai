@@ -1,6 +1,6 @@
 {
 	"name": "gatsby-theme-fast-ai-sidebar",
-	"version": "0.22.6",
+	"version": "0.22.7",
 	"main": "index.js",
 	"author": "Tomas Konrady <tomaskonrady@gmail.com>",
 	"license": "MIT",
@@ -11,7 +11,7 @@
 	"dependencies": {
 		"@emotion/core": "^10.0.0",
 		"@fast-ai/gatsby-plugin-setup": "^0.22.3",
-		"@fast-ai/ui-components": "^0.22.6",
+		"@fast-ai/ui-components": "^0.22.7",
 		"@mdx-js/mdx": "^1.6.5",
 		"@mdx-js/react": "^1.6.5",
 		"fontfaceobserver": "^2.1.0",
