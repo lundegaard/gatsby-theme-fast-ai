@@ -35,7 +35,7 @@ const Hamburger = ({ isOpen, ...rest }) => (
 					transition: 'transform .25s ease-in, opacity .25s ease-in',
 				},
 
-				'span:nth-child(1)': {
+				'span:nth-of-type(1)': {
 					variant: 'hamburgerBar.closed',
 					top: 0,
 					...(isOpen
@@ -47,7 +47,7 @@ const Hamburger = ({ isOpen, ...rest }) => (
 						: {}),
 				},
 
-				'span:nth-child(2)': {
+				'span:nth-of-type(2)': {
 					variant: 'hamburgerBar.closed',
 					top: 'calc(( 100% / 2 ) - 1px )',
 					...(isOpen
@@ -78,7 +78,7 @@ const Hamburger = ({ isOpen, ...rest }) => (
 					},
 				},
 
-				'span:nth-child(3)': {
+				'span:nth-of-type(3)': {
 					variant: 'hamburgerBar.closed',
 					bottom: 0,
 					...(isOpen

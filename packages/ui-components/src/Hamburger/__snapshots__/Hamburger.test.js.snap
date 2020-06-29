@@ -29,11 +29,11 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
           "variant": "hamburgerBar.closed",
           "width": "100%",
         },
-        "span:nth-child(1)": Object {
+        "span:nth-of-type(1)": Object {
           "top": 0,
           "variant": "hamburgerBar.closed",
         },
-        "span:nth-child(2)": Object {
+        "span:nth-of-type(2)": Object {
           "&:after": Object {
             "content": "\\"\\"",
             "display": "block",
@@ -49,7 +49,7 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
           "top": "calc(( 100% / 2 ) - 1px )",
           "variant": "hamburgerBar.closed",
         },
-        "span:nth-child(3)": Object {
+        "span:nth-of-type(3)": Object {
           "bottom": 0,
           "variant": "hamburgerBar.closed",
         },
