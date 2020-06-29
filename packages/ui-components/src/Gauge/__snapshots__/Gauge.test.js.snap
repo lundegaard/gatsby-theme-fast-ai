@@ -10,7 +10,7 @@ exports[`<Gauge /> matches snapshot when shallowly rendered 1`] = `
     }
   }
 >
-  <Text
+  <Box
     __css={
       Object {
         "left": "50%",
@@ -25,7 +25,7 @@ exports[`<Gauge /> matches snapshot when shallowly rendered 1`] = `
     mt={0}
   >
     0
-  </Text>
+  </Box>
   <Box
     __css={
       Object {
@@ -54,6 +54,7 @@ exports[`<Gauge /> matches snapshot when shallowly rendered 1`] = `
       fontSize="2px"
       stroke="none"
       textAnchor="start"
+      variant=""
       x={4.126311131655841}
       y={25.96320795014136}
     >
@@ -65,6 +66,7 @@ exports[`<Gauge /> matches snapshot when shallowly rendered 1`] = `
       fontSize="2px"
       stroke="none"
       textAnchor="end"
+      variant=""
       x={27.87368886834416}
       y={25.96320795014136}
     >

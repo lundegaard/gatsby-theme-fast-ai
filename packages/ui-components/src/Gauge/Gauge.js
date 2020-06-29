@@ -124,7 +124,7 @@ const Gauge = forwardRef(
 				}}
 				{...rest}
 			>
-				<Text
+				<Box
 					mt={0}
 					mb={0}
 					fontSize={8}
@@ -138,7 +138,7 @@ const Gauge = forwardRef(
 					{...valueProps}
 				>
 					{format(value)}
-				</Text>
+				</Box>
 
 				<Box
 					as="svg"
@@ -162,6 +162,7 @@ const Gauge = forwardRef(
 					{title && <title>{title}</title>}
 
 					<Text
+						variant=""
 						as="text"
 						x={center.x - legend.x}
 						y={center.y + legend.y}
@@ -172,6 +173,7 @@ const Gauge = forwardRef(
 					</Text>
 
 					<Text
+						variant=""
 						as="text"
 						x={center.x + legend.x}
 						y={center.y + legend.y}
