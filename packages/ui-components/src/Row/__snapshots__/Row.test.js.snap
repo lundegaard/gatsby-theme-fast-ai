@@ -2,6 +2,10 @@
 
 exports[`<Row /> matches snapshot when shallowly rendered 1`] = `
 <Flex
-  mx={-2}
+  mx={
+    Array [
+      -2,
+    ]
+  }
 />
 `;
