@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/gatsby-plugin-setup",
-	"version": "0.22.3",
+	"version": "0.23.0",
 	"license": "MIT",
 	"main": "index.js",
 	"browserslist": [
