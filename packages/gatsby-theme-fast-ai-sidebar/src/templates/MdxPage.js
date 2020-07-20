@@ -10,7 +10,7 @@ import Seo from '../components/Seo';
 
 import Page from './Page';
 
-const MdxPage = ({ location, data: { mdx }, ...rest }) => {
+const MdxPage = ({ location, children, data: { mdx }, ...rest }) => {
 	const {
 		disableTableOfContents,
 		description,
@@ -44,6 +44,7 @@ const MdxPage = ({ location, data: { mdx }, ...rest }) => {
 					)}
 					<Col span={{ _: 12, lg: disableTableOfContents ? 12 : 9 }}>
 						<MDXRenderer>{mdx.body}</MDXRenderer>
+						{children}
 					</Col>
 				</Row>
 			</Page>
