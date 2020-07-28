@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Flex, Hamburger } from '@fast-ai/ui-components';
+import { withPrefix } from 'gatsby';
 
 import { links } from '../../links';
 import Logo from '../Logo';
@@ -26,7 +27,7 @@ const Navigation = ({ fullWidth, nav, menu, setMenu }) => (
 			>
 				{links.map(({ label, to }) => (
 					<MenuItem key={to} textAlign={{ _: 'center', md: 'left' }} sx={{ minWidth: 'auto' }}>
-						<Match path={`${to}/*`}>
+						<Match path={`${withPrefix(to)}/*`}>
 							{({ match }) => (
 								<Link
 									variant="nav"
