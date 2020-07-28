@@ -1,4 +1,5 @@
 import React from 'react';
+import { withPrefix } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Box } from '@fast-ai/ui-components';
 import { map } from 'ramda';
@@ -11,7 +12,7 @@ const getList = (links) =>
 		<ul>
 			{map(({ label, to, children }) => (
 				<li key={to}>
-					<Match path={`${to}`}>
+					<Match path={`${withPrefix(to)}`}>
 						{({ match }) => (
 							<Link
 								to={to}
