@@ -1,7 +1,7 @@
 {
 	"name": "@fast-ai/demo-sidebar",
 	"private": true,
-	"version": "0.23.0",
+	"version": "0.23.1",
 	"main": "index.js",
 	"contributors": [
 		"Tomas Konrady <tomaskonrady@gmail.com>",
@@ -21,7 +21,7 @@
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^0.23.0",
 		"gatsby": "^2.22.15",
-		"gatsby-theme-fast-ai-sidebar": "^0.23.0",
+		"gatsby-theme-fast-ai-sidebar": "^0.23.1",
 		"prop-types": "^15.6.2",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
