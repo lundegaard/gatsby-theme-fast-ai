@@ -31,7 +31,9 @@ const SuperFieldLabel = ({ children, alwaysShrank }) => {
 				top: 0,
 				left: 0,
 				transition: 'color 200ms ease, transform 200ms ease 0ms',
-				transform: isLabelShrank ? 'translate(0, 0) scale(0.75)' : 'translate(0, 16px)',
+				transform: isLabelShrank
+					? 'translate(0, 0) scale(0.75)'
+					: 'translate(0, 16px)',
 				transformOrigin: 'top left',
 				color: 'inherit',
 			}}

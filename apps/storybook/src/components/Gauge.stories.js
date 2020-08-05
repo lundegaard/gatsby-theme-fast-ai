@@ -28,7 +28,12 @@ export const groups = () => (
 		<Flex justifyContent="space-between" flexWrap="wrap">
 			<Gauge
 				value={number('Value', 0, { range: true, min: 0, max: 1, step: 0.1 })}
-				arcAngle={number('Angle', 220, { range: true, min: 0, max: 360, step: 10 })}
+				arcAngle={number('Angle', 220, {
+					range: true,
+					min: 0,
+					max: 360,
+					step: 10,
+				})}
 				{...props}
 			/>
 		</Flex>

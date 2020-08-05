@@ -1,5 +1,12 @@
 import React from 'react';
-import { Col, Container, Radio, RadioGroup, RadioGroupField, Row } from '@fast-ai/ui-components';
+import {
+	Col,
+	Container,
+	Radio,
+	RadioGroup,
+	RadioGroupField,
+	Row,
+} from '@fast-ai/ui-components';
 import { Field } from 'react-powerplug';
 
 export default {
@@ -17,14 +24,14 @@ export const basic = () => (
 					{({ value, set }) => (
 						<RadioGroupField
 							legend="Who is your partner?"
-							onChange={event => set(event.target.value)}
+							onChange={(event) => set(event.target.value)}
 							name="partner"
 							value={value}
 						>
 							{[
 								{ value: 'individual', label: 'Individual' },
 								{ value: 'with-parner', label: 'With partner' },
-							].map(itemProps => (
+							].map((itemProps) => (
 								<Radio key={itemProps.value} {...itemProps} />
 							))}
 						</RadioGroupField>
@@ -43,7 +50,7 @@ export const errors = () => (
 					{({ value, set }) => (
 						<RadioGroupField
 							legend="Who is your partner?"
-							onChange={event => set(event.target.value)}
+							onChange={(event) => set(event.target.value)}
 							name="partner"
 							value={value}
 							hasError
@@ -52,7 +59,7 @@ export const errors = () => (
 							{[
 								{ value: 'individual', label: 'Individual' },
 								{ value: 'with-parner', label: 'With partner' },
-							].map(itemProps => (
+							].map((itemProps) => (
 								<Radio key={itemProps.value} {...itemProps} />
 							))}
 						</RadioGroupField>
@@ -71,7 +78,7 @@ export const disabled = () => (
 					{({ value, set }) => (
 						<RadioGroupField
 							legend="Who is your partner?"
-							onChange={event => set(event.target.value)}
+							onChange={(event) => set(event.target.value)}
 							name="partner"
 							value={value}
 							disabled
@@ -79,7 +86,7 @@ export const disabled = () => (
 							{[
 								{ value: 'individual', label: 'Individual' },
 								{ value: 'with-parner', label: 'With partner' },
-							].map(itemProps => (
+							].map((itemProps) => (
 								<Radio key={itemProps.value} {...itemProps} />
 							))}
 						</RadioGroupField>

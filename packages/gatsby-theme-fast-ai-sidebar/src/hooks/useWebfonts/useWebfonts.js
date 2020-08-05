@@ -3,11 +3,15 @@ import { join, map, o } from 'ramda';
 
 const loadWebfontsWithHtmlApi = o(
 	(xs) => Promise.all(xs),
-	map(({ name, weight, style }) => document.fonts.load(join(' ', [style, weight, '1em', name])))
+	map(({ name, weight, style }) =>
+		document.fonts.load(join(' ', [style, weight, '1em', name]))
+	)
 );
 
 const loadWebfontsWithFallback = (config) =>
-	import('./webfontsFallback').then(({ default: webfontsPolyfill }) => webfontsPolyfill(config));
+	import('./webfontsFallback').then(({ default: webfontsPolyfill }) =>
+		webfontsPolyfill(config)
+	);
 
 const loadWebfonts = (config) =>
 	typeof window !== 'undefined' && 'fonts' in document

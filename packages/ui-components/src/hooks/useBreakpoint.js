@@ -1,6 +1,16 @@
 import { useMemo } from 'react';
 import { createBreakpointHook } from '@restart/hooks/useBreakpoint';
-import { always, anyPass, equals, ifElse, o, reject, test, when, zipObj } from 'ramda';
+import {
+	always,
+	anyPass,
+	equals,
+	ifElse,
+	o,
+	reject,
+	test,
+	when,
+	zipObj,
+} from 'ramda';
 import { alwaysNull, isArray, isNilOrEmpty } from 'ramda-extension';
 
 import useTheme from './useTheme';
@@ -17,9 +27,15 @@ const getStaticPropsFromArray = ifElse(
 
 const DEFAULT_ALIASES = ['sm', 'md', 'lg', 'xl'];
 
-const getAliases = o(when(isNilOrEmpty, always(DEFAULT_ALIASES)), getStaticPropsFromArray);
+const getAliases = o(
+	when(isNilOrEmpty, always(DEFAULT_ALIASES)),
+	getStaticPropsFromArray
+);
 
-/** Bridge between current theme (based on styled-system) and @rebass/hooks/useBreakpoint */
+/**
+ * Bridge between current theme (based on styled-system) and
+ * @rebass/hooks/useBreakpoint
+ */
 const useBreakpoint = (...args) => {
 	const { breakpoints } = useTheme();
 	const aliases = getAliases(breakpoints);
@@ -30,7 +46,9 @@ const useBreakpoint = (...args) => {
 	const mappingHash = JSON.stringify(mapping);
 
 	// eslint-disable-next-line
-	const useBreakpoint = useMemo(() => createBreakpointHook(mapping), [mappingHash]);
+	const useBreakpoint = useMemo(() => createBreakpointHook(mapping), [
+		mappingHash,
+	]);
 
 	return useBreakpoint(...args);
 };

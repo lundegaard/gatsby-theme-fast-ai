@@ -1,5 +1,11 @@
 import React from 'react';
-import { Col, Container, Row, Slider, SliderField } from '@fast-ai/ui-components';
+import {
+	Col,
+	Container,
+	Row,
+	Slider,
+	SliderField,
+} from '@fast-ai/ui-components';
 import { Field } from 'react-powerplug';
 
 export default {

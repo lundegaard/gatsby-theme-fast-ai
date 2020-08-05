@@ -17,7 +17,9 @@ const ConsoleProvider = ({ children }) => {
 
 	return (
 		<ConsoleApiContext.Provider value={api}>
-			<ConsoleLogContext.Provider value={log}>{children}</ConsoleLogContext.Provider>
+			<ConsoleLogContext.Provider value={log}>
+				{children}
+			</ConsoleLogContext.Provider>
 		</ConsoleApiContext.Provider>
 	);
 };

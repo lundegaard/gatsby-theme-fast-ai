@@ -3,7 +3,12 @@ import { addDecorator, addParameters, configure } from '@storybook/react';
 // import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
-import { Box, CssBaseline, ThemeProvider, createTheme } from '@fast-ai/ui-components';
+import {
+	Box,
+	CssBaseline,
+	ThemeProvider,
+	createTheme,
+} from '@fast-ai/ui-components';
 
 require('@fast-ai/ui-components/fonts/index.css');
 
@@ -24,7 +29,7 @@ addDecorator(withKnobs);
 
 const theme = createTheme({});
 
-const Root = props => (
+const Root = (props) => (
 	<Box
 		variant="stripes"
 		backgroundColor="background"
@@ -35,7 +40,7 @@ const Root = props => (
 		{...props}
 	/>
 );
-addDecorator(story => (
+addDecorator((story) => (
 	<ThemeProvider theme={theme}>
 		<CssBaseline />
 		<Root>{story()}</Root>

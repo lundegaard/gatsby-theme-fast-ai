@@ -26,7 +26,11 @@ const Navigation = ({ fullWidth, nav, menu, setMenu }) => (
 				}}
 			>
 				{links.map(({ label, to }) => (
-					<MenuItem key={to} textAlign={{ _: 'center', md: 'left' }} sx={{ minWidth: 'auto' }}>
+					<MenuItem
+						key={to}
+						textAlign={{ _: 'center', md: 'left' }}
+						sx={{ minWidth: 'auto' }}
+					>
 						<Match path={`${withPrefix(to)}/*`}>
 							{({ match }) => (
 								<Link

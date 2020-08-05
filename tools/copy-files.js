@@ -16,17 +16,17 @@ async function includeFileInBuild(file) {
 }
 
 /**
- * Puts a package.json into every immediate child directory of rootDir.
- * That package.json contains information about esm for bundlers so that imports
- * like import Typography from '@material-ui/core/Typography' are tree-shakeable.
- *
- * It also tests that an this import can be used in typescript by checking
- * if an index.d.ts is present at that path.
+ * Puts a package.json into every immediate child directory of rootDir.  That
+ * package.json contains information about esm for bundlers so that imports
+ * like import Flex from '@fast-ai/components-ui/Flex' are
+ * tree-shakeable.
  *
  * @param {string} rootDir
  */
 async function createModulePackages({ from, to }) {
-	const directoryPackages = glob.sync('*/index.js', { cwd: from }).map(path.dirname);
+	const directoryPackages = glob
+		.sync('*/index.js', { cwd: from })
+		.map(path.dirname);
 
 	await Promise.all(
 		directoryPackages.map(async (directoryPackage) => {
@@ -36,7 +36,10 @@ async function createModulePackages({ from, to }) {
 			};
 			const packageJsonPath = path.join(to, directoryPackage, 'package.json');
 
-			await fse.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
+			await fse.writeFile(
+				packageJsonPath,
+				JSON.stringify(packageJson, null, 2)
+			);
 
 			return packageJsonPath;
 		})
@@ -44,7 +47,10 @@ async function createModulePackages({ from, to }) {
 }
 
 async function createPackageFile() {
-	const packageData = await fse.readFile(path.resolve(packagePath, './package.json'), 'utf8');
+	const packageData = await fse.readFile(
+		path.resolve(packagePath, './package.json'),
+		'utf8'
+	);
 	/* eslint-disable no-unused-vars */
 	const {
 		nyc,
@@ -64,7 +70,11 @@ async function createPackageFile() {
 	};
 	const targetPath = path.resolve(buildPath, './package.json');
 
-	await fse.writeFile(targetPath, JSON.stringify(newPackageData, null, 2), 'utf8');
+	await fse.writeFile(
+		targetPath,
+		JSON.stringify(newPackageData, null, 2),
+		'utf8'
+	);
 	console.log(`Created package.json in ${targetPath}`);
 
 	return newPackageData;
@@ -108,8 +118,9 @@ async function run() {
 
 		await Promise.all(
 			[
-				// use enhanced readme from workspace root for `@material-ui/core`
-				packageData.name === '@fast-ai/ui-components' ? '../../README.md' : './README.md',
+				packageData.name === '@fast-ai/ui-components'
+					? '../../README.md'
+					: './README.md',
 				packageData.name === '@fast-ai/ui-components' ? './fonts' : './fonts',
 				// '../../CHANGELOG.md',
 				'../../LICENSE',

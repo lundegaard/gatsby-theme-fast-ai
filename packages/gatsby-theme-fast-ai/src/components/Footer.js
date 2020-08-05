@@ -10,9 +10,9 @@ import {
 	Row,
 } from '@fast-ai/ui-components';
 
-const SocialIconsMenu = props => <Flex as="ul" p={0} m={0} {...props} />;
+const SocialIconsMenu = (props) => <Flex as="ul" p={0} m={0} {...props} />;
 
-const SocialIconsMenuItem = props => (
+const SocialIconsMenuItem = (props) => (
 	<Box
 		as="li"
 		sx={{
@@ -43,8 +43,14 @@ const socialLinks = [
 		children: 'L',
 	},
 ];
-const Footer = props => (
-	<Box as="footer" backgroundColor="primary" variant="transparentStripes" mt={[3, 5]} {...props}>
+const Footer = (props) => (
+	<Box
+		as="footer"
+		backgroundColor="primary"
+		variant="transparentStripes"
+		mt={[3, 5]}
+		{...props}
+	>
 		<Container>
 			<Row
 				alignItems="center"
@@ -83,7 +89,7 @@ const Footer = props => (
 						mb={{ _: 3, md: 0 }}
 						justifyContent={{ _: 'center', md: 'flex-end' }}
 					>
-						{socialLinks.map(linkProps => (
+						{socialLinks.map((linkProps) => (
 							<SocialIconsMenuItem key={linkProps.children} mx={2}>
 								<AvatarLink target="_blank" rel="noopener" {...linkProps} />
 							</SocialIconsMenuItem>

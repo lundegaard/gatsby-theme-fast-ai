@@ -33,8 +33,8 @@ const reducer = (state, action) => {
 };
 
 const actions = {
-	openModal: payload => ({ type: ActionTypes.OPEN_MODAL, payload }),
-	closeModal: payload => ({ type: ActionTypes.CLOSE_MODAL, payload }),
+	openModal: (payload) => ({ type: ActionTypes.OPEN_MODAL, payload }),
+	closeModal: (payload) => ({ type: ActionTypes.CLOSE_MODAL, payload }),
 };
 
 const toggleBodyClassname = (className, toggler) => {
@@ -46,10 +46,10 @@ const toggleBodyClassname = (className, toggler) => {
 };
 
 export const ModalProvider = ({ children, bodyModalClassname = 'modal' }) => {
-	const [{ isOpened, modalProps, component: ModalComponent }, dispatch] = useReducer(
-		reducer,
-		initialState
-	);
+	const [
+		{ isOpened, modalProps, component: ModalComponent },
+		dispatch,
+	] = useReducer(reducer, initialState);
 
 	const api = useMemo(
 		() => ({
@@ -58,7 +58,7 @@ export const ModalProvider = ({ children, bodyModalClassname = 'modal' }) => {
 
 				toggleBodyClassname(`${bodyModalClassname}--opened`, true);
 			},
-			closeModal: component => {
+			closeModal: (component) => {
 				dispatch(actions.closeModal({ component }));
 
 				toggleBodyClassname(`${bodyModalClassname}--opened`, false);

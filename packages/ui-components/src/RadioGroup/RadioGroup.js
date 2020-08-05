@@ -15,8 +15,13 @@ const RadioGroup = ({
 	name,
 	...rest
 }) => (
-	<Flex flexWrap="wrap" justifyContent="space-between" role="radiogroup" {...rest}>
-		{Children.map(children, item => {
+	<Flex
+		flexWrap="wrap"
+		justifyContent="space-between"
+		role="radiogroup"
+		{...rest}
+	>
+		{Children.map(children, (item) => {
 			const { value, onChange, width } = item.props;
 			const commonProps = {
 				readOnly,
@@ -61,7 +66,8 @@ RadioGroup.propTypes = {
 	/** Error state */
 	hasError: PropTypes.bool,
 	name: PropTypes.string.isRequired,
-	/** Called when `onChange` event is triggered on any of children which has `value` prop set. */
+	/** Called when `onChange` event is triggered on any of children which has
+	 * `value` prop set. */
 	onChange: PropTypes.func,
 	/** Read-only state */
 	readOnly: PropTypes.bool,

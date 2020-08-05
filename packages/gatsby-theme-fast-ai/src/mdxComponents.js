@@ -9,7 +9,13 @@ import info from '../content/assets/info-circle.svg';
 
 const HeadingDivider = (props) => (
 	<Box
-		sx={{ bottom: 0, left: 0, height: '4px', bg: 'secondary', width: 'calc(3rem)' }}
+		sx={{
+			bottom: 0,
+			left: 0,
+			height: '4px',
+			bg: 'secondary',
+			width: 'calc(3rem)',
+		}}
 		{...props}
 	/>
 );
@@ -21,12 +27,22 @@ const HeadingWithDivider = (props) => (
 );
 
 export const H1 = (props) => <Heading as="h1" {...props} />;
-export const H2 = (props) => <HeadingWithDivider as="h2" variant="subHeading1" {...props} />;
-export const H3 = (props) => <Heading as="h3" variant="subHeading2" {...props} />;
-export const H4 = (props) => <Heading as="h4" variant="subHeading3" {...props} />;
-export const H5 = (props) => <Heading as="h5" variant="subHeading4" {...props} />;
+export const H2 = (props) => (
+	<HeadingWithDivider as="h2" variant="subHeading1" {...props} />
+);
+export const H3 = (props) => (
+	<Heading as="h3" variant="subHeading2" {...props} />
+);
+export const H4 = (props) => (
+	<Heading as="h4" variant="subHeading3" {...props} />
+);
+export const H5 = (props) => (
+	<Heading as="h5" variant="subHeading4" {...props} />
+);
 
-const Li = (props) => <Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />;
+const Li = (props) => (
+	<Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />
+);
 
 export const Table = (props) => (
 	<Box
@@ -39,9 +55,15 @@ export const Table = (props) => (
 		<Box as="table" variant="table" {...props} />
 	</Box>
 );
-export const TableHead = (props) => <Box as="th" variant="tableCol" {...props} />;
-export const TableRow = (props) => <Box as="tr" variant="tableRow" {...props} />;
-export const TableCol = (props) => <Box as="td" variant="tableCol" {...props} />;
+export const TableHead = (props) => (
+	<Box as="th" variant="tableCol" {...props} />
+);
+export const TableRow = (props) => (
+	<Box as="tr" variant="tableRow" {...props} />
+);
+export const TableCol = (props) => (
+	<Box as="td" variant="tableCol" {...props} />
+);
 
 export const Code = (props) => (
 	<Box

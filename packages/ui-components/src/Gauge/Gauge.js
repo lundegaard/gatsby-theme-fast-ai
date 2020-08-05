@@ -90,7 +90,10 @@ const Gauge = forwardRef(
 		const radiusGauge = center.x - (rimStrokeWidth + gaugeStrokeWidth / 2);
 
 		const rimProps = getArcProps({ radius: radiusRim, arcAngle });
-		const gaugeProps = getArcProps({ radius: radiusGauge, arcAngle: arcAngle * valueNormalized });
+		const gaugeProps = getArcProps({
+			radius: radiusGauge,
+			arcAngle: arcAngle * valueNormalized,
+		});
 
 		const circleProps = {
 			transform: `rotate(${rotateForSymmetryAngle} ${center.x} ${center.y})`,
@@ -103,7 +106,10 @@ const Gauge = forwardRef(
 			...legendPropsProp,
 		};
 
-		const legend = coord(radiusRim * cos(alphaLabels), radiusRim * sin(alphaLabels));
+		const legend = coord(
+			radiusRim * cos(alphaLabels),
+			radiusRim * sin(alphaLabels)
+		);
 
 		const transitionStyles = {
 			entering: { strokeDashoffset: gaugeProps.offset },

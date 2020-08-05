@@ -80,7 +80,12 @@ const getNav = ({
 );
 /* eslint-enable react/prop-types */
 
-const getHeadingIds = (items, traverseFullDepth = true, depth, recursionDepth = 1) => {
+const getHeadingIds = (
+	items,
+	traverseFullDepth = true,
+	depth,
+	recursionDepth = 1
+) => {
 	const idList = [];
 	const hashToId = (str) => str.slice(1);
 
@@ -91,7 +96,9 @@ const getHeadingIds = (items, traverseFullDepth = true, depth, recursionDepth = 
 			}
 
 			if (item.items && traverseFullDepth && recursionDepth < (depth || 6)) {
-				idList.push(...getHeadingIds(item.items, true, depth, recursionDepth + 1));
+				idList.push(
+					...getHeadingIds(item.items, true, depth, recursionDepth + 1)
+				);
 			}
 		}
 	}
@@ -102,7 +109,13 @@ const getHeadingIds = (items, traverseFullDepth = true, depth, recursionDepth = 
 /**
  * @see https://github.com/gatsbyjs/gatsby/blob/master/www/src/components/docs-table-of-contents.js
  */
-const TableOfContents = ({ sx, location, items, maxDepth: maxDepthProp, ...rest }) => {
+const TableOfContents = ({
+	sx,
+	location,
+	items,
+	maxDepth: maxDepthProp,
+	...rest
+}) => {
 	const maxDepth = maxDepthProp == null ? 4 : maxDepthProp;
 	const headingIds = getHeadingIds(items, true, maxDepth);
 	const activeHash = useActiveHash(headingIds);
@@ -119,7 +132,12 @@ const TableOfContents = ({ sx, location, items, maxDepth: maxDepthProp, ...rest 
 					pl: '24px',
 				},
 				color: ['body', 'body', 'body', 'gray.3'],
-				borderBottomColor: ['secondary', 'secondary', 'secondary', 'transparent'],
+				borderBottomColor: [
+					'secondary',
+					'secondary',
+					'secondary',
+					'transparent',
+				],
 				borderBottomStyle: 'solid',
 				borderBottomWidth: '1px',
 				py: [3, 3, 3, 0],
@@ -129,14 +147,25 @@ const TableOfContents = ({ sx, location, items, maxDepth: maxDepthProp, ...rest 
 			{...rest}
 		>
 			<Text fontWeight="normal">Table of Contents</Text>
-			{getNav({ items, depth: 1, shouldUseDesktopNavigation, location, maxDepth, activeHash })}
+			{getNav({
+				items,
+				depth: 1,
+				shouldUseDesktopNavigation,
+				location,
+				maxDepth,
+				activeHash,
+			})}
 		</Box>
 	) : null;
 };
 
 TableOfContents.propTypes = {
 	items: PropTypes.arrayOf(
-		PropTypes.shape({ title: PropTypes.string, url: PropTypes.string, items: PropTypes.array })
+		PropTypes.shape({
+			title: PropTypes.string,
+			url: PropTypes.string,
+			items: PropTypes.array,
+		})
 	),
 	location: PropTypes.object,
 	maxDepth: PropTypes.number,

@@ -45,7 +45,12 @@ export const HighlightedCode = (props) => {
 	const code = normalizeCode(children);
 
 	return (
-		<Highlight {...defaultProps} theme={prismTheme} code={code} language={language}>
+		<Highlight
+			{...defaultProps}
+			theme={prismTheme}
+			code={code}
+			language={language}
+		>
 			{({ style, tokens, getLineProps, getTokenProps }) => (
 				<Pre
 					sx={{

@@ -2,19 +2,23 @@ import { useEffect, useState } from 'react';
 import { join, map, o } from 'ramda';
 
 const loadWebfontsWithHtmlApi = o(
-	xs => Promise.all(xs),
-	map(({ name, weight, style }) => document.fonts.load(join(' ', [style, weight, '1em', name])))
+	(xs) => Promise.all(xs),
+	map(({ name, weight, style }) =>
+		document.fonts.load(join(' ', [style, weight, '1em', name]))
+	)
 );
 
-const loadWebfontsWithFallback = config =>
-	import('./webfontsFallback').then(({ default: webfontsPolyfill }) => webfontsPolyfill(config));
+const loadWebfontsWithFallback = (config) =>
+	import('./webfontsFallback').then(({ default: webfontsPolyfill }) =>
+		webfontsPolyfill(config)
+	);
 
-const loadWebfonts = config =>
+const loadWebfonts = (config) =>
 	typeof window !== 'undefined' && 'fonts' in document
 		? loadWebfontsWithHtmlApi(config)
 		: loadWebfontsWithFallback(config);
 
-const useWebfonts = config => {
+const useWebfonts = (config) => {
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {

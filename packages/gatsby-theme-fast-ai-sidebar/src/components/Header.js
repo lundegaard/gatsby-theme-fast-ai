@@ -5,7 +5,16 @@ import { Box, Col, Container, Row } from '@fast-ai/ui-components';
 import AppBar from './AppBar';
 import Navigation from './Navigation';
 
-const Header = ({ fullWidth, nav, menu, setMenu, appBarProps, navigationProps, sx, ...rest }) => (
+const Header = ({
+	fullWidth,
+	nav,
+	menu,
+	setMenu,
+	appBarProps,
+	navigationProps,
+	sx,
+	...rest
+}) => (
 	<Fragment>
 		<Container
 			fullWidth

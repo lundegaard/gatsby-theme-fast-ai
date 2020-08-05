@@ -5,6 +5,8 @@ import { Link as ComponentsLink } from '@fast-ai/ui-components';
 
 const Link = (props) => <ComponentsLink as={IntlLink} {...props} />;
 
-export const NoIntlLink = (props) => <ComponentsLink as={GatsbyLink} {...props} />;
+export const NoIntlLink = (props) => (
+	<ComponentsLink as={GatsbyLink} {...props} />
+);
 
 export default Link;

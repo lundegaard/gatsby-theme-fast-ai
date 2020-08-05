@@ -1,7 +1,12 @@
 import React, { Fragment, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant';
-import { Slider as CompoundSlider, Handles, Rail, Tracks } from 'react-compound-slider';
+import {
+	Slider as CompoundSlider,
+	Handles,
+	Rail,
+	Tracks,
+} from 'react-compound-slider';
 import { isNotNil } from 'ramda-extension';
 
 import Box from '../Box';
@@ -41,9 +46,16 @@ const Handle = ({
 Handle.propTypes = {
 	domain: PropTypes.arrayOf(PropTypes.number).isRequired,
 	getHandleProps: PropTypes.func.isRequired,
-	handle: PropTypes.shape({ id: PropTypes.any, value: PropTypes.any, percent: PropTypes.number })
-		.isRequired,
-	variant: PropTypes.oneOf(['forms.slider', 'forms.slider.danger', 'forms.slider.disabled']),
+	handle: PropTypes.shape({
+		id: PropTypes.any,
+		value: PropTypes.any,
+		percent: PropTypes.number,
+	}).isRequired,
+	variant: PropTypes.oneOf([
+		'forms.slider',
+		'forms.slider.danger',
+		'forms.slider.disabled',
+	]),
 };
 
 const Track = ({ source, target, getTrackProps, variant }) => (
@@ -64,7 +76,11 @@ Track.propTypes = {
 	getTrackProps: PropTypes.func.isRequired,
 	source: PropTypes.shape({ percent: PropTypes.number.isRequired }),
 	target: PropTypes.shape({ percent: PropTypes.number.isRequired }),
-	variant: PropTypes.oneOf(['forms.slider', 'forms.slider.danger', 'forms.slider.disabled']),
+	variant: PropTypes.oneOf([
+		'forms.slider',
+		'forms.slider.danger',
+		'forms.slider.disabled',
+	]),
 };
 
 const SliderRail = ({ getRailProps, variant }) => (
@@ -80,18 +96,34 @@ const SliderRail = ({ getRailProps, variant }) => (
 );
 SliderRail.propTypes = {
 	getRailProps: PropTypes.func.isRequired,
-	variant: PropTypes.oneOf(['forms.slider', 'forms.slider.danger', 'forms.slider.disabled']),
+	variant: PropTypes.oneOf([
+		'forms.slider',
+		'forms.slider.danger',
+		'forms.slider.disabled',
+	]),
 };
 
 const Slider = forwardRef(
 	(
-		{ disabled, step = 1, min, variant: variantProp, max, onChange, onUpdate, value, ...rest },
+		{
+			disabled,
+			step = 1,
+			min,
+			variant: variantProp,
+			max,
+			onChange,
+			onUpdate,
+			value,
+			...rest
+		},
 		ref
 	) => {
 		invariant(isNotNil(min), '`min` is required for Slider component');
 		invariant(isNotNil(max), '`max` is required for Slider component');
 
-		const variant = !variantProp ? 'forms.slider' : `forms.slider.${variantProp}`;
+		const variant = !variantProp
+			? 'forms.slider'
+			: `forms.slider.${variantProp}`;
 
 		const domain = [min, max];
 		return (
@@ -112,7 +144,9 @@ const Slider = forwardRef(
 				{...rest}
 			>
 				<Rail>
-					{({ getRailProps }) => <SliderRail variant={variant} getRailProps={getRailProps} />}
+					{({ getRailProps }) => (
+						<SliderRail variant={variant} getRailProps={getRailProps} />
+					)}
 				</Rail>
 
 				<Handles>

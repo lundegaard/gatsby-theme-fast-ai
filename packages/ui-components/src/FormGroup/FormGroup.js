@@ -48,7 +48,9 @@ const FormGroup = ({
 			<Col span={[12, 12, 7, 8]}>{children}</Col>
 		</Row>
 		<Row>
-			<Col span={12}>{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}</Col>
+			<Col span={12}>
+				{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}
+			</Col>
 		</Row>
 	</Box>
 );
