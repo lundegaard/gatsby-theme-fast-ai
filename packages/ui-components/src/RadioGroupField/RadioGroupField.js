@@ -51,7 +51,8 @@ RadioGroupField.propTypes = {
 	hint: PropTypes.node,
 	legend: PropTypes.node,
 	name: PropTypes.string,
-	/** Called when `onChange` event is triggered on any of children which has `value` prop set. */
+	/** Called when `onChange` event is triggered on any of children which has
+	 * `value` prop set. */
 	onChange: PropTypes.func,
 	/** Read-only state */
 	readOnly: PropTypes.bool,

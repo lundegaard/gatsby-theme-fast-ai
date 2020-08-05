@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Flex, Row, useBreakpoint } from '@fast-ai/ui-components';
+import {
+	Col,
+	Container,
+	Flex,
+	Row,
+	useBreakpoint,
+} from '@fast-ai/ui-components';
 
 import AppBar from './AppBar';
 import Logo from './Logo';

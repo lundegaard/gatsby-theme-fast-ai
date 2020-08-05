@@ -30,7 +30,8 @@ const Page = ({ children, location, fullWidth: fullWidthProp }) => {
 	const [menu, setMenu] = useState(true);
 	const nav = useRef(null);
 
-	const fullWidth = fullWidthProp || (location && location.pathname === withPrefix('/'));
+	const fullWidth =
+		fullWidthProp || (location && location.pathname === withPrefix('/'));
 
 	return (
 		<IntlContextConsumer>
@@ -47,8 +48,17 @@ const Page = ({ children, location, fullWidth: fullWidthProp }) => {
 						/>
 
 						<Flex>
-							{!fullWidth && <Sidebar menu={menu} setMenu={setMenu} nav={nav} links={sublinks} />}
-							<ContentContainer fullWidth={fullWidth}>{children}</ContentContainer>
+							{!fullWidth && (
+								<Sidebar
+									menu={menu}
+									setMenu={setMenu}
+									nav={nav}
+									links={sublinks}
+								/>
+							)}
+							<ContentContainer fullWidth={fullWidth}>
+								{children}
+							</ContentContainer>
 						</Flex>
 
 						<Footer />

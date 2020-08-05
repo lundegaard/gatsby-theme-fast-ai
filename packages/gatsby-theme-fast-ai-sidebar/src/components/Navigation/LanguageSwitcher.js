@@ -20,10 +20,10 @@ const LanguageSwitcher = ({ sx, ...rest }) => (
 				>
 					<TransparentSelect
 						name="language"
-						onChange={event => changeLocale(event.target.value)}
+						onChange={(event) => changeLocale(event.target.value)}
 						value={currentLanguage}
 					>
-						{languages.map(language => (
+						{languages.map((language) => (
 							<option key={language} value={language}>
 								{language}
 							</option>

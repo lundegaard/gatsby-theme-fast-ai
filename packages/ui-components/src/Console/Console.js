@@ -67,7 +67,12 @@ export const defaultFormattingFunction = (x) => {
 };
 /* eslint-enable max-len */
 
-const Console = ({ title, formatValue = defaultFormattingFunction, initiallyOpened, ...rest }) => {
+const Console = ({
+	title,
+	formatValue = defaultFormattingFunction,
+	initiallyOpened,
+	...rest
+}) => {
 	const [isOpened, setIsOpened] = useState(initiallyOpened);
 	const log = useConsoleLog();
 
@@ -120,7 +125,11 @@ const Console = ({ title, formatValue = defaultFormattingFunction, initiallyOpen
 					{log &&
 						o(
 							map(([label, value]) => (
-								<ConsoleItem key={label} label={label} value={formatValue(value)} />
+								<ConsoleItem
+									key={label}
+									label={label}
+									value={formatValue(value)}
+								/>
 							)),
 							toPairs
 						)(log)}

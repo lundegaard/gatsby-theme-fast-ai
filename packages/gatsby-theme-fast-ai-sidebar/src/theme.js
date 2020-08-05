@@ -44,7 +44,8 @@ const theme = createTheme({
 			},
 		},
 		'main-nav': {
-			maskImage: 'linear-gradient(to right,transparent,white 0.5rem,white 98%,transparent)',
+			maskImage:
+				'linear-gradient(to right,transparent,white 0.5rem,white 98%,transparent)',
 			alignItems: 'center',
 			height: '100%',
 			width: '100%',

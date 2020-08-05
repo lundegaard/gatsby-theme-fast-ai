@@ -7,7 +7,8 @@ const Match = ({ path, language, ...rest }) => (
 	<IntlContextConsumer>
 		{(intl) => {
 			const languageLink = language || intl.language;
-			const pathWithLanguage = intl.routed || language ? `/${languageLink}${path}` : `${path}`;
+			const pathWithLanguage =
+				intl.routed || language ? `/${languageLink}${path}` : `${path}`;
 
 			return <RouterMatch path={pathWithLanguage} {...rest} />;
 		}}

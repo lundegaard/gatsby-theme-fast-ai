@@ -47,7 +47,6 @@ const Sidebar = ({ nav, menu, setMenu, links }) => (
 		sx={{
 			variant: 'sidebar',
 			position: ['fixed', 'sticky'],
-			// boxShadow: menu ? ['0px 0px 5px 0px rgba(0,0,0,0.25)', 'none'] : 'none',
 			zIndex: 1,
 			top: 0,
 			left: 0,
@@ -79,7 +78,11 @@ const Sidebar = ({ nav, menu, setMenu, links }) => (
 
 Sidebar.propTypes = {
 	links: PropTypes.arrayOf(
-		PropTypes.shape({ to: PropTypes.string, label: PropTypes.node, children: PropTypes.array })
+		PropTypes.shape({
+			to: PropTypes.string,
+			label: PropTypes.node,
+			children: PropTypes.array,
+		})
 	),
 	menu: PropTypes.bool,
 	nav: PropTypes.exact({

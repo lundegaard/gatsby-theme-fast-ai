@@ -10,7 +10,13 @@ import MdxLink from './components/MdxLink';
 
 const HeadingDivider = (props) => (
 	<Box
-		sx={{ bottom: 0, left: 0, height: '4px', bg: 'secondary', width: 'calc(3rem)' }}
+		sx={{
+			bottom: 0,
+			left: 0,
+			height: '4px',
+			bg: 'secondary',
+			width: 'calc(3rem)',
+		}}
 		{...props}
 	/>
 );
@@ -21,13 +27,25 @@ const HeadingWithDivider = (props) => (
 	</Box>
 );
 
-export const H1 = (props) => <HeadingWithDivider as="h2" variant="subHeading1" {...props} />;
-export const H2 = (props) => <Heading as="h3" variant="subHeading2" {...props} />;
-export const H3 = (props) => <Heading as="h4" variant="subHeading3" {...props} />;
-export const H4 = (props) => <Heading as="h5" variant="subHeading4" {...props} />;
-export const H5 = (props) => <Heading as="h6" variant="subHeading5" {...props} />;
+export const H1 = (props) => (
+	<HeadingWithDivider as="h2" variant="subHeading1" {...props} />
+);
+export const H2 = (props) => (
+	<Heading as="h3" variant="subHeading2" {...props} />
+);
+export const H3 = (props) => (
+	<Heading as="h4" variant="subHeading3" {...props} />
+);
+export const H4 = (props) => (
+	<Heading as="h5" variant="subHeading4" {...props} />
+);
+export const H5 = (props) => (
+	<Heading as="h6" variant="subHeading5" {...props} />
+);
 
-export const Li = (props) => <Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />;
+export const Li = (props) => (
+	<Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />
+);
 
 export const Table = (props) => (
 	<Box
@@ -35,16 +53,23 @@ export const Table = (props) => (
 			maxWidth: '100%',
 			overflowX: 'auto',
 			overflowY: 'hidden',
-			maskImage: 'linear-gradient(to right,transparent,white 0.5rem,white 97%,transparent)',
+			maskImage:
+				'linear-gradient(to right,transparent,white 0.5rem,white 97%,transparent)',
 			px: 1,
 		}}
 	>
 		<Box as="table" variant="table" {...props} />
 	</Box>
 );
-export const TableHeader = (props) => <Box as="th" variant="tableHeader" {...props} />;
-export const TableRow = (props) => <Box as="tr" variant="tableRow" {...props} />;
-export const TableCol = (props) => <Box as="td" variant="tableCol" {...props} />;
+export const TableHeader = (props) => (
+	<Box as="th" variant="tableHeader" {...props} />
+);
+export const TableRow = (props) => (
+	<Box as="tr" variant="tableRow" {...props} />
+);
+export const TableCol = (props) => (
+	<Box as="td" variant="tableCol" {...props} />
+);
 
 export const Code = (props) => (
 	<Box

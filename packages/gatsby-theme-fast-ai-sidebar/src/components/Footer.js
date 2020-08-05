@@ -44,7 +44,12 @@ const socialLinks = [
 	},
 ];
 const Footer = (props) => (
-	<Box as="footer" backgroundColor="primary" variant="transparentStripes" {...props}>
+	<Box
+		as="footer"
+		backgroundColor="primary"
+		variant="transparentStripes"
+		{...props}
+	>
 		<Container>
 			<Row
 				alignItems="center"

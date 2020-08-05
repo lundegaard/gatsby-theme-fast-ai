@@ -5,7 +5,10 @@ import { Radio as RebassRadio } from '@rebass/forms';
 import Label from '../Label';
 
 const Radio = forwardRef(
-	({ label, disabled, readOnly, name, value, onChange, checked, ...rest }, ref) => (
+	(
+		{ label, disabled, readOnly, name, value, onChange, checked, ...rest },
+		ref
+	) => (
 		<Label ref={ref} color="inherit" alignItems="center" {...rest}>
 			<RebassRadio
 				name={name}

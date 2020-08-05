@@ -22,7 +22,7 @@ const jumpInFromTop = keyframes`
 
 const easing = 'cubic-bezier(.455, .030, .515, .955)';
 
-const ZoeLogo = props => (
+const ZoeLogo = (props) => (
 	<Image
 		src={logoSrc}
 		alt="Logo"

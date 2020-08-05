@@ -8,8 +8,9 @@ import SuperFieldLabel from '../SuperFieldLabel';
 import SuperFieldHint from '../SuperFieldHint';
 
 /**
- * Convenient component for most of the SelectFields. But with SuperField is simple to compose its own.
- * It just specified that this is a input field, that can have an error, hint, prefix or suffix.
+ * Convenient component for most of the SelectFields. But with SuperField is
+ * simple to compose its own.  It just specified that this is a input field,
+ * that can have an error, hint, prefix or suffix.
  */
 const SelectField = ({
 	id,
@@ -29,8 +30,16 @@ const SelectField = ({
 	items,
 	...rest
 }) => (
-	<SuperField {...rest} disabled={disabled} readOnly={readOnly} hasError={hasError} id={id}>
-		<SuperFieldLabel alwaysShrank={!!(labelAlwaysShrank || placeholder)}>{label}</SuperFieldLabel>
+	<SuperField
+		{...rest}
+		disabled={disabled}
+		readOnly={readOnly}
+		hasError={hasError}
+		id={id}
+	>
+		<SuperFieldLabel alwaysShrank={!!(labelAlwaysShrank || placeholder)}>
+			{label}
+		</SuperFieldLabel>
 		<Select
 			placeholder={placeholder}
 			value={value}

@@ -6,7 +6,8 @@ import { Box } from '@fast-ai/ui-components';
 import m from '../messages';
 import { copyToClipboard } from '../utils';
 
-const delay = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
+const delay = (duration) =>
+	new Promise((resolve) => setTimeout(resolve, duration));
 
 const Copy = ({ content, duration = 5000, fileName = '', trim, sx }) => {
 	const [copied, setCopied] = useState(false);
@@ -48,7 +49,11 @@ const Copy = ({ content, duration = 5000, fileName = '', trim, sx }) => {
 				setCopied(false);
 			}}
 		>
-			{copied ? <FormattedMessage {...m.copied} /> : <FormattedMessage {...m.copy} />}
+			{copied ? (
+				<FormattedMessage {...m.copied} />
+			) : (
+				<FormattedMessage {...m.copy} />
+			)}
 		</Box>
 	);
 };

@@ -33,7 +33,14 @@ const ConsoleItem = ({ value, label, ...rest }) => (
 		<Box as="span" fontSize={1} mb={0}>
 			{label}
 		</Box>
-		<HighlightChangesText title={value} key={value} as="span" ml="auto" mb={0} fontSize={1}>
+		<HighlightChangesText
+			title={value}
+			key={value}
+			as="span"
+			ml="auto"
+			mb={0}
+			fontSize={1}
+		>
 			<Dotdotdot clamp={1}>{value}</Dotdotdot>
 		</HighlightChangesText>
 	</Flex>

@@ -32,7 +32,16 @@ const SuperField = ({ id: idProp, hasError, disabled, readOnly, children }) => {
 			isDisabled: disabled,
 			isReadOnly: readOnly,
 		}),
-		[idProp, generatedId, isFocused, hasError, isInputFilledIn, isLabelShrank, disabled, readOnly]
+		[
+			idProp,
+			generatedId,
+			isFocused,
+			hasError,
+			isInputFilledIn,
+			isLabelShrank,
+			disabled,
+			readOnly,
+		]
 	);
 
 	return (

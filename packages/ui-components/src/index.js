@@ -49,7 +49,7 @@ export {
 	Console,
 	ConsoleProvider,
 	ConsoleItem,
-	defaultFormattingFunction,
+	defaultFormattingFunction as defaultConsoleFormattingFunction,
 	useConsole,
 	useConsoleLog,
 } from './Console';

@@ -8,8 +8,9 @@ import SuperFieldHint from '../SuperFieldHint';
 import Input from '../Input';
 
 /**
- * Convenient component for most of the TextFields. But with SuperField is simple to compose its own.
- * It just specified that this is a input field, that can have an error, hint, prefix or suffix.
+ * Convenient component for most of the TextFields. But with SuperField is
+ * simple to compose its own.  It just specified that this is a input field,
+ * that can have an error, hint, prefix or suffix.
  */
 export const TextField = ({
 	id,
@@ -26,7 +27,13 @@ export const TextField = ({
 	labelAlwaysShrank,
 	...rest
 }) => (
-	<SuperField {...rest} disabled={disabled} readOnly={readOnly} hasError={hasError} id={id}>
+	<SuperField
+		{...rest}
+		disabled={disabled}
+		readOnly={readOnly}
+		hasError={hasError}
+		id={id}
+	>
 		<SuperFieldLabel alwaysShrank={labelAlwaysShrank}>{label}</SuperFieldLabel>
 		<Input
 			type="text"

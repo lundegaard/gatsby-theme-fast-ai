@@ -48,7 +48,9 @@ const SliderField = ({
 				}}
 				mb={0}
 			>
-				<RenderValues>{compose(map(getValue), ensureArray)(valueDebounced)}</RenderValues>
+				<RenderValues>
+					{compose(map(getValue), ensureArray)(valueDebounced)}
+				</RenderValues>
 			</Text>
 			<FormGroup
 				id={id}
@@ -78,7 +80,8 @@ SliderField.propTypes = {
 	hasError: PropTypes.bool,
 	/** Hint itext */
 	hint: PropTypes.node,
-	/** Used to connect label and slider. If not defined, component will generate its own. */
+	/** Used to connect label and slider. If not defined, component will generate
+	 * its own. */
 	id: PropTypes.string,
 	/** Label for Slider  */
 	label: PropTypes.node,

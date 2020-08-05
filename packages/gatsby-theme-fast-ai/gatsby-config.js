@@ -67,7 +67,9 @@ module.exports = (themeOptions) => {
 							options: {
 								extensions: ['.mdx', '.md'],
 								defaultLayouts: {
-									default: require.resolve('gatsby-theme-fast-ai/src/templates/MdxPage'),
+									default: require.resolve(
+										'gatsby-theme-fast-ai/src/templates/MdxPage'
+									),
 								},
 								plugins: remarkPlugins,
 								gatsbyRemarkPlugins: remarkPlugins,

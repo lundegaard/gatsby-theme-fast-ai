@@ -33,7 +33,15 @@ const Select = forwardRef((props, ref) => {
 		getValue = prop('value'),
 		...rest
 	} = props;
-	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } = useSuperFieldContext();
+	const {
+		id,
+		isLabelShrank,
+		hasError,
+		onFill,
+		onEmpty,
+		onFocus,
+		onBlur,
+	} = useSuperFieldContext();
 
 	const checkDirty = useCallback(
 		(value) => {

@@ -16,14 +16,18 @@ const placeholderVisible = {
 };
 
 const mergeRefs = (refs) => (value) => {
-	refs.filter(Boolean).forEach((ref) => (isFunction(ref) ? ref(value) : (ref.current = value)));
+	refs
+		.filter(Boolean)
+		.forEach((ref) => (isFunction(ref) ? ref(value) : (ref.current = value)));
 };
 
 const autofill = keyframes`
 	from {}
 `;
 
-// NOTE: make sure, that contents of `autofill` and `autofillCancel` are not the same. Otherwise emotion actually assings both of them same animation.name.
+// NOTE: make sure, that contents of `autofill` and `autofillCancel` are not
+// the same. Otherwise emotion actually assings both of them same
+// animation.name.
 const autofillCancel = keyframes`
 	from {}
 	to: {}
@@ -40,7 +44,15 @@ const getBorderColor = ({ hasError, readOnly, disabled }) => {
 };
 
 const Input = forwardRef((props, ref) => {
-	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } = useSuperFieldContext();
+	const {
+		id,
+		isLabelShrank,
+		hasError,
+		onFill,
+		onEmpty,
+		onFocus,
+		onBlur,
+	} = useSuperFieldContext();
 	const inputRef = useRef();
 	const internalInputRef = mergeRefs([inputRef, ref]);
 
@@ -71,9 +83,12 @@ const Input = forwardRef((props, ref) => {
 	}, [checkDirty, value]);
 
 	const handleAutoFill = (event) => {
-		// Provide a fake value as Chrome might not let you access it for security reasons.
+		// Provide a fake value as Chrome might not let you access it for security
+		// reasons.
 		checkDirty(
-			event.animationName.indexOf(autofillCancel.name) !== -1 ? inputRef.current.value : 'x'
+			event.animationName.indexOf(autofillCancel.name) !== -1
+				? inputRef.current.value
+				: 'x'
 		);
 	};
 	const handleFocus = (event) => {

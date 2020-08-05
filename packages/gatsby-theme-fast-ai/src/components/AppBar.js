@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '@fast-ai/ui-components';
 
-const AppBar = props => (
+const AppBar = (props) => (
 	<Flex
 		as="header"
 		flexWrap="wrap"

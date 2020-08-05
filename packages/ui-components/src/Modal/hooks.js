@@ -7,7 +7,7 @@ export const useModal = ({ component }) => {
 
 	const api = useMemo(
 		() => ({
-			openModal: modalProps => {
+			openModal: (modalProps) => {
 				modalApi.openModal(component, modalProps);
 			},
 			closeModal: () => {

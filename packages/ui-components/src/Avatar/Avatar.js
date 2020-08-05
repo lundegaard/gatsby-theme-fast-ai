@@ -5,7 +5,7 @@ import mapResponsiveProperty from '../utils/mapResponsiveProperty';
 import * as Types from '../types';
 import Box from '../Box';
 
-const addPx = mapResponsiveProperty(x => `${x}px`);
+const addPx = mapResponsiveProperty((x) => `${x}px`);
 
 const Avatar = ({ size = 35, sx, ...rest }) => (
 	<Box

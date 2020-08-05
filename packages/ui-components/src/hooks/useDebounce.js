@@ -3,10 +3,14 @@ import { equals } from 'ramda';
 
 import useDebouncedCallback from './useDebouncedCallback';
 
-const useDebounce = (value, delay, { equalityFn = equals, ...restOptions } = {}) => {
+const useDebounce = (
+	value,
+	delay,
+	{ equalityFn = equals, ...restOptions } = {}
+) => {
 	const [state, dispatch] = useState(value);
 	const [callback, cancel, callPending] = useDebouncedCallback(
-		useCallback(value => dispatch(value), []),
+		useCallback((value) => dispatch(value), []),
 		delay,
 		restOptions
 	);

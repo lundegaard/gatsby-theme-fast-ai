@@ -23,12 +23,16 @@ const Seo = ({ description = '', meta = [], title }) => {
 	const intl = useIntl();
 
 	const metaDescription =
-		description || intl.formatMessage(m.siteDescription) || site.siteMetadata.description;
+		description ||
+		intl.formatMessage(m.siteDescription) ||
+		site.siteMetadata.description;
 
 	return (
 		<Helmet
 			title={title}
-			titleTemplate={`%s - ${intl.formatMessage(m.siteTitle) || site.siteMetadata.title}`}
+			titleTemplate={`%s - ${
+				intl.formatMessage(m.siteTitle) || site.siteMetadata.title
+			}`}
 			meta={[
 				{
 					name: 'description',
