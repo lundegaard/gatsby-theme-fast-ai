@@ -10,6 +10,7 @@ import MdxLink from './components/MdxLink';
 
 const HeadingDivider = (props) => (
 	<Box
+		variant="mdxHeadingDivider"
 		sx={{
 			bottom: 0,
 			left: 0,
@@ -44,11 +45,19 @@ export const H5 = (props) => (
 );
 
 export const Li = (props) => (
-	<Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />
+	<Box
+		as="li"
+		variant="mdxLi"
+		fontSize={[2, 2, 2, 4]}
+		mb="2"
+		mt="2"
+		{...props}
+	/>
 );
 
 export const Table = (props) => (
 	<Box
+		variant="mdxTableWrapper"
 		sx={{
 			maxWidth: '100%',
 			overflowX: 'auto',
@@ -74,6 +83,7 @@ export const TableCol = (props) => (
 export const Code = (props) => (
 	<Box
 		as="code"
+		variant="mdxCode"
 		sx={{
 			p: '1px 2px',
 			color: '#e8852b',
@@ -84,6 +94,7 @@ export const Code = (props) => (
 
 const InfoBox = (props) => (
 	<Box
+		variant="mdxInfoBox"
 		fontSize={[2, 2, 2, 4]}
 		sx={{
 			border: '1px solid',
@@ -108,6 +119,7 @@ export const resolveIconType = (type) => {
 export const Icon = ({ type, ...props }) => (
 	<Image
 		src={resolveIconType(type)}
+		variant="mdxImage"
 		alt="Icon"
 		mr="1"
 		sx={{ width: '17px', height: '15px' }}
@@ -116,6 +128,17 @@ export const Icon = ({ type, ...props }) => (
 );
 
 Icon.propTypes = { type: PropTypes.string };
+
+export const Pre = ({ sx, children, ...rest }) => (
+	<Box variant="mdxPre" sx={{ mb: 2, ...sx }} {...rest}>
+		<HighlightedCode {...rest}>{children}</HighlightedCode>
+	</Box>
+);
+
+Pre.propTypes = {
+	children: PropTypes.node,
+	sx: PropTypes.object,
+};
 
 export const Paragraph = (props) => <Text as="p" mb={3} {...props} />;
 
@@ -128,7 +151,7 @@ export const components = {
 	p: Paragraph,
 	a: MdxLink,
 	img: Image,
-	pre: HighlightedCode,
+	pre: Pre,
 	inlineCode: Code,
 	table: Table,
 	th: TableHeader,

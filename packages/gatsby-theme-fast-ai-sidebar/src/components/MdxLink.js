@@ -1,18 +1,26 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link as ComponentsLink } from '@fast-ai/ui-components';
 import { Link as LinkGatsby } from '@reach/router';
+import { complement, o, prop } from 'ramda';
 import { startsWithPrefix } from 'ramda-extension';
 
-const isAbsoluteUrl = startsWithPrefix('http');
+const defaultIsInternalLink = o(
+	complement(startsWithPrefix('http')),
+	prop('href')
+);
 
-/* eslint-disable react/prop-types */
-const MdxLink = ({ href, ...rest }) => {
-	const isInternalLink = !isAbsoluteUrl(href);
-
-	const linkProps = isInternalLink ? { as: LinkGatsby, to: href } : { href };
+const MdxLink = ({ href, isInternalLink = defaultIsInternalLink, ...rest }) => {
+	const linkProps = isInternalLink({ href, ...rest })
+		? { as: LinkGatsby, to: href }
+		: { href };
 
 	return <ComponentsLink {...linkProps} {...rest} />;
 };
+
+MdxLink.propTypes = {
+	href: PropTypes.string,
+	isInternalLink: PropTypes.func,
+};
+
 export default MdxLink;
