@@ -72,6 +72,11 @@ const theme = createTheme({
 		container: {
 			maxWidth: ['none', '52em', '76em', '110em'],
 		},
+		highlighted: {
+			lineHeight: 'body',
+			fontSize: [2, 2, 2, 4],
+		},
+		highlightedToken: {},
 	},
 });
 

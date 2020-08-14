@@ -53,11 +53,11 @@ export const HighlightedCode = (props) => {
 		>
 			{({ style, tokens, getLineProps, getTokenProps }) => (
 				<Pre
+					variant="highlighted"
 					sx={{
 						...style,
 						p: [1, 2, 3],
 						position: 'relative',
-						fontSize: 1,
 						maxWidth: '100%',
 						overflowX: 'visible',
 						overflowY: 'hidden',
