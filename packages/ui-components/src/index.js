@@ -64,3 +64,4 @@ export { default as IconScience } from './IconScience';
 export { default as IconSearch } from './IconSearch';
 export { default as IconThumbDown } from './IconThumbDown';
 export { default as IconInsertLink } from './IconInsertLink';
+export { default as HeadingAnchor } from './HeadingAnchor';
