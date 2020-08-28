@@ -53,3 +53,14 @@ export {
 	useConsole,
 	useConsoleLog,
 } from './Console';
+export { default as IconButton } from './IconButton';
+export { default as IconArrowDownward } from './IconArrowDownward';
+export { default as SvgIcon } from './SvgIcon';
+export { default as IconArrowForward } from './IconArrowForward';
+export { default as IconArrowHeadUp } from './IconArrowHeadUp';
+export { default as IconArrowHeadDown } from './IconArrowHeadDown';
+export { default as IconHttp } from './IconHttp';
+export { default as IconScience } from './IconScience';
+export { default as IconSearch } from './IconSearch';
+export { default as IconThumbDown } from './IconThumbDown';
+export { default as IconInsertLink } from './IconInsertLink';
