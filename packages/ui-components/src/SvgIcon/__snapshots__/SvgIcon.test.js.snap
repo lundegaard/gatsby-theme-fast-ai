@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SvgIcon /> matches snapshot when shallowly rendered 1`] = `
+<svg
+  fill="currentcolor"
+  height={24}
+  viewBox="0 0 24 24"
+  width={24}
+  xmlns="http://www.w3.org/2000/svg"
+/>
+`;

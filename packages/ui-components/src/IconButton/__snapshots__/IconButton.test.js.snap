@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconButton /> matches snapshot when shallowly rendered 1`] = `
+<Box
+  as="button"
+  sx={
+    Object {
+      "alignItems": "center",
+      "appearance": "none",
+      "bg": "transparent",
+      "border": "none",
+      "borderRadius": 4,
+      "color": "inherit",
+      "display": "inline-flex",
+      "height": 32,
+      "justifyContent": "center",
+      "padding": 1,
+      "width": 32,
+    }
+  }
+/>
+`;
