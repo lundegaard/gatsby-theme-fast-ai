@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { pathOr } from 'ramda';
-import { Box, Heading, Image, Link, Text } from '@fast-ai/ui-components';
+import { Box, HeadingAnchor, Image, Link, Text } from '@fast-ai/ui-components';
 
 import warning from '../content/assets/exclamation-triangle.svg';
 import info from '../content/assets/info-circle.svg';
@@ -21,23 +21,23 @@ const HeadingDivider = (props) => (
 );
 const HeadingWithDivider = (props) => (
 	<Box sx={{ position: 'relative', mb: [3, 3] }}>
-		<Heading {...props} />
+		<HeadingAnchor {...props} />
 		<HeadingDivider />
 	</Box>
 );
 
-export const H1 = (props) => <Heading as="h1" {...props} />;
+export const H1 = (props) => <HeadingAnchor as="h1" {...props} />;
 export const H2 = (props) => (
 	<HeadingWithDivider as="h2" variant="subHeading1" {...props} />
 );
 export const H3 = (props) => (
-	<Heading as="h3" variant="subHeading2" {...props} />
+	<HeadingAnchor as="h3" variant="subHeading2" {...props} />
 );
 export const H4 = (props) => (
-	<Heading as="h4" variant="subHeading3" {...props} />
+	<HeadingAnchor as="h4" variant="subHeading3" {...props} />
 );
 export const H5 = (props) => (
-	<Heading as="h5" variant="subHeading4" {...props} />
+	<HeadingAnchor as="h5" variant="subHeading4" {...props} />
 );
 
 const Li = (props) => (

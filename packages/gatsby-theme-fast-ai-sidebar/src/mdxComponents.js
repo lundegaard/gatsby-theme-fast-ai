@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Heading, Image, Text } from '@fast-ai/ui-components';
+import { Box, HeadingAnchor, Image, Text } from '@fast-ai/ui-components';
 
 import warning from '../content/assets/exclamation-triangle.svg';
 import info from '../content/assets/info-circle.svg';
@@ -23,7 +23,7 @@ const HeadingDivider = (props) => (
 );
 const HeadingWithDivider = (props) => (
 	<Box sx={{ position: 'relative', mb: [3, 3] }}>
-		<Heading {...props} />
+		<HeadingAnchor {...props} />
 		<HeadingDivider />
 	</Box>
 );
@@ -32,16 +32,16 @@ export const H1 = (props) => (
 	<HeadingWithDivider as="h2" variant="subHeading1" {...props} />
 );
 export const H2 = (props) => (
-	<Heading as="h3" variant="subHeading2" {...props} />
+	<HeadingAnchor as="h3" variant="subHeading2" {...props} />
 );
 export const H3 = (props) => (
-	<Heading as="h4" variant="subHeading3" {...props} />
+	<HeadingAnchor as="h4" variant="subHeading3" {...props} />
 );
 export const H4 = (props) => (
-	<Heading as="h5" variant="subHeading4" {...props} />
+	<HeadingAnchor as="h5" variant="subHeading4" {...props} />
 );
 export const H5 = (props) => (
-	<Heading as="h6" variant="subHeading5" {...props} />
+	<HeadingAnchor as="h6" variant="subHeading5" {...props} />
 );
 
 export const Li = (props) => (
