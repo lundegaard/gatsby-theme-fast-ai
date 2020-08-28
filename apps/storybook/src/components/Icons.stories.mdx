@@ -1,0 +1,48 @@
+import {
+	Col,
+	Container,
+	IconArrowDownward,
+	IconArrowForward,
+	IconArrowHeadDown,
+	IconArrowHeadUp,
+	IconButton,
+	IconHttp,
+	IconInsertLink,
+	IconScience,
+	IconSearch,
+	IconThumbDown,
+	Radio,
+	RadioGroup,
+	RadioGroupField,
+	Row,
+	Text
+} from '@fast-ai/ui-components';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Field } from 'react-powerplug';
+
+<Meta title="Examples/Icons" component={IconButton} />
+
+## Sample form
+
+<Preview>
+	<Story name="Icons">
+		<Container>
+			<Row py={2}>
+				<Col span={6}>
+					<IconButton><IconArrowHeadDown /></IconButton>
+					<IconButton><IconInsertLink /></IconButton>
+					<IconButton><IconArrowHeadUp /></IconButton>
+					<IconButton><IconHttp /></IconButton>
+					<IconButton><IconScience /></IconButton>
+					<IconButton><IconSearch /></IconButton>
+					<IconButton><IconThumbDown /></IconButton>
+				</Col>
+			</Row>
+		</Container>
+	</Story>
+</Preview>
+
+## IconButton
+
+<Props of={IconButton} />
+
