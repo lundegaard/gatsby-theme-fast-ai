@@ -6,7 +6,7 @@ import warning from '../content/assets/exclamation-triangle.svg';
 import info from '../content/assets/info-circle.svg';
 
 import HighlightedCode from './components/HighlightedCode';
-import MdxLink from './components/MdxLink';
+// import MdxLink from './components/MdxLink';
 
 const HeadingDivider = (props) => (
 	<Box
@@ -149,7 +149,7 @@ export const components = {
 	h4: H4,
 	h5: H5,
 	p: Paragraph,
-	a: MdxLink,
+	// a: MdxLink,
 	img: Image,
 	pre: Pre,
 	inlineCode: Code,

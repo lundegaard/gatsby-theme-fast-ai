@@ -72,7 +72,10 @@
 		"**/@babel/plugin-transform-react-constant-elements": "^7.10.4",
 		"**/@babel/plugin-transform-runtime": "^7.11.5",
 		"**/next/terser": "^4.1.2",
-		"**/@emotion/core": "^10.0.28"
+		"**/@emotion/core": "^10.0.28",
+		"**/@mdx-js/mdx": "^1.6.16",
+		"**/@mdx-js/react": "^1.6.16",
+		"**/@mdx-js/util": "^1.6.16"
 	},
 	"scripts": {
 		"build": "yarn build:node-packages",
