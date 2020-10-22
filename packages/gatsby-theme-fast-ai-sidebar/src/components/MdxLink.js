@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as ComponentsLink } from '@fast-ai/ui-components';
-import { Link as LinkGatsby } from '@reach/router';
+import { Link as LinkGatsby } from 'gatsby';
 import { complement, o, prop } from 'ramda';
 import { startsWithPrefix } from 'ramda-extension';
 

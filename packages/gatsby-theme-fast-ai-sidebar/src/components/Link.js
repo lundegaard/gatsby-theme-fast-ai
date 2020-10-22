@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as IntlLink } from 'gatsby-plugin-intl';
-import { Link as GatsbyLink } from '@reach/router';
+import { Link as GatsbyLink } from 'gatsby';
 import { Link as ComponentsLink } from '@fast-ai/ui-components';
 
 const Link = (props) => <ComponentsLink as={IntlLink} {...props} />;
