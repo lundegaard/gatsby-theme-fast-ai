@@ -72,3 +72,18 @@ exports.onCreateNode = ({ node, actions, getNode }, { disableMdx }) => {
 		});
 	}
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+	const { createTypes } = actions;
+	const typeDefs = `
+    type MdxFrontmatter implements Node {
+			fullWidth: Boolean
+			title: String
+			description: String
+			tableOfContentsDepth: Number
+			disableTableOfContents: Boolean
+    }
+  `;
+
+	createTypes(typeDefs);
+};

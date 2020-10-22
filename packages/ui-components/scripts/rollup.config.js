@@ -2,6 +2,7 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
+import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
@@ -59,6 +60,7 @@ export default [
 		onwarn,
 		external: Object.keys(globals),
 		plugins: [
+			json(),
 			nodeResolve(),
 			babel(babelOptions),
 			commonjs(commonjsOptions),
@@ -77,6 +79,7 @@ export default [
 		},
 		external: Object.keys(globals),
 		plugins: [
+			json(),
 			nodeResolve(),
 			babel(babelOptions),
 			commonjs(commonjsOptions),
