@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, useBreakpoint } from '@fast-ai/ui-components';
+import { Box, Link, Text, useBreakpoint } from '@fast-ai/ui-components';
 import { map } from 'ramda';
-
-import { NoIntlLink as Link } from '../components/Link';
 
 export const useActiveHash = (itemIds, rootMargin = undefined) => {
 	const [activeHash, setActiveHash] = useState('');
@@ -60,7 +58,7 @@ const getNav = ({
 							  }
 							: {}),
 					}}
-					to={`${location.pathname}${url}`}
+					href={`${location.pathname}${url}`}
 				>
 					{title}
 				</Link>
