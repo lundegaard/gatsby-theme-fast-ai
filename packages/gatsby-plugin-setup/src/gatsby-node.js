@@ -1,7 +1,8 @@
-const path = require('path');
+// const path = require('path');
 
-const { omit, includes } = require('ramda');
-const { rejectNil } = require('ramda-extension');
+// const { omit, includes } = require('ramda');
+const { includes } = require('ramda');
+// const { rejectNil } = require('ramda-extension');
 
 const stages = {
 	DEVELOP: 'develop',
@@ -44,20 +45,25 @@ const setBabel = ({ getConfig, stage, loaders, actions }) => {
 		},
 	];
 
-	if (config.resolve) {
-		// https://github.com/gatsbyjs/gatsby/issues/15601#issuecomment-530131304
-		config.resolve.alias = omit(['core-js'], config.resolve.alias);
+	// NOTE: for future reference
+	// if (config.resolve) {
+	// 	// https://github.com/gatsbyjs/gatsby/issues/15601#issuecomment-530131304
+	// 	config.resolve.alias = omit(['core-js'], config.resolve.alias);
 
-		config.resolve.modules = rejectNil([
-			...(config.resolve.modules || []),
-			path.resolve(__dirname, '../../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
-			path.resolve(__dirname, '../node_modules/gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
-			path.resolve(__dirname, '../../gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
-			path.resolve(__dirname, '../gatsby/node_modules'), // for Gatsby's core-js@2 - monorepo
-			path.resolve(__dirname, './node_modules'),
-			'node_modules', // your modules w/ core-js@3
-		]);
-	}
+	// 	config.resolve.modules = rejectNil([
+	// 		...(config.resolve.modules || []),
+	// 		path.resolve(__dirname, '../../node_modules/gatsby/node_modules'),
+	// 		// for Gatsby's core-js@2 - monorepo
+	// 		path.resolve(__dirname, '../node_modules/gatsby/node_modules'),
+	// 		// for Gatsby's core-js@2 - monorepo
+	// 		path.resolve(__dirname, '../../gatsby/node_modules'),
+	// 		// for Gatsby's core-js@2 - monorepo
+	// 		path.resolve(__dirname, '../gatsby/node_modules'),
+	// 		// for Gatsby's core-js@2 - monorepo
+	// 		path.resolve(__dirname, './node_modules'),
+	// 		'node_modules', // your modules w/ core-js@3
+	// 	]);
+	// }
 
 	// NOTE: for debug purposes:
 	// console.dir(config, { depth: null });
