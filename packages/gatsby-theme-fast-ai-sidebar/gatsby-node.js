@@ -80,7 +80,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 			fullWidth: Boolean
 			title: String
 			description: String
-			tableOfContentsDepth: Number
+			tableOfContentsDepth: Int
 			disableTableOfContents: Boolean
     }
   `;
