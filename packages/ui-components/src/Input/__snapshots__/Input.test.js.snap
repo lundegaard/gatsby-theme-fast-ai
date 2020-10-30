@@ -55,6 +55,16 @@ exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
 }",
             "toString": [Function],
           },
+          "fontSize": Array [
+            2,
+            4,
+          ],
+        },
+        "&:-webkit-autofill::firstline": Object {
+          "fontSize": Array [
+            2,
+            4,
+          ],
         },
         "&::WebkitSearchDecoration": Object {
           "WebkitAppearance": "none",

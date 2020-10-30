@@ -108,6 +108,7 @@ const Input = forwardRef((props, ref) => {
 	};
 
 	const handleChange = disabled ? noop : onChange;
+	const fontSize = [2, 4];
 
 	return (
 		<Box
@@ -156,6 +157,10 @@ const Input = forwardRef((props, ref) => {
 					'&:-webkit-autofill': {
 						animationName: autofill,
 						animationDuration: '50000s',
+						fontSize,
+					},
+					'&:-webkit-autofill::firstline': {
+						fontSize,
 					},
 					WebkitTapHighlightColor: 'transparent',
 					'&::placeholder': placeholder,
@@ -178,7 +183,7 @@ const Input = forwardRef((props, ref) => {
 						outline: 0,
 					},
 					width: '100%',
-					fontSize: [2, 4],
+					fontSize,
 				}}
 				px={0}
 				id={id}
