@@ -19,6 +19,7 @@ const Hamburger = ({ isOpen, ...rest }) => (
 	>
 		<Box
 			sx={{
+				variant: isOpen ? 'hamburgerInner.opened' : 'hamburgerInner.closed',
 				position: 'relative',
 				width: '24px',
 				height: '18px',
