@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '../Box';
 
-const Modal = ({ children, sx, ...rest }) => (
+const Modal = forwardRef(({ children, sx, ...rest }, ref) => (
 	<Box
+		ref={ref}
 		sx={{
 			borderRadius: '5px',
 			backgroundColor: 'background',
@@ -18,11 +19,12 @@ const Modal = ({ children, sx, ...rest }) => (
 	>
 		{children}
 	</Box>
-);
+));
 
 Modal.propTypes = {
 	children: PropTypes.node,
 	sx: PropTypes.object,
 };
+Modal.displayName = 'Modal';
 
 export default Modal;

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Image as RebassImage } from 'rebass';
 
-const Image = (props) => <RebassImage {...props} />;
+const Image = forwardRef((props, ref) => <RebassImage ref={ref} {...props} />);
+Image.displayName = 'Image';
 
 export default Image;

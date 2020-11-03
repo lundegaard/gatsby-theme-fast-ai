@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { forwardRef, memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
 import { map, o, toPairs } from 'ramda';
@@ -29,21 +29,24 @@ const jumpInFromBottom = keyframes`
 const easing = 'cubic-bezier(.455, .030, .515, .955)';
 
 /* eslint-disable max-len */
-const DropdownArrow = memo((props) => (
-	<Box
-		as="svg"
-		width="13px"
-		height="9px"
-		viewBox="0 0 13 9"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<polygon
-			fill="currentColor"
-			points="10 1.03916875e-13 11.4061556 1.42222591 5.70307778 7.06086213 0 1.42222591 1.40615556 1.03916875e-13 5.70307778 4.24811295"
-		/>
-	</Box>
-));
+const DropdownArrow = memo(
+	forwardRef((props, ref) => (
+		<Box
+			ref={ref}
+			as="svg"
+			width="13px"
+			height="9px"
+			viewBox="0 0 13 9"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<polygon
+				fill="currentColor"
+				points="10 1.03916875e-13 11.4061556 1.42222591 5.70307778 7.06086213 0 1.42222591 1.40615556 1.03916875e-13 5.70307778 4.24811295"
+			/>
+		</Box>
+	))
+);
 DropdownArrow.displayName = 'DropdownArrow';
 
 export const defaultFormattingFunction = (x) => {

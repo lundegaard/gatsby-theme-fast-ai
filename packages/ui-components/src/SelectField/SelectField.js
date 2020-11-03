@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import getEventHandlersFromProps from '../utils/getEventHandlersFromProps';
@@ -12,50 +12,57 @@ import SuperFieldHint from '../SuperFieldHint';
  * simple to compose its own.  It just specified that this is a input field,
  * that can have an error, hint, prefix or suffix.
  */
-const SelectField = ({
-	id,
-	label,
-	hasError,
-	hint,
-	onChange,
-	value,
-	name,
-	disabled,
-	readOnly,
-	placeholder,
-	inputProps,
-	labelAlwaysShrank,
-	getLabel,
-	getValue,
-	items,
-	...rest
-}) => (
-	<SuperField
-		{...rest}
-		disabled={disabled}
-		readOnly={readOnly}
-		hasError={hasError}
-		id={id}
-	>
-		<SuperFieldLabel alwaysShrank={!!(labelAlwaysShrank || placeholder)}>
-			{label}
-		</SuperFieldLabel>
-		<Select
-			placeholder={placeholder}
-			value={value}
-			name={name}
-			onChange={onChange}
+const SelectField = forwardRef(
+	(
+		{
+			id,
+			label,
+			hasError,
+			hint,
+			onChange,
+			value,
+			name,
+			disabled,
+			readOnly,
+			placeholder,
+			inputProps,
+			labelAlwaysShrank,
+			getLabel,
+			getValue,
+			items,
+			...rest
+		},
+		ref
+	) => (
+		<SuperField
+			ref={ref}
+			{...rest}
 			disabled={disabled}
 			readOnly={readOnly}
-			items={items}
-			getLabel={getLabel}
-			getValue={getValue}
-			{...getEventHandlersFromProps(rest)}
-			{...inputProps}
-		/>
-		<SuperFieldHint>{hint}</SuperFieldHint>
-	</SuperField>
+			hasError={hasError}
+			id={id}
+		>
+			<SuperFieldLabel alwaysShrank={!!(labelAlwaysShrank || placeholder)}>
+				{label}
+			</SuperFieldLabel>
+			<Select
+				placeholder={placeholder}
+				value={value}
+				name={name}
+				onChange={onChange}
+				disabled={disabled}
+				readOnly={readOnly}
+				items={items}
+				getLabel={getLabel}
+				getValue={getValue}
+				{...getEventHandlersFromProps(rest)}
+				{...inputProps}
+			/>
+			<SuperFieldHint>{hint}</SuperFieldHint>
+		</SuperField>
+	)
 );
+SelectField.displayName = 'SelectField';
 SelectField.propTypes = {
 	disabled: PropTypes.bool,
 	getLabel: PropTypes.func,

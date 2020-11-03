@@ -1,63 +1,70 @@
-import React, { Children, cloneElement } from 'react';
+import React, { Children, cloneElement, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { isFunction } from 'ramda-extension';
 
 import Flex from '../Flex';
 import Box from '../Box';
 
-const RadioGroup = ({
-	children,
-	disabled,
-	readOnly,
-	hasError,
-	onChange: onChangeProp,
-	value: valueProp,
-	name,
-	...rest
-}) => (
-	<Flex
-		flexWrap="wrap"
-		justifyContent="space-between"
-		role="radiogroup"
-		{...rest}
-	>
-		{Children.map(children, (item) => {
-			const { value, onChange, width } = item.props;
-			const commonProps = {
-				readOnly,
-				disabled,
-				hasError,
-				width: width != null ? width : 'auto',
-			};
+const RadioGroup = forwardRef(
+	(
+		{
+			children,
+			disabled,
+			readOnly,
+			hasError,
+			onChange: onChangeProp,
+			value: valueProp,
+			name,
+			...rest
+		},
+		ref
+	) => (
+		<Flex
+			ref={ref}
+			flexWrap="wrap"
+			justifyContent="space-between"
+			role="radiogroup"
+			{...rest}
+		>
+			{Children.map(children, (item) => {
+				const { value, onChange, width } = item.props;
+				const commonProps = {
+					readOnly,
+					disabled,
+					hasError,
+					width: width != null ? width : 'auto',
+				};
 
-			return (
-				<Box>
-					{cloneElement(
-						item,
-						typeof value !== 'undefined'
-							? {
-									name,
-									onChange: (event, ...restArgs) => {
-										if (readOnly || disabled) {
-											return;
-										}
-										onChangeProp(event, ...restArgs);
+				return (
+					<Box>
+						{cloneElement(
+							item,
+							typeof value !== 'undefined'
+								? {
+										name,
+										onChange: (event, ...restArgs) => {
+											if (readOnly || disabled) {
+												return;
+											}
+											onChangeProp(event, ...restArgs);
 
-										if (isFunction(onChange)) {
-											return onChange(event, ...restArgs);
-										}
-									},
-									checked: value === valueProp,
-									...commonProps,
-							  }
-							: commonProps
-					)}
-				</Box>
-			);
-		})}
-	</Flex>
+											if (isFunction(onChange)) {
+												return onChange(event, ...restArgs);
+											}
+										},
+										checked: value === valueProp,
+										...commonProps,
+								  }
+								: commonProps
+						)}
+					</Box>
+				);
+			})}
+		</Flex>
+	)
 );
 
+RadioGroup.displayName = 'RadioGroup';
 RadioGroup.propTypes = {
 	/** Children to be rendered in the main container. */
 	children: PropTypes.node,

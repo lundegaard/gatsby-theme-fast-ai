@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Heading as RebassHeading } from 'rebass';
 
-const Heading = ({ as = 'h1', ...rest }) => <RebassHeading as={as} {...rest} />;
+const Heading = forwardRef(({ as = 'h1', ...rest }, ref) => (
+	<RebassHeading ref={ref} as={as} {...rest} />
+));
 
+Heading.displayName = 'Heading';
 Heading.propTypes = {
 	as: PropTypes.string,
 };

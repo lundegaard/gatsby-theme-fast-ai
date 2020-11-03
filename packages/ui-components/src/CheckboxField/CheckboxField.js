@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../Label';
@@ -15,22 +15,23 @@ const getVariant = ({ hasError, readOnly, disabled }) => {
 	}
 };
 
-const CheckboxField = ({
-	label,
-	hasError,
-	disabled,
-	readOnly,
-	hint,
-	...rest
-}) => (
-	<Box variant={getVariant({ hasError, readOnly, disabled })} pb={2}>
-		<Label alignItems="center">
-			<Checkbox {...rest} />
-			{label}
-		</Label>
-		{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}
-	</Box>
+const CheckboxField = forwardRef(
+	({ label, hasError, disabled, readOnly, hint, ...rest }, ref) => (
+		<Box
+			ref={ref}
+			variant={getVariant({ hasError, readOnly, disabled })}
+			pb={2}
+		>
+			<Label alignItems="center">
+				<Checkbox {...rest} />
+				{label}
+			</Label>
+			{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}
+		</Box>
+	)
 );
+
+CheckboxField.displayName = 'CheckboxField';
 
 CheckboxField.propTypes = {
 	/** Disabled state */

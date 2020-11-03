@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Heading from '../Heading';
 import IconButton from '../IconButton';
 import IconInsertLink from '../IconInsertLink';
 
-const Anchor = ({ to }) => (
+const Anchor = forwardRef(({ to }, ref) => (
 	<IconButton
 		as="a"
+		ref={ref}
 		href={to}
 		size={22}
 		sx={{
@@ -20,7 +21,8 @@ const Anchor = ({ to }) => (
 	>
 		<IconInsertLink size={22} />
 	</IconButton>
-);
+));
+Anchor.displayName = 'Anchor';
 Anchor.propTypes = {
 	to: PropTypes.string,
 };
@@ -31,7 +33,7 @@ const getLink = (href) => {
 	const { origin, search, pathname } = document.location;
 	return `${origin + pathname + search}#${href}`;
 };
-const HeadingAnchor = ({ children, id, copyLink, ...rest }) => {
+const HeadingAnchor = forwardRef(({ children, id, copyLink, ...rest }, ref) => {
 	const [inHover, setHover] = useState(false);
 	const to = copyLink || getLink(id);
 
@@ -40,13 +42,15 @@ const HeadingAnchor = ({ children, id, copyLink, ...rest }) => {
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 			id={id}
+			ref={ref}
 			{...rest}
 		>
 			{children}
 			{(id || copyLink) && inHover && <Anchor to={to} />}
 		</Heading>
 	);
-};
+});
+HeadingAnchor.displayName = 'HeadingAnchor';
 
 HeadingAnchor.propTypes = {
 	/** Children to be rendered in the main container. */

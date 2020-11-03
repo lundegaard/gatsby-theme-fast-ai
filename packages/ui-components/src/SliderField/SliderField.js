@@ -1,4 +1,4 @@
-import React, { Children, Fragment } from 'react';
+import React, { Children, Fragment, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { compose, map } from 'ramda';
 import { ensureArray } from 'ramda-extension';
@@ -18,60 +18,65 @@ const DefaultRenderValues = ({ children }) =>
 		</Fragment>
 	));
 
-const SliderField = ({
-	id: idProp,
-	renderValue: Value,
-	renderValues: RenderValues = DefaultRenderValues,
-	label,
-	hasError,
-	disabled,
-	readOnly,
-	hint,
-	value,
-	...rest
-}) => {
-	const generatedStub = useGeneratedId();
-	const generatedId = `field-${generatedStub}`;
-	const id = idProp || generatedId;
-	const variant = getVariant({ disabled, readOnly, hasError });
-	const [valueDebounced] = useDebounce(value, 200);
+const SliderField = forwardRef(
+	(
+		{
+			id: idProp,
+			renderValue: Value,
+			renderValues: RenderValues = DefaultRenderValues,
+			label,
+			hasError,
+			disabled,
+			readOnly,
+			hint,
+			value,
+			...rest
+		},
+		ref
+	) => {
+		const generatedStub = useGeneratedId();
+		const generatedId = `field-${generatedStub}`;
+		const id = idProp || generatedId;
+		const variant = getVariant({ disabled, readOnly, hasError });
+		const [valueDebounced] = useDebounce(value, 200);
 
-	const getValue = (x) => (Value ? <Value key={x}>{x}</Value> : x);
-	return (
-		<Box sx={{ position: 'relative' }}>
-			<Text
-				sx={{
-					textAlign: 'right',
-					position: ['absolute', 'absolute', 'static'],
-					right: 0,
-					top: 0,
-				}}
-				mb={0}
-			>
-				<RenderValues>
-					{compose(map(getValue), ensureArray)(valueDebounced)}
-				</RenderValues>
-			</Text>
-			<FormGroup
-				id={id}
-				label={label}
-				hint={hint}
-				disabled={disabled}
-				readOnly={readOnly}
-				hasError={hasError}
-			>
-				<Slider
-					variant={variant}
+		const getValue = (x) => (Value ? <Value key={x}>{x}</Value> : x);
+		return (
+			<Box ref={ref} sx={{ position: 'relative' }}>
+				<Text
+					sx={{
+						textAlign: 'right',
+						position: ['absolute', 'absolute', 'static'],
+						right: 0,
+						top: 0,
+					}}
+					mb={0}
+				>
+					<RenderValues>
+						{compose(map(getValue), ensureArray)(valueDebounced)}
+					</RenderValues>
+				</Text>
+				<FormGroup
+					id={id}
+					label={label}
+					hint={hint}
 					disabled={disabled}
 					readOnly={readOnly}
-					id={id}
-					value={value}
-					{...rest}
-				/>
-			</FormGroup>
-		</Box>
-	);
-};
+					hasError={hasError}
+				>
+					<Slider
+						variant={variant}
+						disabled={disabled}
+						readOnly={readOnly}
+						id={id}
+						value={value}
+						{...rest}
+					/>
+				</FormGroup>
+			</Box>
+		);
+	}
+);
 
 SliderField.propTypes = {
 	/** Disabled state */
@@ -96,5 +101,7 @@ SliderField.propTypes = {
 	/** Current value of checkbox. */
 	value: PropTypes.any,
 };
+
+SliderField.displayName = 'SliderField';
 
 export default SliderField;

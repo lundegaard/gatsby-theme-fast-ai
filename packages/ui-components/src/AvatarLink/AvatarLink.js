@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '../Avatar';
 import Link from '../Link';
 
-const AvatarLink = ({ sx, ...rest }) => (
+const AvatarLink = forwardRef(({ sx, ...rest }, ref) => (
 	<Avatar
+		ref={ref}
 		as={Link}
 		sx={{
 			textDecoration: 'none',
@@ -24,8 +25,8 @@ const AvatarLink = ({ sx, ...rest }) => (
 		}}
 		{...rest}
 	/>
-);
-
+));
+AvatarLink.displayName = 'AvatarLink';
 AvatarLink.propTypes = {
 	sx: PropTypes.object,
 };
