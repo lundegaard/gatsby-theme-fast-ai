@@ -3,6 +3,7 @@ const ignorePatterns = [
 	'/node_modules/',
 	'/es/',
 	'/dist/',
+	'/build/',
 	'/lib/',
 ];
 module.exports = {
