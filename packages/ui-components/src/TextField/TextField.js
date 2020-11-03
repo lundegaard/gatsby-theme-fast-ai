@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import getEventHandlersFromProps from '../utils/getEventHandlersFromProps';
@@ -12,42 +12,50 @@ import Input from '../Input';
  * simple to compose its own.  It just specified that this is a input field,
  * that can have an error, hint, prefix or suffix.
  */
-export const TextField = ({
-	id,
-	label,
-	hasError,
-	hint,
-	onChange,
-	value,
-	name,
-	disabled,
-	readOnly,
-	placeholder,
-	inputProps,
-	labelAlwaysShrank,
-	...rest
-}) => (
-	<SuperField
-		{...rest}
-		disabled={disabled}
-		readOnly={readOnly}
-		hasError={hasError}
-		id={id}
-	>
-		<SuperFieldLabel alwaysShrank={labelAlwaysShrank}>{label}</SuperFieldLabel>
-		<Input
-			type="text"
-			placeholder={placeholder}
-			value={value}
-			name={name}
-			onChange={onChange}
+export const TextField = forwardRef(
+	(
+		{
+			id,
+			label,
+			hasError,
+			hint,
+			onChange,
+			value,
+			name,
+			disabled,
+			readOnly,
+			placeholder,
+			inputProps,
+			labelAlwaysShrank,
+			...rest
+		},
+		ref
+	) => (
+		<SuperField
+			ref={ref}
+			{...rest}
 			disabled={disabled}
 			readOnly={readOnly}
-			{...getEventHandlersFromProps(rest)}
-			{...inputProps}
-		/>
-		<SuperFieldHint>{hint}</SuperFieldHint>
-	</SuperField>
+			hasError={hasError}
+			id={id}
+		>
+			<SuperFieldLabel alwaysShrank={labelAlwaysShrank}>
+				{label}
+			</SuperFieldLabel>
+			<Input
+				type="text"
+				placeholder={placeholder}
+				value={value}
+				name={name}
+				onChange={onChange}
+				disabled={disabled}
+				readOnly={readOnly}
+				{...getEventHandlersFromProps(rest)}
+				{...inputProps}
+			/>
+			<SuperFieldHint>{hint}</SuperFieldHint>
+		</SuperField>
+	)
 );
 TextField.propTypes = {
 	disabled: PropTypes.bool,
@@ -63,4 +71,5 @@ TextField.propTypes = {
 	readOnly: PropTypes.bool,
 	value: PropTypes.any,
 };
+TextField.displayName = 'TextField';
 export default TextField;

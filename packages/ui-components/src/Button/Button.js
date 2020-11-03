@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Button as RebassButton } from 'rebass';
 
-const Button = (props) => <RebassButton {...props} />;
+const Button = forwardRef((props, ref) => (
+	<RebassButton ref={ref} {...props} />
+));
+Button.displayName = 'Button';
 
 export default Button;

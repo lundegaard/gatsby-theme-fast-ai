@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Flex from '../Flex';
 import Box from '../Box';
 
-const Hamburger = ({ isOpen, ...rest }) => (
+const Hamburger = forwardRef(({ isOpen, ...rest }, ref) => (
 	<Flex
+		ref={ref}
 		sx={{
 			variant: isOpen ? 'hamburger.opened' : 'hamburger.closed',
 			transition: 'background-color .25s ease-in',
@@ -97,7 +98,9 @@ const Hamburger = ({ isOpen, ...rest }) => (
 			<span />
 		</Box>
 	</Flex>
-);
+));
+
+Hamburger.displayName = 'Hamburger';
 
 Hamburger.propTypes = { isOpen: PropTypes.bool };
 

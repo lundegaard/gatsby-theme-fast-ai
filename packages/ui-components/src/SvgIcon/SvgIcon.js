@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-const SvgIcon = ({ size = 24, ...rest }) => (
+const SvgIcon = forwardRef(({ size = 24, ...rest }, ref) => (
 	<svg
+		ref={ref}
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
 		height={size}
@@ -10,7 +11,8 @@ const SvgIcon = ({ size = 24, ...rest }) => (
 		fill="currentcolor"
 		{...rest}
 	/>
-);
+));
+SvgIcon.displayName = 'SvgIcon';
 
 SvgIcon.propTypes = {
 	size: PropTypes.number,

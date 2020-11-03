@@ -2,7 +2,13 @@
 
 exports[`<AvatarLink /> matches snapshot when shallowly rendered 1`] = `
 <Avatar
-  as={[Function]}
+  as={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "displayName": "Link",
+      "render": [Function],
+    }
+  }
   sx={
     Object {
       "&, :visited": Object {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import mapResponsiveProperty from '../utils/mapResponsiveProperty';
@@ -7,8 +7,9 @@ import Box from '../Box';
 
 const addPx = mapResponsiveProperty((x) => `${x}px`);
 
-const Avatar = ({ size = 35, sx, ...rest }) => (
+const Avatar = forwardRef(({ size = 35, sx, ...rest }, ref) => (
 	<Box
+		ref={ref}
 		display="block"
 		sx={{
 			backgroundColor: 'white',
@@ -25,11 +26,13 @@ const Avatar = ({ size = 35, sx, ...rest }) => (
 		}}
 		{...rest}
 	/>
-);
+));
 
 Avatar.propTypes = {
 	size: Types.responsiveNumber,
 	sx: PropTypes.object,
 };
+
+Avatar.displayName = 'Avatar';
 
 export default Avatar;

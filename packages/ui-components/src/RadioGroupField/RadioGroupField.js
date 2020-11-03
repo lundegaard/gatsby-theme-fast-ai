@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { isString } from 'ramda-extension';
 
@@ -6,40 +6,48 @@ import getEventHandlersFromProps from '../utils/getEventHandlersFromProps';
 import RadioGroup from '../RadioGroup';
 import FormGroup from '../FormGroup';
 
-const RadioGroupField = ({
-	children,
-	onChange,
-	value,
-	disabled,
-	readOnly,
-	hasError,
-	hint,
-	legend,
-	name,
-	...rest
-}) => (
-	<FormGroup
-		legend={legend}
-		hint={hint}
-		disabled={disabled}
-		readOnly={readOnly}
-		hasError={hasError}
-		{...rest}
-	>
-		<RadioGroup
-			aria-label={isString(legend) ? legend : null}
-			onChange={onChange}
-			value={value}
+const RadioGroupField = forwardRef(
+	(
+		{
+			children,
+			onChange,
+			value,
+			disabled,
+			readOnly,
+			hasError,
+			hint,
+			legend,
+			name,
+			...rest
+		},
+		ref
+	) => (
+		<FormGroup
+			ref={ref}
+			legend={legend}
+			hint={hint}
 			disabled={disabled}
 			readOnly={readOnly}
 			hasError={hasError}
-			name={name}
-			{...getEventHandlersFromProps(rest)}
+			{...rest}
 		>
-			{children}
-		</RadioGroup>
-	</FormGroup>
+			<RadioGroup
+				aria-label={isString(legend) ? legend : null}
+				onChange={onChange}
+				value={value}
+				disabled={disabled}
+				readOnly={readOnly}
+				hasError={hasError}
+				name={name}
+				{...getEventHandlersFromProps(rest)}
+			>
+				{children}
+			</RadioGroup>
+		</FormGroup>
+	)
 );
+
+RadioGroupField.displayName = 'RadioGroupField';
 
 RadioGroupField.propTypes = {
 	/** Children to be rendered in the main container. */

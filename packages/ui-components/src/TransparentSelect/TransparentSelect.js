@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Select as RebassSelect } from '@rebass/forms';
 
-const TransparentSelect = (props) => (
+const TransparentSelect = forwardRef((props, ref) => (
 	<RebassSelect
+		ref={ref}
 		css={{
 			'&::-ms-expand': {
 				display: 'none',
@@ -23,6 +24,7 @@ const TransparentSelect = (props) => (
 		px={0}
 		{...props}
 	/>
-);
+));
+TransparentSelect.displayName = 'TransparentSelect';
 
 export default TransparentSelect;

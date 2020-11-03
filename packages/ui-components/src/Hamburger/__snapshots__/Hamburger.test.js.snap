@@ -55,6 +55,7 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
         },
         "transform": "rotate(0deg)",
         "transition": ".3s ease-in-out",
+        "variant": "hamburgerInner.closed",
         "width": "24px",
       }
     }

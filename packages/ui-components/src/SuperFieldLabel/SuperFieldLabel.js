@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../Label';
 import useBlockingEffect from '../hooks/useBlockingEffect';
 import { useSuperFieldContext } from '../SuperField';
 
-const SuperFieldLabel = ({ children, alwaysShrank }) => {
+const SuperFieldLabel = forwardRef(({ children, alwaysShrank }, ref) => {
 	const {
 		id,
 		onLabelShrank,
@@ -26,6 +26,7 @@ const SuperFieldLabel = ({ children, alwaysShrank }) => {
 	return (
 		<Label
 			htmlFor={id}
+			ref={ref}
 			sx={{
 				position: 'absolute',
 				top: 0,
@@ -41,10 +42,13 @@ const SuperFieldLabel = ({ children, alwaysShrank }) => {
 			{children}
 		</Label>
 	);
-};
+});
+
 SuperFieldLabel.propTypes = {
 	alwaysShrank: PropTypes.bool,
 	children: PropTypes.node,
 };
+
+SuperFieldLabel.displayName = 'SuperFieldLabel';
 
 export default SuperFieldLabel;
