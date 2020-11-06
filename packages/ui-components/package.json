@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/ui-components",
-	"version": "0.28.1",
+	"version": "0.29.0",
 	"license": "MIT",
 	"description": "Common UI components",
 	"main": "src/index.js",
