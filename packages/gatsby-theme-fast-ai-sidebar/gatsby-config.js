@@ -11,8 +11,8 @@ const remarkPlugins = [
 ];
 
 const fontsPath = path.resolve(
-	require.resolve('@fast-ai/ui-components'),
-	'../../fonts/files'
+	require.resolve('@fast-ai/ui-components/fonts'),
+	'../files'
 );
 
 const getFontFile = (url) => ({ url: path.join(fontsPath, url) });
