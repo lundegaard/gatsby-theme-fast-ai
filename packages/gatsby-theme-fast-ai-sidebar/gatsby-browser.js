@@ -1,5 +1,3 @@
-import wrapWithProvider from './src/wrap-with-provider';
+import wrapWithProvider from './src/wrapWithProvider';
 
-require('@fast-ai/ui-components/fonts/index.css');
-
-export const wrapRootElement = wrapWithProvider;
+export const wrapPageElement = wrapWithProvider;

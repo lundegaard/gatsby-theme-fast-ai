@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { join, map, o } from 'ramda';
 
 const loadWebfontsWithHtmlApi = o(
@@ -18,16 +18,58 @@ const loadWebfonts = (config) =>
 		? loadWebfontsWithHtmlApi(config)
 		: loadWebfontsWithFallback(config);
 
-const useWebfonts = (config) => {
-	const [loaded, setLoaded] = useState(false);
+const getStorage = (key) => {
+	try {
+		return JSON.parse(window.sessionStorage[key]);
+	} catch (_error) {
+		return null;
+	}
+};
+const setStorage = (key, value) => {
+	try {
+		window.sessionStorage[key] = JSON.stringify(value);
+	} catch (_error) {}
+};
+
+const useSessionStorageState = (key, initial) => {
+	const current = getStorage(key);
+
+	const [value, setValueInternal] = useState(
+		current == null ? initial : current
+	);
+
+	const setValue = useCallback(
+		(newValue) => {
+			setStorage(key, newValue);
+
+			setValueInternal(newValue);
+		},
+		[setValueInternal, key]
+	);
+
+	return [value, setValue];
+};
+
+const useWebfonts = (stage1, stage2) => {
+	const [fontStage, setFontStage] = useSessionStorageState('sessionStorage', 0);
 
 	useEffect(() => {
-		setLoaded(false);
+		if (stage1 && fontStage === 0) {
+			loadWebfonts(stage1).then(() => {
+				setFontStage(1);
+			});
+		}
+	}, [stage1, setFontStage, fontStage]);
 
-		loadWebfonts(config).then(() => setLoaded(true));
-	}, [config]);
+	useEffect(() => {
+		if (stage2 && fontStage === 1) {
+			loadWebfonts(stage2).then(() => {
+				setFontStage(2);
+			});
+		}
+	}, [stage2, setFontStage, fontStage]);
 
-	return loaded;
+	return fontStage;
 };
 
 export default useWebfonts;

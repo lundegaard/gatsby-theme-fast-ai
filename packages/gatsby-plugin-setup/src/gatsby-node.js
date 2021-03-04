@@ -37,6 +37,9 @@ const setBabel = ({ getConfig, stage, loaders, actions }) => {
 								loose: true,
 								library: false,
 								universal: false,
+								presetReactOptions: {
+									runtime: 'automatic',
+								},
 							},
 						],
 					],

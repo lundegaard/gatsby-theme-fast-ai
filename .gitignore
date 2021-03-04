@@ -11,6 +11,7 @@ packages/**/lib
 packages/**/build
 packages/**/dist
 packages/gatsby-plugin-setup/*.js
+packages/gatsby-plugin-staged-fonts/*.js
 
 .stylelintcache
 
@@ -21,9 +22,6 @@ apps/**/.env
 
 # Apple cache file
 .DS_Store
-
-*:p
-:w
 
 # Created by https://www.gitignore.io/api/node,vim,sublimetext,intellij,webstorm,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,vim,sublimetext,intellij,webstorm,visualstudiocode

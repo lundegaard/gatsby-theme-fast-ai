@@ -20,7 +20,7 @@ const letterSpacings = {
 	wider: '0.05em',
 	widest: '0.1em',
 };
-const fontWeights = { body: 400, heading: 800, bold: 700 };
+const fontWeights = { body: 400, heading: 700, bold: 700 };
 
 const gray = [null, '#e7e7e7', '#b4b4b4', '#737373'];
 

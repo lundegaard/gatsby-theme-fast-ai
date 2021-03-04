@@ -1,0 +1,27 @@
+{
+	"name": "@fast-ai/gatsby-plugin-staged-fonts",
+	"version": "0.29.0",
+	"license": "MIT",
+	"main": "index.js",
+	"browserslist": [
+		"IE 11"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"gatsby": "2.24.84"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.11.6",
+		"cross-env": "^7.0.2"
+	},
+	"peerDependencies": {
+		"react": "^16.8.6"
+	},
+	"scripts": {
+		"build": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js src --out-dir . --ignore **/*.test.js",
+		"prepare": "yarn build",
+		"start": "babel --config-file ../../babel.config.js -w src --out-dir . --ignore **/*.test.js"
+	}
+}
