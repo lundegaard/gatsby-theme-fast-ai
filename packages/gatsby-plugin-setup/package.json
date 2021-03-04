@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/gatsby-plugin-setup",
-	"version": "0.29.0",
+	"version": "1.0.0",
 	"license": "MIT",
 	"main": "index.js",
 	"browserslist": [
@@ -19,11 +19,11 @@
 		"babel-preset-react-union": "^0.20.0",
 		"core-js": "^3.6.0",
 		"gatsby": "2.24.84",
+		"intersection-observer": "^0.12.0",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
 		"react-union-polyfills": "^0.20.0",
 		"regenerator-runtime": "^0.13.5",
-		"intersection-observer": "^0.12.0",
 		"stylelint": "^13.3.0",
 		"webpack": "^5.1.3"
 	},
