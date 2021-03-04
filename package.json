@@ -97,7 +97,8 @@
 		"ui-components": "yarn workspace @fast-ai/ui-components",
 		"gatsby-theme-fast-ai": "yarn workspace gatsby-theme-fast-ai",
 		"gatsby-theme-fast-ai-sidebar": "yarn workspace gatsby-theme-fast-ai-sidebar",
-		"gatsby-plugin-setup": "yarn workspace @fast-ai/gatsby-plugin-setup"
+		"gatsby-plugin-setup": "yarn workspace @fast-ai/gatsby-plugin-setup",
+		"gatsby-plugin-staged-fonts": "yarn workspace @fast-ai/gatsby-plugin-staged-fonts"
 	},
 	"workspaces": [
 		"packages/*",

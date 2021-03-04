@@ -1,3 +1,3 @@
-import wrapWithProvider from './src/wrap-with-provider';
+import wrapWithProvider from './src/wrapWithProvider';
 
-export const wrapRootElement = wrapWithProvider;
+export const wrapPageElement = wrapWithProvider;
