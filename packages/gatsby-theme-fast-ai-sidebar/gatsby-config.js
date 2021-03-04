@@ -9,10 +9,12 @@ const remarkPlugins = [
 		},
 	},
 ];
+
 const fontsPath = path.resolve(
 	require.resolve('@fast-ai/ui-components'),
 	'../../fonts/files'
 );
+
 const getFontFile = (url) => ({ url: path.join(fontsPath, url) });
 
 module.exports = (themeOptions) => {
@@ -77,20 +79,22 @@ module.exports = (themeOptions) => {
 						{
 							critical: true,
 							files: [
-								getFontFile('open-sans-v17-latin-ext_latin-700.woff'),
-								getFontFile('open-sans-v17-latin-ext_latin-700.woff2'),
+								getFontFile('open-sans-v17-latin-ext_latin-700-critical.woff'),
+								getFontFile('open-sans-v17-latin-ext_latin-700-critical.woff2'),
 							],
-							family: 'Open Sans Subset',
+							family: 'Open Sans Critical',
 							style: 'normal',
 							weight: 700,
 						},
 						{
 							critical: true,
 							files: [
-								getFontFile('roboto-v20-latin-ext_latin-regular.woff'),
-								getFontFile('roboto-v20-latin-ext_latin-regular.woff2'),
+								getFontFile('roboto-v20-latin-ext_latin-regular-critical.woff'),
+								getFontFile(
+									'roboto-v20-latin-ext_latin-regular-critical.woff2'
+								),
 							],
-							family: 'Roboto Subset',
+							family: 'Roboto Critical',
 							weight: 400,
 						},
 						{

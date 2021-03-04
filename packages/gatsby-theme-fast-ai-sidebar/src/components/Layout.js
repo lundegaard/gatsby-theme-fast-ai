@@ -8,11 +8,10 @@ import GatsbyCssBaseline from './GatsbyCssBaseline';
 
 const Theme = ({ theme, ...rest }) => {
 	const { isCriticalStage } = useStagedFonts();
-	// const isCriticalStage = false;
 	const themeWithResolvedFonts = useMemo(
 		() => ({
 			...theme,
-			fonts: !isCriticalStage
+			fonts: isCriticalStage
 				? {
 						body: 'Roboto Critical',
 						heading: 'Open Sans Critical',

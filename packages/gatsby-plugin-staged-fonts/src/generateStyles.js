@@ -1,6 +1,17 @@
 import path from 'path';
+import fs from 'fs';
 
+import mime from 'mime';
 import { withPrefix as fallbackWithPrefix, withAssetPrefix } from 'gatsby';
+
+const toBase64 = (filePath) => {
+	// get the mimetype
+	const fileMime = mime.getType(filePath);
+
+	const data = fs.readFileSync(filePath, { encoding: 'base64' });
+
+	return `data:${fileMime};base64,${data}`;
+};
 
 // TODO: remove for v3
 const withPrefix = withAssetPrefix || fallbackWithPrefix;
@@ -29,7 +40,9 @@ const getFormat = (url) => {
 		return 'truetype';
 	}
 };
-const getUrl = (url) => withPrefix(path.basename(url));
+
+const getUrl = (url, loadAsBase64) =>
+	loadAsBase64 ? toBase64(url) : withPrefix(path.basename(url));
 
 const wrapIfResult = (fn, x) => (x ? fn(x) : x);
 
