@@ -1,7 +1,7 @@
 {
 	"name": "@fast-ai/demo",
 	"private": true,
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "index.js",
 	"contributors": [
 		"Jakub Kohout <jakub.kohout@lundegaard.eu>"
@@ -18,7 +18,7 @@
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^1.0.1",
 		"gatsby": "2.24.84",
-		"gatsby-theme-fast-ai": "^1.0.1",
+		"gatsby-theme-fast-ai": "^1.0.2",
 		"prop-types": "^15.6.2",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
