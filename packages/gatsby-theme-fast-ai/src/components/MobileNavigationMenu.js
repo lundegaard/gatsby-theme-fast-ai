@@ -1,40 +1,66 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Box, Flex } from '@fast-ai/ui-components';
 import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
 import { isNotEmpty } from 'ramda-extension';
+import { withPrefix } from 'gatsby';
 
 import { links } from '../links';
 
+import Match from './Match';
 import Link from './Link';
 
 const Menu = (props) => <Flex as="ul" p={0} m={0} width={1} {...props} />;
-const MenuItem = (props) => (
+const MenuItem = ({ sx, ...rest }) => (
 	<Box
 		as="li"
-		p={0}
-		m={0}
-		display="block"
-		backgroundColor="primary"
-		textAlign="center"
-		{...props}
+		sx={{
+			p: 0,
+			m: 0,
+			display: 'block',
+			textAlign: 'center',
+			...sx,
+		}}
+		{...rest}
 	/>
 );
+MenuItem.propTypes = { sx: PropTypes.object };
 
 const MobileNavigationMenu = ({ ...rest }) => (
 	<Menu flexDirection="column" justifyContent="center" {...rest}>
 		{links.map(({ label, to }, i) => (
-			<MenuItem
-				key={to}
-				sx={{
-					borderTopStyle: 'solid',
-					borderTopWidth: '1px',
-					borderTopColor: i === 0 ? 'transparent' : 'background',
+			<Match key={to} path={`${withPrefix(to)}/*`}>
+				{({ match }) => {
+					const color = match ? 'primary' : 'white';
+
+					return (
+						<MenuItem
+							key={to}
+							sx={{
+								borderTopStyle: 'solid',
+								borderTopWidth: '1px',
+								borderTopColor: i === 0 ? 'transparent' : 'background',
+								backgroundColor: match ? 'white' : 'primary',
+							}}
+						>
+							<Link
+								variant="nav"
+								sx={{
+									display: 'block',
+									color: [color, color, color],
+									'&:hover': {
+										color: [color, color, color],
+									},
+								}}
+								to={to}
+								key={to}
+							>
+								{label}
+							</Link>
+						</MenuItem>
+					);
 				}}
-			>
-				<Link variant="nav" to={to} display="block" key={to}>
-					{label}
-				</Link>
-			</MenuItem>
+			</Match>
 		))}
 		<IntlContextConsumer>
 			{({ languages }) =>
