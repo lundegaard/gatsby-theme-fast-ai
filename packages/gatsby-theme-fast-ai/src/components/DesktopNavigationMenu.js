@@ -2,12 +2,15 @@ import React from 'react';
 import { Box, Flex, TransparentSelect } from '@fast-ai/ui-components';
 import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
 import { isNotEmpty } from 'ramda-extension';
+import { withPrefix } from 'gatsby';
 
 import { links } from '../links';
 
+import Match from './Match';
 import Link from './Link';
 
 const Menu = (props) => <Flex as="ul" p={0} m={0} width={1} {...props} />;
+
 const MenuItem = (props) => (
 	<Box as="li" p={0} m={0} display="block" {...props} />
 );
@@ -26,9 +29,25 @@ const DesktopNavigationMenu = ({ ...rest }) => (
 				textAlign={{ _: 'center', md: 'left' }}
 				ml={4}
 			>
-				<Link variant="nav" to={to} display="inline-block" key={to}>
-					{label}
-				</Link>
+				<Match path={`${withPrefix(to)}/*`}>
+					{({ match }) => {
+						const color = match ? 'primary' : 'inherit';
+
+						return (
+							<Link
+								variant="nav"
+								sx={{
+									display: 'inline-block',
+									color: [color, color, color],
+								}}
+								to={to}
+								key={to}
+							>
+								{label}
+							</Link>
+						);
+					}}
+				</Match>
 			</MenuItem>
 		))}
 		<IntlContextConsumer>

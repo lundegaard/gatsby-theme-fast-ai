@@ -31,6 +31,7 @@
 		"react-intl": "^5.8.6"
 	},
 	"peerDependencies": {
+		"@reach/router": "^1.0.0",
 		"gatsby": "^2.6.0",
 		"prop-types": "^15.6.2",
 		"react": "^16.8.6",
