@@ -3,6 +3,19 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"main": "index.js",
+	"contributors": [
+		"Tomas Konrady <tomaskonrady@gmail.com>"
+	],
+	"author": "Lundegaard a.s.",
+	"bugs": {
+		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai/issues"
+	},
+	"homepage": "https://github.com/lundegaard/gatsby-theme-fast-ai/tree/master/packages/gatsby-plugin-setup#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai.git",
+		"directory": "packages/gatsby-plugin-setup"
+	},
 	"browserslist": [
 		"IE 11"
 	],

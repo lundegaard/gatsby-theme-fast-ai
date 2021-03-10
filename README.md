@@ -22,13 +22,16 @@ yarn install
 
 ## Developping
 
-```shell
-yarn examples start
-```
-or
+Run demo app with gatsby-theme-fast-ai.
 
 ```shell
 yarn start
+```
+
+Run demo app with gatsby-theme-fast-ai-sidebar.
+
+```shell
+yarn start:sidebar
 ```
 
 ## Running storybook
@@ -48,17 +51,26 @@ yarn start:storybook
 ```text
 .
 ├── apps
-│   ├── docs-examples
+│   ├── demo
+│   ├── demo-sidebar
 │   └── storybook
 ├── packages
 │   ├── gatsby-plugin-setup
+│   ├── gatsby-plugin-staged-fonts
 │   ├── gatsby-theme-fast-ai
+│   ├── gatsby-theme-fast-ai-sidebar
 │   └── ui-components
 └── tools
 ```
 
-### `examples`
-* example application
+### `demo`
+* example application demostrating `fast-ai-gatsby-theme`
+
+### `demo-sidebar`
+* example application demostrating `fast-ai-gatsby-theme-sidebar`
+
+### `storybook`
+* Storybook app documenting the @fast-ai/ui-components
 
 ### `ui-components`
 * common UI components
@@ -66,16 +78,22 @@ yarn start:storybook
 ### `gatsby-plugin-setup`
 * contains a few patches over default Gatsby configuration
 
+### `gatsby-plugin-staged-fonts`
+* Implements effective font loading strategy
+
 ### `gatsby-theme-fast-ai`
 * contains common setup for Gatsby applications
 * configures set of Gatsby plugins
 
+### `gatsby-theme-fast-ai-sidebar`
+* extension of `gatsby-theme-fast-ai` with fluid layout
+
 ## Related projects
 
-- [zoe-demo](https://github.com/lundegaard/fast-ai-zoe-demo) – React integration of Fast AI - S-Analytics tool.
-- [@redux-tools](https://github.com/lundegaard/redux-tools) – Maintaining large Redux applications with ease.
-- [react-union](https://github.com/lundegaard/react-union) – Integrate React apps into various CMSs seamlessly.
-- [lundium](https://github.com/lundegaard/lundium) – Beautiful React component library.
+- [Zoe s-analytics demo](https://github.com/lundegaard/fast-ai-zoe-demo) - React Web application with S-Analytics
+- [@redux-tools](https://github.com/lundegaard/redux-tools) - Modular Redux is possible!
+- [react-union](https://github.com/lundegaard/react-union) - Intergrate React apps into various CMSs seamlessly.
+- [validarium](https://github.com/lundegaard/validarium) - Validations done right.
 
 ## License
 

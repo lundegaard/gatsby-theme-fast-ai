@@ -1,14 +1,4 @@
-<p align="center">
-  <a href="https://zoe.lundegaard.ai">
-    <img alt="Zoe.ai logo" src="../../zoe-ai-logo.svg" width="120" />
-  </a>
-</p>
-<p align="center">
-  <a href="https://lundegaard.eu">
-    <img alt="by Lundegaard" src="../../by-Lundegaard.png" width="120" />
-  </a>
-</p>
-<h1 align="center">Gatsby-plugin-staged-fonts</h1>
+<h1 align="center">@fast-ai/gatsby-plugin-staged-fonts</h1>
 
 #
 
@@ -187,3 +177,18 @@ Meaning the font size is much smaller than a full blown font file.
 			 url('./files/roboto-v20-latin-ext_latin-100.eot?#iefix') format('embedded-opentype');
 }
 ```
+
+## See our related projects
+
+- [Zoe s-analytics demo](https://github.com/lundegaard/fast-ai-zoe-demo) - React Web application with S-Analytics
+- [@fast-ai/ui-components](https://github.com/lundegaard/gatsby-theme-fast-ai/tree/master/ui-components) - React UI component library
+- [gatsby-theme-fast-ai](https://github.com/lundegaard/gatsby-theme-fast-ai) - Gatsby theme for Zoe applications
+- [@redux-tools](https://github.com/lundegaard/redux-tools) - Modular Redux is possible!
+- [react-union](https://github.com/lundegaard/react-union) - Intergrate React apps into various CMSs seamlessly.
+- [validarium](https://github.com/lundegaard/validarium) - Validations done right.
+
+## License
+
+All packages are distributed under the MIT license. See the license [here](https://github.com/lundegaard/gatsby-theme-fast-ai/blob/master/LICENSE).
+
+© 2021 Lundegaard a.s.

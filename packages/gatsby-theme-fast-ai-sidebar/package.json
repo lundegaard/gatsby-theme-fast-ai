@@ -2,7 +2,24 @@
 	"name": "gatsby-theme-fast-ai-sidebar",
 	"version": "1.1.0",
 	"main": "index.js",
-	"author": "Tomas Konrady <tomaskonrady@gmail.com>",
+	"keywords": [
+		"gatsby",
+		"gatsby-plugin",
+		"gatsby-theme"
+	],
+	"contributors": [
+		"Tomas Konrady <tomaskonrady@gmail.com>"
+	],
+	"author": "Lundegaard a.s.",
+	"bugs": {
+		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai/issues"
+	},
+	"homepage": "https://github.com/lundegaard/gatsby-theme-fast-ai/tree/master/packages/gatsby-theme-fast-ai-sidebar#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai.git",
+		"directory": "packages/gatsby-theme-fast-ai-sidebar"
+	},
 	"license": "MIT",
 	"sideEffects": false,
 	"engines": {
