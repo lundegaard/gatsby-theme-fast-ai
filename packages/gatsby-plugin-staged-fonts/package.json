@@ -2,6 +2,10 @@
 	"name": "@fast-ai/gatsby-plugin-staged-fonts",
 	"version": "1.0.0",
 	"license": "MIT",
+	"keywords": [
+		"gatsby",
+		"gatsby-plugin"
+	],
 	"main": "index.js",
 	"browserslist": [
 		"IE 11"
@@ -11,14 +15,16 @@
 	},
 	"dependencies": {
 		"fontfaceobserver": "^2.1.0",
-		"gatsby": "2.24.84",
 		"mime": "2.5.2"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.11.6",
-		"cross-env": "^7.0.2"
+		"cross-env": "^7.0.2",
+		"gatsby": "2.24.84"
 	},
 	"peerDependencies": {
+		"gatsby": "^2.6.0",
+		"prop-types": "^15.6.2",
 		"react": "^16.8.6"
 	},
 	"scripts": {

@@ -75,6 +75,7 @@ module.exports = (themeOptions) => {
 			{
 				resolve: require.resolve('@fast-ai/gatsby-plugin-staged-fonts'),
 				options: {
+					alwaysLoadCriticalsFirst: true,
 					fonts: [
 						{
 							critical: true,
