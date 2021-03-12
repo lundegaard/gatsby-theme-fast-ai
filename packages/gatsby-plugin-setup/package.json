@@ -47,5 +47,6 @@
 		"build": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js src --out-dir . --ignore **/*.test.js",
 		"prepare": "yarn build",
 		"start": "babel --config-file ../../babel.config.js -w src --out-dir . --ignore **/*.test.js"
-	}
+	},
+	"gitHead": "c9632210a82b9675e0f47d52b04efc777876a8d6"
 }
