@@ -5,6 +5,19 @@
 	"description": "Common UI components",
 	"main": "src/index.js",
 	"module": "src/index.js",
+	"contributors": [
+		"Tomas Konrady <tomaskonrady@gmail.com>"
+	],
+	"author": "Lundegaard a.s.",
+	"bugs": {
+		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai/issues"
+	},
+	"homepage": "https://github.com/lundegaard/gatsby-theme-fast-ai/tree/master/packages/ui-components#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai.git",
+		"directory": "packages/ui-components"
+	},
 	"publishConfig": {
 		"access": "public",
 		"directory": "build"
