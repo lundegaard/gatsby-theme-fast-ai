@@ -1,6 +1,6 @@
 {
 	"name": "gatsby-theme-fast-ai-sidebar",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"main": "index.js",
 	"keywords": [
 		"gatsby",
@@ -27,9 +27,9 @@
 	},
 	"dependencies": {
 		"@emotion/core": "^10.0.35",
-		"@fast-ai/gatsby-plugin-setup": "^1.0.0",
-		"@fast-ai/gatsby-plugin-staged-fonts": "^1.1.0",
-		"@fast-ai/ui-components": "^1.0.1",
+		"@fast-ai/gatsby-plugin-setup": "^1.1.1",
+		"@fast-ai/gatsby-plugin-staged-fonts": "^1.1.1",
+		"@fast-ai/ui-components": "^1.1.1",
 		"@mdx-js/mdx": "^1.6.16",
 		"@mdx-js/react": "^1.6.16",
 		"gatsby-image": "^2.4.5",
