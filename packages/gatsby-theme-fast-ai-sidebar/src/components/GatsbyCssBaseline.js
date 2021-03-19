@@ -7,7 +7,6 @@ const GatsbyCssBaseline = ({ styles = '', ...rest }) => (
 		styles={`
 			#___gatsby, #gatsby-focus-wrapper, div[role="group"][tabindex] {
 			    min-height: 100%;
-					height: 100%;
 			}
 			${styles}
 			`}
