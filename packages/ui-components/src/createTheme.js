@@ -85,9 +85,9 @@ const commonSliderProps = {
 const componentsPreset = {
 	useCustomProperties: true,
 	fonts: {
-		body: 'Roboto',
-		heading: 'Open Sans',
-		mono: 'Roboto Mono',
+		body: 'Roboto, sans-serif',
+		heading: 'Open Sans, sans-serif',
+		mono: 'Roboto Mono, monospace',
 	},
 	breakpoints,
 	fontWeights,

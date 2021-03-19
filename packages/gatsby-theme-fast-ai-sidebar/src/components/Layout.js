@@ -15,6 +15,7 @@ const Theme = ({ theme, ...rest }) => {
 				? {
 						body: 'Roboto Critical',
 						heading: 'Open Sans Critical',
+						mono: 'Roboto Mono Critical',
 				  }
 				: {
 						body: 'Roboto',
