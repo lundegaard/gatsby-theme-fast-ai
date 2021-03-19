@@ -8,8 +8,10 @@
 	"keywords": [
 		"gatsby",
 		"gatsby-plugin",
-		"gatsby-theme"
+		"gatsby-theme",
+		"rebass"
 	],
+	"description": "Rebass-based gatsby theme used in Zoe.ai projects.",
 	"author": "Lundegaard a.s.",
 	"bugs": {
 		"url": "https://github.com/lundegaard/gatsby-theme-fast-ai/issues"

@@ -1,11 +1,13 @@
 {
 	"name": "gatsby-theme-fast-ai-sidebar",
+	"description": "Rebass-based gatsby theme used in Zoe.ai projects.",
 	"version": "1.1.1",
 	"main": "index.js",
 	"keywords": [
 		"gatsby",
 		"gatsby-plugin",
-		"gatsby-theme"
+		"gatsby-theme",
+		"rebass"
 	],
 	"contributors": [
 		"Tomas Konrady <tomaskonrady@gmail.com>"
