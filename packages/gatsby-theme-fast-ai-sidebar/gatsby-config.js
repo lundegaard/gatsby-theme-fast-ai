@@ -99,6 +99,20 @@ module.exports = (themeOptions) => {
 							weight: 400,
 						},
 						{
+							critical: true,
+							style: 'normal',
+							weight: 400,
+							files: [
+								getFontFile(
+									'roboto-mono-v7-latin-ext_latin-regular-critical.woff'
+								),
+								getFontFile(
+									'roboto-mono-v7-latin-ext_latin-regular-critical.woff2'
+								),
+							],
+							family: 'Roboto Mono Critical',
+						},
+						{
 							files: [
 								getFontFile('open-sans-v17-latin-ext_latin-regular.woff'),
 								getFontFile('open-sans-v17-latin-ext_latin-regular.woff2'),
