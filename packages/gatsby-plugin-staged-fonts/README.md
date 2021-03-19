@@ -181,7 +181,7 @@ Meaning the font size is much smaller than a full blown font file.
 ## See our related projects
 
 - [Zoe s-analytics demo](https://github.com/lundegaard/fast-ai-zoe-demo) - React Web application with S-Analytics
-- [@fast-ai/ui-components](https://github.com/lundegaard/gatsby-theme-fast-ai/tree/master/ui-components) - React UI component library
+- [@fast-ai/ui-components](https://github.com/lundegaard/gatsby-theme-fast-ai/tree/master/packages/ui-components) - React UI component library
 - [gatsby-theme-fast-ai](https://github.com/lundegaard/gatsby-theme-fast-ai) - Gatsby theme for Zoe applications
 - [@redux-tools](https://github.com/lundegaard/redux-tools) - Modular Redux is possible!
 - [react-union](https://github.com/lundegaard/react-union) - Intergrate React apps into various CMSs seamlessly.
