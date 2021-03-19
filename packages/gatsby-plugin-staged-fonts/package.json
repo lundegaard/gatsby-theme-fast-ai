@@ -6,6 +6,7 @@
 		"gatsby",
 		"gatsby-plugin"
 	],
+	"description": "Implementation of the font loading pattern - Critical FOFT with Data URI.",
 	"main": "index.js",
 	"browserslist": [
 		"IE 11"
