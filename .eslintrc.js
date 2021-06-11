@@ -3,6 +3,7 @@ module.exports = {
 	extends: ['react-union'],
 	plugins: ['react-hooks'],
 	rules: {
+		'no-console': 'error',
 		'max-len': [
 			'error',
 			{

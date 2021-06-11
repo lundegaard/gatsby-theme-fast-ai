@@ -1,6 +1,7 @@
 export const links = [
 	{ label: 'Typography and text', to: '/typography' },
 	{ label: 'Tables', to: '/tables' },
+	{ label: 'ToC', to: '/toc' },
 	{
 		label: 'Other',
 		to: '/other/images',

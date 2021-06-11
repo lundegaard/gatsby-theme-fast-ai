@@ -47,33 +47,40 @@ const getNav = ({
 	shouldUseDesktopNavigation,
 }) => (
 	<ul>
-		{map(({ url, title, items }) => (
-			<li key={url}>
-				<Link
-					sx={{
-						variant: 'links.nav',
-						...(shouldUseDesktopNavigation
-							? {
-									color: url === `#${activeHash}` ? 'primary' : 'inherit',
-							  }
-							: {}),
-					}}
-					href={`${location.pathname}${url}`}
-				>
-					{title}
-				</Link>
-				{items &&
-					depth < maxDepth &&
-					getNav({
-						location,
-						items,
-						shouldUseDesktopNavigation,
-						activeHash,
-						maxDepth,
-						depth: depth + 1,
-					})}
-			</li>
-		))(itemsProp)}
+		{map(({ url, title, items }, i) => {
+			const children =
+				items &&
+				depth < maxDepth &&
+				getNav({
+					location,
+					items,
+					shouldUseDesktopNavigation,
+					activeHash,
+					maxDepth,
+					depth: depth + 1,
+				});
+
+			return (
+				<li key={`${(url || '') + depth}-${i}`}>
+					{url ? (
+						<Link
+							sx={{
+								variant: 'links.nav',
+								...(shouldUseDesktopNavigation
+									? {
+											color: url === `#${activeHash}` ? 'primary' : 'inherit',
+									  }
+									: {}),
+							}}
+							href={`${location.pathname}${url}`}
+						>
+							{title}
+						</Link>
+					) : null}
+					{children}
+				</li>
+			);
+		})(itemsProp)}
 	</ul>
 );
 /* eslint-enable react/prop-types */
@@ -128,6 +135,12 @@ const TableOfContents = ({
 				},
 				'li > ul > li > a': {
 					pl: '24px',
+				},
+				'li > ul > li > ul > li > a': {
+					pl: '32px',
+				},
+				'li > ul > li > ul > li > ul > li > a': {
+					pl: '36px',
 				},
 				color: ['body', 'body', 'body', 'gray.3'],
 				borderBottomColor: [
