@@ -9,11 +9,11 @@ import Text from '../Text';
 import { cos, sin } from '../utils/math';
 
 const joinWithDash = o(join('-'), filter(Boolean));
-const getCirmcumference = (radius) => 2 * radius * Math.PI;
-const getArcCircumference = (C) => (arcAngle) => (arcAngle / 360) * C;
+const getCirmcumference = radius => 2 * radius * Math.PI;
+const getArcCircumference = C => arcAngle => (arcAngle / 360) * C;
 
 const coord = (x, y) => ({ x, y });
-const equalCoord = (x) => ({ x, y: x });
+const equalCoord = x => ({ x, y: x });
 
 const getArcProps = ({ radius, arcAngle }) => {
 	const C = getCirmcumference(radius);
@@ -60,7 +60,7 @@ const Gauge = forwardRef(
 			variant,
 			...rest
 		},
-		ref
+		ref,
 	) => {
 		// hack to run animation after mount
 		const [inProp, setInProp] = useState(false);
@@ -108,7 +108,7 @@ const Gauge = forwardRef(
 
 		const legend = coord(
 			radiusRim * cos(alphaLabels),
-			radiusRim * sin(alphaLabels)
+			radiusRim * sin(alphaLabels),
 		);
 
 		const transitionStyles = {
@@ -205,7 +205,7 @@ const Gauge = forwardRef(
 						timeout={{ enter: animationDuration, exit: animationDuration }}
 						appear
 					>
-						{(state) => (
+						{state => (
 							<Box
 								as="circle"
 								cx={center.x}
@@ -216,6 +216,7 @@ const Gauge = forwardRef(
 								strokeWidth={gaugeStrokeWidth}
 								strokeDasharray={gaugeProps.C}
 								__css={{
+									// eslint-disable-next-line max-len
 									transition: `stroke-dashoffset ${animationDuration}ms cubic-bezier(0, 0, 0.2, 1)`,
 								}}
 								{...transitionStyles[state]}
@@ -226,7 +227,7 @@ const Gauge = forwardRef(
 				</Box>
 			</Box>
 		);
-	}
+	},
 );
 
 Gauge.displayName = 'Gauge';
