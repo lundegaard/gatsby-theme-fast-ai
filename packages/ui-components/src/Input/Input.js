@@ -15,10 +15,10 @@ const placeholderVisible = {
 	opacity: 0.5,
 };
 
-const mergeRefs = (refs) => (value) => {
+const mergeRefs = refs => value => {
 	refs
 		.filter(Boolean)
-		.forEach((ref) => (isFunction(ref) ? ref(value) : (ref.current = value)));
+		.forEach(ref => (isFunction(ref) ? ref(value) : (ref.current = value)));
 };
 
 const autofill = keyframes`
@@ -44,15 +44,8 @@ const getBorderColor = ({ hasError, readOnly, disabled }) => {
 };
 
 const Input = forwardRef((props, ref) => {
-	const {
-		id,
-		isLabelShrank,
-		hasError,
-		onFill,
-		onEmpty,
-		onFocus,
-		onBlur,
-	} = useSuperFieldContext();
+	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } =
+		useSuperFieldContext();
 	const inputRef = useRef();
 	const internalInputRef = mergeRefs([inputRef, ref]);
 
@@ -68,30 +61,30 @@ const Input = forwardRef((props, ref) => {
 	} = props;
 
 	const checkDirty = useCallback(
-		(value) => {
+		value => {
 			if (isInputValueEmpty(value)) {
 				onEmpty();
 			} else {
 				onFill();
 			}
 		},
-		[onEmpty, onFill]
+		[onEmpty, onFill],
 	);
 
 	useBlockingEffect(() => {
 		checkDirty(value);
 	}, [checkDirty, value]);
 
-	const handleAutoFill = (event) => {
+	const handleAutoFill = event => {
 		// Provide a fake value as Chrome might not let you access it for security
 		// reasons.
 		checkDirty(
 			event.animationName.indexOf(autofillCancel.name) !== -1
 				? inputRef.current.value
-				: 'x'
+				: 'x',
 		);
 	};
-	const handleFocus = (event) => {
+	const handleFocus = event => {
 		if (disabled) {
 			return;
 		}
@@ -99,7 +92,7 @@ const Input = forwardRef((props, ref) => {
 		return onFocusProp(event);
 	};
 
-	const handleBlur = (event) => {
+	const handleBlur = event => {
 		if (disabled) {
 			return;
 		}

@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Content from '../components/Content';
 
-const Root = (props) => (
+const Root = props => (
 	<Flex
 		variant="stripes"
 		backgroundColor="background"

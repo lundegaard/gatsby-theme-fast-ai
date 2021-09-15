@@ -360,7 +360,7 @@ const componentsPreset = {
 	},
 };
 
-const createTheme = (userTheme) =>
+const createTheme = userTheme =>
 	mergeDeepRightAll([
 		preset,
 		componentsPreset,

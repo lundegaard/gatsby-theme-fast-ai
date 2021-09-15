@@ -116,7 +116,7 @@ const Slider = forwardRef(
 			value,
 			...rest
 		},
-		ref
+		ref,
 	) => {
 		invariant(isNotNil(min), '`min` is required for Slider component');
 		invariant(isNotNil(max), '`max` is required for Slider component');
@@ -152,7 +152,7 @@ const Slider = forwardRef(
 				<Handles>
 					{({ handles, getHandleProps }) => (
 						<Fragment>
-							{handles.map((handle) => (
+							{handles.map(handle => (
 								<Handle
 									variant={variant}
 									key={handle.id}
@@ -183,7 +183,7 @@ const Slider = forwardRef(
 				</Tracks>
 			</CompoundSlider>
 		);
-	}
+	},
 );
 Slider.displayName = 'Slider';
 Slider.propTypes = {

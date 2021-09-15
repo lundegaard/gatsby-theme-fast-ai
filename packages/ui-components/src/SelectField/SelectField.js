@@ -32,7 +32,7 @@ const SelectField = forwardRef(
 			items,
 			...rest
 		},
-		ref
+		ref,
 	) => (
 		<SuperField
 			ref={ref}
@@ -60,7 +60,7 @@ const SelectField = forwardRef(
 			/>
 			<SuperFieldHint>{hint}</SuperFieldHint>
 		</SuperField>
-	)
+	),
 );
 SelectField.displayName = 'SelectField';
 SelectField.propTypes = {

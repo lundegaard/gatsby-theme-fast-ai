@@ -8,25 +8,25 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
+			entries => {
+				entries.forEach(entry => {
 					if (entry.isIntersecting) {
 						setActiveHash(entry.target.id);
 					}
 				});
 			},
-			{ rootMargin: rootMargin || '0% 0% -100% 0%' }
+			{ rootMargin: rootMargin || '0% 0% -100% 0%' },
 		);
 
 		const ids = itemIds;
-		const elements = ids.map((id) => document.getElementById(id));
+		const elements = ids.map(id => document.getElementById(id));
 
-		elements.forEach((element) => {
+		elements.forEach(element => {
 			observer.observe(element);
 		});
 
 		return () => {
-			elements.forEach((element) => {
+			elements.forEach(element => {
 				if (element) {
 					observer.unobserve(element);
 				}
@@ -89,10 +89,10 @@ const getHeadingIds = (
 	items,
 	traverseFullDepth = true,
 	depth,
-	recursionDepth = 1
+	recursionDepth = 1,
 ) => {
 	const idList = [];
-	const hashToId = (str) => str.slice(1);
+	const hashToId = str => str.slice(1);
 
 	if (items) {
 		for (const item of items) {
@@ -102,7 +102,7 @@ const getHeadingIds = (
 
 			if (item.items && traverseFullDepth && recursionDepth < (depth || 6)) {
 				idList.push(
-					...getHeadingIds(item.items, true, depth, recursionDepth + 1)
+					...getHeadingIds(item.items, true, depth, recursionDepth + 1),
 				);
 			}
 		}
@@ -176,7 +176,7 @@ TableOfContents.propTypes = {
 			title: PropTypes.string,
 			url: PropTypes.string,
 			items: PropTypes.array,
-		})
+		}),
 	),
 	location: PropTypes.object,
 	maxDepth: PropTypes.number,

@@ -4,7 +4,7 @@ import fs from 'fs';
 import mime from 'mime';
 import { withPrefix as fallbackWithPrefix, withAssetPrefix } from 'gatsby';
 
-const toBase64 = (filePath) => {
+const toBase64 = filePath => {
 	// get the mimetype
 	const fileMime = mime.getType(filePath);
 
@@ -16,7 +16,7 @@ const toBase64 = (filePath) => {
 // TODO: remove for v3
 const withPrefix = withAssetPrefix || fallbackWithPrefix;
 
-const getFormat = (url) => {
+const getFormat = url => {
 	const parts = url.split('.');
 	if (parts.length < 2) {
 		return;
@@ -51,10 +51,10 @@ const generateSrc = (critical, files) =>
 		.map(({ url, format }) =>
 			[
 				`url('${getUrl(url, critical)}')`,
-				wrapIfResult((x) => `format('${x}')`, format || getFormat(url)),
+				wrapIfResult(x => `format('${x}')`, format || getFormat(url)),
 			]
 				.filter(Boolean)
-				.join(' ')
+				.join(' '),
 		)
 		.join(',\n');
 
@@ -68,11 +68,11 @@ export const generateStyles = ({ fonts }) =>
 				files && `src: ${generateSrc(critical, files)};`,
 			]
 				.filter(Boolean)
-				.join(';\n')
+				.join(';\n'),
 		)
 		.map(
-			(x) => `@font-face {
+			x => `@font-face {
 	${x}
-}`
+}`,
 		)
 		.join('\n');

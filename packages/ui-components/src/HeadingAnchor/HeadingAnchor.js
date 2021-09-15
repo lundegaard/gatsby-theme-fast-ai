@@ -26,7 +26,7 @@ Anchor.displayName = 'Anchor';
 Anchor.propTypes = {
 	to: PropTypes.string,
 };
-const getLink = (href) => {
+const getLink = href => {
 	if (typeof window === 'undefined') {
 		return '';
 	}

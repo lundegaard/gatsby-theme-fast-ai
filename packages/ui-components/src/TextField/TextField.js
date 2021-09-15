@@ -29,7 +29,7 @@ export const TextField = forwardRef(
 			labelAlwaysShrank,
 			...rest
 		},
-		ref
+		ref,
 	) => (
 		<SuperField
 			ref={ref}
@@ -55,7 +55,7 @@ export const TextField = forwardRef(
 			/>
 			<SuperFieldHint>{hint}</SuperFieldHint>
 		</SuperField>
-	)
+	),
 );
 TextField.propTypes = {
 	disabled: PropTypes.bool,

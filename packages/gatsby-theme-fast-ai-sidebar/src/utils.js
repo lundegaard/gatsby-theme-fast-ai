@@ -4,7 +4,7 @@ const getRootPath = compose(
 	defaultTo('/'), //
 	head,
 	split('/'),
-	replace(/^\//, '')
+	replace(/^\//, ''),
 );
 
 /*
@@ -16,13 +16,13 @@ export const getSublinks = (links, pathname) => {
 	const activeRootPath = getRootPath(pathname);
 
 	const rootLink = compose(
-		find(({ to }) => getRootPath(to) === activeRootPath)
+		find(({ to }) => getRootPath(to) === activeRootPath),
 	)(links);
 
 	return rootLink && rootLink.children;
 };
 
-export const copyToClipboard = (str) => {
+export const copyToClipboard = str => {
 	const clipboard = window.navigator.clipboard;
 	/*
 	 * fallback to older browsers (including Safari)

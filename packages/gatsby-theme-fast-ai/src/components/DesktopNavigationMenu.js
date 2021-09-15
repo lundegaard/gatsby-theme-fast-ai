@@ -9,9 +9,9 @@ import { links } from '../links';
 import Match from './Match';
 import Link from './Link';
 
-const Menu = (props) => <Flex as="ul" p={0} m={0} width={1} {...props} />;
+const Menu = props => <Flex as="ul" p={0} m={0} width={1} {...props} />;
 
-const MenuItem = (props) => (
+const MenuItem = props => (
 	<Box as="li" p={0} m={0} display="block" {...props} />
 );
 
@@ -62,10 +62,10 @@ const DesktopNavigationMenu = ({ ...rest }) => (
 					>
 						<TransparentSelect
 							name="language"
-							onChange={(event) => changeLocale(event.target.value)}
+							onChange={event => changeLocale(event.target.value)}
 							value={currentLanguage}
 						>
-							{languages.map((language) => (
+							{languages.map(language => (
 								<option key={language} value={language}>
 									{language}
 								</option>

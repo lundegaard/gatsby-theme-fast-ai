@@ -18,7 +18,7 @@ const Seo = ({ description = '', meta = [], title }) => {
 					}
 				}
 			}
-		`
+		`,
 	);
 	const intl = useIntl();
 

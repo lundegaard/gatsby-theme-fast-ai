@@ -6,18 +6,18 @@ exports.onPostBootstrap = async ({ reporter, parentSpan }, { fonts }) => {
 		'Copying font files to public folder',
 		{
 			parentSpan,
-		}
+		},
 	);
 
 	activity.start();
 
 	const filePaths = []
 		.concat(
-			...fonts.filter(({ critical }) => !critical).map(({ files }) => files)
+			...fonts.filter(({ critical }) => !critical).map(({ files }) => files),
 		)
 		.map(({ url }) => url);
 
-	filePaths.forEach((filePath) => {
+	filePaths.forEach(filePath => {
 		if (fs.existsSync(filePath)) {
 			fs.copyFileSync(filePath, path.join('public', path.basename(filePath)));
 		} else {

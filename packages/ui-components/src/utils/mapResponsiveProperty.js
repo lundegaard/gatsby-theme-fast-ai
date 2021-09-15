@@ -17,7 +17,7 @@ import { ensureArray, isPlainObject } from 'ramda-extension';
  * @return {Object|Array}
  */
 const mapResponsiveProperty = curry((mapingFunction, propertyValue) =>
-	o(map(mapingFunction), unless(isPlainObject, ensureArray))(propertyValue)
+	o(map(mapingFunction), unless(isPlainObject, ensureArray))(propertyValue),
 );
 
 export default mapResponsiveProperty;

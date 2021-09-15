@@ -20,16 +20,16 @@ const getStaticPropsFromArray = ifElse(
 	o(
 		// Removing both all indices and `length` property
 		reject(anyPass([equals('length'), test(/[0-9]+/)])),
-		Object.getOwnPropertyNames
+		Object.getOwnPropertyNames,
 	),
-	alwaysNull
+	alwaysNull,
 );
 
 const DEFAULT_ALIASES = ['sm', 'md', 'lg', 'xl'];
 
 const getAliases = o(
 	when(isNilOrEmpty, always(DEFAULT_ALIASES)),
-	getStaticPropsFromArray
+	getStaticPropsFromArray,
 );
 
 /**
@@ -46,9 +46,10 @@ const useBreakpoint = (...args) => {
 	const mappingHash = JSON.stringify(mapping);
 
 	// eslint-disable-next-line
-	const useBreakpoint = useMemo(() => createBreakpointHook(mapping), [
-		mappingHash,
-	]);
+	const useBreakpoint = useMemo(
+		() => createBreakpointHook(mapping),
+		[mappingHash],
+	);
 
 	return useBreakpoint(...args);
 };

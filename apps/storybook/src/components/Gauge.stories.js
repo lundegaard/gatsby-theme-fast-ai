@@ -9,8 +9,8 @@ export default {
 	decorators: [withKnobs],
 };
 
-const toPercent = (x) => `${(x * 100).toFixed(0)}`;
-const toPercentUnit = (x) => `${toPercent(x)}%`;
+const toPercent = x => `${(x * 100).toFixed(0)}`;
+const toPercentUnit = x => `${toPercent(x)}%`;
 
 const props = {
 	formatLegend: toPercent,

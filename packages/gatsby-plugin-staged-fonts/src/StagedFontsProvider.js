@@ -5,24 +5,24 @@ import { Provider } from './context';
 import useSession from './useSession';
 import { STAGED_FONTS_STORAGE_KEY } from './constants';
 
-const loadWebfontsWithHtmlApi = (fonts) =>
+const loadWebfontsWithHtmlApi = fonts =>
 	Promise.all(
 		fonts.map(({ family, weight, style }) =>
-			document.fonts.load([style, weight, '1em', family].join(' '))
-		)
+			document.fonts.load([style, weight, '1em', family].join(' ')),
+		),
 	);
 
-const loadWebfontsWithFallback = (fonts) =>
+const loadWebfontsWithFallback = fonts =>
 	import('./webfontsPolyfill').then(({ default: webfontsPolyfill }) =>
-		webfontsPolyfill(fonts)
+		webfontsPolyfill(fonts),
 	);
 
-const loadWebfonts = (fonts) =>
+const loadWebfonts = fonts =>
 	typeof window !== 'undefined' && 'fonts' in document
 		? loadWebfontsWithHtmlApi(fonts)
 		: loadWebfontsWithFallback(fonts);
 
-const useImmutableProp = (x) => {
+const useImmutableProp = x => {
 	const [y] = useState(x);
 	return y;
 };
@@ -36,7 +36,7 @@ const StagedFontsProvider = ({
 	children,
 }) => {
 	const alwaysLoadCriticalsFirst = useImmutableProp(
-		alwaysLoadCriticalsFirstProp
+		alwaysLoadCriticalsFirstProp,
 	);
 	/* eslint-disable react-hooks/rules-of-hooks */
 	const [stage, setStage] = alwaysLoadCriticalsFirst
@@ -46,7 +46,7 @@ const StagedFontsProvider = ({
 
 	useEffect(
 		() => void (stage === 0 && loadWebfonts(fonts).then(() => setStage(1))),
-		[fonts, stage, setStage]
+		[fonts, stage, setStage],
 	);
 
 	const api = useMemo(() => ({ stage }), [stage]);
@@ -60,7 +60,7 @@ const FontDescription = PropTypes.shape({
 	files: PropTypes.arrayOf(
 		PropTypes.shape({
 			url: PropTypes.string.isRequired,
-		}).isRequired
+		}).isRequired,
 	).isRequired,
 	style: PropTypes.any,
 	weight: PropTypes.any,

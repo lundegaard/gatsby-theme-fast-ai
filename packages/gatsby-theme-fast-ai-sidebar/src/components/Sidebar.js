@@ -7,7 +7,7 @@ import { map } from 'ramda';
 import Link from './Link';
 import Match from './Match';
 
-const getList = (links) =>
+const getList = links =>
 	links ? (
 		<ul>
 			{map(({ label, to, children }) => (
@@ -82,7 +82,7 @@ Sidebar.propTypes = {
 			to: PropTypes.string,
 			label: PropTypes.node,
 			children: PropTypes.array,
-		})
+		}),
 	),
 	menu: PropTypes.bool,
 	nav: PropTypes.exact({

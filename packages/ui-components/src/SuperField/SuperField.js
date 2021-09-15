@@ -42,7 +42,7 @@ const SuperField = forwardRef(
 				isLabelShrank,
 				disabled,
 				readOnly,
-			]
+			],
 		);
 
 		return (
@@ -70,7 +70,7 @@ const SuperField = forwardRef(
 				</Box>
 			</SuperFieldContext.Provider>
 		);
-	}
+	},
 );
 SuperField.displayName = 'SuperField';
 SuperField.propTypes = {

@@ -29,7 +29,7 @@ async function createModulePackages({ from, to }) {
 		.map(path.dirname);
 
 	await Promise.all(
-		directoryPackages.map(async (directoryPackage) => {
+		directoryPackages.map(async directoryPackage => {
 			const packageJson = {
 				sideEffects: false,
 				module: path.join('../esm', directoryPackage, 'index.js'),
@@ -38,18 +38,18 @@ async function createModulePackages({ from, to }) {
 
 			await fse.writeFile(
 				packageJsonPath,
-				JSON.stringify(packageJson, null, 2)
+				JSON.stringify(packageJson, null, 2),
 			);
 
 			return packageJsonPath;
-		})
+		}),
 	);
 }
 
 async function createPackageFile() {
 	const packageData = await fse.readFile(
 		path.resolve(packagePath, './package.json'),
-		'utf8'
+		'utf8',
 	);
 	/* eslint-disable no-unused-vars */
 	const {
@@ -73,7 +73,7 @@ async function createPackageFile() {
 	await fse.writeFile(
 		targetPath,
 		JSON.stringify(newPackageData, null, 2),
-		'utf8'
+		'utf8',
 	);
 	console.log(`Created package.json in ${targetPath}`);
 
@@ -98,7 +98,7 @@ async function addLicense(packageData) {
 			'./esm/index.js',
 			'./umd/fast-ai-ui.development.js',
 			'./umd/fast-ai-ui.production.min.js',
-		].map(async (file) => {
+		].map(async file => {
 			try {
 				await prepend(path.resolve(buildPath, file), license);
 			} catch (err) {
@@ -108,7 +108,7 @@ async function addLicense(packageData) {
 					throw err;
 				}
 			}
-		})
+		}),
 	);
 }
 
@@ -124,7 +124,7 @@ async function run() {
 				packageData.name === '@fast-ai/ui-components' ? './fonts' : './fonts',
 				// '../../CHANGELOG.md',
 				'../../LICENSE',
-			].map((file) => includeFileInBuild(file))
+			].map(file => includeFileInBuild(file)),
 		);
 
 		await addLicense(packageData);

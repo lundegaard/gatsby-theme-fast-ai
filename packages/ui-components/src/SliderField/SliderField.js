@@ -32,7 +32,7 @@ const SliderField = forwardRef(
 			value,
 			...rest
 		},
-		ref
+		ref,
 	) => {
 		const generatedStub = useGeneratedId();
 		const generatedId = `field-${generatedStub}`;
@@ -40,7 +40,7 @@ const SliderField = forwardRef(
 		const variant = getVariant({ disabled, readOnly, hasError });
 		const [valueDebounced] = useDebounce(value, 200);
 
-		const getValue = (x) => (Value ? <Value key={x}>{x}</Value> : x);
+		const getValue = x => (Value ? <Value key={x}>{x}</Value> : x);
 		return (
 			<Box ref={ref} sx={{ position: 'relative' }}>
 				<Text
@@ -75,7 +75,7 @@ const SliderField = forwardRef(
 				</FormGroup>
 			</Box>
 		);
-	}
+	},
 );
 
 SliderField.propTypes = {

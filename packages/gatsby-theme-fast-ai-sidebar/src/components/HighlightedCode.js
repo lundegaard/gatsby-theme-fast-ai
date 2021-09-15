@@ -7,7 +7,7 @@ import { pathOr } from 'ramda';
 
 import Copy from './Copy';
 
-const normalizeCode = (x) => x.trim().replace(/  /g, ' ');
+const normalizeCode = x => x.trim().replace(/  /g, ' ');
 const getClassName = pathOr('', ['children', 'props', 'className']);
 const getChildren = pathOr('', ['children', 'props', 'children']);
 const getLanguage = pathOr('', ['groups', 'lang']);
@@ -20,7 +20,7 @@ const prismTheme = {
 	},
 };
 
-const LineNo = (props) => (
+const LineNo = props => (
 	<Box
 		as="span"
 		sx={{
@@ -33,9 +33,9 @@ const LineNo = (props) => (
 	/>
 );
 
-const Pre = (props) => <Box as="pre" {...props} />;
+const Pre = props => <Box as="pre" {...props} />;
 
-export const HighlightedCode = (props) => {
+export const HighlightedCode = props => {
 	const className = getClassName(props);
 	const children = getChildren(props);
 	const matches = className.match(/language-(?<lang>.*)/);
@@ -71,8 +71,8 @@ export const HighlightedCode = (props) => {
 							fileName={title}
 							sx={{
 								position: 'absolute',
-								right: (t) => t.space[1] / 2,
-								top: (t) => t.space[1] / 2,
+								right: t => t.space[1] / 2,
+								top: t => t.space[1] / 2,
 							}}
 							content={code}
 						/>

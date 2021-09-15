@@ -7,7 +7,7 @@ import Label from '../Label';
 const Radio = forwardRef(
 	(
 		{ label, disabled, readOnly, name, value, onChange, checked, ...rest },
-		ref
+		ref,
 	) => (
 		<Label ref={ref} color="inherit" alignItems="center" {...rest}>
 			<RebassRadio
@@ -20,7 +20,7 @@ const Radio = forwardRef(
 			/>
 			{label}
 		</Label>
-	)
+	),
 );
 Radio.displayName = 'Radio';
 

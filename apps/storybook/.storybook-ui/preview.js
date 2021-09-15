@@ -29,7 +29,7 @@ addDecorator(withKnobs);
 
 const theme = createTheme({});
 
-const Root = (props) => (
+const Root = props => (
 	<Box
 		variant="stripes"
 		backgroundColor="background"
@@ -40,7 +40,7 @@ const Root = (props) => (
 		{...props}
 	/>
 );
-addDecorator((story) => (
+addDecorator(story => (
 	<ThemeProvider theme={theme}>
 		<CssBaseline />
 		<Root>{story()}</Root>

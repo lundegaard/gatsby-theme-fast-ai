@@ -10,7 +10,7 @@ import { links } from '../links';
 import Match from './Match';
 import Link from './Link';
 
-const Menu = (props) => <Flex as="ul" p={0} m={0} width={1} {...props} />;
+const Menu = props => <Flex as="ul" p={0} m={0} width={1} {...props} />;
 const MenuItem = ({ sx, ...rest }) => (
 	<Box
 		as="li"
@@ -79,7 +79,7 @@ const MobileNavigationMenu = ({ ...rest }) => (
 									key={language}
 									variant="nav"
 									to={`/${language}`}
-									onClick={(event) => {
+									onClick={event => {
 										event.preventDefault();
 
 										changeLocale(language);
