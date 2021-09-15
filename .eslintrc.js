@@ -6,7 +6,6 @@ module.exports = {
 		node: true,
 	},
 	extends: ['eslint-config-lundegaard'],
-	plugins: ['react-hooks'],
 	rules: {
 		'import/order': ['error', { 'newlines-between': 'always' }],
 		'sort-imports': [

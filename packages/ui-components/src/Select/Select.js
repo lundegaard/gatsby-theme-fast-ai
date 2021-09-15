@@ -33,25 +33,18 @@ const Select = forwardRef((props, ref) => {
 		getValue = prop('value'),
 		...rest
 	} = props;
-	const {
-		id,
-		isLabelShrank,
-		hasError,
-		onFill,
-		onEmpty,
-		onFocus,
-		onBlur,
-	} = useSuperFieldContext();
+	const { id, isLabelShrank, hasError, onFill, onEmpty, onFocus, onBlur } =
+		useSuperFieldContext();
 
 	const checkDirty = useCallback(
-		(value) => {
+		value => {
 			if (isInputValueEmpty(value)) {
 				onEmpty();
 			} else {
 				onFill();
 			}
 		},
-		[onEmpty, onFill]
+		[onEmpty, onFill],
 	);
 
 	useBlockingEffect(() => {
@@ -60,7 +53,7 @@ const Select = forwardRef((props, ref) => {
 
 	const handleChange = disabled ? noop : onChange;
 
-	const handleFocus = (event) => {
+	const handleFocus = event => {
 		if (disabled) {
 			return;
 		}
@@ -68,7 +61,7 @@ const Select = forwardRef((props, ref) => {
 		return onFocusProp(event);
 	};
 
-	const handleBlur = (event) => {
+	const handleBlur = event => {
 		if (disabled) {
 			return;
 		}
@@ -81,14 +74,14 @@ const Select = forwardRef((props, ref) => {
 			? prepend(
 					<option key="" disabled value="">
 						{placeholder}
-					</option>
+					</option>,
 			  )
 			: identity,
-		map((item) => (
+		map(item => (
 			<option key={getValue(item)} value={getValue(item)}>
 				{getLabel(item)}
 			</option>
-		))
+		)),
 	);
 
 	return (

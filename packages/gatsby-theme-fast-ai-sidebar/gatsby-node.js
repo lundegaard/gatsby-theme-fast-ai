@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
 
 	const pages = result.data.allMdx.edges;
 
-	pages.forEach((page) => {
+	pages.forEach(page => {
 		const mdxPage = require.resolve('./src/templates/MdxPage.js');
 
 		createPage({

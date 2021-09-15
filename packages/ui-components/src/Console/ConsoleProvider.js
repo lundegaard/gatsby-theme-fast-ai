@@ -8,11 +8,11 @@ const ConsoleProvider = ({ children }) => {
 
 	const api = useMemo(
 		() => ({
-			log: (lines) => setLog((previousLog) => ({ ...previousLog, ...lines })),
-			replace: (lines) => setLog(lines),
+			log: lines => setLog(previousLog => ({ ...previousLog, ...lines })),
+			replace: lines => setLog(lines),
 			clear: () => setLog({}),
 		}),
-		[]
+		[],
 	);
 
 	return (

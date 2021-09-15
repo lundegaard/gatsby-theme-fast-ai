@@ -45,11 +45,11 @@ const DropdownArrow = memo(
 				points="10 1.03916875e-13 11.4061556 1.42222591 5.70307778 7.06086213 0 1.42222591 1.40615556 1.03916875e-13 5.70307778 4.24811295"
 			/>
 		</Box>
-	))
+	)),
 );
 DropdownArrow.displayName = 'DropdownArrow';
 
-export const defaultFormattingFunction = (x) => {
+export const defaultFormattingFunction = x => {
 	if (isString(x)) {
 		return x;
 	}
@@ -134,7 +134,7 @@ const Console = ({
 									value={formatValue(value)}
 								/>
 							)),
-							toPairs
+							toPairs,
 						)(log)}
 				</Box>
 			)}

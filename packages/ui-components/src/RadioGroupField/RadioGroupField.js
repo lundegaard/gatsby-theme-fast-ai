@@ -20,7 +20,7 @@ const RadioGroupField = forwardRef(
 			name,
 			...rest
 		},
-		ref
+		ref,
 	) => (
 		<FormGroup
 			ref={ref}
@@ -44,7 +44,7 @@ const RadioGroupField = forwardRef(
 				{children}
 			</RadioGroup>
 		</FormGroup>
-	)
+	),
 );
 
 RadioGroupField.displayName = 'RadioGroupField';

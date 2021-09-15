@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const getFromStorage = (key) => {
+const getFromStorage = key => {
 	try {
 		return JSON.parse(window.sessionStorage[key]);
 	} catch (_error) {
@@ -19,10 +19,10 @@ const useSession =
 		? (_, initial) => [initial, () => {}]
 		: (key, initial) => {
 				const [value, setValue] = useState(() =>
-					((current) =>
+					(current =>
 						current == null ? (setToStorage(key, initial), initial) : current)(
-						getFromStorage(key)
-					)
+						getFromStorage(key),
+					),
 				);
 
 				useEffect(() => {

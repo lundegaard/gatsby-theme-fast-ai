@@ -57,13 +57,13 @@ export const useIdleTime = ({ idleTimeout = 5000 } = {}) => {
 					type: ActionTypes.START,
 					payload: { time: Date.now() },
 				}),
-			idleTimeout
+			idleTimeout,
 		);
 	}, [dispatch, idleTimeout]);
 
 	useEffect(() => void resetTimer(), [resetTimer]);
 
-	EVENTS.forEach((name) => {
+	EVENTS.forEach(name => {
 		// NOTE: `EVENTS` is constant array that is not meant for mutation.
 		// The order of calling the `useGlobalListener` hook should be always
 		// the same.

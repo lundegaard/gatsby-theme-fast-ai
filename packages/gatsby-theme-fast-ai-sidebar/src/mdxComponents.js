@@ -8,7 +8,7 @@ import info from '../content/assets/info-circle.svg';
 import HighlightedCode from './components/HighlightedCode';
 import MdxLink from './components/MdxLink';
 
-const HeadingDivider = (props) => (
+const HeadingDivider = props => (
 	<Box
 		variant="mdxHeadingDivider"
 		sx={{
@@ -21,30 +21,30 @@ const HeadingDivider = (props) => (
 		{...props}
 	/>
 );
-const HeadingWithDivider = (props) => (
+const HeadingWithDivider = props => (
 	<Box sx={{ position: 'relative', mb: [3, 3] }}>
 		<HeadingAnchor {...props} />
 		<HeadingDivider />
 	</Box>
 );
 
-export const H1 = (props) => (
+export const H1 = props => (
 	<HeadingWithDivider as="h2" variant="subHeading1" {...props} />
 );
-export const H2 = (props) => (
+export const H2 = props => (
 	<HeadingAnchor as="h3" variant="subHeading2" {...props} />
 );
-export const H3 = (props) => (
+export const H3 = props => (
 	<HeadingAnchor as="h4" variant="subHeading3" {...props} />
 );
-export const H4 = (props) => (
+export const H4 = props => (
 	<HeadingAnchor as="h5" variant="subHeading4" {...props} />
 );
-export const H5 = (props) => (
+export const H5 = props => (
 	<HeadingAnchor as="h6" variant="subHeading5" {...props} />
 );
 
-export const Li = (props) => (
+export const Li = props => (
 	<Box
 		as="li"
 		variant="mdxLi"
@@ -55,7 +55,7 @@ export const Li = (props) => (
 	/>
 );
 
-export const Table = (props) => (
+export const Table = props => (
 	<Box
 		variant="mdxTableWrapper"
 		sx={{
@@ -70,17 +70,13 @@ export const Table = (props) => (
 		<Box as="table" variant="table" {...props} />
 	</Box>
 );
-export const TableHeader = (props) => (
+export const TableHeader = props => (
 	<Box as="th" variant="tableHeader" {...props} />
 );
-export const TableRow = (props) => (
-	<Box as="tr" variant="tableRow" {...props} />
-);
-export const TableCol = (props) => (
-	<Box as="td" variant="tableCol" {...props} />
-);
+export const TableRow = props => <Box as="tr" variant="tableRow" {...props} />;
+export const TableCol = props => <Box as="td" variant="tableCol" {...props} />;
 
-export const Code = (props) => (
+export const Code = props => (
 	<Box
 		as="code"
 		variant="mdxCode"
@@ -92,7 +88,7 @@ export const Code = (props) => (
 	/>
 );
 
-const InfoBox = (props) => (
+const InfoBox = props => (
 	<Box
 		variant="mdxInfoBox"
 		fontSize={[2, 2, 2, 4]}
@@ -105,7 +101,7 @@ const InfoBox = (props) => (
 	/>
 );
 
-export const resolveIconType = (type) => {
+export const resolveIconType = type => {
 	switch (type) {
 		case 'info':
 			return info;
@@ -140,7 +136,7 @@ Pre.propTypes = {
 	sx: PropTypes.object,
 };
 
-export const Paragraph = (props) => <Text as="p" mb={3} {...props} />;
+export const Paragraph = props => <Text as="p" mb={3} {...props} />;
 
 export const components = {
 	h1: H1,

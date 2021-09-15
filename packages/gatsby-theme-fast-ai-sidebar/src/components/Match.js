@@ -5,7 +5,7 @@ import { Match as RouterMatch } from '@reach/router';
 
 const Match = ({ path, language, ...rest }) => (
 	<IntlContextConsumer>
-		{(intl) => {
+		{intl => {
 			const languageLink = language || intl.language;
 			const pathWithLanguage =
 				intl.routed || language ? `/${languageLink}${path}` : `${path}`;

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef } from 'react';
 const useDebouncedCallback = (
 	callback,
 	delay,
-	{ maxWait, leading, trailing: optionsTrailing } = {}
+	{ maxWait, leading, trailing: optionsTrailing } = {},
 ) => {
 	const maxWaitHandler = useRef(null);
 	const maxWaitArgs = useRef([]);
@@ -31,7 +31,7 @@ const useDebouncedCallback = (
 			// we use flag, as we allow to call callPending outside the hook
 			isComponentUnmounted.current = true;
 		},
-		[]
+		[],
 	);
 
 	const debouncedCallback = useCallback(
@@ -69,7 +69,7 @@ const useDebouncedCallback = (
 				}, maxWait);
 			}
 		},
-		[maxWait, delay, cancelDebouncedCallback, leading, trailing]
+		[maxWait, delay, cancelDebouncedCallback, leading, trailing],
 	);
 
 	const callPending = () => {

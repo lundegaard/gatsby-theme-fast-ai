@@ -31,7 +31,7 @@ const FormGroup = forwardRef(
 			name,
 			...rest
 		},
-		ref
+		ref,
 	) => (
 		<Box
 			ref={ref}
@@ -63,7 +63,7 @@ const FormGroup = forwardRef(
 				</Col>
 			</Row>
 		</Box>
-	)
+	),
 );
 FormGroup.displayName = 'FormGroup';
 FormGroup.propTypes = {

@@ -28,7 +28,7 @@ const CheckboxField = forwardRef(
 			</Label>
 			{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}
 		</Box>
-	)
+	),
 );
 
 CheckboxField.displayName = 'CheckboxField';

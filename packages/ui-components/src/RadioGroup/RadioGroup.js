@@ -17,7 +17,7 @@ const RadioGroup = forwardRef(
 			name,
 			...rest
 		},
-		ref
+		ref,
 	) => (
 		<Flex
 			ref={ref}
@@ -26,7 +26,7 @@ const RadioGroup = forwardRef(
 			role="radiogroup"
 			{...rest}
 		>
-			{Children.map(children, (item) => {
+			{Children.map(children, item => {
 				const { value, onChange, width } = item.props;
 				const commonProps = {
 					readOnly,
@@ -55,13 +55,13 @@ const RadioGroup = forwardRef(
 										checked: value === valueProp,
 										...commonProps,
 								  }
-								: commonProps
+								: commonProps,
 						)}
 					</Box>
 				);
 			})}
 		</Flex>
-	)
+	),
 );
 
 RadioGroup.displayName = 'RadioGroup';

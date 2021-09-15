@@ -13,16 +13,14 @@ const stages = {
 
 const setBabel = ({ getConfig, stage, loaders, actions }) => {
 	const config = getConfig();
-	const rule = config.module.rules.filter((rule) =>
-		includes('jsx', String(rule.test))
+	const rule = config.module.rules.filter(rule =>
+		includes('jsx', String(rule.test)),
 	)[0];
 	const PRODUCTION = !stage.includes('develop');
 
 	config.module.rules = [
 		// Omit the default rule for jsx files
-		...config.module.rules.filter(
-			(rule) => !includes('jsx', String(rule.test))
-		),
+		...config.module.rules.filter(rule => !includes('jsx', String(rule.test))),
 		{
 			...rule,
 			use: [

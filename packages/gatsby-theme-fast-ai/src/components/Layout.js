@@ -24,7 +24,7 @@ const Theme = ({ theme, ...rest }) => {
 						mono: 'Roboto Mono',
 				  },
 		}),
-		[theme, isCriticalStage]
+		[theme, isCriticalStage],
 	);
 
 	return <ThemeProvider theme={themeWithResolvedFonts} {...rest} />;

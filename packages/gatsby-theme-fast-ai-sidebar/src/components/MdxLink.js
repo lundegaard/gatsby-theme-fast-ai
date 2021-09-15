@@ -11,7 +11,7 @@ const defaultIsInternalLink = o(
 		complement(startsWithPrefix('http')),
 		complement(startsWithPrefix('#')),
 	]),
-	prop('href')
+	prop('href'),
 );
 
 const MdxLink = ({ href, isInternalLink = defaultIsInternalLink, ...rest }) => {

@@ -7,7 +7,7 @@ import { Box, HeadingAnchor, Image, Link, Text } from '@fast-ai/ui-components';
 import warning from '../content/assets/exclamation-triangle.svg';
 import info from '../content/assets/info-circle.svg';
 
-const HeadingDivider = (props) => (
+const HeadingDivider = props => (
 	<Box
 		sx={{
 			bottom: 0,
@@ -19,32 +19,32 @@ const HeadingDivider = (props) => (
 		{...props}
 	/>
 );
-const HeadingWithDivider = (props) => (
+const HeadingWithDivider = props => (
 	<Box sx={{ position: 'relative', mb: [3, 3] }}>
 		<HeadingAnchor {...props} />
 		<HeadingDivider />
 	</Box>
 );
 
-export const H1 = (props) => <HeadingAnchor as="h1" {...props} />;
-export const H2 = (props) => (
+export const H1 = props => <HeadingAnchor as="h1" {...props} />;
+export const H2 = props => (
 	<HeadingWithDivider as="h2" variant="subHeading1" {...props} />
 );
-export const H3 = (props) => (
+export const H3 = props => (
 	<HeadingAnchor as="h3" variant="subHeading2" {...props} />
 );
-export const H4 = (props) => (
+export const H4 = props => (
 	<HeadingAnchor as="h4" variant="subHeading3" {...props} />
 );
-export const H5 = (props) => (
+export const H5 = props => (
 	<HeadingAnchor as="h5" variant="subHeading4" {...props} />
 );
 
-const Li = (props) => (
+const Li = props => (
 	<Box as="li" fontSize={[2, 2, 2, 4]} mb="2" mt="2" {...props} />
 );
 
-export const Table = (props) => (
+export const Table = props => (
 	<Box
 		sx={{
 			maxWidth: '100%',
@@ -55,17 +55,11 @@ export const Table = (props) => (
 		<Box as="table" variant="table" {...props} />
 	</Box>
 );
-export const TableHead = (props) => (
-	<Box as="th" variant="tableCol" {...props} />
-);
-export const TableRow = (props) => (
-	<Box as="tr" variant="tableRow" {...props} />
-);
-export const TableCol = (props) => (
-	<Box as="td" variant="tableCol" {...props} />
-);
+export const TableHead = props => <Box as="th" variant="tableCol" {...props} />;
+export const TableRow = props => <Box as="tr" variant="tableRow" {...props} />;
+export const TableCol = props => <Box as="td" variant="tableCol" {...props} />;
 
-export const Code = (props) => (
+export const Code = props => (
 	<Box
 		as="code"
 		sx={{
@@ -75,13 +69,13 @@ export const Code = (props) => (
 		{...props}
 	/>
 );
-const CodeBox = (props) => <Box as="pre" p={[2, 3, 4]} {...props} />;
+const CodeBox = props => <Box as="pre" p={[2, 3, 4]} {...props} />;
 
 const getClassName = pathOr('', ['children', 'props', 'className']);
 const getChildren = pathOr('', ['children', 'props', 'children']);
 const getLanguage = pathOr('', ['groups', 'lang']);
 
-export const HighlightedCode = (props) => {
+export const HighlightedCode = props => {
 	const className = getClassName(props);
 	const children = getChildren(props);
 	const matches = className.match(/language-(?<lang>.*)/);
@@ -112,7 +106,7 @@ export const HighlightedCode = (props) => {
 	);
 };
 
-export const InfoBox = (props) => (
+export const InfoBox = props => (
 	<Box
 		as="div"
 		fontSize={[2, 2, 2, 4]}
@@ -125,7 +119,7 @@ export const InfoBox = (props) => (
 	/>
 );
 
-const resolveIconType = (type) => {
+const resolveIconType = type => {
 	switch (type) {
 		case 'info':
 			return info;
@@ -148,7 +142,7 @@ export const Icon = ({ type, ...props }) => (
 
 Icon.propTypes = { type: PropTypes.string };
 
-export const Paragraph = (props) => <Text as="p" mb={3} {...props} />;
+export const Paragraph = props => <Text as="p" mb={3} {...props} />;
 
 export const components = {
 	h1: H1,

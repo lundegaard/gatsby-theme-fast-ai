@@ -12,12 +12,12 @@ const remarkPlugins = [
 
 const fontsPath = path.resolve(
 	require.resolve('@fast-ai/ui-components/fonts'),
-	'../files'
+	'../files',
 );
 
-const getFontFile = (url) => ({ url: path.join(fontsPath, url) });
+const getFontFile = url => ({ url: path.join(fontsPath, url) });
 
-module.exports = (themeOptions) => {
+module.exports = themeOptions => {
 	const {
 		intlOptions,
 		disableMdx,
@@ -92,7 +92,7 @@ module.exports = (themeOptions) => {
 							files: [
 								getFontFile('roboto-v20-latin-ext_latin-regular-critical.woff'),
 								getFontFile(
-									'roboto-v20-latin-ext_latin-regular-critical.woff2'
+									'roboto-v20-latin-ext_latin-regular-critical.woff2',
 								),
 							],
 							family: 'Roboto Critical',
@@ -104,10 +104,10 @@ module.exports = (themeOptions) => {
 							weight: 400,
 							files: [
 								getFontFile(
-									'roboto-mono-v7-latin-ext_latin-regular-critical.woff'
+									'roboto-mono-v7-latin-ext_latin-regular-critical.woff',
 								),
 								getFontFile(
-									'roboto-mono-v7-latin-ext_latin-regular-critical.woff2'
+									'roboto-mono-v7-latin-ext_latin-regular-critical.woff2',
 								),
 							],
 							family: 'Roboto Mono Critical',

@@ -12,7 +12,7 @@ import ContentContainer from '../components/ContentContainer';
 import { links } from '../links';
 import { getSublinks } from '../utils';
 
-const Root = (props) => (
+const Root = props => (
 	<Box
 		variant="stripes"
 		backgroundColor="background"

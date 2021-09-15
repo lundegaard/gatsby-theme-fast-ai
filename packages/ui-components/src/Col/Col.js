@@ -7,7 +7,7 @@ import * as Types from '../types';
 import Box from '../Box';
 import useTheme from '../hooks/useTheme';
 
-const spanToWidth = (maxColumns) => (columnSpan) => columnSpan / maxColumns;
+const spanToWidth = maxColumns => columnSpan => columnSpan / maxColumns;
 
 const Col = forwardRef(({ span, maxColumns: maxColumnsProp, ...rest }, ref) => {
 	const { grid: { gutters, maxColumns } = {} } = useTheme();
@@ -18,7 +18,7 @@ const Col = forwardRef(({ span, maxColumns: maxColumnsProp, ...rest }, ref) => {
 			px={gutters}
 			width={mapResponsiveProperty(
 				spanToWidth(isNil(maxColumnsProp) ? maxColumns : maxColumnsProp),
-				span
+				span,
 			)}
 			{...rest}
 		/>

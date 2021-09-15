@@ -8,7 +8,7 @@ const Row = forwardRef((props, ref) => {
 	const { grid: { gutters = 2 } = {} } = useTheme();
 
 	return (
-		<Flex ref={ref} mx={mapResponsiveProperty((x) => -x, gutters)} {...props} />
+		<Flex ref={ref} mx={mapResponsiveProperty(x => -x, gutters)} {...props} />
 	);
 });
 Row.displayName = 'Row';
