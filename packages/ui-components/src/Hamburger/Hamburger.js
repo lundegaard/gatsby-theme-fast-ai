@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Flex from '../Flex';
 import Box from '../Box';
 
-const Hamburger = forwardRef(({ isOpen, ...rest }, ref) => (
+const Hamburger = forwardRef(({ isOpen, sx, ...rest }, ref) => (
 	<Flex
 		ref={ref}
 		sx={{
@@ -15,6 +15,7 @@ const Hamburger = forwardRef(({ isOpen, ...rest }, ref) => (
 			alignItems: 'center',
 			justifyContent: 'center',
 			cursor: 'pointer',
+			...sx,
 		}}
 		{...rest}
 	>

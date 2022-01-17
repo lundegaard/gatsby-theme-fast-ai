@@ -54,6 +54,18 @@ const getStripesGradient = (width, alpha = 1) =>
 		transparent ${width}
 	)`;
 
+const borderWidths = {
+	normal: '1px',
+	bold: '4px',
+};
+
+const borders = {
+	normal: `${borderWidths.normal} solid ${colors.gray[1]}`,
+	normalTransparent: '${borderWidths.normal} solid transparent',
+	bold: `${borderWidths.bold} solid ${colors.gray[1]}`,
+	boldActive: `${borderWidths.bold} solid ${colors.primary}`,
+};
+
 const commonSliderProps = {
 	handle: {
 		width: ['18px', '18px', '18px', '24px'],
@@ -89,6 +101,9 @@ const componentsPreset = {
 		heading: 'Open Sans, sans-serif',
 		mono: 'Roboto Mono, monospace',
 	},
+	borderWidths,
+	borders,
+	separatorBorder: borders,
 	breakpoints,
 	fontWeights,
 	space,

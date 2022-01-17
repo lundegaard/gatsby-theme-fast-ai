@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TabLabelText /> matches snapshot when shallowly rendered 1`] = `
+<Text
+  sx={
+    Object {
+      "whiteSpace": "nowrap",
+    }
+  }
+/>
+`;
