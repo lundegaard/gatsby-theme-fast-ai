@@ -18,7 +18,7 @@ module.exports = {
 			},
 		],
 		// for qraphql queries
-		'react/prop-types': ['error', { ignore: ['data'] }],
+		'react/prop-types': ['error', { ignore: ['data', 'sx'] }],
 		'import/no-extraneous-dependencies': [
 			'error',
 			{

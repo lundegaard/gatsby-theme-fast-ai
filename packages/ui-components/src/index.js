@@ -66,3 +66,7 @@ export { default as IconSearch } from './IconSearch';
 export { default as IconThumbDown } from './IconThumbDown';
 export { default as IconInsertLink } from './IconInsertLink';
 export { default as HeadingAnchor } from './HeadingAnchor';
+export { Tabs, TabList, TabPane, TabPanels, Tab } from './Tabs';
+export { default as TabLabelText } from './TabLabelText';
+export { default as AbstractButton } from './AbstractButton';
+export { useAbstractButton } from './AbstractButton';
