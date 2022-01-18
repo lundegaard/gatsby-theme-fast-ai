@@ -82,6 +82,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 			description: String
 			tableOfContentsDepth: Int
 			disableTableOfContents: Boolean
+			disableBreadcrumbs: Boolean
     }
   `;
 

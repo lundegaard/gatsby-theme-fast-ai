@@ -1,6 +1,10 @@
 import { defineMessages } from 'gatsby-plugin-intl';
 
 export default defineMessages({
+	logoTitle: {
+		id: 'siteMetadata.logoTitle',
+		defaultMessage: '',
+	},
 	siteDescription: {
 		id: 'siteMetadata.description',
 		defaultMessage: '',

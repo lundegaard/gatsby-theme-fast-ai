@@ -9,20 +9,18 @@ const LanguageSwitcher = ({ sx, ...rest }) => (
 		{({ language: currentLanguage, languages }) =>
 			languages &&
 			isNotEmpty(languages) && (
-				<Box sx={{ minWidth: '60px', ...sx }}>
-					<TransparentSelect
-						name="language"
-						onChange={event => changeLocale(event.target.value)}
-						value={currentLanguage}
-						{...rest}
-					>
-						{languages.map(language => (
-							<option key={language} value={language}>
-								{language}
-							</option>
-						))}
-					</TransparentSelect>
-				</Box>
+				<TransparentSelect
+					sx={{ minWidth: '60px' }}
+					name="language"
+					onChange={event => changeLocale(event.target.value)}
+					value={currentLanguage}
+				>
+					{languages.map(language => (
+						<option key={language} value={language}>
+							{language}
+						</option>
+					))}
+				</TransparentSelect>
 			)
 		}
 	</IntlContextConsumer>

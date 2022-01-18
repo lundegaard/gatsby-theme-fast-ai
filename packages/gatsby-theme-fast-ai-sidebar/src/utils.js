@@ -15,9 +15,7 @@ const getRootPath = compose(
 export const getSublinks = (links, pathname) => {
 	const activeRootPath = getRootPath(pathname);
 
-	const rootLink = compose(
-		find(({ to }) => getRootPath(to) === activeRootPath),
-	)(links);
+	const rootLink = find(({ to }) => getRootPath(to) === activeRootPath, links);
 
 	return rootLink && rootLink.children;
 };
