@@ -1,5 +1,5 @@
 export const links = [
-	{ label: 'Typography and text', to: '/typography' },
+	{ label: 'Typography', to: '/typography' },
 	{ label: 'Tables', to: '/tables' },
 	{ label: 'ToC', to: '/toc' },
 	{

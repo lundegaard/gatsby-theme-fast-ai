@@ -1,64 +1,174 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Col, Container, Row } from '@fast-ai/ui-components';
+import {
+	Box,
+	Col,
+	Container,
+	Flex,
+	Hamburger,
+	Row,
+} from '@fast-ai/ui-components';
+import { useIntl } from 'gatsby-plugin-intl';
 
-import AppBar from './AppBar';
+import m from '../messages';
+
+import { Breadcrumb, BreadcrumbLink, Breadcrumbs } from './Breadcrumbs';
+import Logo from './Logo';
+import Link from './Link';
 import Navigation from './Navigation';
+import LanguageSwitcher from './Navigation/LanguageSwitcher';
+
+const AppBar = props => (
+	<Flex
+		as="header"
+		sx={{
+			position: 'relative',
+			alignItems: 'center',
+			height: 64,
+			width: '100%',
+			justifyContent: 'space-between',
+			zIndex: 100,
+		}}
+		{...props}
+	/>
+);
 
 const Header = ({
 	fullWidth,
 	nav,
-	menu,
-	setMenu,
+	menuVisibility,
+	setMenuVisibility,
 	appBarProps,
 	navigationProps,
 	sx,
 	...rest
-}) => (
-	<Fragment>
-		<Container
-			fullWidth
-			variant={fullWidth ? 'header-fullwidth' : 'header'}
-			sx={{
-				...(!fullWidth
-					? {
-							position: 'fixed',
-							zIndex: 9999,
-							top: 0,
-							left: 0,
-							right: 0,
-					  }
-					: {}),
-				...sx,
-			}}
-			{...rest}
-		>
-			<Row>
-				<Col span={12}>
-					<AppBar {...appBarProps}>
-						<Navigation
-							nav={nav}
-							menu={menu}
-							setMenu={setMenu}
-							fullWidth={fullWidth}
-							{...navigationProps}
-						/>
-					</AppBar>
-				</Col>
-			</Row>
-		</Container>
-		{!fullWidth && <Box height={64} />}
-	</Fragment>
-);
+}) => {
+	const intl = useIntl();
+
+	const titleTranslated = intl.formatMessage(m.logoTitle);
+	const title = titleTranslated === m.logoTitle.id ? null : titleTranslated;
+	const breadcrumbs = [
+		{ to: '/', label: 'Home' },
+		{ to: '/dr', label: 'Deep recommendation' },
+	];
+
+	return (
+		<Fragment>
+			<Container
+				fullWidth
+				variant={fullWidth ? 'header-fullwidth' : 'header'}
+				sx={{
+					...(!fullWidth
+						? {
+								position: 'fixed',
+								zIndex: 9999,
+								top: 0,
+								left: 0,
+								right: 0,
+						  }
+						: {}),
+					...sx,
+				}}
+				{...rest}
+			>
+				<Row>
+					<Col span={12}>
+						<AppBar {...appBarProps}>
+							<Link
+								to="/"
+								sx={{
+									alignItems: 'center',
+									display: 'flex',
+									ml: 4,
+									textDecoration: 'none',
+									color: 'inherit',
+									flexShrink: 0,
+								}}
+							>
+								<Logo />
+								{title && <Box variant="logo-title">{title}</Box>}
+							</Link>
+
+							<Breadcrumbs
+								sx={{
+									display: ['none', 'none', 'flex'],
+									flexShrink: 0,
+								}}
+							>
+								{breadcrumbs.map(({ to, label }) => (
+									<Breadcrumb key={to}>
+										<BreadcrumbLink>{label}</BreadcrumbLink>
+									</Breadcrumb>
+								))}
+							</Breadcrumbs>
+
+							<Navigation
+								nav={nav}
+								menuVisibility={menuVisibility}
+								setMenuVisibility={setMenuVisibility}
+								fullWidth={fullWidth}
+								sx={{
+									display: ['none', 'none', 'flex'],
+									justifyContent: 'flex-end',
+								}}
+								{...navigationProps}
+							/>
+
+							<Box
+								sx={{
+									display: 'flex',
+									alignItems: 'center',
+									minWidth: 'unset',
+								}}
+							>
+								<LanguageSwitcher sx={{ flexShrink: 0 }} />
+
+								{!fullWidth && (
+									<Box
+										display={['block', 'block', 'none']}
+										sx={{
+											flexShrink: 0,
+											flexGrow: 0,
+											overflowX: 'hidden',
+										}}
+									>
+										<Hamburger
+											isOpen={menuVisibility}
+											onClick={() => {
+												setMenuVisibility(!menuVisibility);
+
+												if (menuVisibility || !nav.current) {
+													return;
+												}
+
+												const navlink = nav.current.querySelector('a');
+
+												if (navlink) {
+													navlink.focus();
+												}
+											}}
+										/>
+									</Box>
+								)}
+							</Box>
+						</AppBar>
+					</Col>
+				</Row>
+			</Container>
+			{!fullWidth && <Box height={64} />}
+		</Fragment>
+	);
+};
+
 Header.propTypes = {
 	appBarProps: PropTypes.object,
 	fullWidth: PropTypes.bool,
-	menu: PropTypes.bool,
+	menuVisibility: PropTypes.bool,
 	nav: PropTypes.exact({
 		current: PropTypes.any,
 	}),
 	navigationProps: PropTypes.object,
-	setMenu: PropTypes.func,
+	setMenuVisibility: PropTypes.func,
 	sx: PropTypes.object,
 };
 

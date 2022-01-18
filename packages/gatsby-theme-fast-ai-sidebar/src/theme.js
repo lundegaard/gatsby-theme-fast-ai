@@ -15,6 +15,23 @@ const theme = createTheme({
 			color: 'inherit',
 			textDecoration: 'none',
 		},
+		breadcrumb: {
+			whiteSpace: 'nowrap',
+			color: 'inherit',
+			textDecoration: 'none',
+			':hover,:focus,.active': {
+				color: 'primary',
+			},
+		},
+		breadcrumbSm: {
+			whiteSpace: 'nowrap',
+			textDecoration: 'none',
+			fontSize: [1, 0],
+			color: 'gray.3',
+			':hover,:focus,.active': {
+				color: 'primary',
+			},
+		},
 	},
 	hamburger: {
 		closed: {
@@ -43,6 +60,11 @@ const theme = createTheme({
 				color: 'primary',
 			},
 		},
+		'logo-title': {
+			color: 'gray.3',
+			fontWeight: 'bold',
+			pl: [1, 1, 2],
+		},
 		'main-nav': {
 			maskImage:
 				'linear-gradient(to right,transparent,white 0.5rem,white 98%,transparent)',
@@ -67,7 +89,7 @@ const theme = createTheme({
 		},
 		content: {
 			minHeight: 'calc(100vh - 64px)',
-			py: [4, 6],
+			py: [2, 4],
 		},
 		container: {
 			maxWidth: ['none', '52em', '76em', '110em'],

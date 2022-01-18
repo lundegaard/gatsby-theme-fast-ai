@@ -13,6 +13,7 @@ import Page from './Page';
 const MdxPage = ({ location, children, data: { mdx }, ...rest }) => {
 	const {
 		disableTableOfContents,
+		disableBreadcrumbs,
 		description,
 		tableOfContentsDepth,
 		fullWidth,
@@ -20,7 +21,12 @@ const MdxPage = ({ location, children, data: { mdx }, ...rest }) => {
 	} = mdx.frontmatter;
 	return (
 		<MdxProvider>
-			<Page location={location} fullWidth={fullWidth} {...rest}>
+			<Page
+				location={location}
+				fullWidth={fullWidth}
+				disableBreadcrumbs={disableBreadcrumbs}
+				{...rest}
+			>
 				<Seo title={title} description={description} />
 				<Row>
 					<Col span={{ _: 12, lg: 9 }}>
