@@ -47,9 +47,11 @@ const Header = ({
 
 	const titleTranslated = intl.formatMessage(m.logoTitle);
 	const title = titleTranslated === m.logoTitle.id ? null : titleTranslated;
+	// TODO: what to do if there are no sub pages?
+
 	const breadcrumbs = [
-		{ to: '/', label: 'Home' },
 		{ to: '/dr', label: 'Deep recommendation' },
+		{ to: '/dr/s-snalytics.js', label: 'S-Analytics' },
 	];
 
 	return (
@@ -97,7 +99,7 @@ const Header = ({
 							>
 								{breadcrumbs.map(({ to, label }) => (
 									<Breadcrumb key={to}>
-										<BreadcrumbLink>{label}</BreadcrumbLink>
+										<BreadcrumbLink to={to}>{label}</BreadcrumbLink>
 									</Breadcrumb>
 								))}
 							</Breadcrumbs>
@@ -169,6 +171,7 @@ Header.propTypes = {
 	}),
 	navigationProps: PropTypes.object,
 	setMenuVisibility: PropTypes.func,
+	shouldUseMobileNavigation: PropTypes.bool,
 	sx: PropTypes.object,
 };
 

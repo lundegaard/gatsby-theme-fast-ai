@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
 import { Match as RouterMatch } from '@reach/router';
+import { withPrefix } from 'gatsby';
+import { path } from 'ramda';
+
+import { goUpPath } from '../utils';
 
 const Match = ({ path, language, ...rest }) => (
 	<IntlContextConsumer>
@@ -18,3 +22,20 @@ const Match = ({ path, language, ...rest }) => (
 Match.propTypes = { language: PropTypes.string, path: PropTypes.string };
 
 export default Match;
+
+export const MatchParent = ({ link, children }) => {
+	const { to } = link;
+
+	const isNotRoot = path(['children', 0, 'to'], link) === to;
+	const rootTo = isNotRoot ? goUpPath(to) : to;
+
+	return (
+		<Match key={to} path={`${withPrefix(rootTo)}/*`}>
+			{children}
+		</Match>
+	);
+};
+MatchParent.propTypes = {
+	children: PropTypes.elementType,
+	link: PropTypes.shape({ to: PropTypes.string, children: PropTypes.array }),
+};

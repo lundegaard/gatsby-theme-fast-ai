@@ -1,8 +1,25 @@
-import { compose, defaultTo, find, head, replace, split } from 'ramda';
+import {
+	compose,
+	defaultTo,
+	find,
+	head,
+	init,
+	join,
+	replace,
+	split,
+} from 'ramda';
 
 const getRootPath = compose(
 	defaultTo('/'), //
 	head,
+	split('/'),
+	replace(/^\//, ''),
+);
+
+export const goUpPath = compose(
+	defaultTo('/'), //
+	join('/'),
+	init,
 	split('/'),
 	replace(/^\//, ''),
 );

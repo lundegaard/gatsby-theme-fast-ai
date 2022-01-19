@@ -7,10 +7,25 @@ export const links = [
 		to: '/other/images',
 		children: [
 			{
-				label: 'Images',
+				label: 'Still not Images',
 				to: '/other/images',
+				children: [
+					{
+						label: 'Images',
+						to: '/other/images',
+					},
+				],
 			},
-			{ label: 'Code', to: '/other/code' },
+			{
+				label: 'Code',
+				to: '/other/code',
+				children: [
+					{
+						label: 'Sub page',
+						to: '/other/code/subpage',
+					},
+				],
+			},
 			{ label: 'Features', to: '/other/features' },
 		],
 	},

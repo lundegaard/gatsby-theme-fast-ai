@@ -89,7 +89,7 @@ const theme = createTheme({
 		},
 		content: {
 			minHeight: 'calc(100vh - 64px)',
-			py: [2, 4],
+			py: [4],
 		},
 		container: {
 			maxWidth: ['none', '52em', '76em', '110em'],
