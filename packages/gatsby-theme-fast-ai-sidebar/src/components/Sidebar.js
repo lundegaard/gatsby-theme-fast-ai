@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withPrefix } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Box, Tab, TabLabelText, TabList } from '@fast-ai/ui-components';
 import { map } from 'ramda';
 
 import Link from './Link';
-import Match from './Match';
+import Match, { MatchParent } from './Match';
 
 const getList = links =>
 	links ? (
@@ -34,13 +34,17 @@ const getList = links =>
 
 const Nav = ({ links }) => getList(links);
 
-const Sidebar = ({ nav, menuVisibility, links }) => {
-	const [activeTab, setActiveTab] = useState('');
-	const tabItems = [
-		{ value: 'home', label: 'Home' },
-		{ value: 'guides', label: 'Guides' },
-	];
+const TabLink = ({ link, children, sx }) => (
+	<Link sx={{ ...sx, textDecoration: 'none' }} to={link.to}>
+		{children}
+	</Link>
+);
+TabLink.propTypes = {
+	children: PropTypes.node,
+	link: PropTypes.shape({ to: PropTypes.string }),
+};
 
+const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
 	if (!links) {
 		return null;
 	}
@@ -79,25 +83,29 @@ const Sidebar = ({ nav, menuVisibility, links }) => {
 				},
 			}}
 		>
-			<TabList
-				sx={{ pt: [2], display: ['flex', 'flex', 'none'] }}
-				value={activeTab}
-				onChange={newTab => {
-					if (newTab != null) {
-						setActiveTab(newTab);
-					}
-				}}
-			>
-				{tabItems.map(({ value, label }) => (
-					<Tab
-						key={value}
-						value={value}
-						label={<TabLabelText>{label}</TabLabelText>}
-					/>
-				))}
-			</TabList>
+			{shouldUseMobileNavigation ? (
+				<TabList sx={{ pt: [2], display: ['flex', 'flex', 'none'] }}>
+					{links.map(link => (
+						<MatchParent key={link.to} link={link}>
+							{({ match }) => (
+								<Tab
+									key={link.to}
+									isActive={!!match}
+									renderLabel={TabLink}
+									link={link}
+									label={<TabLabelText>{link.label}</TabLabelText>}
+								/>
+							)}
+						</MatchParent>
+					))}
+				</TabList>
+			) : null}
 			<Box sx={{ px: 3 }}>
-				<Nav links={links} />
+				{links.map(link => (
+					<MatchParent key={link.to} link={link}>
+						{({ match }) => match && <Nav links={link.children} />}
+					</MatchParent>
+				))}
 			</Box>
 		</Box>
 	);
@@ -116,6 +124,7 @@ Sidebar.propTypes = {
 		current: PropTypes.any,
 	}),
 	setMenuVisibility: PropTypes.func,
+	shouldUseMobileNavigation: PropTypes.bool,
 };
 
 export default Sidebar;

@@ -20,7 +20,7 @@ module.exports = {
 	siteMetadata,
 	plugins: [
 		{
-			resolve: 'gatsby-theme-fast-ai',
+			resolve: 'gatsby-theme-fast-ai-sidebar',
 			options: {
 				docsPath: `${__dirname}/content/docs`,
 				intlOptions: {
@@ -49,7 +49,7 @@ Note that this site doesn't _do_ anything, so you're see a missing
 resources error. Create a simple page in `src/pages/index.js` to see a
 page on the root url.
 
-```
+```js
 import React from 'react';
 import { Page, Seo } from 'gatsby-theme-fast-ai-sidebar';
 import { Heading } from '@fast-ai/ui-components';
@@ -86,20 +86,28 @@ export default Index;
 ### Frontmatter
 
 You can add metadata to your page via frontmatter properties, e.g.:
-```
+
+```markdown
 ---
 title: 'Introduction'
 description: 'SEO description'
 ---
-
-# Introduction
 ```
 
-- `title` - title of the page
-- `description` - SEO description
-- `tableOfContentsDepth` - how many heading levels deep should Table of Contents go
-- `disableTableOfContents` - completely disable Table of Contents
-- `fullWidth` - using fullwidth layout without sidebar
+- `title`: string
+	- heading of the page - H1
+- `description`: string
+	- meta description 
+- `disableTableOfContents`: boolean
+	- completely disable Table of Contents
+- `fullWidth`: boolean
+	- content has 100% width
+	- sidebar navigation is hidden
+	- header is not floating (unless mobile resolution)
+- `tableOfContentsDepth`: boolean
+	- how many heading levels deep should Table of Contents go
+- `disableBreadcrumbs`: boolean
+	- hide breadcrumbs
 
 ## See our related projects
 
