@@ -3,6 +3,7 @@ export const links = [
 	{ label: 'Tables', to: '/tables' },
 	{ label: 'ToC', to: '/toc' },
 	{
+		root: true,
 		label: 'Other',
 		to: '/other/images',
 		children: [

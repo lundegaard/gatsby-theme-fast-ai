@@ -1,18 +1,18 @@
 import React from 'react';
-import { withPrefix } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Box, Tab, TabLabelText, TabList } from '@fast-ai/ui-components';
 import { map } from 'ramda';
 
 import Link from './Link';
-import Match, { MatchParent } from './Match';
+import Match, { MatchParent, getParent } from './Match';
+import Router from './Router';
 
 const getList = links =>
 	links ? (
 		<ul>
 			{map(({ label, to, children }) => (
 				<li key={to}>
-					<Match path={`${withPrefix(to)}`}>
+					<Match path={`${to}`}>
 						{({ match }) => (
 							<Link
 								to={to}
@@ -84,7 +84,7 @@ const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
 			}}
 		>
 			{shouldUseMobileNavigation ? (
-				<TabList sx={{ pt: [2], display: ['flex', 'flex', 'none'] }}>
+				<TabList sx={{ pt: [2] }}>
 					{links.map(link => (
 						<MatchParent key={link.to} link={link}>
 							{({ match }) => (
@@ -101,11 +101,15 @@ const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
 				</TabList>
 			) : null}
 			<Box sx={{ px: 3 }}>
-				{links.map(link => (
-					<MatchParent key={link.to} link={link}>
-						{({ match }) => match && <Nav links={link.children} />}
-					</MatchParent>
-				))}
+				<Router primary={false}>
+					{links.map(link => (
+						<Nav
+							path={`${getParent(link)}/*`}
+							key={link.to}
+							links={link.children}
+						/>
+					))}
+				</Router>
 			</Box>
 		</Box>
 	);

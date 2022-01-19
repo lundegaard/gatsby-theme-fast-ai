@@ -6,13 +6,9 @@ import { Box, Flex, useBreakpoint, useTheme } from '@fast-ai/ui-components';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-import {
-	Breadcrumb,
-	BreadcrumbLink,
-	Breadcrumbs,
-} from '../components/Breadcrumbs';
 import ContentContainer from '../components/ContentContainer';
 import { links } from '../links';
+import AppBreadcrumbs from '../components/AppBreadcrumbs';
 
 const Root = props => (
 	<Box
@@ -46,16 +42,12 @@ const Page = ({
 		(!shouldUseMobileNavigation && fullWidthProp) ||
 		(location && location.pathname === withPrefix('/'));
 
-	const breadcrumbs = [
-		{ to: '/', label: 'Home' },
-		{ to: '/dr', label: 'Deep recommendation' },
-	];
-
 	return (
 		<Root>
 			<Header
 				fullWidth={fullWidth}
 				nav={nav}
+				links={links}
 				menuVisibility={menuVisibility}
 				setMenuVisibility={setMenuVisibility}
 				shouldUseMobileNavigation={shouldUseMobileNavigation}
@@ -73,21 +65,20 @@ const Page = ({
 				)}
 				<ContentContainer fullWidth={fullWidth}>
 					{!disableBreadcrumbs && (
-						<Breadcrumbs
+						<AppBreadcrumbs
+							breadcrumbProps={{
+								separatorSize: 14,
+							}}
+							breadcrumbLinkProps={{
+								variant: 'links.breadcrumbSm',
+							}}
+							links={links}
 							sx={{
 								position: 'absolute',
 								top: '8px',
 								left: gutters,
 							}}
-						>
-							{breadcrumbs.map(({ to, label }, i) => (
-								<Breadcrumb separatorSize={14} hideSeparator={i === 0} key={to}>
-									<BreadcrumbLink variant="links.breadcrumbSm" to="to">
-										{label}
-									</BreadcrumbLink>
-								</Breadcrumb>
-							))}
-						</Breadcrumbs>
+						/>
 					)}
 					{children}
 				</ContentContainer>

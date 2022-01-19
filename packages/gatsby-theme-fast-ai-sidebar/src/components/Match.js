@@ -7,6 +7,8 @@ import { path } from 'ramda';
 
 import { goUpPath } from '../utils';
 
+import * as types from './types';
+
 const Match = ({ path, language, ...rest }) => (
 	<IntlContextConsumer>
 		{intl => {
@@ -14,7 +16,7 @@ const Match = ({ path, language, ...rest }) => (
 			const pathWithLanguage =
 				intl.routed || language ? `/${languageLink}${path}` : `${path}`;
 
-			return <RouterMatch path={pathWithLanguage} {...rest} />;
+			return <RouterMatch path={withPrefix(pathWithLanguage)} {...rest} />;
 		}}
 	</IntlContextConsumer>
 );
@@ -23,19 +25,20 @@ Match.propTypes = { language: PropTypes.string, path: PropTypes.string };
 
 export default Match;
 
-export const MatchParent = ({ link, children }) => {
+export const getParent = link => {
 	const { to } = link;
 
 	const isNotRoot = path(['children', 0, 'to'], link) === to;
-	const rootTo = isNotRoot ? goUpPath(to) : to;
-
-	return (
-		<Match key={to} path={`${withPrefix(rootTo)}/*`}>
-			{children}
-		</Match>
-	);
+	return isNotRoot ? goUpPath(to) : to;
 };
+
+export const MatchParent = ({ link, children }) => (
+	<Match key={link.to} path={`${getParent(link)}/*`}>
+		{children}
+	</Match>
+);
+
 MatchParent.propTypes = {
 	children: PropTypes.elementType,
-	link: PropTypes.shape({ to: PropTypes.string, children: PropTypes.array }),
+	link: PropTypes.shape(types.NavigationRoute),
 };
