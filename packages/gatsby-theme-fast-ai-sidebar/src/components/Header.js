@@ -12,11 +12,11 @@ import { useIntl } from 'gatsby-plugin-intl';
 
 import m from '../messages';
 
-import { Breadcrumb, BreadcrumbLink, Breadcrumbs } from './Breadcrumbs';
 import Logo from './Logo';
 import Link from './Link';
 import Navigation from './Navigation';
 import LanguageSwitcher from './Navigation/LanguageSwitcher';
+import AppBreadcrumbs from './AppBreadcrumbs';
 
 const AppBar = props => (
 	<Flex
@@ -40,6 +40,7 @@ const Header = ({
 	setMenuVisibility,
 	appBarProps,
 	navigationProps,
+	links,
 	sx,
 	...rest
 }) => {
@@ -48,11 +49,6 @@ const Header = ({
 	const titleTranslated = intl.formatMessage(m.logoTitle);
 	const title = titleTranslated === m.logoTitle.id ? null : titleTranslated;
 	// TODO: what to do if there are no sub pages?
-
-	const breadcrumbs = [
-		{ to: '/dr', label: 'Deep recommendation' },
-		{ to: '/dr/s-snalytics.js', label: 'S-Analytics' },
-	];
 
 	return (
 		<Fragment>
@@ -91,21 +87,17 @@ const Header = ({
 								{title && <Box variant="logo-title">{title}</Box>}
 							</Link>
 
-							<Breadcrumbs
+							<AppBreadcrumbs
+								disableHideFirstSeparator
+								links={links}
 								sx={{
 									display: ['none', 'none', 'flex'],
 									flexShrink: 0,
 								}}
-							>
-								{breadcrumbs.map(({ to, label }) => (
-									<Breadcrumb key={to}>
-										<BreadcrumbLink to={to}>{label}</BreadcrumbLink>
-									</Breadcrumb>
-								))}
-							</Breadcrumbs>
-
+							/>
 							<Navigation
 								nav={nav}
+								links={links}
 								menuVisibility={menuVisibility}
 								setMenuVisibility={setMenuVisibility}
 								fullWidth={fullWidth}
@@ -165,6 +157,13 @@ const Header = ({
 Header.propTypes = {
 	appBarProps: PropTypes.object,
 	fullWidth: PropTypes.bool,
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			to: PropTypes.string,
+			label: PropTypes.node,
+			children: PropTypes.array,
+		}),
+	),
 	menuVisibility: PropTypes.bool,
 	nav: PropTypes.exact({
 		current: PropTypes.any,

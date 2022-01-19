@@ -17,7 +17,7 @@ const getRootPath = compose(
 );
 
 export const goUpPath = compose(
-	defaultTo('/'), //
+	x => `/${x || ''}`,
 	join('/'),
 	init,
 	split('/'),
