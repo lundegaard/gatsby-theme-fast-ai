@@ -40,7 +40,7 @@ const Header = ({
 	setMenuVisibility,
 	appBarProps,
 	navigationProps,
-	links,
+	presentedRoutes,
 	sx,
 	...rest
 }) => {
@@ -88,8 +88,8 @@ const Header = ({
 							</Link>
 
 							<AppBreadcrumbs
+								onlyRoots
 								disableHideFirstSeparator
-								links={links}
 								sx={{
 									display: ['none', 'none', 'flex'],
 									flexShrink: 0,
@@ -97,7 +97,7 @@ const Header = ({
 							/>
 							<Navigation
 								nav={nav}
-								links={links}
+								presentedRoutes={presentedRoutes}
 								menuVisibility={menuVisibility}
 								setMenuVisibility={setMenuVisibility}
 								fullWidth={fullWidth}
@@ -157,18 +157,18 @@ const Header = ({
 Header.propTypes = {
 	appBarProps: PropTypes.object,
 	fullWidth: PropTypes.bool,
-	links: PropTypes.arrayOf(
+	menuVisibility: PropTypes.bool,
+	nav: PropTypes.exact({
+		current: PropTypes.any,
+	}),
+	navigationProps: PropTypes.object,
+	presentedRoutes: PropTypes.arrayOf(
 		PropTypes.shape({
 			to: PropTypes.string,
 			label: PropTypes.node,
 			children: PropTypes.array,
 		}),
 	),
-	menuVisibility: PropTypes.bool,
-	nav: PropTypes.exact({
-		current: PropTypes.any,
-	}),
-	navigationProps: PropTypes.object,
 	setMenuVisibility: PropTypes.func,
 	shouldUseMobileNavigation: PropTypes.bool,
 	sx: PropTypes.object,

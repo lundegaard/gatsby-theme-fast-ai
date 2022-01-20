@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { links } from '../links';
+
 import Router from './Router';
 import * as types from './types';
 import { Breadcrumb, BreadcrumbLink, Breadcrumbs } from './Breadcrumbs';
@@ -11,19 +13,23 @@ const AppBreadcrumbs = ({
 	breadcrumbLinkProps,
 	disableHideFirstSeparator,
 	breadcrumbsProps,
+	onlyRoots,
 }) => (
 	<Breadcrumbs {...breadcrumbsProps}>
-		{breadcrumbs.map(({ to, label }, i) => (
-			<Breadcrumb
-				hideSeparator={!disableHideFirstSeparator && i === 0}
-				key={to}
-				{...breadcrumbProps}
-			>
-				<BreadcrumbLink to={to} {...breadcrumbLinkProps}>
-					{label}
-				</BreadcrumbLink>
-			</Breadcrumb>
-		))}
+		{breadcrumbs.map(
+			({ to, label, root }, i) =>
+				(!onlyRoots || root) && (
+					<Breadcrumb
+						hideSeparator={!disableHideFirstSeparator && i === 0}
+						key={to + i}
+						{...breadcrumbProps}
+					>
+						<BreadcrumbLink to={to} {...breadcrumbLinkProps}>
+							{label}
+						</BreadcrumbLink>
+					</Breadcrumb>
+				),
+		)}
 	</Breadcrumbs>
 );
 
@@ -33,6 +39,7 @@ AppBreadcrumbs.propTypes = {
 	breadcrumbs: PropTypes.arrayOf(types.NavigationRoute),
 	breadcrumbsProps: PropTypes.object,
 	disableHideFirstSeparator: PropTypes.bool,
+	onlyRoots: PropTypes.bool,
 };
 
 const getListOfRoutes = (props, links, parents = []) => {
@@ -58,10 +65,10 @@ const getListOfRoutes = (props, links, parents = []) => {
 };
 
 const AppBreadcrumbsRouter = ({
-	links,
 	breadcrumbProps,
 	breadcrumbLinkProps,
 	disableHideFirstSeparator,
+	onlyRoots,
 	...breadcrumbsProps
 }) => (
 	<Router primary={false}>
@@ -71,6 +78,7 @@ const AppBreadcrumbsRouter = ({
 				breadcrumbProps,
 				breadcrumbLinkProps,
 				disableHideFirstSeparator,
+				onlyRoots,
 			},
 			links,
 		)}
@@ -81,6 +89,6 @@ AppBreadcrumbsRouter.propTypes = {
 	breadcrumbLinkProps: PropTypes.object,
 	breadcrumbProps: PropTypes.object,
 	disableHideFirstSeparator: PropTypes.bool,
-	links: PropTypes.arrayOf(types.NavigationRoute),
+	onlyRoots: PropTypes.bool,
 };
 export default AppBreadcrumbsRouter;

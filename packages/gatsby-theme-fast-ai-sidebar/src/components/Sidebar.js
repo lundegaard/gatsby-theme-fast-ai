@@ -32,7 +32,7 @@ const getList = links =>
 		</ul>
 	) : null;
 
-const Nav = ({ links }) => getList(links);
+const Nav = ({ presentedRoutes }) => getList(presentedRoutes);
 
 const TabLink = ({ link, children, sx }) => (
 	<Link sx={{ ...sx, textDecoration: 'none' }} to={link.to}>
@@ -44,8 +44,13 @@ TabLink.propTypes = {
 	link: PropTypes.shape({ to: PropTypes.string }),
 };
 
-const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
-	if (!links) {
+const Sidebar = ({
+	nav,
+	shouldUseMobileNavigation,
+	menuVisibility,
+	presentedRoutes,
+}) => {
+	if (!presentedRoutes) {
 		return null;
 	}
 
@@ -85,7 +90,7 @@ const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
 		>
 			{shouldUseMobileNavigation ? (
 				<TabList sx={{ pt: [2] }}>
-					{links.map(link => (
+					{presentedRoutes.map(link => (
 						<MatchParent key={link.to} link={link}>
 							{({ match }) => (
 								<Tab
@@ -102,11 +107,11 @@ const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
 			) : null}
 			<Box sx={{ px: 3 }}>
 				<Router primary={false}>
-					{links.map(link => (
+					{presentedRoutes.map(link => (
 						<Nav
 							path={`${getParent(link)}/*`}
 							key={link.to}
-							links={link.children}
+							presentedRoutes={link.children}
 						/>
 					))}
 				</Router>
@@ -116,17 +121,17 @@ const Sidebar = ({ nav, shouldUseMobileNavigation, menuVisibility, links }) => {
 };
 
 Sidebar.propTypes = {
-	links: PropTypes.arrayOf(
+	menuVisibility: PropTypes.bool,
+	nav: PropTypes.exact({
+		current: PropTypes.any,
+	}),
+	presentedRoutes: PropTypes.arrayOf(
 		PropTypes.shape({
 			to: PropTypes.string,
 			label: PropTypes.node,
 			children: PropTypes.array,
 		}),
 	),
-	menuVisibility: PropTypes.bool,
-	nav: PropTypes.exact({
-		current: PropTypes.any,
-	}),
 	setMenuVisibility: PropTypes.func,
 	shouldUseMobileNavigation: PropTypes.bool,
 };

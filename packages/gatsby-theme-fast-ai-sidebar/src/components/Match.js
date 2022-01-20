@@ -40,5 +40,5 @@ export const MatchParent = ({ link, children }) => (
 
 MatchParent.propTypes = {
 	children: PropTypes.elementType,
-	link: PropTypes.shape(types.NavigationRoute),
+	link: types.NavigationRoute.isRequired,
 };
