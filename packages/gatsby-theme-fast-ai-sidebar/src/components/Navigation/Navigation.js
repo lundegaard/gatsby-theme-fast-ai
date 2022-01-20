@@ -8,7 +8,7 @@ import Link from '../Link';
 import Menu from './Menu';
 import MenuItem from './MenuItem';
 
-const Navigation = ({ links, ...rest }) => (
+const Navigation = ({ presentedRoutes, ...rest }) => (
 	<Box as="nav" variant="main-nav" {...rest}>
 		<Menu
 			sx={{
@@ -16,7 +16,7 @@ const Navigation = ({ links, ...rest }) => (
 				overflowX: 'auto',
 			}}
 		>
-			{links.map(({ label, to }) => (
+			{presentedRoutes.map(({ label, to }) => (
 				<MenuItem
 					key={to}
 					textAlign={{ _: 'center', md: 'left' }}
@@ -45,18 +45,18 @@ const Navigation = ({ links, ...rest }) => (
 Navigation.propTypes = {
 	appBarProps: PropTypes.object,
 	fullWidth: PropTypes.bool,
-	links: PropTypes.arrayOf(
+	menuVisibility: PropTypes.bool,
+	nav: PropTypes.exact({
+		current: PropTypes.any,
+	}),
+	navigationProps: PropTypes.object,
+	presentedRoutes: PropTypes.arrayOf(
 		PropTypes.shape({
 			to: PropTypes.string,
 			label: PropTypes.node,
 			children: PropTypes.array,
 		}),
 	),
-	menuVisibility: PropTypes.bool,
-	nav: PropTypes.exact({
-		current: PropTypes.any,
-	}),
-	navigationProps: PropTypes.object,
 	setMenuVisibility: PropTypes.func,
 	shouldUseMobileNavigation: PropTypes.bool,
 	sx: PropTypes.object,
