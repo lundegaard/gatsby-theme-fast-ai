@@ -109,6 +109,33 @@ description: 'SEO description'
 - `disableBreadcrumbs`: boolean
 	- hide breadcrumbs
 
+## Links
+Rewrite the `./link.js` file to determine page hierarchy.
+
+```js
+module.exports = [{
+		root: true ,
+		label: "Label shown in Navigation",
+		to: "/path/to/page",
+		children: [
+			// list of descendants
+		]
+	}, 
+	{
+	// ...
+	}
+]
+```
+* `root`: boolean
+	- If `true` the navigation of the site will treat this page as the navigation root for the child pages.
+	- You can have more root pages nested inside each other.
+* `label`: node 
+	- Label of the page
+* `to`: string
+	- route must start with "/" and can't end with "/"
+* `children`: array[Page]
+	- nested pages
+
 ## See our related projects
 
 - [Zoe s-analytics demo](https://github.com/lundegaard/fast-ai-zoe-demo) - React Web application with S-Analytics
