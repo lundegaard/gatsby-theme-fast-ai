@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.3.0...v1.4.0) (2022-01-20)
+
+
+### Features
+
+* adding stories for Consoe ([13c511d](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/13c511d8a60c1d5e58616f169cff96c5e9ed8ccb))
+* adding tabs ([5fed8b7](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/5fed8b7e0955cff2e1f60005621a17715a72cc1c))
+
+
+
+
+
 # [1.3.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.2.1...v1.3.0) (2021-09-15)
 
 
