@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.4.1...v1.4.2) (2022-01-21)
+
+
+### Bug Fixes
+
+* zIndex of sidebar defined in theme ([b3a0a46](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/b3a0a46e5706449b9ce89502050d82971596757e))
+
+
+
+
+
 ## [1.4.1](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.4.0...v1.4.1) (2022-01-21)
 
 
