@@ -1,7 +1,7 @@
 {
 	"name": "gatsby-theme-fast-ai-sidebar",
 	"description": "Rebass-based gatsby theme used in Zoe.ai projects.",
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"main": "index.js",
 	"keywords": [
 		"gatsby",
