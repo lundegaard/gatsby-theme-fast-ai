@@ -10,6 +10,7 @@ import ContentContainer from '../components/ContentContainer';
 import { links } from '../links';
 import AppBreadcrumbs from '../components/AppBreadcrumbs';
 import { useApplicationNavigationRoute } from '../navigation';
+import { IntlProxyContextProvider } from '../intl';
 
 const isSSR = typeof window === 'undefined';
 
@@ -27,7 +28,7 @@ const Root = props => (
 	/>
 );
 
-const Page = ({
+const PageInner = ({
 	children,
 	disableBreadcrumbs: disableBreadcrumbsProp,
 	fullWidth: fullWidthProp,
@@ -99,7 +100,18 @@ const Page = ({
 		</Root>
 	);
 };
+PageInner.propTypes = {
+	children: PropTypes.node,
+	disableBreadcrumbs: PropTypes.bool,
+	fullWidth: PropTypes.bool,
+	location: PropTypes.object,
+};
 
+const Page = props => (
+	<IntlProxyContextProvider>
+		<PageInner {...props} />
+	</IntlProxyContextProvider>
+);
 Page.propTypes = {
 	children: PropTypes.node,
 	disableBreadcrumbs: PropTypes.bool,
