@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
-import { Match as RouterMatch } from '@reach/router';
+import { Match as RouterMatch, matchPath } from '@reach/router';
 import { withPrefix } from 'gatsby';
-import { path } from 'ramda';
+import { findIndex } from 'ramda';
 
 import { goUpPath } from '../utils';
 
@@ -26,19 +26,25 @@ Match.propTypes = { language: PropTypes.string, path: PropTypes.string };
 export default Match;
 
 export const getParent = link => {
-	const { to } = link;
+	const { to, children = [] } = link;
+	let rootPath = to;
+	if (children.length > 1) {
+		const indexPageIndex = findIndex(child => child.to === to, children);
+		const nonIndexPageIndex = findIndex(child => child.to !== to, children);
 
-	const isNotRoot = path(['children', 0, 'to'], link) === to;
-	return isNotRoot ? goUpPath(to) : to;
+		if (indexPageIndex !== -1 && nonIndexPageIndex !== -1) {
+			rootPath = matchPath(`${to}/*`, children[nonIndexPageIndex].to)
+				? to
+				: goUpPath(to);
+		}
+	}
+	return rootPath;
 };
 
-export const MatchParent = ({ link, children }) => (
-	<Match key={link.to} path={`${getParent(link)}/*`}>
-		{children}
-	</Match>
+export const MatchParent = ({ link, ...rest }) => (
+	<Match key={link.to} path={`${getParent(link)}/*`} {...rest} />
 );
 
 MatchParent.propTypes = {
-	children: PropTypes.elementType,
 	link: types.NavigationRoute.isRequired,
 };
