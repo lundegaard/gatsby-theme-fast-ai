@@ -10,8 +10,8 @@
 	"author": "Lundegaard a.s.",
 	"license": "MIT",
 	"scripts": {
-		"start": "gatsby clean && gatsby develop",
-		"develop": "gatsby develop",
+		"start": "yarn clean && yarn develop",
+		"develop": "gatsby develop --port 8081",
 		"clean": "gatsby clean",
 		"build": "gatsby clean && gatsby build --prefix-paths",
 		"serve": "gatsby serve --prefix-paths"
