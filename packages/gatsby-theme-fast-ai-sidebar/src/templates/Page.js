@@ -27,7 +27,11 @@ const Root = props => (
 	/>
 );
 
-const Page = ({ children, disableBreadcrumbs, fullWidth: fullWidthProp }) => {
+const Page = ({
+	children,
+	disableBreadcrumbs: disableBreadcrumbsProp,
+	fullWidth: fullWidthProp,
+}) => {
 	const [menuVisibility, setMenuVisibility] = useState(false);
 	const nav = useRef(null);
 	const {
@@ -47,6 +51,8 @@ const Page = ({ children, disableBreadcrumbs, fullWidth: fullWidthProp }) => {
 	const shouldUseMobileNavigation = !useBreakpoint('md', 'up') && !isSSR;
 
 	const fullWidth = !shouldUseMobileNavigation && fullWidthProp;
+	const disableBreadcrumbs =
+		!shouldUseMobileNavigation && disableBreadcrumbsProp;
 
 	return (
 		<Root>
