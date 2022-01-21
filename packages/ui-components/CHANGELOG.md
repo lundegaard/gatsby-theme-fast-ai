@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.4.0...v1.4.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* problems with SSR in fullwidth-styled page ([d05ca35](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/d05ca35b747267476536bd8be22b5671cdf1022b))
+
+
+
+
+
 # [1.4.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.3.0...v1.4.0) (2022-01-20)
 
 
