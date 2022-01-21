@@ -61,22 +61,18 @@ const Sidebar = ({
 			style={{
 				transform: menuVisibility ? 'translateX(0)' : 'translateX(-100%)',
 			}}
+			variant="sidebar"
 			sx={{
-				variant: 'sidebar',
 				position: ['fixed', 'fixed', 'sticky'],
-				zIndex: 1,
 				top: 0,
 				left: 0,
 				bottom: [0, 0, 'auto'],
-				width: ['100%', '100%', 256, 256, 320],
+				// NOTE: z-index defined in theme
 				minWidth: 0,
 				maxHeight: ['100vh', '100vh', 'none'],
 				overflowY: 'auto',
 				WebkitOverflowScrolling: 'touch',
 				flex: 'none',
-				mt: [64, 64, 0],
-				pb: 3,
-				bg: ['white', 'white', 'transparent'],
 				transition: 'transform .2s ease-out',
 				transform: [, , 'none !important'],
 				ul: {

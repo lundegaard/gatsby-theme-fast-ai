@@ -53,6 +53,13 @@ const theme = createTheme({
 		bg: ['white', 'transparent'],
 	},
 	variants: {
+		sidebar: {
+			zIndex: 2,
+			width: ['100%', '100%', 256, 256, 320],
+			mt: [64, 64, 0],
+			pb: 3,
+			bg: ['white', 'white', 'transparent'],
+		},
 		nav: {
 			color: 'inherit',
 			p: 3,
