@@ -65,6 +65,7 @@ export const pageQuery = graphql`
 				description
 				tableOfContentsDepth
 				disableTableOfContents
+				disableBreadcrumbs
 				fullWidth
 			}
 			id

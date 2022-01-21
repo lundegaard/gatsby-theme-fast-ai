@@ -35,6 +35,7 @@ const AppBar = props => (
 
 const Header = ({
 	fullWidth,
+	shouldUseMobileNavigation,
 	nav,
 	menuVisibility,
 	setMenuVisibility,
@@ -117,9 +118,8 @@ const Header = ({
 							>
 								<LanguageSwitcher sx={{ flexShrink: 0 }} />
 
-								{!fullWidth && (
+								{shouldUseMobileNavigation && (
 									<Box
-										display={['block', 'block', 'none']}
 										sx={{
 											flexShrink: 0,
 											flexGrow: 0,

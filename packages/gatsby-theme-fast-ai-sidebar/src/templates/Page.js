@@ -1,9 +1,6 @@
-import React, { useContext, useMemo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { withPrefix } from 'gatsby';
 import { Box, Flex, useBreakpoint, useTheme } from '@fast-ai/ui-components';
-import { IntlContextConsumer } from 'gatsby-plugin-intl';
-import { matchPath } from '@reach/router';
 import { findLast } from 'ramda';
 
 import Header from '../components/Header';
@@ -12,43 +9,9 @@ import Footer from '../components/Footer';
 import ContentContainer from '../components/ContentContainer';
 import { links } from '../links';
 import AppBreadcrumbs from '../components/AppBreadcrumbs';
+import { useApplicationNavigationRoute } from '../navigation';
 
-const useIntlContext = () => useContext(IntlContextConsumer._context);
-
-const flattenLinks = (links, parents = []) => {
-	const children = [];
-
-	if (links) {
-		links.forEach(link => {
-			const newParents = [...parents, link];
-
-			// NOTE: children paths should be listed before the link itself for cases
-			// such as following with want the "A-B" route to match first:
-			// 	{
-			// 		label: 'A',
-			// 		to: '/a/b', // already redirects to subpage
-			// 		children: [
-			// 			{
-			// 				label: 'A-B',
-			// 				to: '/a/b',
-			children.push(...flattenLinks(link.children, newParents));
-			children.push({ link, navPath: newParents });
-		});
-	}
-
-	return children;
-};
-
-const useApplicationNavigationRoute = () => {
-	const { originalPath } = useIntlContext();
-	return useMemo(
-		() =>
-			flattenLinks(links).find(({ link: { to } }) =>
-				matchPath(originalPath, to),
-			),
-		[originalPath],
-	);
-};
+const isSSR = typeof window === 'undefined';
 
 const Root = props => (
 	<Box
@@ -64,12 +27,7 @@ const Root = props => (
 	/>
 );
 
-const Page = ({
-	children,
-	location,
-	disableBreadcrumbs,
-	fullWidth: fullWidthProp,
-}) => {
+const Page = ({ children, disableBreadcrumbs, fullWidth: fullWidthProp }) => {
 	const [menuVisibility, setMenuVisibility] = useState(false);
 	const nav = useRef(null);
 	const {
@@ -86,12 +44,9 @@ const Page = ({
 			presentedRoutes = lastRoot.children || [];
 		}
 	}
+	const shouldUseMobileNavigation = !useBreakpoint('md', 'up') && !isSSR;
 
-	const shouldUseMobileNavigation = !useBreakpoint('md', 'up');
-
-	const fullWidth =
-		(!shouldUseMobileNavigation && fullWidthProp) ||
-		(location && location.pathname === withPrefix('/'));
+	const fullWidth = !shouldUseMobileNavigation && fullWidthProp;
 
 	return (
 		<Root>
