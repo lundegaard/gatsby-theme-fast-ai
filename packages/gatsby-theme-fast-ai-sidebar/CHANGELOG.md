@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.4.3...v1.5.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* fixed critical fonts ([5a3f996](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/5a3f9966543be675753d5b8b384948eec44958b5))
+
+
+
+
+
 ## [1.4.3](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.4.2...v1.4.3) (2022-01-21)
 
 
