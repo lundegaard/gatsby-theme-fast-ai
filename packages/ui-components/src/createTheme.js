@@ -42,6 +42,7 @@ const commonHeadingProps = {
 	fontWeight: 'heading',
 	letterSpacing: 'tighter',
 	pt: [5],
+	color: 'body',
 };
 
 const transparentStripesColor = color(colors.gray[1]);
@@ -111,6 +112,7 @@ const componentsPreset = {
 	buttons: {
 		primary: {
 			textTransform: 'uppercase',
+			cursor: 'pointer',
 			py: 3,
 			'&:disabled, &[disabled]': {
 				color: 'gray.2',
@@ -123,6 +125,7 @@ const componentsPreset = {
 			},
 		},
 		secondary: {
+			cursor: 'pointer',
 			variant: 'buttons.primary',
 			bg: 'secondary',
 			color: 'background',
@@ -133,6 +136,7 @@ const componentsPreset = {
 			},
 		},
 		outline: {
+			cursor: 'pointer',
 			variant: 'buttons.primary',
 			bg: 'transparent',
 			boxShadow: `inset 0 0 0 4px ${colors.body}`,
@@ -151,6 +155,7 @@ const componentsPreset = {
 			fontFamily: 'body',
 			lineHeight: 'body',
 			fontSize: [2, 2, 2, 4],
+			color: 'body',
 		},
 		heading: {
 			...commonHeadingProps,
