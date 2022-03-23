@@ -45,6 +45,19 @@ const commonHeadingProps = {
 	color: 'body',
 };
 
+const buttonsCommon = {
+	borderRadius: '8px',
+	textTransform: 'uppercase',
+	fontWeight: 'bold',
+	cursor: 'pointer',
+	py: 3,
+	'&:disabled, &[disabled]': {
+		color: 'gray.2',
+		opacity: 0.5,
+	},
+	// NOTE: opacity for hidden buttons
+	transition: 'opacity 400ms, background-color 400ms, box-shadow 400ms',
+};
 const transparentStripesColor = color(colors.gray[1]);
 
 const getStripesGradient = (width, alpha = 1) =>
@@ -111,8 +124,8 @@ const componentsPreset = {
 	fontSizes,
 	buttons: {
 		primary: {
+			...buttonsCommon,
 			textTransform: 'uppercase',
-			cursor: 'pointer',
 			py: 3,
 			'&:disabled, &[disabled]': {
 				color: 'gray.2',
@@ -125,7 +138,7 @@ const componentsPreset = {
 			},
 		},
 		secondary: {
-			cursor: 'pointer',
+			...buttonsCommon,
 			variant: 'buttons.primary',
 			bg: 'secondary',
 			color: 'background',
@@ -136,7 +149,7 @@ const componentsPreset = {
 			},
 		},
 		outline: {
-			cursor: 'pointer',
+			...buttonsCommon,
 			variant: 'buttons.primary',
 			bg: 'transparent',
 			boxShadow: `inset 0 0 0 4px ${colors.body}`,
