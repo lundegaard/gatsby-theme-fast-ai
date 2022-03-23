@@ -1,5 +1,7 @@
 const path = require('path');
 
+const glob = require('glob');
+
 const remarkPlugins = [
 	{
 		resolve: 'gatsby-remark-images',
@@ -12,10 +14,110 @@ const remarkPlugins = [
 
 const fontsPath = path.resolve(
 	require.resolve('@fast-ai/ui-components/fonts'),
-	'../files',
+	'../web-files',
 );
 
 const getFontFile = url => ({ url: path.join(fontsPath, url) });
+
+const weights = {
+	thin: 100,
+	extralight: 200,
+	light: 300,
+	normal: 400,
+	regular: 400,
+	medium: 500,
+	semibold: 600,
+	extrabold: 800,
+	bold: 700,
+	black: 900,
+	100: 100,
+	200: 200,
+	300: 300,
+	400: 400,
+	500: 500,
+	600: 600,
+	700: 700,
+	800: 800,
+	900: 900,
+};
+const isItalic = x => x.indexOf('italic') !== -1;
+const defaultFontOptions = {
+	getStyle: x => (isItalic(x) ? 'italic' : undefined),
+	getWeight: x => {
+		let result;
+
+		Object.entries(weights).forEach(([keyword, weight]) => {
+			if (x.indexOf(`-${keyword}`) !== -1) {
+				result = weight;
+			}
+		});
+		if (!result && isItalic(x)) {
+			return 400;
+		}
+		return result;
+	},
+};
+
+const fonts = [
+	{
+		family: 'Open Sans',
+		file: 'opensans-*.+(woff|woff2)',
+		ignore: 'opensans*critical.+(woff|woff2)',
+	},
+	{
+		family: 'Open Sans Critical',
+		file: 'opensans*critical.+(woff|woff2)',
+		critical: true,
+	},
+	{
+		family: 'Roboto',
+		file: 'roboto-!(mono)*.+(woff|woff2)',
+		ignore: [
+			'roboto-!(mono)*critical.+(woff|woff2)',
+			'roboto-mono*.+(woff|woff2)',
+		],
+	},
+	{
+		family: 'Roboto Critical',
+		file: 'roboto-!(mono)*critical.+(woff|woff2)',
+		critical: true,
+	},
+	{
+		family: 'Roboto Mono',
+		file: 'roboto-mono*.+(woff|woff2)',
+		ignore: 'roboto-mono*critical.+(woff|woff2)',
+	},
+	{
+		family: 'Roboto Mono Critical',
+		file: 'roboto-mono*critical.+(woff|woff2)',
+		critical: true,
+	},
+];
+
+let fontsGrouped = {};
+fonts.forEach(({ family, file, ignore, ...rest }) => {
+	const fontFiles = glob.sync(file, { ignore, cwd: fontsPath });
+
+	fontsGrouped = fontFiles.reduce((acc, next) => {
+		const name = next.replace(/\.[^/.]+$/, '');
+		if (!acc[name]) {
+			acc[name] = { name, family, files: [next], ...rest };
+		} else {
+			acc[name].files = [...acc[name].files, next];
+		}
+		return acc;
+	}, fontsGrouped);
+});
+
+const fontsStaged = Object.values(fontsGrouped).map(
+	({ critical, family, name, files }) => ({
+		family,
+		style: defaultFontOptions.getStyle(name),
+		weight: defaultFontOptions.getWeight(name),
+		files: files.map(getFontFile),
+		critical,
+	}),
+);
 
 module.exports = themeOptions => {
 	const {
@@ -76,96 +178,7 @@ module.exports = themeOptions => {
 				resolve: require.resolve('@fast-ai/gatsby-plugin-staged-fonts'),
 				options: {
 					alwaysLoadCriticalsFirst: true,
-					fonts: [
-						{
-							critical: true,
-							files: [
-								getFontFile('open-sans-v17-latin-ext_latin-700-critical.woff'),
-								getFontFile('open-sans-v17-latin-ext_latin-700-critical.woff2'),
-							],
-							family: 'Open Sans Critical',
-							style: 'normal',
-							weight: 700,
-						},
-						{
-							critical: true,
-							files: [
-								getFontFile('roboto-v20-latin-ext_latin-regular-critical.woff'),
-								getFontFile(
-									'roboto-v20-latin-ext_latin-regular-critical.woff2',
-								),
-							],
-							family: 'Roboto Critical',
-							weight: 400,
-						},
-						{
-							critical: true,
-							style: 'normal',
-							weight: 400,
-							files: [
-								getFontFile(
-									'roboto-mono-v7-latin-ext_latin-regular-critical.woff',
-								),
-								getFontFile(
-									'roboto-mono-v7-latin-ext_latin-regular-critical.woff2',
-								),
-							],
-							family: 'Roboto Mono Critical',
-						},
-						{
-							files: [
-								getFontFile('open-sans-v17-latin-ext_latin-regular.woff'),
-								getFontFile('open-sans-v17-latin-ext_latin-regular.woff2'),
-							],
-							family: 'Open Sans',
-							style: 'normal',
-							weight: 400,
-						},
-						{
-							files: [
-								getFontFile('open-sans-v17-latin-ext_latin-700.woff'),
-								getFontFile('open-sans-v17-latin-ext_latin-700.woff2'),
-							],
-							family: 'Open Sans',
-							style: 'normal',
-							weight: 700,
-						},
-						{
-							family: 'Roboto',
-							weight: 400,
-							files: [
-								getFontFile('roboto-v20-latin-ext_latin-regular.woff'),
-								getFontFile('roboto-v20-latin-ext_latin-regular.woff2'),
-							],
-						},
-						{
-							family: 'Roboto',
-							style: 'italic',
-							weight: 400,
-							files: [
-								getFontFile('roboto-v20-latin-ext_latin-italic.woff'),
-								getFontFile('roboto-v20-latin-ext_latin-italic.woff2'),
-							],
-						},
-						{
-							family: 'Roboto',
-							style: 'normal',
-							weight: 700,
-							files: [
-								getFontFile('roboto-v20-latin-ext_latin-700.woff'),
-								getFontFile('roboto-v20-latin-ext_latin-700.woff2'),
-							],
-						},
-						{
-							family: 'Roboto Mono',
-							style: 'normal',
-							weight: 400,
-							files: [
-								getFontFile('roboto-mono-v7-latin-ext_latin-regular.woff'),
-								getFontFile('roboto-mono-v7-latin-ext_latin-regular.woff2'),
-							],
-						},
-					],
+					fonts: fontsStaged,
 				},
 			},
 			{
