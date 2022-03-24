@@ -147,12 +147,22 @@ import { Field } from 'react-powerplug';
 			</Row>
 			<Row py={2}>
 				<Col span={12}>
+							<SwitchField
+								label={
+									<Text fontSize={[1, 1, 1, 2]} p={0} m={0} ml={1}>
+										Set preference
+									</Text>
+								}
+								name="preference-2"
+								checked
+                disabled
+							/>
 					<Field>
 						{({ set, value }) => (
 							<SwitchField
 								label={
 									<Text fontSize={[1, 1, 1, 2]} p={0} m={0} ml={1}>
-										pet preference
+										Set preference
 									</Text>
 								}
 								name="preference"
