@@ -23,7 +23,7 @@ const SwitchField = forwardRef(
 			pb={2}
 		>
 			<Label alignItems="center">
-				<Switch {...rest} />
+				<Switch {...rest} disabled={disabled} />
 				{label}
 			</Label>
 			{hint ? <SuperFieldHint>{hint}</SuperFieldHint> : null}
