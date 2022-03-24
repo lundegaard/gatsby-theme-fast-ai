@@ -4,6 +4,7 @@ import {
 	SelectField,
 	SliderField,
 	CheckboxField,
+	SwitchField,
 	SuperField,
 	Col,
 	Container,
@@ -136,6 +137,25 @@ import { Field } from 'react-powerplug';
 									</Text>
 								}
 								name="terms"
+								checked={value}
+								onChange={(event) => set(event.target.checked)}
+								value
+							/>
+						)}
+					</Field>
+				</Col>
+			</Row>
+			<Row py={2}>
+				<Col span={12}>
+					<Field>
+						{({ set, value }) => (
+							<SwitchField
+								label={
+									<Text fontSize={[1, 1, 1, 2]} p={0} m={0} ml={1}>
+										pet preference
+									</Text>
+								}
+								name="preference"
 								checked={value}
 								onChange={(event) => set(event.target.checked)}
 								value

@@ -10,7 +10,7 @@ import {
 	createTheme,
 } from '@fast-ai/ui-components';
 
-require('@fast-ai/ui-components/fonts/index.css');
+require('@fast-ai/ui-components/fonts/web.css');
 
 addParameters({
 	options: {
