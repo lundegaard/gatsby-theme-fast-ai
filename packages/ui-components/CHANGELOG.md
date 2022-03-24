@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.6.0...v1.6.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* switch - disabled property ([1c4cd5d](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/1c4cd5d7382ddbe866647b0f6693b99e9783fb94))
+
+
+
+
+
 # [1.6.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.5.1...v1.6.0) (2022-03-24)
 
 
