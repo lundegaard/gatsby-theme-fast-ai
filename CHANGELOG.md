@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.2](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.6.1...v1.6.2) (2022-03-31)
+
+
+### Bug Fixes
+
+* button - outline - color ([dc19a23](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/dc19a239971d3ced1609a61d50f8129d2f256070))
+
+
+
+
+
 ## [1.6.1](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.6.0...v1.6.1) (2022-03-24)
 
 
