@@ -156,7 +156,7 @@ const componentsPreset = {
 			color: 'body',
 			':hover': {
 				bg: 'body',
-				color: 'backgroundPrimary',
+				color: 'contrast',
 			},
 		},
 	},
