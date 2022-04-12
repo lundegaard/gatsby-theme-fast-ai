@@ -24,7 +24,9 @@ export const goUpPath = compose(
 	replace(/^\//, ''),
 );
 
-/*
+/**
+ * Gets children of root category.
+ *
  * http://localhost:8000/											links[/].children
  * http://localhost:8000/tables								links[tables].children
  * http://localhost:8000/tables/features			links[tables].children

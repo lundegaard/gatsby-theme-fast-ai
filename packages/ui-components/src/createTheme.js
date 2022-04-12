@@ -3,7 +3,7 @@ import { mergeDeepRight } from 'ramda';
 import { mergeDeepRightAll } from 'ramda-extension';
 import color from 'tinycolor2';
 
-const fontSizes = [12, 14, 18, 20, 22, 24, 27, 36, 49, 85];
+const fontSizes = [12, 14, 16, 20, 22, 24, 27, 36, 49, 85];
 const space = [0, 4, 8, 16, 32, 64, 96, 128, 256];
 
 const breakpoints = ['40em', '52em', '76em'];

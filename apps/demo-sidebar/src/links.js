@@ -38,12 +38,34 @@ export const links = [
 	},
 	{
 		label: 'Other',
-		to: '/other/images',
+		to: '/other',
 		children: [
 			{
 				label: 'Still not Images',
 				to: '/other/images',
 				children: [
+					{
+						label: 'Images',
+						to: '/other/images',
+						children: [
+							{
+								label: 'Images',
+								to: '/other/images',
+							},
+							{
+								label: 'Images',
+								to: '/other/images',
+							},
+							{
+								label: 'Images',
+								to: '/other/images',
+							},
+						],
+					},
+					{
+						label: 'Images',
+						to: '/other/images',
+					},
 					{
 						label: 'Images',
 						to: '/other/images',
