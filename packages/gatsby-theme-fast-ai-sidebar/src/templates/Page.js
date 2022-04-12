@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Flex, useBreakpoint, useTheme } from '@fast-ai/ui-components';
+import { Box, useBreakpoint, useTheme } from '@fast-ai/ui-components';
 import { findLast } from 'ramda';
 
 import Header from '../components/Header';
@@ -23,6 +23,7 @@ const Root = props => (
 			minHeight: '100vh',
 			height: '100%',
 			color: 'body',
+			position: 'relative',
 		}}
 		{...props}
 	/>
@@ -52,8 +53,13 @@ const PageInner = ({
 	const shouldUseMobileNavigation = !useBreakpoint('md', 'up') && !isSSR;
 
 	const fullWidth = !shouldUseMobileNavigation && fullWidthProp;
+
 	const disableBreadcrumbs =
 		!shouldUseMobileNavigation && disableBreadcrumbsProp;
+
+	useEffect(() => {
+		setMenuVisibility(false);
+	}, [shouldUseMobileNavigation]);
 
 	return (
 		<Root>
@@ -66,7 +72,13 @@ const PageInner = ({
 				shouldUseMobileNavigation={shouldUseMobileNavigation}
 			/>
 
-			<Flex>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'row',
+					alignItems: 'stretch',
+				}}
+			>
 				{!fullWidth && (
 					<Sidebar
 						menuVisibility={menuVisibility}
@@ -74,6 +86,12 @@ const PageInner = ({
 						nav={nav}
 						shouldUseMobileNavigation={shouldUseMobileNavigation}
 						presentedRoutes={presentedRoutes}
+						sx={
+							{
+								// minWidth: 0,
+								// flex: 'none',
+							}
+						}
 					/>
 				)}
 				<ContentContainer fullWidth={fullWidth}>
@@ -94,7 +112,7 @@ const PageInner = ({
 					)}
 					{children}
 				</ContentContainer>
-			</Flex>
+			</Box>
 
 			<Footer />
 		</Root>

@@ -11,7 +11,7 @@ const theme = createTheme({
 		nav: {
 			display: 'block',
 			px: 2,
-			py: 1,
+			py: 2,
 			color: 'inherit',
 			textDecoration: 'none',
 		},
@@ -49,16 +49,23 @@ const theme = createTheme({
 			backgroundColor: 'primary',
 		},
 	},
-	sidebar: {
-		bg: ['white', 'transparent'],
-	},
 	variants: {
 		sidebar: {
 			zIndex: 2,
 			width: ['100%', '100%', 256, 256, 320],
 			mt: [64, 64, 0],
 			pb: 3,
-			bg: ['white', 'white', 'transparent'],
+			bg: 'contrast',
+			borderBottom: t => [t.borders.normal, t.borders.normal, 'none'],
+		},
+		'sidebar-dock': {
+			borderRight: t => t.borders.normal,
+			backgroundColor: 'contrast',
+		},
+		submenu: {
+			height: 64,
+			zIndex: 9999,
+			backdropFilter: 'blur(20px)',
 		},
 		nav: {
 			color: 'inherit',

@@ -5,6 +5,7 @@ export { default as useDebouncedCallback } from './hooks/useDebouncedCallback';
 export { default as useDebounce } from './hooks/useDebounce';
 export { default as useGeneratedId } from './hooks/useGeneratedId';
 export { default as useIdleTime } from './hooks/useIdleTime';
+export { default as useScrollTrigger } from './hooks/useScrollTrigger';
 
 export { default as getDisplayName } from './utils/getDisplayName';
 
