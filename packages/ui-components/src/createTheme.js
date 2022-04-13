@@ -1,6 +1,6 @@
 import preset from '@rebass/preset';
 import { mergeDeepRight } from 'ramda';
-import { mergeDeepRightAll } from 'ramda-extension';
+import { isFunction, mergeDeepRightAll } from 'ramda-extension';
 import color from 'tinycolor2';
 
 const fontSizes = [12, 14, 16, 20, 22, 24, 27, 36, 49, 85];
@@ -23,9 +23,11 @@ const letterSpacings = {
 const fontWeights = { body: 400, heading: 700, bold: 700 };
 
 const gray = [null, '#e7e7e7', '#b4b4b4', '#737373'];
+const lightGray = [null, '#f6f6f6', '#efefef', '#eaeaea', '#e5e5e5'];
 
 const colors = {
 	background: '#f6f6f6',
+	backgroundPrimary: '#ffffff',
 	primary: '#0018ff',
 	secondary: '#33d08e',
 	contrast: '#ffffff',
@@ -33,6 +35,7 @@ const colors = {
 	danger: '#ff0000',
 	success: '#00ff00',
 	gray,
+	lightGray,
 	muted: gray[1],
 	highlight: 'hsla(205, 100%, 40%, 0.125)',
 };
@@ -67,6 +70,13 @@ const getStripesGradient = (width, alpha = 1) =>
 		transparent 1px,
 		transparent ${width}
 	)`;
+const stripes = {
+	backgroundImage: [
+		getStripesGradient('25%'),
+		getStripesGradient('17%'),
+		getStripesGradient('10%'),
+	],
+};
 
 const borderWidths = {
 	normal: '1px',
@@ -78,6 +88,17 @@ const borders = {
 	normalTransparent: '${borderWidths.normal} solid transparent',
 	bold: `${borderWidths.bold} solid ${colors.gray[1]}`,
 	boldActive: `${borderWidths.bold} solid ${colors.primary}`,
+};
+
+const textBody = {
+	fontFamily: 'body',
+	lineHeight: 'body',
+	fontSize: [2, 2, 2, 4],
+	color: 'body',
+};
+const textMuted = {
+	...textBody,
+	color: 'gray.3',
 };
 
 const commonSliderProps = {
@@ -150,7 +171,6 @@ const componentsPreset = {
 		},
 		outline: {
 			...buttonsCommon,
-			variant: 'buttons.primary',
 			bg: 'transparent',
 			boxShadow: `inset 0 0 0 4px ${colors.body}`,
 			color: 'body',
@@ -159,17 +179,37 @@ const componentsPreset = {
 				color: 'contrast',
 			},
 		},
+		outlinePrimary: {
+			...buttonsCommon,
+			bg: 'transparent',
+			boxShadow: `inset 0 0 0 4px ${colors.primary}`,
+			color: 'primary',
+			':hover': {
+				bg: 'primary',
+				color: 'contrast',
+			},
+		},
+		outlineSecondary: {
+			...buttonsCommon,
+			bg: 'transparent',
+			boxShadow: `inset 0 0 0 4px ${colors.secondary}`,
+			color: 'secondary',
+			':hover': {
+				bg: 'secondary',
+				color: 'contrast',
+			},
+		},
 	},
 	radii: { default: 4, circle: 99999 },
 	colors,
 	letterSpacings,
 	text: {
-		body: {
-			fontFamily: 'body',
-			lineHeight: 'body',
-			fontSize: [2, 2, 2, 4],
+		body: textBody,
+		small: {
+			fontSize: [1, 1, 1, 2],
 			color: 'body',
 		},
+		muted: textMuted,
 		heading: {
 			...commonHeadingProps,
 			fontSize: [7, 7, 8, 9],
@@ -304,6 +344,7 @@ const componentsPreset = {
 				color: 'danger',
 			},
 		},
+		muted: textMuted,
 		disabled: {
 			color: 'gray.2',
 			'input:checked ~ *': {
@@ -316,19 +357,21 @@ const componentsPreset = {
 		secondary: {
 			color: 'secondary',
 		},
-		stripes: {
-			backgroundImage: [
-				getStripesGradient('25%'),
-				getStripesGradient('17%'),
-				getStripesGradient('10%'),
-			],
-		},
+		stripes,
 		transparentStripes: {
 			backgroundImage: [
 				getStripesGradient('25%', 0.2),
 				getStripesGradient('17%', 0.2),
 				getStripesGradient('10%', 0.2),
 			],
+		},
+		stripesPrimary: {
+			...stripes,
+			backgroundColor: 'backgroundPrimary',
+		},
+		stripesSecondary: {
+			...stripes,
+			backgroundColor: 'lightGray.1',
 		},
 		nav: {
 			transition: 'color .175s ease-in-out',
@@ -399,7 +442,7 @@ const componentsPreset = {
 			},
 		},
 		container: {
-			maxWidth: ['none', '40em', '52em', '76em'],
+			maxWidth: ['none', '40em', '58em', '82em'],
 		},
 		containerFluid: {
 			maxWidth: 'none',
@@ -407,12 +450,16 @@ const componentsPreset = {
 	},
 };
 
+const theme = mergeDeepRightAll([
+	preset,
+	componentsPreset,
+	{ breakpointAliases: ['sm', 'md', 'lg', 'xl'] },
+]);
+
 const createTheme = userTheme =>
 	mergeDeepRightAll([
-		preset,
-		componentsPreset,
-		{ breakpointAliases: ['sm', 'md', 'lg', 'xl'] },
-		userTheme,
+		theme,
+		isFunction(userTheme) ? userTheme(theme) : userTheme,
 	]);
 
 export default createTheme;

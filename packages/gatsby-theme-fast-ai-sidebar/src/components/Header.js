@@ -4,8 +4,6 @@ import {
 	Box,
 	Col,
 	Container,
-	Flex,
-	Hamburger,
 	Row,
 	useScrollTrigger,
 } from '@fast-ai/ui-components';
@@ -13,33 +11,19 @@ import { useIntl } from 'gatsby-plugin-intl';
 
 import m from '../messages';
 
-import Logo from './Logo';
-import Link from './Link';
 import Navigation from './Navigation';
-import LanguageSwitcher from './Navigation/LanguageSwitcher';
-import AppBreadcrumbs from './AppBreadcrumbs';
-
-const AppBar = props => (
-	<Flex
-		as="header"
-		sx={{
-			position: 'relative',
-			alignItems: 'center',
-			height: 64,
-			width: '100%',
-			justifyContent: 'space-between',
-			zIndex: 100,
-		}}
-		{...props}
-	/>
-);
+import { NavigationRoutes, Ref } from './types';
+import AppBar from './AppBar';
 
 const Header = ({
+	appLinks,
 	fullWidth,
-	shouldUseMobileNavigation,
 	nav,
+	appSidebar,
 	menuVisibility,
 	setMenuVisibility,
+	appSidebarVisibility,
+	setAppSidebarVisibility,
 	appBarProps,
 	navigationProps,
 	presentedRoutes,
@@ -50,129 +34,97 @@ const Header = ({
 
 	const titleTranslated = intl.formatMessage(m.logoTitle);
 	const title = titleTranslated === m.logoTitle.id ? null : titleTranslated;
-	// TODO: what to do if there are no sub pages?
 
 	const isDocumentScrollProgress = useScrollTrigger({
 		disableHysteresis: true,
 		threshold: 64,
 	});
+	const onCloseAppSidebar = () => {
+		setAppSidebarVisibility(!appSidebarVisibility);
 
+		if (appSidebarVisibility || !appSidebar.current) {
+			return;
+		}
+
+		const navlink = appSidebar.current.querySelector('a');
+
+		if (navlink) {
+			navlink.focus();
+		}
+	};
 	return (
 		<Fragment>
 			<Box
 				sx={{
-					...(!fullWidth && shouldUseMobileNavigation
+					height: 64,
+					// NOTE: based on position of appBar
+					display: fullWidth ? 'block' : ['block', 'block', 'none'],
+				}}
+			/>
+			<Box
+				key="appBarWrapper"
+				variant="app-bar-wrapper"
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					backgroundColor: isDocumentScrollProgress
+						? 'rgba(255,255,255,0.7)'
+						: ['contrast', 'contrast', 'transparent'],
+					backdropFilter: isDocumentScrollProgress ? 'blur(20px)' : 'none',
+					position: 'fixed',
+					zIndex: 9999,
+					top: 0,
+					left: 0,
+					right: 0,
+					borderBottom: t =>
+						isDocumentScrollProgress
+							? t.borders.normal
+							: [t.borders.normal, t.borders.normal, 'none'],
+					...(!fullWidth
 						? {
-								position: 'fixed',
-								zIndex: 9999,
-								top: 0,
-								left: 0,
-								right: 0,
-								backgroundColor: 'rgba(255,255,255,0.7)',
-								backdropFilter: 'blur(20px)',
+								position: ['fixed', 'fixed', 'static'],
+								borderBottom: t => t.borders.normal,
+								backgroundColor: isDocumentScrollProgress
+									? 'rgba(255,255,255,0.7)'
+									: 'contrast',
 						  }
 						: {}),
 				}}
 			>
-				<Container
-					fullWidth
-					variant={fullWidth ? 'header-fullwidth' : 'header'}
-					sx={sx}
-					{...rest}
-				>
+				<Container sx={sx} {...rest}>
 					<Row>
 						<Col span={12}>
-							<AppBar {...appBarProps}>
-								<Link
-									to="/"
-									sx={{
-										alignItems: 'center',
-										display: 'flex',
-										ml: 4,
-										textDecoration: 'none',
-										color: 'inherit',
-										flexShrink: 0,
-									}}
-								>
-									<Logo />
-									{title && <Box variant="logo-title">{title}</Box>}
-								</Link>
-
-								<AppBreadcrumbs
-									onlyRoots
-									disableHideFirstSeparator
-									sx={{
-										display: ['none', 'none', 'flex'],
-										flexShrink: 0,
-									}}
-								/>
-								<Box
-									sx={{
-										display: ['none', 'none', 'flex'],
-										justifyContent: 'flex-end',
-										width: '100%',
-									}}
-								/>
-
-								<Box
-									sx={{
-										display: 'flex',
-										alignItems: 'center',
-										minWidth: 'unset',
-									}}
-								>
-									<LanguageSwitcher sx={{ flexShrink: 0 }} />
-
-									{shouldUseMobileNavigation && (
-										<Box
-											sx={{
-												flexShrink: 0,
-												flexGrow: 0,
-												overflowX: 'hidden',
-											}}
-										>
-											<Hamburger
-												isOpen={menuVisibility}
-												onClick={() => {
-													setMenuVisibility(!menuVisibility);
-
-													if (menuVisibility || !nav.current) {
-														return;
-													}
-
-													const navlink = nav.current.querySelector('a');
-
-													if (navlink) {
-														navlink.focus();
-													}
-												}}
-											/>
-										</Box>
-									)}
-								</Box>
-							</AppBar>
+							<AppBar
+								title={title}
+								presentedRoutes={appLinks}
+								appSidebarVisibility={appSidebarVisibility}
+								onCloseAppSidebar={onCloseAppSidebar}
+								{...appBarProps}
+							/>
 						</Col>
 					</Row>
 				</Container>
 			</Box>
 			{!fullWidth && (
 				<Box
-					variant="submenu"
+					key="content-navigation"
+					variant="content-navigation"
 					sx={{
-						display: ['none', 'none', 'flex'],
+						display: 'flex',
 						transition: 'background-color 0.3s',
 						borderBottom: t => t.borders.normal,
 						backgroundColor: isDocumentScrollProgress
 							? 'rgba(255,255,255,0.7)'
 							: 'contrast',
+						backdropFilter: 'blur(20px)',
 						position: 'sticky',
-						top: 0,
+						top: [64, 64, 0],
 						left: 0,
 						right: 0,
 						alignItems: 'center',
 					}}
 				>
-					<Container fullWidth>
+					<Container>
 						<Row>
 							<Col span={12}>
 								<Navigation
@@ -192,29 +144,22 @@ const Header = ({
 					</Container>
 				</Box>
 			)}
-			{!fullWidth && shouldUseMobileNavigation ? <Box height={64} /> : null}
 		</Fragment>
 	);
 };
 
 Header.propTypes = {
 	appBarProps: PropTypes.object,
+	appLinks: NavigationRoutes,
+	appSidebar: Ref,
+	appSidebarVisibility: PropTypes.bool,
 	fullWidth: PropTypes.bool,
 	menuVisibility: PropTypes.bool,
-	nav: PropTypes.exact({
-		current: PropTypes.any,
-	}),
+	nav: Ref,
 	navigationProps: PropTypes.object,
-	presentedRoutes: PropTypes.arrayOf(
-		PropTypes.shape({
-			to: PropTypes.string,
-			label: PropTypes.node,
-			children: PropTypes.array,
-		}),
-	),
+	presentedRoutes: NavigationRoutes,
+	setAppSidebarVisibility: PropTypes.func,
 	setMenuVisibility: PropTypes.func,
-	shouldUseMobileNavigation: PropTypes.bool,
-	sx: PropTypes.object,
 };
 
 export default Header;

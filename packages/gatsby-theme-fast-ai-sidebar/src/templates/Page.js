@@ -5,37 +5,37 @@ import { findLast } from 'ramda';
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import AppSidebar from '../components/AppSidebar';
 import Footer from '../components/Footer';
 import ContentContainer from '../components/ContentContainer';
-import { links } from '../links';
+import { appLinks, links } from '../links';
 import AppBreadcrumbs from '../components/AppBreadcrumbs';
 import { useApplicationNavigationRoute } from '../navigation';
 import { IntlProxyContextProvider } from '../intl';
 
 const isSSR = typeof window === 'undefined';
 
-const Root = props => (
+const Root = ({ sx, ...rest }) => (
 	<Box
 		variant="stripes"
-		backgroundColor="background"
 		sx={{
+			backgroundColor: 'background',
 			fontFamily: 'body',
 			minHeight: '100vh',
 			height: '100%',
 			color: 'body',
 			position: 'relative',
+			...sx,
 		}}
-		{...props}
+		{...rest}
 	/>
 );
 
-const PageInner = ({
-	children,
-	disableBreadcrumbs: disableBreadcrumbsProp,
-	fullWidth: fullWidthProp,
-}) => {
+const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
 	const [menuVisibility, setMenuVisibility] = useState(false);
+	const [appSidebarVisibility, setAppSidebarVisibility] = useState(false);
 	const nav = useRef(null);
+	const appSidebar = useRef(null);
 	const {
 		grid: { gutters },
 	} = useTheme();
@@ -52,24 +52,23 @@ const PageInner = ({
 	}
 	const shouldUseMobileNavigation = !useBreakpoint('md', 'up') && !isSSR;
 
-	const fullWidth = !shouldUseMobileNavigation && fullWidthProp;
-
-	const disableBreadcrumbs =
-		!shouldUseMobileNavigation && disableBreadcrumbsProp;
-
 	useEffect(() => {
 		setMenuVisibility(false);
+		setAppSidebarVisibility(false);
 	}, [shouldUseMobileNavigation]);
 
 	return (
 		<Root>
 			<Header
+				appLinks={appLinks}
+				presentedRoutes={presentedRoutes}
 				fullWidth={fullWidth}
 				nav={nav}
-				presentedRoutes={presentedRoutes}
+				appSidebar={appSidebar}
 				menuVisibility={menuVisibility}
 				setMenuVisibility={setMenuVisibility}
-				shouldUseMobileNavigation={shouldUseMobileNavigation}
+				appSidebarVisibility={appSidebarVisibility}
+				setAppSidebarVisibility={setAppSidebarVisibility}
 			/>
 
 			<Box
@@ -84,16 +83,17 @@ const PageInner = ({
 						menuVisibility={menuVisibility}
 						setMenuVisibility={setMenuVisibility}
 						nav={nav}
-						shouldUseMobileNavigation={shouldUseMobileNavigation}
 						presentedRoutes={presentedRoutes}
-						sx={
-							{
-								// minWidth: 0,
-								// flex: 'none',
-							}
-						}
 					/>
 				)}
+
+				<AppSidebar
+					menuVisibility={appSidebarVisibility}
+					setMenuVisibility={setAppSidebarVisibility}
+					nav={appSidebar}
+					presentedRoutes={appLinks}
+				/>
+
 				<ContentContainer fullWidth={fullWidth}>
 					{!disableBreadcrumbs && (
 						<AppBreadcrumbs
@@ -104,6 +104,7 @@ const PageInner = ({
 								variant: 'links.breadcrumbSm',
 							}}
 							sx={{
+								display: ['flex', 'flex', 'none'],
 								position: 'absolute',
 								top: '8px',
 								left: gutters,
@@ -130,6 +131,7 @@ const Page = props => (
 		<PageInner {...props} />
 	</IntlProxyContextProvider>
 );
+
 Page.propTypes = {
 	children: PropTypes.node,
 	disableBreadcrumbs: PropTypes.bool,

@@ -1,23 +1,25 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import useTheme from '../hooks/useTheme';
 import Box from '../Box';
 
-const Container = forwardRef(({ fullWidth, ...rest }, ref) => {
-	const { grid: { gutters = 2 } = {} } = useTheme();
+const Container = forwardRef(({ fullWidth, sx, ...rest }, ref) => (
+	<Box
+		ref={ref}
+		variant={fullWidth ? 'containerFluid' : 'container'}
+		sx={{
+			mx: 'auto',
+			px: t =>
+				typeof t.grid !== 'undefined' && t.grid.gutters != null
+					? t.grid.gutters
+					: 2,
+			width: '100%',
+			...sx,
+		}}
+		{...rest}
+	/>
+));
 
-	return (
-		<Box
-			ref={ref}
-			px={gutters}
-			variant={fullWidth ? 'containerFluid' : 'container'}
-			mx="auto"
-			width={1}
-			{...rest}
-		/>
-	);
-});
 Container.displayName = 'Container';
 Container.propTypes = { fullWidth: PropTypes.bool };
 

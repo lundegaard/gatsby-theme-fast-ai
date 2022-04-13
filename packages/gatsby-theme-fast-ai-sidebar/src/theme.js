@@ -1,5 +1,14 @@
 import { createTheme } from '@fast-ai/ui-components';
 
+const sidebarCommon = {
+	zIndex: 2,
+	width: ['100%', '100%', 256, 256, 320],
+	mt: [64, 64, 0],
+	pb: 3,
+	bg: 'contrast',
+	borderBottom: t => [t.borders.normal, t.borders.normal, 'none'],
+};
+
 const theme = createTheme({
 	// replacing fonts with default ones, to load webfonts asynchronously
 	fonts: {
@@ -50,22 +59,18 @@ const theme = createTheme({
 		},
 	},
 	variants: {
-		sidebar: {
-			zIndex: 2,
-			width: ['100%', '100%', 256, 256, 320],
-			mt: [64, 64, 0],
-			pb: 3,
-			bg: 'contrast',
-			borderBottom: t => [t.borders.normal, t.borders.normal, 'none'],
-		},
+		sidebar: { ...sidebarCommon },
+		'app-sidebar': { ...sidebarCommon, zIndex: 10000 },
 		'sidebar-dock': {
 			borderRight: t => t.borders.normal,
 			backgroundColor: 'contrast',
 		},
-		submenu: {
+		'app-bar': {
+			height: 64,
+		},
+		'content-navigation': {
 			height: 64,
 			zIndex: 9999,
-			backdropFilter: 'blur(20px)',
 		},
 		nav: {
 			color: 'inherit',
@@ -92,22 +97,15 @@ const theme = createTheme({
 			justifyContent: 'flex-end',
 			mx: 2,
 		},
-		header: {
-			backgroundColor: 'white',
-			borderBottomWidth: '1px',
-			borderBottomStyle: 'solid',
-			borderBottomColor: 'muted',
-		},
-		'header-fullwidth': {
-			backgroundColor: 'transparent',
-		},
+		header: {},
+		'header-fullwidth': {},
 		content: {
 			minHeight: 'calc(100vh - 64px)',
 			py: [4],
 		},
-		container: {
-			maxWidth: ['none', '52em', '76em', '110em'],
-		},
+		// container: {
+		// 	maxWidth: ['none', '52em', '76em', '110em'],
+		// },
 		highlighted: {
 			lineHeight: 'body',
 			fontSize: [2, 2, 2, 4],
