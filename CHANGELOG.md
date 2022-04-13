@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.6.2...v1.7.0) (2022-04-13)
+
+
+### Features
+
+* deprecate fullWidth property ([263a1f3](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/263a1f3704f5d679f9560086dea69bcb83ee53b1))
+* intl - menu title ([9c095f1](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/9c095f1fe0380a58ec428b4c889690b9400ae37b))
+* new navigation system ([1dfd04f](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/1dfd04fa65f59e5dafa1ad80a358893e1709efa7))
+* secondary content navigation ([889758a](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/889758ac6e6ffcb30c265df7597eef2399640835))
+* wrapping by container for 'content' pages ([16ecf3c](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/16ecf3c5839d501246ac31458705f2e0f7104500))
+
+
+
+
+
 ## [1.6.2](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.6.1...v1.6.2) (2022-03-31)
 
 
