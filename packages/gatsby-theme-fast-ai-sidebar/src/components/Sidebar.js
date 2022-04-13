@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@fast-ai/ui-components';
 import { map } from 'ramda';
@@ -54,34 +54,53 @@ TabLink.propTypes = {
 /* eslint-disable react/prop-types */
 const Sidebar = ({
 	nav,
-	// shouldUseMobileNavigation,
 	menuVisibility,
-	presentedRoutes,
 	sx,
-}) =>
+	style,
+	children,
+	// NOTE: support `render` method because @reach/router has problems with
+	// `children`.
+	render,
+	...rest
+}) => (
+	<Box
+		ref={nav}
+		style={{
+			transform: menuVisibility ? 'translateX(0)' : 'translateX(-100%)',
+			...style,
+		}}
+		variant="sidebar"
+		sx={{
+			position: ['fixed', 'fixed', 'sticky'],
+			top: 64,
+			left: 0,
+			// NOTE: z-index defined in theme
+			minWidth: 0,
+			maxHeight: ['70vh', '70vh', '100vh'],
+			overflowY: 'auto',
+			WebkitOverflowScrolling: 'touch',
+			flex: 'none',
+			transition: 'transform .2s ease-out',
+			transform: [, , 'none !important'],
+			ul: {
+				listStyle: 'none',
+				padding: 0,
+			},
+			...sx,
+		}}
+		{...rest}
+	>
+		{children}
+		{render ? render() : null}
+	</Box>
+);
+
+const Menu = ({ presentedRoutes, sx }) =>
 	presentedRoutes ? (
 		<Box
-			ref={nav}
-			style={{
-				transform: menuVisibility ? 'translateX(0)' : 'translateX(-100%)',
-			}}
-			variant="sidebar"
 			sx={{
-				position: ['fixed', 'fixed', 'sticky'],
-				top: [0, 0, 64],
-				left: 0,
-				// NOTE: z-index defined in theme
-				minWidth: 0,
-				maxHeight: ['70vh', '70vh', '100vh'],
-				overflowY: 'auto',
-				WebkitOverflowScrolling: 'touch',
-				flex: 'none',
-				transition: 'transform .2s ease-out',
-				transform: [, , 'none !important'],
-				ul: {
-					listStyle: 'none',
-					padding: 0,
-				},
+				px: 3,
+
 				'ul > li > ul > li': {
 					borderLeft: t => `1px solid ${t.colors.gray[3]}`,
 					pl: '16px',
@@ -95,52 +114,70 @@ const Sidebar = ({
 				...sx,
 			}}
 		>
-			<Box sx={{ px: 3 }}>
-				<Nav presentedRoutes={presentedRoutes} />
-			</Box>
+			<Nav presentedRoutes={presentedRoutes} />
 		</Box>
 	) : null;
+
 /* eslint-enable react/prop-types */
 
-const SidebarWrapper = ({
-	shouldUseMobileNavigation,
-	presentedRoutes,
-	sx,
-	...rest
-}) => {
+const SidebarWrapper = ({ presentedRoutes, sx, styles = {}, ...rest }) => {
+	const sidebarStyles = { ...sx, ...styles.sidebar };
+
 	if (!presentedRoutes || !presentedRoutes.length) {
 		return null;
 	}
 
-	if (shouldUseMobileNavigation) {
-		return <Sidebar {...rest} presentedRoutes={presentedRoutes} />;
-	}
+	<Sidebar
+		sx={{
+			...sidebarStyles,
+
+			display: ['block', 'block', 'none'],
+		}}
+		{...rest}
+	>
+		<Menu presentedRoutes={presentedRoutes} />
+	</Sidebar>;
+
 	return (
-		<Box
-			variant="sidebar-dock"
-			sx={{
-				minHeight: '100vh',
-				flexShrink: 0,
-				// container has to have height set, otherwide position:sticky do not
-				// work
-				'& > div, & > div > div': {
+		<Fragment>
+			<Sidebar
+				sx={{
+					...sidebarStyles,
+
+					display: ['block', 'block', 'none'],
+				}}
+				{...rest}
+			>
+				<Menu presentedRoutes={presentedRoutes} />
+			</Sidebar>
+			<Box
+				variant="sidebar-dock"
+				sx={{
+					display: ['none', 'none', 'block'],
 					minHeight: '100vh',
-					height: '100%',
-				},
-				...sx,
-			}}
-		>
-			<Router primary={false}>
-				{presentedRoutes.map(link => (
-					<Sidebar
-						path={`${getParent(link)}/*`}
-						key={link.to}
-						{...rest}
-						presentedRoutes={link.children}
-					/>
-				))}
-			</Router>
-		</Box>
+					flexShrink: 0,
+					// container has to have height set, otherwide position:sticky do not
+					// work
+					'& > div, & > div > div': {
+						minHeight: '100vh',
+						height: '100%',
+					},
+					...styles.dock,
+				}}
+			>
+				<Router primary={false}>
+					{presentedRoutes.map(link => (
+						<Sidebar
+							sx={sidebarStyles}
+							path={`${getParent(link)}/*`}
+							key={link.to}
+							render={() => <Menu presentedRoutes={presentedRoutes} />}
+							{...rest}
+						/>
+					))}
+				</Router>
+			</Box>
+		</Fragment>
 	);
 };
 
@@ -157,7 +194,10 @@ SidebarWrapper.propTypes = {
 		}),
 	),
 	setMenuVisibility: PropTypes.func,
-	shouldUseMobileNavigation: PropTypes.bool,
+	styles: PropTypes.shape({
+		dock: PropTypes.object,
+		sidebar: PropTypes.object,
+	}),
 };
 
 export default SidebarWrapper;

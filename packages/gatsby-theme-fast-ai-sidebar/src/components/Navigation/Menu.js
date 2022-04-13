@@ -1,6 +1,17 @@
 import React from 'react';
-import { Flex } from '@fast-ai/ui-components';
+import { Box } from '@fast-ai/ui-components';
 
-const Menu = props => <Flex as="ul" p={0} m={0} {...props} />;
+const Menu = ({ sx, ...rest }) => (
+	<Box
+		sx={{
+			display: 'flex',
+			p: 0,
+			m: 0,
+			...sx,
+		}}
+		as="ul"
+		{...rest}
+	/>
+);
 
 export default Menu;

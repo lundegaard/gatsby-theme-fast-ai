@@ -5,3 +5,9 @@ export const NavigationRoute = PropTypes.shape({
 	label: PropTypes.node,
 	children: PropTypes.array,
 });
+
+export const NavigationRoutes = PropTypes.arrayOf(NavigationRoute);
+export const Ref = PropTypes.oneOfType([
+	PropTypes.func,
+	PropTypes.exact({ current: PropTypes.any }),
+]);

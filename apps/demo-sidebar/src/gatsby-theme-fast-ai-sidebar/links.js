@@ -1,1 +1,1 @@
-export { links } from '../links';
+export { links, appLinks } from '../links';

@@ -1,3 +1,5 @@
+export const appLinks = [{ label: 'Home', to: '/' }];
+
 export const links = [
 	{ label: 'Typography', to: '/typography' },
 	{ label: 'Tables', to: '/tables' },
