@@ -90,22 +90,17 @@ const theme = createTheme({
 			alignItems: 'center',
 			height: '100%',
 			width: '100%',
-			px: 2,
 			flexShrink: 1,
 			flexGrow: 1,
 			flexDirection: 'row',
 			justifyContent: 'flex-end',
+			px: 2,
 			mx: 2,
 		},
-		header: {},
-		'header-fullwidth': {},
 		content: {
 			minHeight: 'calc(100vh - 64px)',
 			py: [4],
 		},
-		// container: {
-		// 	maxWidth: ['none', '52em', '76em', '110em'],
-		// },
 		highlighted: {
 			lineHeight: 'body',
 			fontSize: [2, 2, 2, 4],

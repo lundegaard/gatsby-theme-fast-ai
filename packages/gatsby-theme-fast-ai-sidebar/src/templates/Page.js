@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, useBreakpoint, useTheme } from '@fast-ai/ui-components';
+import { Box, useBreakpoint } from '@fast-ai/ui-components';
 import { findLast } from 'ramda';
 
 import Header from '../components/Header';
@@ -31,18 +31,25 @@ const Root = ({ sx, ...rest }) => (
 	/>
 );
 
-const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
+/* eslint-disable react/prop-types */
+const PageInner = ({
+	children,
+	fluidLayout,
+	disableBreadcrumbs,
+	fullWidth: deprecatedFullwidth,
+	showContentNavigation: showContentNavigationProp,
+}) => {
 	const [menuVisibility, setMenuVisibility] = useState(false);
 	const [appSidebarVisibility, setAppSidebarVisibility] = useState(false);
 	const nav = useRef(null);
 	const appSidebar = useRef(null);
-	const {
-		grid: { gutters },
-	} = useTheme();
 
 	const route = useApplicationNavigationRoute();
 
 	let presentedRoutes = links;
+
+	const showContentNavigation =
+		showContentNavigationProp || deprecatedFullwidth === false;
 
 	if (route) {
 		const lastRoot = findLast(x => x.root, route.navPath);
@@ -62,7 +69,8 @@ const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
 			<Header
 				appLinks={appLinks}
 				presentedRoutes={presentedRoutes}
-				fullWidth={fullWidth}
+				showContentNavigation={showContentNavigation}
+				fluidLayout={fluidLayout}
 				nav={nav}
 				appSidebar={appSidebar}
 				menuVisibility={menuVisibility}
@@ -78,7 +86,7 @@ const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
 					alignItems: 'stretch',
 				}}
 			>
-				{!fullWidth && (
+				{showContentNavigation && (
 					<Sidebar
 						menuVisibility={menuVisibility}
 						setMenuVisibility={setMenuVisibility}
@@ -94,7 +102,7 @@ const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
 					presentedRoutes={appLinks}
 				/>
 
-				<ContentContainer fullWidth={fullWidth}>
+				<ContentContainer sx={{ flexGrow: 1 }} variant="content">
 					{!disableBreadcrumbs && (
 						<AppBreadcrumbs
 							breadcrumbProps={{
@@ -107,7 +115,7 @@ const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
 								display: ['flex', 'flex', 'none'],
 								position: 'absolute',
 								top: '8px',
-								left: gutters,
+								left: t => t.grid.gutters,
 							}}
 						/>
 					)}
@@ -119,12 +127,7 @@ const PageInner = ({ children, disableBreadcrumbs, fullWidth }) => {
 		</Root>
 	);
 };
-PageInner.propTypes = {
-	children: PropTypes.node,
-	disableBreadcrumbs: PropTypes.bool,
-	fullWidth: PropTypes.bool,
-	location: PropTypes.object,
-};
+/* eslint-enable react/prop-types */
 
 const Page = props => (
 	<IntlProxyContextProvider>
@@ -135,8 +138,10 @@ const Page = props => (
 Page.propTypes = {
 	children: PropTypes.node,
 	disableBreadcrumbs: PropTypes.bool,
+	fluidLayout: PropTypes.bool,
 	fullWidth: PropTypes.bool,
 	location: PropTypes.object,
+	showContentNavigation: PropTypes.bool,
 };
 
 export default Page;

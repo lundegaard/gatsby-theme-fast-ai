@@ -295,7 +295,7 @@ const componentsPreset = {
 	},
 	grid: {
 		maxColumns: 12,
-		gutters: [1, 2, 2, 3],
+		gutters: [2, 3, 3, 3],
 	},
 	gauge: {
 		gradient: [
@@ -444,8 +444,8 @@ const componentsPreset = {
 		container: {
 			maxWidth: ['none', '40em', '58em', '82em'],
 		},
-		containerFluid: {
-			maxWidth: 'none',
+		'container-fluid': {
+			maxWidth: '82em',
 		},
 	},
 };

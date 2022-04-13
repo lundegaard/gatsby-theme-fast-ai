@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Sidebar from './Sidebar';
+import { NavigationRoutes } from './types';
 
 const styles = {
 	sidebar: {
 		top: 0,
 	},
 	dock: {
-		display: ['block', 'block', 'none'],
+		display: ['none', 'none', 'none'],
 	},
 };
 const AppSidebar = ({ sx, ...rest }) => (
@@ -16,13 +16,7 @@ const AppSidebar = ({ sx, ...rest }) => (
 );
 
 AppSidebar.propTypes = {
-	presentedRoutes: PropTypes.arrayOf(
-		PropTypes.shape({
-			to: PropTypes.string,
-			label: PropTypes.node,
-			children: PropTypes.array,
-		}),
-	),
+	presentedRoutes: NavigationRoutes,
 };
 
 export default AppSidebar;

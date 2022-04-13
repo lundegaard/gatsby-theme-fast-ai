@@ -1,10 +1,6 @@
 import React from 'react';
-import { Box, Container } from '@fast-ai/ui-components';
+import { Box } from '@fast-ai/ui-components';
 
-const ContentContainer = props => (
-	<Container sx={{ position: 'relative' }}>
-		<Box variant="content" {...props} />
-	</Container>
-);
+const ContentContainer = props => <Box variant="content" {...props} />;
 
 export default ContentContainer;

@@ -18,10 +18,11 @@ const Navigation = ({
 	nav,
 	menuVisibility,
 	setMenuVisibility,
+	sx,
 	...rest
 }) =>
 	presentedRoutes && presentedRoutes.length ? (
-		<Box as="nav" variant="main-nav" {...rest}>
+		<Box as="nav" variant="main-nav" sx={sx} {...rest}>
 			<Box
 				as="button"
 				sx={{
@@ -30,6 +31,8 @@ const Navigation = ({
 					border: 'none',
 					display: ['flex', 'flex', 'none'],
 					alignItems: 'center',
+					px: 0,
+					mx: 0,
 				}}
 				onClick={() => {
 					setMenuVisibility(!menuVisibility);
@@ -58,11 +61,12 @@ const Navigation = ({
 					display: ['none', 'none', 'flex'],
 					listStyle: 'none',
 					overflowX: 'auto',
+					ml: -3,
 				}}
 			>
-				{presentedRoutes.map(({ label, to }) => (
+				{presentedRoutes.map(({ label, to }, i) => (
 					<MenuItem
-						key={to}
+						key={`${to}_${i}`}
 						textAlign={{ _: 'center', md: 'left' }}
 						sx={{ minWidth: 'auto' }}
 					>
