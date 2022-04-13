@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
 							description
 							tableOfContentsDepth
 							disableTableOfContents
+							disableContentNavigation
 						}
 					}
 				}
@@ -82,6 +83,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 			description: String
 			tableOfContentsDepth: Int
 			disableTableOfContents: Boolean
+			disableContentNavigation: Boolean
 			disableBreadcrumbs: Boolean
     }
   `;

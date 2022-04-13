@@ -17,13 +17,14 @@ import AppBar from './AppBar';
 
 const Header = ({
 	appLinks,
-	fullWidth,
+	fluidLayout,
 	nav,
 	appSidebar,
 	menuVisibility,
 	setMenuVisibility,
 	appSidebarVisibility,
 	setAppSidebarVisibility,
+	showContentNavigation,
 	appBarProps,
 	navigationProps,
 	presentedRoutes,
@@ -58,7 +59,9 @@ const Header = ({
 				sx={{
 					height: 64,
 					// NOTE: based on position of appBar
-					display: fullWidth ? 'block' : ['block', 'block', 'none'],
+					display: !showContentNavigation
+						? 'block'
+						: ['block', 'block', 'none'],
 				}}
 			/>
 			<Box
@@ -80,7 +83,7 @@ const Header = ({
 						isDocumentScrollProgress
 							? t.borders.normal
 							: [t.borders.normal, t.borders.normal, 'none'],
-					...(!fullWidth
+					...(showContentNavigation
 						? {
 								position: ['fixed', 'fixed', 'static'],
 								borderBottom: t => t.borders.normal,
@@ -91,7 +94,7 @@ const Header = ({
 						: {}),
 				}}
 			>
-				<Container sx={sx} {...rest}>
+				<Container sx={sx} fluidLayout={fluidLayout} {...rest}>
 					<Row>
 						<Col span={12}>
 							<AppBar
@@ -105,7 +108,7 @@ const Header = ({
 					</Row>
 				</Container>
 			</Box>
-			{!fullWidth && (
+			{showContentNavigation && (
 				<Box
 					key="content-navigation"
 					variant="content-navigation"
@@ -124,7 +127,7 @@ const Header = ({
 						alignItems: 'center',
 					}}
 				>
-					<Container>
+					<Container fluidLayout={fluidLayout}>
 						<Row>
 							<Col span={12}>
 								<Navigation
@@ -132,10 +135,13 @@ const Header = ({
 									presentedRoutes={presentedRoutes}
 									menuVisibility={menuVisibility}
 									setMenuVisibility={setMenuVisibility}
-									fullWidth={fullWidth}
+									showContentNavigation={showContentNavigation}
 									sx={{
 										display: 'flex',
 										justifyContent: 'flex-start',
+										px: 0,
+										mx: 0,
+										maskImage: 'none',
 									}}
 									{...navigationProps}
 								/>
@@ -153,13 +159,14 @@ Header.propTypes = {
 	appLinks: NavigationRoutes,
 	appSidebar: Ref,
 	appSidebarVisibility: PropTypes.bool,
-	fullWidth: PropTypes.bool,
+	fluidLayout: PropTypes.bool,
 	menuVisibility: PropTypes.bool,
 	nav: Ref,
 	navigationProps: PropTypes.object,
 	presentedRoutes: NavigationRoutes,
 	setAppSidebarVisibility: PropTypes.func,
 	setMenuVisibility: PropTypes.func,
+	showContentNavigation: PropTypes.bool,
 };
 
 export default Header;

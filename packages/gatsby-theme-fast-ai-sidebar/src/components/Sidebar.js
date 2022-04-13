@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@fast-ai/ui-components';
-import { map } from 'ramda';
 
 import Link from './Link';
 import { MatchParent, getParent } from './Match';
@@ -10,13 +9,12 @@ import Router from './Router';
 const getList = links =>
 	links ? (
 		<ul>
-			{map(link => {
+			{links.map((link, i) => {
 				const { label, to, children } = link;
 				return (
-					<MatchParent key={to} link={link}>
+					<MatchParent key={`${to}_${i}`} link={link}>
 						{({ match }) => (
 							<li
-								key={to}
 								className={[match && 'active', !children && 'leaf']
 									.filter(Boolean)
 									.join(' ')}
@@ -35,7 +33,7 @@ const getList = links =>
 						)}
 					</MatchParent>
 				);
-			})(links)}
+			})}
 		</ul>
 	) : null;
 
@@ -126,24 +124,11 @@ const SidebarWrapper = ({ presentedRoutes, sx, styles = {}, ...rest }) => {
 	if (!presentedRoutes || !presentedRoutes.length) {
 		return null;
 	}
-
-	<Sidebar
-		sx={{
-			...sidebarStyles,
-
-			display: ['block', 'block', 'none'],
-		}}
-		{...rest}
-	>
-		<Menu presentedRoutes={presentedRoutes} />
-	</Sidebar>;
-
 	return (
 		<Fragment>
 			<Sidebar
 				sx={{
 					...sidebarStyles,
-
 					display: ['block', 'block', 'none'],
 				}}
 				{...rest}
@@ -166,15 +151,17 @@ const SidebarWrapper = ({ presentedRoutes, sx, styles = {}, ...rest }) => {
 				}}
 			>
 				<Router primary={false}>
-					{presentedRoutes.map(link => (
-						<Sidebar
-							sx={sidebarStyles}
-							path={`${getParent(link)}/*`}
-							key={link.to}
-							render={() => <Menu presentedRoutes={presentedRoutes} />}
-							{...rest}
-						/>
-					))}
+					{presentedRoutes
+						.filter(link => link.children && link.children.length)
+						.map((link, i) => (
+							<Sidebar
+								sx={sidebarStyles}
+								path={`${getParent(link)}/*`}
+								key={`${link.to}_${i}`}
+								render={() => <Menu presentedRoutes={link.children} />}
+								{...rest}
+							/>
+						))}
 				</Router>
 			</Box>
 		</Fragment>

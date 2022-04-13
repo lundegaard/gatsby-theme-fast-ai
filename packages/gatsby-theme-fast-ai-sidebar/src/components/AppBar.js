@@ -38,7 +38,6 @@ const AppBar = ({
 			sx={{
 				alignItems: 'center',
 				display: 'flex',
-				ml: 4,
 				textDecoration: 'none',
 				color: 'inherit',
 				flexShrink: 0,
@@ -81,6 +80,7 @@ const AppBar = ({
 					flexShrink: 0,
 					flexGrow: 0,
 					overflowX: 'hidden',
+					mr: theme => theme.grid.gutters.map(x => -x),
 				}}
 			>
 				<Hamburger isOpen={appSidebarVisibility} onClick={onCloseAppSidebar} />

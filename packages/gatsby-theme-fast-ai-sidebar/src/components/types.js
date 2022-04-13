@@ -7,6 +7,7 @@ export const NavigationRoute = PropTypes.shape({
 });
 
 export const NavigationRoutes = PropTypes.arrayOf(NavigationRoute);
+
 export const Ref = PropTypes.oneOfType([
 	PropTypes.func,
 	PropTypes.exact({ current: PropTypes.any }),
