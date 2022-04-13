@@ -5,7 +5,7 @@ const sidebarCommon = {
 	width: ['100%', '100%', 256, 256, 320],
 	mt: [64, 64, 0],
 	pb: 3,
-	bg: 'contrast',
+	bg: ['contrast', 'contrast', 'transparent'],
 	borderBottom: t => [t.borders.normal, t.borders.normal, 'none'],
 };
 
@@ -62,8 +62,9 @@ const theme = createTheme({
 		sidebar: { ...sidebarCommon },
 		'app-sidebar': { ...sidebarCommon, zIndex: 10000 },
 		'sidebar-dock': {
-			borderRight: t => t.borders.normal,
-			backgroundColor: 'contrast',
+			backgroundColor: 'tranparent',
+			mr: t => t.grid.gutters,
+			ml: t => t.grid.gutters.map(x => -x),
 		},
 		'app-bar': {
 			height: 64,

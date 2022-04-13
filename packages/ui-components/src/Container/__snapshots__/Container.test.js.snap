@@ -2,9 +2,13 @@
 
 exports[`<Container /> matches snapshot when shallowly rendered 1`] = `
 <Box
-  mx="auto"
-  px={2}
+  sx={
+    Object {
+      "mx": "auto",
+      "px": [Function],
+      "width": "100%",
+    }
+  }
   variant="container"
-  width={1}
 />
 `;

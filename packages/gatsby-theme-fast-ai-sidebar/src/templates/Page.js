@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, useBreakpoint } from '@fast-ai/ui-components';
+import { Box, Container, useBreakpoint } from '@fast-ai/ui-components';
 import { findLast } from 'ramda';
 
 import Header from '../components/Header';
@@ -64,6 +64,46 @@ const PageInner = ({
 		setAppSidebarVisibility(false);
 	}, [shouldUseMobileNavigation]);
 
+	const content = (
+		<Fragment>
+			{showContentNavigation && (
+				<Sidebar
+					menuVisibility={menuVisibility}
+					setMenuVisibility={setMenuVisibility}
+					nav={nav}
+					presentedRoutes={presentedRoutes}
+				/>
+			)}
+
+			<AppSidebar
+				menuVisibility={appSidebarVisibility}
+				setMenuVisibility={setAppSidebarVisibility}
+				nav={appSidebar}
+				presentedRoutes={appLinks}
+			/>
+
+			<ContentContainer sx={{ flexGrow: 1 }} variant="content">
+				{!disableBreadcrumbs && (
+					<AppBreadcrumbs
+						breadcrumbProps={{
+							separatorSize: 14,
+						}}
+						breadcrumbLinkProps={{
+							variant: 'links.breadcrumbSm',
+						}}
+						sx={{
+							display: ['flex', 'flex', 'none'],
+							position: 'absolute',
+							top: '8px',
+							left: t => t.grid.gutters,
+						}}
+					/>
+				)}
+				{children}
+			</ContentContainer>
+		</Fragment>
+	);
+	const ContentWrapper = showContentNavigation ? Container : Box;
 	return (
 		<Root>
 			<Header
@@ -79,50 +119,16 @@ const PageInner = ({
 				setAppSidebarVisibility={setAppSidebarVisibility}
 			/>
 
-			<Box
+			<ContentWrapper
 				sx={{
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'stretch',
 				}}
+				{...(showContentNavigation ? { fluidLayout } : {})}
 			>
-				{showContentNavigation && (
-					<Sidebar
-						menuVisibility={menuVisibility}
-						setMenuVisibility={setMenuVisibility}
-						nav={nav}
-						presentedRoutes={presentedRoutes}
-					/>
-				)}
-
-				<AppSidebar
-					menuVisibility={appSidebarVisibility}
-					setMenuVisibility={setAppSidebarVisibility}
-					nav={appSidebar}
-					presentedRoutes={appLinks}
-				/>
-
-				<ContentContainer sx={{ flexGrow: 1 }} variant="content">
-					{!disableBreadcrumbs && (
-						<AppBreadcrumbs
-							breadcrumbProps={{
-								separatorSize: 14,
-							}}
-							breadcrumbLinkProps={{
-								variant: 'links.breadcrumbSm',
-							}}
-							sx={{
-								display: ['flex', 'flex', 'none'],
-								position: 'absolute',
-								top: '8px',
-								left: t => t.grid.gutters,
-							}}
-						/>
-					)}
-					{children}
-				</ContentContainer>
-			</Box>
-
+				{content}
+			</ContentWrapper>
 			<Footer />
 		</Root>
 	);
