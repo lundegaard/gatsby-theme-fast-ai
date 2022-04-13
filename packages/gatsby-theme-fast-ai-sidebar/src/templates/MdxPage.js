@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Col, Container, Heading, Row } from '@fast-ai/ui-components';
+import { Col, Heading, Row } from '@fast-ai/ui-components';
 
 import TableOfContents from '../components/TableOfContents';
 import MdxProvider from '../components/MdxProvider';
@@ -24,42 +24,40 @@ const MdxPage = ({ location, children, data: { mdx }, ...rest }) => {
 		<MdxProvider>
 			<Page
 				location={location}
+				fluidLayout
 				showContentNavigation={
 					!deprecatedFullwidth || !disableContentNavigation
 				}
 				disableBreadcrumbs={disableBreadcrumbs}
-				fluidLayout
 				{...rest}
 			>
 				<Seo title={title} description={description} />
 
-				<Container fluidLayout sx={{ position: 'relative' }} {...rest}>
-					<Row>
-						<Col span={{ _: 12, lg: 9 }}>
-							<Heading>{title}</Heading>
+				<Row>
+					<Col span={{ _: 12, lg: 9 }}>
+						<Heading>{title}</Heading>
+					</Col>
+				</Row>
+				<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>
+					{!disableTableOfContents && (
+						<Col span={{ _: 12, lg: 3 }}>
+							<TableOfContents
+								maxDepth={tableOfContentsDepth}
+								sx={{
+									position: ['static', 'static', 'static', 'sticky'],
+									top: 112,
+									right: 0,
+								}}
+								location={location}
+								items={mdx.tableOfContents.items}
+							/>
 						</Col>
-					</Row>
-					<Row flexDirection={{ _: 'column', lg: 'row-reverse' }}>
-						{!disableTableOfContents && (
-							<Col span={{ _: 12, lg: 3 }}>
-								<TableOfContents
-									maxDepth={tableOfContentsDepth}
-									sx={{
-										position: ['static', 'static', 'static', 'sticky'],
-										top: 112,
-										right: 0,
-									}}
-									location={location}
-									items={mdx.tableOfContents.items}
-								/>
-							</Col>
-						)}
-						<Col span={{ _: 12, lg: disableTableOfContents ? 12 : 9 }}>
-							<MDXRenderer>{mdx.body}</MDXRenderer>
-							{children}
-						</Col>
-					</Row>
-				</Container>
+					)}
+					<Col span={{ _: 12, lg: disableTableOfContents ? 12 : 9 }}>
+						<MDXRenderer>{mdx.body}</MDXRenderer>
+						{children}
+					</Col>
+				</Row>
 			</Page>
 		</MdxProvider>
 	);
