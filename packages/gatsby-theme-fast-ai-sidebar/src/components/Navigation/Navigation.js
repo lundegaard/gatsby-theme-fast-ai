@@ -6,7 +6,9 @@ import {
 	IconArrowForward,
 	Text,
 } from '@fast-ai/ui-components';
+import { useIntl } from 'gatsby-plugin-intl';
 
+import m from '../../messages';
 import Match from '../Match';
 import Link from '../Link';
 
@@ -20,8 +22,14 @@ const Navigation = ({
 	setMenuVisibility,
 	sx,
 	...rest
-}) =>
-	presentedRoutes && presentedRoutes.length ? (
+}) => {
+	const intl = useIntl();
+
+	const menuTitleTranslated = intl.formatMessage(m.menuTitle);
+	const menuTitle =
+		menuTitleTranslated === m.menuTitle.id ? null : menuTitleTranslated;
+
+	return presentedRoutes && presentedRoutes.length ? (
 		<Box as="nav" variant="main-nav" sx={sx} {...rest}>
 			<Box
 				as="button"
@@ -53,7 +61,7 @@ const Navigation = ({
 				) : (
 					<IconArrowForward key="IconArrowForward" />
 				)}
-				<Text>Menu</Text>
+				<Text>{menuTitle}</Text>
 			</Box>
 
 			<Menu
@@ -90,6 +98,7 @@ const Navigation = ({
 			</Menu>
 		</Box>
 	) : null;
+};
 
 Navigation.propTypes = {
 	appBarProps: PropTypes.object,

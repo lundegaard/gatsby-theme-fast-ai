@@ -5,6 +5,10 @@ export default defineMessages({
 		id: 'siteMetadata.logoTitle',
 		defaultMessage: '',
 	},
+	menuTitle: {
+		id: 'siteMetadata.menuTitle',
+		defaultMessage: 'Menu',
+	},
 	siteDescription: {
 		id: 'siteMetadata.description',
 		defaultMessage: '',
