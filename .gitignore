@@ -20,6 +20,15 @@ apps/**/.env
 
 !/apps/storybook/.storybook-ui
 
+
+.yarn/*
+.yarn/cache/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+
 # Apple cache file
 .DS_Store
 
