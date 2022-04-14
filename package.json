@@ -90,24 +90,6 @@
 		"rollup-plugin-size-snapshot": "^0.12.0",
 		"rollup-plugin-terser": "^7.0.2"
 	},
-	"resolutions": {
-		"**/@babel/preset-env": "^7.11.5",
-		"**/@babel/preset-react": "^7.10.4",
-		"**/@babel/runtime": "^7.11.2",
-		"**/@babel/core": "^7.11.6",
-		"**/@babel/cli": "^7.11.6",
-		"**/@babel/node": "^7.10.5",
-		"**/@babel/plugin-proposal-class-properties": "^7.10.4",
-		"**/@babel/plugin-proposal-object-rest-spread": "^7.10.4",
-		"**/@babel/plugin-transform-object-assign": "^7.10.1",
-		"**/@babel/plugin-transform-react-constant-elements": "^7.10.4",
-		"**/@babel/plugin-transform-runtime": "^7.11.5",
-		"**/next/terser": "^4.1.2",
-		"**/@emotion/core": "^10.0.28",
-		"**/@mdx-js/mdx": "^1.6.16",
-		"**/@mdx-js/react": "^1.6.16",
-		"**/@mdx-js/util": "^1.6.16"
-	},
 	"workspaces": [
 		"packages/*",
 		"apps/*"
@@ -118,5 +100,6 @@
 			"pre-commit": "lint-staged",
 			"pre-push": "yarn lint && yarn test"
 		}
-	}
+	},
+	"packageManager": "yarn@3.2.0"
 }
