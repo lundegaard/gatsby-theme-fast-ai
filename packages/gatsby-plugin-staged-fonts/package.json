@@ -34,17 +34,17 @@
 	"devDependencies": {
 		"@babel/cli": "^7.17.6",
 		"cross-env": "^7.0.2",
-		"gatsby": "^2.32.8"
+		"gatsby": "^4.12.1"
 	},
 	"peerDependencies": {
-		"gatsby": "^2.6.0",
+		"gatsby": "^4.0.0",
 		"prop-types": "^15.6.2",
-		"react": "^16.8.6"
+		"react": "^16.9.0 || ^17.0.0 || ^18.0.0"
 	},
 	"scripts": {
-		"build": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js src --out-dir . --ignore **/*.test.js",
+		"build": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js src --out-dir .",
 		"prepare": "yarn build",
-		"start": "babel --config-file ../../babel.config.js -w src --out-dir . --ignore **/*.test.js"
+		"start": "babel --config-file ../../babel.config.js -w src --out-dir ."
 	},
 	"gitHead": "c9632210a82b9675e0f47d52b04efc777876a8d6"
 }

@@ -6,7 +6,7 @@ export default defineMessages({
 		defaultMessage: '',
 	},
 	menuTitle: {
-		id: 'siteMetadata.menuTitle',
+		id: 'themeSidebar.menuTitle',
 		defaultMessage: 'Menu',
 	},
 	siteDescription: {
