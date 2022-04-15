@@ -8,7 +8,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.17.9",
 		"babel-loader": "^8.2.4",
-		"fs-extra": "^9.0.0",
+		"fs-extra": "^10.0.1",
 		"react-is": "^16.13.1",
 		"webpack": "^5.72.0"
 	},
@@ -24,7 +24,7 @@
 		"@storybook/theming": "^5.3.18",
 		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
-		"ramda-extension": "^0.10.3",
+		"ramda-extension": "^0.11.0",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-powerplug": "^1.0.0"
