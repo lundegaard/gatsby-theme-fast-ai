@@ -34,15 +34,15 @@
 		"@fast-ai/ui-components": "^1.7.0",
 		"@mdx-js/mdx": "^1.6.16",
 		"@mdx-js/react": "^1.6.16",
-		"gatsby-image": "^2.4.5",
+		"gatsby-image": "^3.11.0",
 		"gatsby-plugin-intl": "^0.3.3",
-		"gatsby-plugin-manifest": "^2.4.35",
-		"gatsby-plugin-mdx": "^1.2.51",
-		"gatsby-plugin-react-helmet": "^4.0.0",
-		"gatsby-plugin-sharp": "^2.6.43",
-		"gatsby-remark-images": "^3.3.38",
-		"gatsby-source-filesystem": "^2.3.35",
-		"gatsby-transformer-sharp": "^2.5.19",
+		"gatsby-plugin-manifest": "^4.12.1",
+		"gatsby-plugin-mdx": "^3.12.1",
+		"gatsby-plugin-react-helmet": "^5.12.1",
+		"gatsby-plugin-sharp": "^4.12.1",
+		"gatsby-remark-images": "^6.12.1",
+		"gatsby-source-filesystem": "^4.12.1",
+		"gatsby-transformer-sharp": "^4.12.1",
 		"glob": "^7.1.6",
 		"prism-react-renderer": "^1.0.2",
 		"ramda": "^0.27.0",
@@ -53,10 +53,10 @@
 	},
 	"peerDependencies": {
 		"@reach/router": "^1.0.0",
-		"gatsby": "^2.6.0",
+		"gatsby": "^4.0.0",
 		"prop-types": "^15.6.2",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
+		"react": "^16.9.0 || ^17.0.0 || ^18.0.0",
+		"react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0"
 	},
 	"gitHead": "c9632210a82b9675e0f47d52b04efc777876a8d6"
 }
