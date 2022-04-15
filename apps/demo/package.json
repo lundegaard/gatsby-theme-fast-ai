@@ -21,7 +21,7 @@
 		"gatsby-theme-fast-ai": "^1.7.0",
 		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
-		"ramda-extension": "^0.10.3",
+		"ramda-extension": "^0.11.0",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0"
 	}
