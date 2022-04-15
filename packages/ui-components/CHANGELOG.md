@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0-alpha.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.7.0...v1.8.0-alpha.0) (2022-04-15)
+
+
+### Bug Fixes
+
+* missing cross-env as dependency ([5b2de6d](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/5b2de6df302e9eaa99b535f41837aed507f755b4))
+
+
+### Features
+
+* update 3rd party helpers ([7830854](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/7830854085d6b5d1d06624c6192e66fe079d4e29))
+* update babel ([2ea1dc2](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/2ea1dc2cc5058e606210a1c2019bf53f2a930dbc))
+* update gatsby ([b211b54](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/b211b54a9429e11ca2318da7ec47b85c84873cad))
+
+
+
+
+
 # [1.7.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.6.2...v1.7.0) (2022-04-13)
 
 
