@@ -20,12 +20,12 @@
 		"@emotion/core": "^10.0.35",
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^1.7.0",
-		"gatsby": "^2.32.8",
+		"gatsby": "^4.12.1",
 		"gatsby-theme-fast-ai-sidebar": "^1.7.0",
-		"prop-types": "^15.6.2",
+		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.10.3",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0"
 	}
 }

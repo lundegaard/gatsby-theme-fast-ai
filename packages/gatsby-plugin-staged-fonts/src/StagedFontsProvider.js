@@ -56,7 +56,7 @@ const StagedFontsProvider = ({
 
 const FontDescription = PropTypes.shape({
 	critical: PropTypes.bool,
-	family: PropTypes.string.isString,
+	family: PropTypes.string.isRequired,
 	files: PropTypes.arrayOf(
 		PropTypes.shape({
 			url: PropTypes.string.isRequired,
