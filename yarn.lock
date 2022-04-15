@@ -2119,6 +2119,7 @@ __metadata:
     "@rebass/forms": ^4.0.6
     "@rebass/preset": ^4.0.5
     "@restart/hooks": ^0.3.25
+    cross-env: ^7.0.2
     emotion-theming: ^10.0.19
     enzyme: ^3.11.0
     fs-extra: ^10.0.1
