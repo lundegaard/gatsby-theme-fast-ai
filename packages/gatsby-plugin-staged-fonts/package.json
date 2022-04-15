@@ -1,6 +1,6 @@
 {
 	"name": "@fast-ai/gatsby-plugin-staged-fonts",
-	"version": "1.6.0",
+	"version": "1.8.0-alpha.0",
 	"license": "MIT",
 	"keywords": [
 		"gatsby",
