@@ -1,6 +1,6 @@
 export * from 'gatsby-plugin-intl';
 
-export { default as Image } from 'gatsby-image';
+export { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 export { default as Page } from './src/templates/Page';
 
