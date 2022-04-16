@@ -1,7 +1,7 @@
 {
 	"name": "@fast-ai/demo-sidebar",
 	"private": true,
-	"version": "1.8.0-alpha.1",
+	"version": "1.8.0-alpha.2",
 	"main": "index.js",
 	"contributors": [
 		"Tomas Konrady <tomaskonrady@gmail.com>",
@@ -19,9 +19,9 @@
 	"dependencies": {
 		"@emotion/core": "^10.0.35",
 		"@emotion/styled": "^10.0.0",
-		"@fast-ai/ui-components": "^1.8.0-alpha.1",
+		"@fast-ai/ui-components": "^1.8.0-alpha.2",
 		"gatsby": "^4.12.1",
-		"gatsby-theme-fast-ai-sidebar": "^1.8.0-alpha.1",
+		"gatsby-theme-fast-ai-sidebar": "^1.8.0-alpha.2",
 		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.11.0",

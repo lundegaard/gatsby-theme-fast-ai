@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0-alpha.2](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.8.0-alpha.1...v1.8.0-alpha.2) (2022-04-16)
+
+
+### Features
+
+* gatsby-plugin-image ([6179222](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/617922219ad0409a7b1fe8f41e85e26d8f60ea35))
+
+
+
+
+
 # [1.8.0-alpha.1](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.8.0-alpha.0...v1.8.0-alpha.1) (2022-04-16)
 
 
