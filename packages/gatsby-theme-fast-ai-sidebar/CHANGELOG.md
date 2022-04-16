@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0-alpha.1](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.8.0-alpha.0...v1.8.0-alpha.1) (2022-04-16)
+
+
+### Features
+
+* gatsby-plugin-staged-fonts support for gatsby v4 ([269731d](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/269731d1a577f4ea2a46d3a47e8b2e927dfc02f2))
+
+
+
+
+
 # [1.8.0-alpha.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.7.0...v1.8.0-alpha.0) (2022-04-15)
 
 
