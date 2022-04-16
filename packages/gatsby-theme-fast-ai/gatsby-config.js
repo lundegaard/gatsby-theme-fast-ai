@@ -52,6 +52,7 @@ module.exports = themeOptions => {
 					name: 'pages',
 				},
 			},
+			'gatsby-plugin-image',
 			'gatsby-plugin-sharp',
 			'gatsby-transformer-sharp',
 			{

@@ -1579,7 +1579,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.17.9
   resolution: "@babel/runtime@npm:7.17.9"
   dependencies:
@@ -2023,9 +2023,9 @@ __metadata:
   dependencies:
     "@emotion/core": ^10.0.35
     "@emotion/styled": ^10.0.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.0
+    "@fast-ai/ui-components": ^1.8.0-alpha.1
     gatsby: ^4.12.1
-    gatsby-theme-fast-ai-sidebar: ^1.8.0-alpha.0
+    gatsby-theme-fast-ai-sidebar: ^1.8.0-alpha.1
     prop-types: ^15.8.1
     ramda: ^0.27.0
     ramda-extension: ^0.11.0
@@ -2040,9 +2040,9 @@ __metadata:
   dependencies:
     "@emotion/core": ^10.0.35
     "@emotion/styled": ^10.0.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.0
+    "@fast-ai/ui-components": ^1.8.0-alpha.1
     gatsby: ^4.12.1
-    gatsby-theme-fast-ai: ^1.8.0-alpha.0
+    gatsby-theme-fast-ai: ^1.8.0-alpha.1
     prop-types: ^15.8.1
     ramda: ^0.27.0
     ramda-extension: ^0.11.0
@@ -2051,7 +2051,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/gatsby-plugin-setup@^1.8.0-alpha.0, @fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup":
+"@fast-ai/gatsby-plugin-setup@^1.8.0-alpha.1, @fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup":
   version: 0.0.0-use.local
   resolution: "@fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup"
   dependencies:
@@ -2068,7 +2068,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/gatsby-plugin-staged-fonts@^1.8.0-alpha.0, @fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts":
+"@fast-ai/gatsby-plugin-staged-fonts@^1.8.0-alpha.1, @fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts":
   version: 0.0.0-use.local
   resolution: "@fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts"
   dependencies:
@@ -2089,7 +2089,7 @@ __metadata:
   resolution: "@fast-ai/storybook@workspace:apps/storybook"
   dependencies:
     "@babel/core": ^7.17.9
-    "@fast-ai/ui-components": ^1.8.0-alpha.0
+    "@fast-ai/ui-components": ^1.8.0-alpha.1
     "@storybook/addon-actions": ^5.3.18
     "@storybook/addon-docs": ^5.3.18
     "@storybook/addon-info": ^5.3.18
@@ -2111,7 +2111,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/ui-components@^1.8.0-alpha.0, @fast-ai/ui-components@workspace:packages/ui-components":
+"@fast-ai/ui-components@^1.8.0-alpha.1, @fast-ai/ui-components@workspace:packages/ui-components":
   version: 0.0.0-use.local
   resolution: "@fast-ai/ui-components@workspace:packages/ui-components"
   dependencies:
@@ -8563,6 +8563,13 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: 5917233f0d381e719e195b69b81e46da90293432d10288d79f8f59b8f3f9ac030e14701f3d9f90893fb739481df1d132446f1b983d841e65e2623775db100897
+  languageName: node
+  linkType: hard
+
+"babel-jsx-utils@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "babel-jsx-utils@npm:1.1.0"
+  checksum: 0adb20364fca5fb8b2bd77f959a3118011d1b27d6b73912ffa7634637ad6b297baa9400e4d37a00cc190ac33e56f806294bf483cd766dc8104f465c2eaee8116
   languageName: node
   linkType: hard
 
@@ -15057,17 +15064,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-image@npm:^3.11.0":
-  version: 3.11.0
-  resolution: "gatsby-image@npm:3.11.0"
-  dependencies:
-    "@babel/runtime": ^7.14.6
-    object-fit-images: ^3.2.4
-    prop-types: ^15.7.2
-  checksum: da7e8d6fcde678969f4fdc22b2eda1235525ebf848bf1c04fc618920356ea0d8a55bec8a552f01cd7d7c7b3313c1af08dbd2efed198bc87ca4c9831518db4356
-  languageName: node
-  linkType: hard
-
 "gatsby-legacy-polyfills@npm:^2.12.1":
   version: 2.12.1
   resolution: "gatsby-legacy-polyfills@npm:2.12.1"
@@ -15134,6 +15130,34 @@ __metadata:
   peerDependencies:
     "@parcel/core": ^2.3.1
   checksum: 7f95c220b143b2195c80efd13b584941f6c791315a90a2e0b84d9eaba9c0cae465a0fa99d29d6f66c6f1667049ae5e835fb15ccb11fa81726c9fe00dbfb24cab
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-image@npm:^2.12.1":
+  version: 2.12.1
+  resolution: "gatsby-plugin-image@npm:2.12.1"
+  dependencies:
+    "@babel/code-frame": ^7.14.0
+    "@babel/parser": ^7.15.5
+    "@babel/runtime": ^7.15.4
+    "@babel/traverse": ^7.15.4
+    babel-jsx-utils: ^1.1.0
+    babel-plugin-remove-graphql-queries: ^4.12.1
+    camelcase: ^5.3.1
+    chokidar: ^3.5.2
+    common-tags: ^1.8.2
+    fs-extra: ^10.0.0
+    gatsby-core-utils: ^3.12.1
+    objectFitPolyfill: ^2.3.5
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@babel/core": ^7.12.3
+    gatsby: ^4.0.0-next
+    gatsby-plugin-sharp: ^4.0.0-next
+    gatsby-source-filesystem: ^4.0.0-next
+    react: ^16.9.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
+  checksum: f12008e18c2fb5e5f02c1c6171ecac2dc44ff0be3052b8269df6b63a3f072631d50500683b02de9b97563904faaa759ba2d7737db2cc791c80e76206c0e8041d
   languageName: node
   linkType: hard
 
@@ -15406,17 +15430,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-theme-fast-ai-sidebar@^1.8.0-alpha.0, gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar":
+"gatsby-theme-fast-ai-sidebar@^1.8.0-alpha.1, gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar"
   dependencies:
     "@emotion/core": ^10.0.35
-    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.0
-    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.0
+    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.1
+    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.1
+    "@fast-ai/ui-components": ^1.8.0-alpha.1
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
-    gatsby-image: ^3.11.0
+    gatsby-plugin-image: ^2.12.1
     gatsby-plugin-intl: ^0.3.3
     gatsby-plugin-manifest: ^4.12.1
     gatsby-plugin-mdx: ^3.12.1
@@ -15441,17 +15465,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-fast-ai@^1.8.0-alpha.0, gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai":
+"gatsby-theme-fast-ai@^1.8.0-alpha.1, gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai"
   dependencies:
     "@emotion/core": ^10.0.35
-    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.0
-    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.0
+    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.1
+    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.1
+    "@fast-ai/ui-components": ^1.8.0-alpha.1
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
-    gatsby-image: ^3.11.0
+    gatsby-plugin-image: ^2.12.1
     gatsby-plugin-intl: ^0.3.3
     gatsby-plugin-manifest: ^4.12.1
     gatsby-plugin-mdx: ^3.12.1
@@ -22848,13 +22872,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object-fit-images@npm:^3.2.4":
-  version: 3.2.4
-  resolution: "object-fit-images@npm:3.2.4"
-  checksum: a1adab3e09fdc4f5addbd0895eeffbaa5018ffabb95382cd1bbf86bb813d21ca575ec4be4fdc5470fdaa25579a781748fd0b37308156d3605004256497d2d264
-  languageName: node
-  linkType: hard
-
 "object-inspect@npm:^1.12.0, object-inspect@npm:^1.7.0, object-inspect@npm:^1.9.0":
   version: 1.12.0
   resolution: "object-inspect@npm:1.12.0"
@@ -22982,6 +22999,13 @@ __metadata:
     define-properties: ^1.1.3
     es-abstract: ^1.19.1
   checksum: 0f17e99741ebfbd0fa55ce942f6184743d3070c61bd39221afc929c8422c4907618c8da694c6915bc04a83ab3224260c779ba37fc07bb668bdc5f33b66a902a4
+  languageName: node
+  linkType: hard
+
+"objectFitPolyfill@npm:^2.3.5":
+  version: 2.3.5
+  resolution: "objectFitPolyfill@npm:2.3.5"
+  checksum: b094a17ddf194186527ec805336f023ad3a32f532c3b7139f72c25cce0a5c7beb5d78ff95e8f9776e9adfe5a080782daed56d14e7182d6fbf4d59ce631681658
   languageName: node
   linkType: hard
 
