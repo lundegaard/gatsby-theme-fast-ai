@@ -1,7 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-exports.onPostBootstrap = async ({ reporter, parentSpan }, { fonts }) => {
+import { generateStyles } from './generateStyles';
+
+exports.onPostBootstrap = async (
+	{ reporter, parentSpan, pathPrefix },
+	pluginOptions,
+) => {
+	const { fonts } = pluginOptions;
 	const activity = reporter.activityTimer(
 		'Copying font files to public folder',
 		{
@@ -26,4 +32,8 @@ exports.onPostBootstrap = async ({ reporter, parentSpan }, { fonts }) => {
 	});
 
 	activity.end();
+
+	const styles = generateStyles(pluginOptions, pathPrefix);
+
+	fs.writeFileSync(`${__dirname}/fonts.css`, styles, 'utf-8');
 };

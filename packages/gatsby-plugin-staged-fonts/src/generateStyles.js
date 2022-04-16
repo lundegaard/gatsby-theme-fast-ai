@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 
 import mime from 'mime';
-import { withPrefix as fallbackWithPrefix, withAssetPrefix } from 'gatsby';
 
 const toBase64 = filePath => {
 	// get the mimetype
@@ -12,9 +11,6 @@ const toBase64 = filePath => {
 
 	return `data:${fileMime};base64,${data}`;
 };
-
-// TODO: remove for v3
-const withPrefix = withAssetPrefix || fallbackWithPrefix;
 
 const getFormat = url => {
 	const parts = url.split('.');
@@ -41,16 +37,21 @@ const getFormat = url => {
 	}
 };
 
-const getUrl = (url, loadAsBase64) =>
-	loadAsBase64 ? toBase64(url) : withPrefix(path.basename(url));
+const withPrefix = (pathPrefix, basename) =>
+	`/${[pathPrefix.replace(/^\//, ''), basename.replace(/^\//, '')]
+		.filter(Boolean)
+		.join('/')}`;
+
+const getUrl = (url, loadAsBase64, pathPrefix) =>
+	loadAsBase64 ? toBase64(url) : withPrefix(pathPrefix, path.basename(url));
 
 const wrapIfResult = (fn, x) => (x ? fn(x) : x);
 
-const generateSrc = (critical, files) =>
+const generateSrc = (critical, files, pathPrefix) =>
 	files
 		.map(({ url, format }) =>
 			[
-				`url('${getUrl(url, critical)}')`,
+				`url('${getUrl(url, critical, pathPrefix)}')`,
 				wrapIfResult(x => `format('${x}')`, format || getFormat(url)),
 			]
 				.filter(Boolean)
@@ -58,14 +59,14 @@ const generateSrc = (critical, files) =>
 		)
 		.join(',\n');
 
-export const generateStyles = ({ fonts }) =>
+export const generateStyles = ({ fonts }, pathPrefix = '') =>
 	fonts
 		.map(({ family, weight, critical, style, files }) =>
 			[
 				family && `font-family: '${family}'`,
 				style && `font-style: ${style}`,
 				weight && `font-weight: ${weight}`,
-				files && `src: ${generateSrc(critical, files)};`,
+				files && `src: ${generateSrc(critical, files, pathPrefix)};`,
 			]
 				.filter(Boolean)
 				.join(';\n'),
