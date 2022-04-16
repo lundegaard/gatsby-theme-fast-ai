@@ -5,7 +5,6 @@ exports[`<AvatarLink /> matches snapshot when shallowly rendered 1`] = `
   as={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "displayName": "Link",
       "render": [Function],
     }
   }

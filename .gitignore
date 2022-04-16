@@ -12,6 +12,7 @@ packages/**/build
 packages/**/dist
 packages/gatsby-plugin-setup/*.js
 packages/gatsby-plugin-staged-fonts/*.js
+packages/gatsby-plugin-staged-fonts/fonts.css
 
 .stylelintcache
 

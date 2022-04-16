@@ -1,18 +1,20 @@
 import React from 'react';
 
-import { generateStyles } from './generateStyles';
 import { STAGED_FONTS_STYLE_ID } from './constants';
 import wrapRootElement from './wrapRootElement';
+
+// eslint-disable-next-line
+import stylesToInline from '!!raw-loader!./fonts.css';
 
 exports.wrapRootElement = wrapRootElement;
 
 /* eslint-disable react/no-danger */
-exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
+exports.onRenderBody = ({ setHeadComponents }) => {
 	setHeadComponents([
 		<style
 			id={STAGED_FONTS_STYLE_ID}
 			key={STAGED_FONTS_STYLE_ID}
-			dangerouslySetInnerHTML={{ __html: generateStyles(pluginOptions) }}
+			dangerouslySetInnerHTML={{ __html: stylesToInline }}
 		/>,
 	]);
 };

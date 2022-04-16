@@ -18,6 +18,9 @@ const fontsPath = path.resolve(
 );
 
 const getFontFile = url => ({ url: path.join(fontsPath, url) });
+// const getFontFile = url => ({
+// 	url: `@fast-ai/ui-components/fonts/web-files/${ url}`,
+// });
 
 const weights = {
 	thin: 100,
