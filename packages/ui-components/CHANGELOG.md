@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.7.0...v1.8.0) (2022-04-19)
+
+
+### Bug Fixes
+
+* missing cross-env as dependency ([93b7776](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/93b777686ddcaf5726f219bc6b101668d4100712))
+
+
+### Features
+
+* gatsby-plugin-staged-fonts support for gatsby v4 ([8df7e18](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/8df7e18aa8b5e80301a5ed5eda7af96a8f271698))
+* update 3rd party helpers ([26b8bc8](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/26b8bc8ec5afb0699e1adab3e55613e27963c420))
+* update babel ([561512d](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/561512dac0e6ae8232c4b938bbfc5b8863527c0d))
+* update gatsby ([a0e2cf6](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/a0e2cf682b62713bc8cfbdc053d7fa7365de6820))
+
+
+
+
+
 # [1.8.0-alpha.2](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.8.0-alpha.1...v1.8.0-alpha.2) (2022-04-16)
 
 **Note:** Version bump only for package @fast-ai/ui-components
