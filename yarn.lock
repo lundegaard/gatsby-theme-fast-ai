@@ -2023,9 +2023,9 @@ __metadata:
   dependencies:
     "@emotion/core": ^10.0.35
     "@emotion/styled": ^10.0.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/ui-components": ^1.8.0
     gatsby: ^4.12.1
-    gatsby-theme-fast-ai-sidebar: ^1.8.0-alpha.2
+    gatsby-theme-fast-ai-sidebar: ^1.8.0
     prop-types: ^15.8.1
     ramda: ^0.27.0
     ramda-extension: ^0.11.0
@@ -2040,9 +2040,9 @@ __metadata:
   dependencies:
     "@emotion/core": ^10.0.35
     "@emotion/styled": ^10.0.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/ui-components": ^1.8.0
     gatsby: ^4.12.1
-    gatsby-theme-fast-ai: ^1.8.0-alpha.2
+    gatsby-theme-fast-ai: ^1.8.0
     prop-types: ^15.8.1
     ramda: ^0.27.0
     ramda-extension: ^0.11.0
@@ -2051,7 +2051,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/gatsby-plugin-setup@^1.8.0-alpha.2, @fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup":
+"@fast-ai/gatsby-plugin-setup@^1.8.0, @fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup":
   version: 0.0.0-use.local
   resolution: "@fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup"
   dependencies:
@@ -2068,7 +2068,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/gatsby-plugin-staged-fonts@^1.8.0-alpha.2, @fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts":
+"@fast-ai/gatsby-plugin-staged-fonts@^1.8.0, @fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts":
   version: 0.0.0-use.local
   resolution: "@fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts"
   dependencies:
@@ -2089,7 +2089,7 @@ __metadata:
   resolution: "@fast-ai/storybook@workspace:apps/storybook"
   dependencies:
     "@babel/core": ^7.17.9
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/ui-components": ^1.8.0
     "@storybook/addon-actions": ^5.3.18
     "@storybook/addon-docs": ^5.3.18
     "@storybook/addon-info": ^5.3.18
@@ -2111,7 +2111,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/ui-components@^1.8.0-alpha.2, @fast-ai/ui-components@workspace:packages/ui-components":
+"@fast-ai/ui-components@^1.8.0, @fast-ai/ui-components@workspace:packages/ui-components":
   version: 0.0.0-use.local
   resolution: "@fast-ai/ui-components@workspace:packages/ui-components"
   dependencies:
@@ -11974,9 +11974,9 @@ __metadata:
   linkType: hard
 
 "decode-uri-component@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "decode-uri-component@npm:0.2.0"
-  checksum: f3749344ab9305ffcfe4bfe300e2dbb61fc6359e2b736812100a3b1b6db0a5668cba31a05e4b45d4d63dbf1a18dfa354cd3ca5bb3ededddabb8cd293f4404f94
+  version: 0.2.2
+  resolution: "decode-uri-component@npm:0.2.2"
+  checksum: 95476a7d28f267292ce745eac3524a9079058bbb35767b76e3ee87d42e34cd0275d2eb19d9d08c3e167f97556e8a2872747f5e65cbebcac8b0c98d83e285f139
   languageName: node
   linkType: hard
 
@@ -15430,14 +15430,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-theme-fast-ai-sidebar@^1.8.0-alpha.2, gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar":
+"gatsby-theme-fast-ai-sidebar@^1.8.0, gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar"
   dependencies:
     "@emotion/core": ^10.0.35
-    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.2
-    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.2
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/gatsby-plugin-setup": ^1.8.0
+    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0
+    "@fast-ai/ui-components": ^1.8.0
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
     gatsby-plugin-image: ^2.12.1
@@ -15465,14 +15465,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-fast-ai@^1.8.0-alpha.2, gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai":
+"gatsby-theme-fast-ai@^1.8.0, gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai"
   dependencies:
     "@emotion/core": ^10.0.35
-    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.2
-    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.2
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/gatsby-plugin-setup": ^1.8.0
+    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0
+    "@fast-ai/ui-components": ^1.8.0
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
     gatsby-plugin-image: ^2.12.1
