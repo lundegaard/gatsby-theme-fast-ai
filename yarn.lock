@@ -2023,9 +2023,9 @@ __metadata:
   dependencies:
     "@emotion/core": ^10.0.35
     "@emotion/styled": ^10.0.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/ui-components": ^1.8.0
     gatsby: ^4.12.1
-    gatsby-theme-fast-ai-sidebar: ^1.8.0-alpha.2
+    gatsby-theme-fast-ai-sidebar: ^1.8.0
     prop-types: ^15.8.1
     ramda: ^0.27.0
     ramda-extension: ^0.11.0
@@ -2040,9 +2040,9 @@ __metadata:
   dependencies:
     "@emotion/core": ^10.0.35
     "@emotion/styled": ^10.0.0
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/ui-components": ^1.8.0
     gatsby: ^4.12.1
-    gatsby-theme-fast-ai: ^1.8.0-alpha.2
+    gatsby-theme-fast-ai: ^1.8.0
     prop-types: ^15.8.1
     ramda: ^0.27.0
     ramda-extension: ^0.11.0
@@ -2051,7 +2051,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/gatsby-plugin-setup@^1.8.0-alpha.2, @fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup":
+"@fast-ai/gatsby-plugin-setup@^1.8.0, @fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup":
   version: 0.0.0-use.local
   resolution: "@fast-ai/gatsby-plugin-setup@workspace:packages/gatsby-plugin-setup"
   dependencies:
@@ -2068,7 +2068,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/gatsby-plugin-staged-fonts@^1.8.0-alpha.2, @fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts":
+"@fast-ai/gatsby-plugin-staged-fonts@^1.8.0, @fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts":
   version: 0.0.0-use.local
   resolution: "@fast-ai/gatsby-plugin-staged-fonts@workspace:packages/gatsby-plugin-staged-fonts"
   dependencies:
@@ -2089,7 +2089,7 @@ __metadata:
   resolution: "@fast-ai/storybook@workspace:apps/storybook"
   dependencies:
     "@babel/core": ^7.17.9
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/ui-components": ^1.8.0
     "@storybook/addon-actions": ^5.3.18
     "@storybook/addon-docs": ^5.3.18
     "@storybook/addon-info": ^5.3.18
@@ -2111,7 +2111,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fast-ai/ui-components@^1.8.0-alpha.2, @fast-ai/ui-components@workspace:packages/ui-components":
+"@fast-ai/ui-components@^1.8.0, @fast-ai/ui-components@workspace:packages/ui-components":
   version: 0.0.0-use.local
   resolution: "@fast-ai/ui-components@workspace:packages/ui-components"
   dependencies:
@@ -15430,14 +15430,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-theme-fast-ai-sidebar@^1.8.0-alpha.2, gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar":
+"gatsby-theme-fast-ai-sidebar@^1.8.0, gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-fast-ai-sidebar@workspace:packages/gatsby-theme-fast-ai-sidebar"
   dependencies:
     "@emotion/core": ^10.0.35
-    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.2
-    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.2
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/gatsby-plugin-setup": ^1.8.0
+    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0
+    "@fast-ai/ui-components": ^1.8.0
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
     gatsby-plugin-image: ^2.12.1
@@ -15465,14 +15465,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-fast-ai@^1.8.0-alpha.2, gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai":
+"gatsby-theme-fast-ai@^1.8.0, gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-fast-ai@workspace:packages/gatsby-theme-fast-ai"
   dependencies:
     "@emotion/core": ^10.0.35
-    "@fast-ai/gatsby-plugin-setup": ^1.8.0-alpha.2
-    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0-alpha.2
-    "@fast-ai/ui-components": ^1.8.0-alpha.2
+    "@fast-ai/gatsby-plugin-setup": ^1.8.0
+    "@fast-ai/gatsby-plugin-staged-fonts": ^1.8.0
+    "@fast-ai/ui-components": ^1.8.0
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
     gatsby-plugin-image: ^2.12.1
@@ -29977,9 +29977,9 @@ __metadata:
   linkType: hard
 
 "ua-parser-js@npm:^0.7.30":
-  version: 0.7.31
-  resolution: "ua-parser-js@npm:0.7.31"
-  checksum: e2f8324a83d1715601576af85b2b6c03890699aaa7272950fc77ea925c70c5e4f75060ae147dc92124e49f7f0e3d6dd2b0a91e7f40d267e92df8894be967ba8b
+  version: 0.7.33
+  resolution: "ua-parser-js@npm:0.7.33"
+  checksum: 1510e9ec26fcaf0d8c6ae8f1078a8230e8816f083e1b5f453ea19d06b8ef2b8a596601c92148fd41899e8b3e5f83fa69c42332bd5729b931a721040339831696
   languageName: node
   linkType: hard
 
