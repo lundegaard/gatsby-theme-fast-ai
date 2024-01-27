@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Container, useBreakpoint } from '@fast-ai/ui-components';
@@ -31,7 +32,6 @@ const Root = ({ sx, ...rest }) => (
 	/>
 );
 
-/* eslint-disable react/prop-types */
 const PageInner = ({
 	children,
 	fluidLayout,
@@ -39,6 +39,8 @@ const PageInner = ({
 	fullWidth: deprecatedFullwidth,
 	showContentNavigation: showContentNavigationProp,
 }) => {
+	const isMdUp = useBreakpoint('md', 'up');
+	// const isMdUp = true;
 	const [menuVisibility, setMenuVisibility] = useState(false);
 	const [appSidebarVisibility, setAppSidebarVisibility] = useState(false);
 	const nav = useRef(null);
@@ -57,7 +59,7 @@ const PageInner = ({
 			presentedRoutes = lastRoot.children || [];
 		}
 	}
-	const shouldUseMobileNavigation = !useBreakpoint('md', 'up') && !isSSR;
+	const shouldUseMobileNavigation = !isMdUp && !isSSR;
 
 	useEffect(() => {
 		setMenuVisibility(false);
@@ -133,8 +135,6 @@ const PageInner = ({
 		</Root>
 	);
 };
-/* eslint-enable react/prop-types */
-
 const Page = props => (
 	<IntlProxyContextProvider>
 		<PageInner {...props} />

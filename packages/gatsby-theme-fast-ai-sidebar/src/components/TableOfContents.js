@@ -85,6 +85,7 @@ const getNav = ({
 );
 /* eslint-enable react/prop-types */
 
+const hashToId = str => str.slice(1);
 const getHeadingIds = (
 	items,
 	traverseFullDepth = true,
@@ -92,7 +93,6 @@ const getHeadingIds = (
 	recursionDepth = 1,
 ) => {
 	const idList = [];
-	const hashToId = str => str.slice(1);
 
 	if (items) {
 		for (const item of items) {
