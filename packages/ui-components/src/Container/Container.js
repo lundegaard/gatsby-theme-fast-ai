@@ -11,7 +11,6 @@ const Container = forwardRef(
 				deprecatedFullwidth || fluidLayout ? 'container-fluid' : 'container'
 			}
 			sx={{
-				mx: 'auto',
 				px: t =>
 					typeof t.grid !== 'undefined' && t.grid.gutters != null
 						? t.grid.gutters

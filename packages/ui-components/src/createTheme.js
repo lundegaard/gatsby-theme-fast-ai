@@ -442,9 +442,11 @@ const componentsPreset = {
 			},
 		},
 		container: {
+			mx: 'auto',
 			maxWidth: ['none', '40em', '58em', '82em'],
 		},
 		'container-fluid': {
+			mx: 'auto',
 			maxWidth: '82em',
 		},
 	},
