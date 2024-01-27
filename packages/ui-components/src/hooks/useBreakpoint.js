@@ -43,15 +43,15 @@ const useBreakpoint = (...args) => {
 	// Styled-system use alias `_` for the smallest breakpoint.
 	const mapping = zipObj(['_', ...aliases], [0, ...breakpoints]);
 
-	const mappingHash = JSON.stringify(mapping);
+	const mappingHash = JSON.stringify([mapping, ...args]);
 
 	// eslint-disable-next-line
-	const useBreakpoint = useMemo(
-		() => createBreakpointHook(mapping),
-		[mappingHash],
-	);
+	const useBreakpointMemo = useMemo(() => {
+		return createBreakpointHook(mapping);
+	}, [mappingHash]);
+	createBreakpointHook(mapping);
 
-	return useBreakpoint(...args);
+	return useBreakpointMemo(...args);
 };
 
 export default useBreakpoint;
