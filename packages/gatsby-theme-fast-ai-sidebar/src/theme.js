@@ -8,7 +8,11 @@ const sidebarCommon = {
 	bg: ['contrast', 'contrast', 'transparent'],
 	borderBottom: t => [t.borders.normal, t.borders.normal, 'none'],
 };
-
+const linksNav = {
+	display: 'block',
+	color: 'inherit',
+	textDecoration: 'none',
+};
 const theme = createTheme({
 	// replacing fonts with default ones, to load webfonts asynchronously
 	fonts: {
@@ -18,12 +22,20 @@ const theme = createTheme({
 	},
 	links: {
 		nav: {
-			display: 'block',
+			...linksNav,
 			px: 2,
 			py: 2,
-			color: 'inherit',
-			textDecoration: 'none',
 		},
+		toc: {
+			...linksNav,
+			py: 0,
+		},
+		tocActive: {
+			...linksNav,
+			py: 0,
+			color: ['inherit', 'inherit', 'inherit', 'primary'],
+		},
+
 		breadcrumb: {
 			whiteSpace: 'nowrap',
 			color: 'inherit',
@@ -44,10 +56,10 @@ const theme = createTheme({
 	},
 	hamburger: {
 		closed: {
-			backgroundColor: 'tranparent',
+			backgroundColor: 'transparent',
 		},
 		opened: {
-			backgroundColor: 'tranparent',
+			backgroundColor: 'transparent',
 		},
 	},
 	hamburgerBar: {
@@ -59,10 +71,47 @@ const theme = createTheme({
 		},
 	},
 	variants: {
+		toc: {
+			heading: {
+				fontWeight: 'normal',
+				fontSize: [4],
+				fontFamily: 'heading',
+			},
+			wrapper: {
+				ul: {
+					listStyle: 'none',
+					padding: 0,
+				},
+				'li > ul > li > a': {
+					pl: '24px',
+				},
+				'li > ul > li > ul > li > a': {
+					pl: '32px',
+				},
+				'li > ul > li > ul > li > ul > li > a': {
+					pl: '36px',
+				},
+				color: ['body', 'body', 'body', 'gray.3'],
+				borderBottomColor: [
+					'secondary',
+					'secondary',
+					'secondary',
+					'transparent',
+				],
+				borderBottomStyle: 'solid',
+				borderBottomWidth: '1px',
+				py: [3, 3, 3, 0],
+				mb: 4,
+			},
+		},
 		sidebar: { ...sidebarCommon },
 		'app-sidebar': { ...sidebarCommon, zIndex: 10000 },
 		'sidebar-dock': {
-			backgroundColor: 'tranparent',
+			backgroundColor: 'transparent',
+			// backgroundColor: 'white',
+			// borderRight: t => t.borders.normal,
+			// borderLeft: t => t.borders.normal,
+			//
 			mr: t => t.grid.gutters,
 			ml: t => t.grid.gutters.map(x => -x),
 		},

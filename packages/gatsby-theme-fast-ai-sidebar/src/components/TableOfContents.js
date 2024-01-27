@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Link, Text, useBreakpoint } from '@fast-ai/ui-components';
+import { Box, Link } from '@fast-ai/ui-components';
 import { map } from 'ramda';
 
 export const useActiveHash = (itemIds, rootMargin = undefined) => {
@@ -44,7 +44,6 @@ const getNav = ({
 	items: itemsProp,
 	activeHash,
 	maxDepth,
-	shouldUseDesktopNavigation,
 }) => (
 	<ul>
 		{map(({ url, title, items }, i) => {
@@ -54,7 +53,6 @@ const getNav = ({
 				getNav({
 					location,
 					items,
-					shouldUseDesktopNavigation,
 					activeHash,
 					maxDepth,
 					depth: depth + 1,
@@ -65,12 +63,8 @@ const getNav = ({
 					{url ? (
 						<Link
 							sx={{
-								variant: 'links.nav',
-								...(shouldUseDesktopNavigation
-									? {
-											color: url === `#${activeHash}` ? 'primary' : 'inherit',
-									  }
-									: {}),
+								variant:
+									url === `#${activeHash}` ? 'links.tocActive' : 'links.toc',
 							}}
 							href={`${location.pathname}${url}`}
 						>
@@ -124,44 +118,15 @@ const TableOfContents = ({
 	const maxDepth = maxDepthProp == null ? 4 : maxDepthProp;
 	const headingIds = getHeadingIds(items, true, maxDepth);
 	const activeHash = useActiveHash(headingIds);
-	const shouldUseDesktopNavigation = useBreakpoint('lg', 'up');
 
 	return items ? (
-		<Box
-			sx={{
-				ul: {
-					listStyle: 'none',
-					padding: 0,
-				},
-				'li > ul > li > a': {
-					pl: '24px',
-				},
-				'li > ul > li > ul > li > a': {
-					pl: '32px',
-				},
-				'li > ul > li > ul > li > ul > li > a': {
-					pl: '36px',
-				},
-				color: ['body', 'body', 'body', 'gray.3'],
-				borderBottomColor: [
-					'secondary',
-					'secondary',
-					'secondary',
-					'transparent',
-				],
-				borderBottomStyle: 'solid',
-				borderBottomWidth: '1px',
-				py: [3, 3, 3, 0],
-				mb: 4,
-				...sx,
-			}}
-			{...rest}
-		>
-			<Text fontWeight="normal">Table of Contents</Text>
+		<Box variant="toc.wrapper" sx={sx} {...rest}>
+			<Box variant="toc.heading" fontWeight="normal">
+				Table of Contents
+			</Box>
 			{getNav({
 				items,
 				depth: 1,
-				shouldUseDesktopNavigation,
 				location,
 				maxDepth,
 				activeHash,
