@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.8.0...v1.9.0) (2024-01-27)
+
+
+### Bug Fixes
+
+* react refresh and maximinStackExceeded ([98159e9](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/98159e9910ff36d248b2e95b5d6d7f7b4144925a))
+
+
+### Features
+
+* more styling moved to theme ([8e3a8b8](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/8e3a8b8ddc570c07da8890125bab46d6eac973cd))
+
+
+
+
+
 # [1.8.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.7.0...v1.8.0) (2022-04-19)
 
 
