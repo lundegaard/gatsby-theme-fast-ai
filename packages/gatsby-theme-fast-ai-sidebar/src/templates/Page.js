@@ -28,6 +28,7 @@ const Root = ({ sx, ...rest }) => (
 			position: 'relative',
 			...sx,
 		}}
+		data-testid="root"
 		{...rest}
 	/>
 );
@@ -122,6 +123,7 @@ const PageInner = ({
 			/>
 
 			<ContentWrapper
+				data-testid="content-wrapper"
 				sx={{
 					display: 'flex',
 					flexDirection: 'row',
