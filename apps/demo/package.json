@@ -17,7 +17,7 @@
 		"@emotion/core": "^10.0.35",
 		"@emotion/styled": "^10.0.0",
 		"@fast-ai/ui-components": "^1.9.0",
-		"gatsby": "^4.12.1",
+		"gatsby": "^4.19.0",
 		"gatsby-theme-fast-ai": "^1.9.0",
 		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
