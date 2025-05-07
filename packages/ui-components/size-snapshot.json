@@ -1,12 +1,12 @@
 {
-	"build/umd/fast-ai-ui.production.min.js": {
-		"bundled": 550453,
-		"minified": 154374,
-		"gzipped": 46315
-	},
-	"fast-ai-ui.production.min.js": {
-		"bundled": 634014,
-		"minified": 184755,
-		"gzipped": 53679
-	}
+  "build/umd/fast-ai-ui.production.min.js": {
+    "bundled": 550453,
+    "minified": 154374,
+    "gzipped": 46315
+  },
+  "fast-ai-ui.production.min.js": {
+    "bundled": 638293,
+    "minified": 188675,
+    "gzipped": 54670
+  }
 }
