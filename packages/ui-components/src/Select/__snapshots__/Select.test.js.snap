@@ -3,13 +3,13 @@
 exports[`<Select /> matches snapshot when shallowly rendered 1`] = `
 <Box
   sx={
-    Object {
-      "&:after": Object {
+    {
+      "&:after": {
         "borderBottomColor": "secondary",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "2px",
         "bottom": 0,
-        "content": "\\" \\"",
+        "content": "" "",
         "display": "block",
         "left": 0,
         "pointerEvents": "none",
@@ -18,19 +18,19 @@ exports[`<Select /> matches snapshot when shallowly rendered 1`] = `
         "transform": "scaleX(0)",
         "transition": "transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms",
       },
-      "&:before": Object {
+      "&:before": {
         "borderBottomColor": "muted",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "1px",
         "bottom": 0,
-        "content": "\\" \\"",
+        "content": "" "",
         "display": "block",
         "left": 0,
         "pointerEvents": "none",
         "position": "absolute",
         "right": 0,
       },
-      "&:hover:before": Object {
+      "&:hover:before": {
         "borderBottomColor": "gray",
       },
       "position": "relative",

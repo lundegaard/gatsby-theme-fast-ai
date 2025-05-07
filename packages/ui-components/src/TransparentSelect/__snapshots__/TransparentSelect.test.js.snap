@@ -3,20 +3,20 @@
 exports[`<TransparentSelect /> matches snapshot when shallowly rendered 1`] = `
 <ForwardRef
   css={
-    Object {
-      "&::-ms-expand": Object {
+    {
+      "&::-ms-expand": {
         "display": "none",
       },
-      "&:focus": Object {
+      "&:focus": {
         "outline": 0,
       },
-      "&:invalid": Object {
+      "&:invalid": {
         "boxShadow": "none",
       },
       "WebkitTapHighlightColor": "transparent",
       "border": "none",
       "color": "inherit",
-      "fontSize": Array [
+      "fontSize": [
         2,
         2,
         2,

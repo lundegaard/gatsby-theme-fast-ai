@@ -177,7 +177,7 @@ module.exports = themeOptions => {
 										'gatsby-theme-fast-ai/src/templates/MdxPage',
 									),
 								},
-								plugins: remarkPlugins,
+								// plugins: remarkPlugins,
 								gatsbyRemarkPlugins: remarkPlugins,
 							},
 						},

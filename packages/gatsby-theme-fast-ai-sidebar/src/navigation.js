@@ -1,4 +1,4 @@
-import { matchPath } from '@reach/router';
+import { match as matchPath } from '@reach/router';
 import { useMemo } from 'react';
 
 import { links } from './links';

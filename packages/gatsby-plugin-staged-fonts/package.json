@@ -34,10 +34,10 @@
 	"devDependencies": {
 		"@babel/cli": "^7.17.6",
 		"cross-env": "^7.0.2",
-		"gatsby": "^4.12.1"
+		"gatsby": "^5.14.3"
 	},
 	"peerDependencies": {
-		"gatsby": "^4.0.0",
+		"gatsby": "^5.0.0",
 		"prop-types": "^15.6.2",
 		"react": "^16.9.0 || ^17.0.0 || ^18.0.0"
 	},

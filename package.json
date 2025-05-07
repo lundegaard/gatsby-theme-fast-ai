@@ -30,9 +30,11 @@
 		"gatsby-plugin-staged-fonts": "yarn workspace @fast-ai/gatsby-plugin-staged-fonts"
 	},
 	"resolutions": {
-		"gatsby": "^4.12.1",
+		"gatsby": "5.14.3",
 		"react": "^18.0.0",
-		"react-dom": "^18.0.0"
+		"react-dom": "^18.0.0",
+		"nan": "2.18.0",
+		"cheerio": "1.0.0-rc.12"
 	},
 	"author": "Lundegaard a.s.",
 	"devDependencies": {
@@ -46,6 +48,7 @@
 		"@babel/plugin-transform-object-assign": "^7.16.7",
 		"@babel/plugin-transform-react-constant-elements": "^7.17.6",
 		"@babel/plugin-transform-runtime": "^7.17.0",
+		"@cfaester/enzyme-adapter-react-18": "^0.8.0",
 		"@commitlint/cli": "^12.0.1",
 		"@commitlint/config-conventional": "^12.0.1",
 		"@rollup/plugin-json": "^4.1.0",
@@ -58,6 +61,7 @@
 		"babel-plugin-tester": "^10.1.0",
 		"babel-plugin-transform-dev-warning": "^0.1.1",
 		"babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+		"cheerio": "1.0.0-rc.12",
 		"concurrently": "^5.1.0",
 		"core-js": "^3.6.0",
 		"enzyme": "^3.11.0",
@@ -73,14 +77,13 @@
 		"fs-extra": "^10.0.1",
 		"glob": "^8.0.1",
 		"husky": "^4.2.3",
-		"jest": "^26.0.1",
+		"jest": "^29.7.0",
 		"lerna": "^4.0.0",
 		"lint-staged": "^10.2.7",
-		"nodemon": "^2.0.4",
 		"npm-package-json-lint": "^4.5.0",
 		"npm-package-json-lint-config-default": "^2.0.0",
 		"plop": "^2.7.1",
-		"prettier": "^2.6.2",
+		"prettier": "^3.5.3",
 		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
 		"ramda-extension": "^0.11.0",
@@ -106,5 +109,8 @@
 			"pre-push": "yarn lint && yarn test"
 		}
 	},
-	"packageManager": "yarn@3.2.0"
+	"packageManager": "yarn@3.2.0",
+	"dependencies": {
+		"nan": "^2.22.2"
+	}
 }

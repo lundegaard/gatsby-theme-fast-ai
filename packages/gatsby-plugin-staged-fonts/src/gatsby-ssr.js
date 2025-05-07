@@ -1,10 +1,17 @@
+import fs from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import React from 'react';
 
 import { STAGED_FONTS_STYLE_ID } from './constants';
 import wrapRootElement from './wrapRootElement';
 
-// eslint-disable-next-line
-import stylesToInline from '!!raw-loader!./fonts.css';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// // eslint-disable-next-line
+// // import stylesToInline from '!!raw-loader!./fonts.css';
+const stylesToInline = fs.readFileSync(join(__dirname, 'fonts.css'));
 
 exports.wrapRootElement = wrapRootElement;
 

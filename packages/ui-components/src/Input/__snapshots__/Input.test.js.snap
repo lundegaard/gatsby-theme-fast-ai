@@ -3,13 +3,13 @@
 exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
 <Box
   sx={
-    Object {
-      "&:after": Object {
+    {
+      "&:after": {
         "borderBottomColor": "secondary",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "2px",
         "bottom": 0,
-        "content": "\\" \\"",
+        "content": "" "",
         "display": "block",
         "left": 0,
         "pointerEvents": "none",
@@ -18,19 +18,19 @@ exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
         "transform": "scaleX(0)",
         "transition": "transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms",
       },
-      "&:before": Object {
+      "&:before": {
         "borderBottomColor": "muted",
         "borderBottomStyle": "solid",
         "borderBottomWidth": "1px",
         "bottom": 0,
-        "content": "\\" \\"",
+        "content": "" "",
         "display": "block",
         "left": 0,
         "pointerEvents": "none",
         "position": "absolute",
         "right": 0,
       },
-      "&:hover:before": Object {
+      "&:hover:before": {
         "borderBottomColor": "gray.2",
       },
       "position": "relative",
@@ -44,10 +44,10 @@ exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
     onFocus={[Function]}
     px={0}
     sx={
-      Object {
-        "&:-webkit-autofill": Object {
+      {
+        "&:-webkit-autofill": {
           "animationDuration": "50000s",
-          "animationName": Object {
+          "animationName": {
             "anim": 1,
             "name": "animation-1iev27x",
             "styles": "@keyframes animation-1iev27x{
@@ -55,32 +55,32 @@ exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
 }",
             "toString": [Function],
           },
-          "fontSize": Array [
+          "fontSize": [
             2,
             4,
           ],
         },
-        "&:-webkit-autofill::firstline": Object {
-          "fontSize": Array [
+        "&:-webkit-autofill::firstline": {
+          "fontSize": [
             2,
             4,
           ],
         },
-        "&::WebkitSearchDecoration": Object {
+        "&::WebkitSearchDecoration": {
           "WebkitAppearance": "none",
         },
-        "&::placeholder": Object {
+        "&::placeholder": {
           "opacity": "0 !important",
         },
-        "&:focus": Object {
+        "&:focus": {
           "outline": 0,
         },
-        "&:invalid": Object {
+        "&:invalid": {
           "boxShadow": "none",
         },
-        "&:not(:-webkit-autofill)": Object {
+        "&:not(:-webkit-autofill)": {
           "animationDuration": "50000s",
-          "animationName": Object {
+          "animationName": {
             "anim": 1,
             "name": "animation-ereosx",
             "styles": "@keyframes animation-ereosx{
@@ -94,7 +94,7 @@ exports[`<Input /> matches snapshot when shallowly rendered 1`] = `
         "animationDuration": "50000s",
         "border": "none",
         "color": "inherit",
-        "fontSize": Array [
+        "fontSize": [
           2,
           4,
         ],

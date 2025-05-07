@@ -3,18 +3,18 @@
 exports[`<AvatarLink /> matches snapshot when shallowly rendered 1`] = `
 <Avatar
   as={
-    Object {
+    {
       "$$typeof": Symbol(react.forward_ref),
       "render": [Function],
     }
   }
   sx={
-    Object {
-      "&, :visited": Object {
+    {
+      "&, :visited": {
         "opacity": 1,
         "transition": "background-color 200ms ease-in-out, border 200ms ease-in-out, color 200ms ease-in-out",
       },
-      ":hover,:focus": Object {
+      ":hover,:focus": {
         "backgroundColor": "transparent",
         "borderColor": "white",
         "color": "contrast",

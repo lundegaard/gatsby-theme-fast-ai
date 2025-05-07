@@ -3,7 +3,7 @@
 exports[`<Col /> matches snapshot when shallowly rendered 1`] = `
 <Box
   width={
-    Array [
+    [
       NaN,
     ]
   }

@@ -5,7 +5,7 @@ exports[`<Slider /> matches snapshot when shallowly rendered 1`] = `
   component="div"
   disabled={false}
   domain={
-    Array [
+    [
       0,
       100,
     ]
@@ -17,9 +17,9 @@ exports[`<Slider /> matches snapshot when shallowly rendered 1`] = `
   onSlideStart={[Function]}
   onUpdate={[Function]}
   reversed={false}
-  rootProps={Object {}}
+  rootProps={{}}
   rootStyle={
-    Object {
+    {
       "position": "relative",
       "touchAction": "none",
       "width": "100%",

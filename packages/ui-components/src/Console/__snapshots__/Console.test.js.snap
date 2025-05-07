@@ -3,11 +3,11 @@
 exports[`<Console /> matches snapshot when shallowly rendered 1`] = `
 <Box
   sx={
-    Object {
+    {
       "animationDelay": ".75s",
       "animationDuration": ".5s",
       "animationFillMode": "both",
-      "animationName": Object {
+      "animationName": {
         "anim": 1,
         "name": "animation-1l35qkc",
         "styles": "@keyframes animation-1l35qkc{
@@ -32,13 +32,13 @@ exports[`<Console /> matches snapshot when shallowly rendered 1`] = `
       "bottom": 0,
       "color": "background",
       "maxHeight": "100vh",
-      "minWidth": Array [
+      "minWidth": [
         "auto",
         "400px",
       ],
       "position": "fixed",
       "right": "0",
-      "width": Array [
+      "width": [
         "100%",
         "33%",
       ],
@@ -49,7 +49,7 @@ exports[`<Console /> matches snapshot when shallowly rendered 1`] = `
   <Flex
     onClick={[Function]}
     sx={
-      Object {
+      {
         "alignItems": "center",
         "cursor": "pointer",
         "px": 3,
@@ -62,14 +62,14 @@ exports[`<Console /> matches snapshot when shallowly rendered 1`] = `
       fontFamily="mono"
       my={0}
       sx={
-        Object {
+        {
           "pointerEvents": "none",
         }
       }
     />
     <DropdownArrow
       sx={
-        Object {
+        {
           "display": "inline",
           "marginLeft": "auto",
           "transform": "rotate(180deg)",
