@@ -3,7 +3,7 @@
 exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
 <Box
   sx={
-    Object {
+    {
       "position": "relative",
     }
   }
@@ -11,8 +11,8 @@ exports[`<SliderField /> matches snapshot when shallowly rendered 1`] = `
   <Text
     mb={0}
     sx={
-      Object {
-        "position": Array [
+      {
+        "position": [
           "absolute",
           "absolute",
           "static",

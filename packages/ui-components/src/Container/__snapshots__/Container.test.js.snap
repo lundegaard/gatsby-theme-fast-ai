@@ -3,7 +3,7 @@
 exports[`<Container /> matches snapshot when shallowly rendered 1`] = `
 <Box
   sx={
-    Object {
+    {
       "px": [Function],
       "width": "100%",
     }

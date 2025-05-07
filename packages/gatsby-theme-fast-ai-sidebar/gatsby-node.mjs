@@ -1,6 +1,9 @@
-const { createFilePath } = require('gatsby-source-filesystem');
+import { createRequire } from 'node:module';
 
-exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
+import { createFilePath } from 'gatsby-source-filesystem';
+
+const require = createRequire(import.meta.url);
+export const createPages = async ({ graphql, actions }, { disableMdx }) => {
 	const { createPage } = actions;
 
 	if (disableMdx) {
@@ -23,6 +26,9 @@ exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
 							disableTableOfContents
 							disableContentNavigation
 						}
+						internal {
+							contentFilePath
+						}
 					}
 				}
 			}
@@ -40,7 +46,8 @@ exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
 
 		createPage({
 			path: page.node.fields.slug,
-			component: mdxPage,
+			// component: mdxPage,
+			component: `${mdxPage}?__contentFilePath=${page.node.internal.contentFilePath}`,
 			context: {
 				id: page.node.id,
 				slug: page.node.fields.slug,
@@ -51,7 +58,7 @@ exports.createPages = async ({ graphql, actions }, { disableMdx }) => {
 	return null;
 };
 
-exports.onCreateNode = ({ node, actions, getNode }, { disableMdx }) => {
+export const onCreateNode = ({ node, actions, getNode }, { disableMdx }) => {
 	const { createNodeField } = actions;
 
 	if (!disableMdx && node.internal.type === 'Mdx') {
@@ -74,7 +81,7 @@ exports.onCreateNode = ({ node, actions, getNode }, { disableMdx }) => {
 	}
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
+export const createSchemaCustomization = ({ actions }) => {
 	const { createTypes } = actions;
 	const typeDefs = `
     type MdxFrontmatter implements Node {

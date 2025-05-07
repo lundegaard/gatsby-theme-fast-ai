@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
-import { Match as RouterMatch, matchPath } from '@reach/router';
+import { Match as RouterMatch, match as matchPath } from '@reach/router';
 import { withPrefix } from 'gatsby';
 import { findIndex } from 'ramda';
 

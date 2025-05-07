@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CssBaseline /> matches snapshot when shallowly rendered 1`] = `
-<ForwardRef(render)
+<Component
   styles={
-    Object {
+    {
       "map": undefined,
       "name": "fmdd5m",
       "next": undefined,

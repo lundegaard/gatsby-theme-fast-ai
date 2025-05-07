@@ -3,7 +3,7 @@
 exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
 <Flex
   sx={
-    Object {
+    {
       "alignItems": "center",
       "cursor": "pointer",
       "height": 64,
@@ -16,10 +16,10 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
 >
   <Box
     sx={
-      Object {
+      {
         "height": "18px",
         "position": "relative",
-        "span": Object {
+        "span": {
           "display": "block",
           "height": "2px",
           "opacity": 1,
@@ -29,13 +29,13 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
           "variant": "hamburgerBar.closed",
           "width": "100%",
         },
-        "span:nth-of-type(1)": Object {
+        "span:nth-of-type(1)": {
           "top": 0,
           "variant": "hamburgerBar.closed",
         },
-        "span:nth-of-type(2)": Object {
-          "&:after": Object {
-            "content": "\\"\\"",
+        "span:nth-of-type(2)": {
+          "&:after": {
+            "content": """",
             "display": "block",
             "height": "2px",
             "left": 0,
@@ -49,7 +49,7 @@ exports[`<Hamburger /> matches snapshot when shallowly rendered 1`] = `
           "top": "calc(( 100% / 2 ) - 1px )",
           "variant": "hamburgerBar.closed",
         },
-        "span:nth-of-type(3)": Object {
+        "span:nth-of-type(3)": {
           "bottom": 0,
           "variant": "hamburgerBar.closed",
         },

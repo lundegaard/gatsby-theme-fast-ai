@@ -1,7 +1,11 @@
-const path = require('path');
+import path from 'node:path';
+import { createRequire } from 'module';
 
-const glob = require('glob');
+import remarkGfm from 'remark-gfm';
+import remarkSlug from 'remark-slug';
+import glob from 'glob';
 
+const require = createRequire(import.meta.url);
 const remarkPlugins = [
 	{
 		resolve: 'gatsby-remark-images',
@@ -122,7 +126,7 @@ const fontsStaged = Object.values(fontsGrouped).map(
 	}),
 );
 
-module.exports = themeOptions => {
+export default themeOptions => {
 	const {
 		intlOptions,
 		disableMdx,
@@ -157,23 +161,25 @@ module.exports = themeOptions => {
 			'gatsby-transformer-sharp',
 			...(!disableMdx
 				? [
-						{
-							resolve: 'gatsby-source-filesystem',
-							options: {
-								path: docsPath,
-								name: 'docs',
+					{
+						resolve: 'gatsby-source-filesystem',
+						options: {
+							path: docsPath,
+							name: 'docs',
+						},
+					},
+					{
+						resolve: 'gatsby-plugin-mdx',
+						options: {
+							extensions: ['.mdx', '.md'],
+							// plugins: remarkPlugins,
+							gatsbyRemarkPlugins: remarkPlugins,
+							mdxOptions: {
+								remarkPlugins: [remarkGfm, remarkSlug],
 							},
 						},
-						{
-							resolve: 'gatsby-plugin-mdx',
-							options: {
-								extensions: ['.mdx', '.md'],
-								plugins: remarkPlugins,
-								gatsbyRemarkPlugins: remarkPlugins,
-								remarkPlugins: [require('remark-slug')],
-							},
-						},
-				  ]
+					},
+				]
 				: []),
 			{
 				resolve: require.resolve('@fast-ai/gatsby-plugin-setup'),

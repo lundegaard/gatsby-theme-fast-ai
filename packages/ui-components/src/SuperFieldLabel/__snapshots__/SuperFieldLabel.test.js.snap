@@ -4,7 +4,7 @@ exports[`<SuperFieldLabel /> matches snapshot when shallowly rendered 1`] = `
 <Label
   htmlFor={null}
   sx={
-    Object {
+    {
       "color": "inherit",
       "left": 0,
       "position": "absolute",

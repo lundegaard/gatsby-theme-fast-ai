@@ -3,13 +3,13 @@
 exports[`<Modal /> matches snapshot when shallowly rendered 1`] = `
 <Box
   sx={
-    Object {
+    {
       "WebkitOverflowScrolling": "touch",
       "backgroundColor": "background",
       "borderRadius": "5px",
       "overflowX": "hidden",
       "overflowY": "auto",
-      "width": Array [
+      "width": [
         "100%",
         "75%",
       ],

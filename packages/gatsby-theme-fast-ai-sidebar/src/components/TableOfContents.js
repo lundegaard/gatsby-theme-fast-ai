@@ -19,7 +19,7 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
 		);
 
 		const ids = itemIds;
-		const elements = ids.map(id => document.getElementById(id));
+		const elements = ids.map(id => document.getElementById(id)).filter(Boolean);
 
 		elements.forEach(element => {
 			observer.observe(element);

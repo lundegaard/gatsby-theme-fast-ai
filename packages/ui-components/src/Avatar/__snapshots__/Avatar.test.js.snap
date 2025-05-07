@@ -4,7 +4,7 @@ exports[`<Avatar /> matches snapshot when shallowly rendered 1`] = `
 <Box
   display="block"
   sx={
-    Object {
+    {
       "backgroundColor": "white",
       "borderColor": "transparent",
       "borderRadius": 9999,
@@ -12,7 +12,7 @@ exports[`<Avatar /> matches snapshot when shallowly rendered 1`] = `
       "borderWidth": "1px",
       "fontWeight": "bold",
       "height": 35,
-      "lineHeight": Array [
+      "lineHeight": [
         "35px",
       ],
       "textAlign": "center",

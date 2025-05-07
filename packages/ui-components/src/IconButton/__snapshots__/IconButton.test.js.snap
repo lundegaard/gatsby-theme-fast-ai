@@ -4,7 +4,7 @@ exports[`<IconButton /> matches snapshot when shallowly rendered 1`] = `
 <Box
   as="button"
   sx={
-    Object {
+    {
       "alignItems": "center",
       "appearance": "none",
       "bg": "transparent",

@@ -4,7 +4,7 @@ exports[`<FormGroup /> matches snapshot when shallowly rendered 1`] = `
 <Box
   as="fieldset"
   sx={
-    Object {
+    {
       "appearance": "none",
       "border": "none",
       "p": 0,
@@ -18,14 +18,14 @@ exports[`<FormGroup /> matches snapshot when shallowly rendered 1`] = `
   >
     <Col
       pb={
-        Array [
+        [
           2,
           2,
           0,
         ]
       }
       span={
-        Array [
+        [
           12,
           12,
           5,
@@ -36,7 +36,7 @@ exports[`<FormGroup /> matches snapshot when shallowly rendered 1`] = `
       <Label
         as="label"
         sx={
-          Object {
+          {
             "p": 0,
             "width": "100%",
           }
@@ -45,7 +45,7 @@ exports[`<FormGroup /> matches snapshot when shallowly rendered 1`] = `
     </Col>
     <Col
       span={
-        Array [
+        [
           12,
           12,
           7,

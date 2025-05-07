@@ -3,7 +3,7 @@
 exports[`<SuperField /> matches snapshot when shallowly rendered 1`] = `
 <ContextProvider
   value={
-    Object {
+    {
       "hasError": undefined,
       "id": "field-0",
       "isDisabled": undefined,
@@ -22,7 +22,7 @@ exports[`<SuperField /> matches snapshot when shallowly rendered 1`] = `
 >
   <Box
     sx={
-      Object {
+      {
         "color": "gray.2",
         "fontFamily": "body",
         "position": "relative",
