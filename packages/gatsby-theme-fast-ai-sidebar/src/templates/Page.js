@@ -18,9 +18,8 @@ const isSSR = typeof window === 'undefined';
 
 const Root = ({ sx, ...rest }) => (
 	<Box
-		variant="stripes"
 		sx={{
-			backgroundColor: 'background',
+			backgroundColor: 'contrast',
 			fontFamily: 'body',
 			minHeight: '100vh',
 			height: '100%',
