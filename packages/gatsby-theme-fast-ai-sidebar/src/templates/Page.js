@@ -77,7 +77,6 @@ const PageInner = ({
 					presentedRoutes={presentedRoutes}
 				/>
 			)}
-
 			<AppSidebar
 				menuVisibility={appSidebarVisibility}
 				setMenuVisibility={setAppSidebarVisibility}

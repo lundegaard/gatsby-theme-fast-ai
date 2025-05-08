@@ -9,7 +9,7 @@ import { goUpPath } from '../utils';
 
 import * as types from './types';
 
-const Match = ({ path, language, ...rest }) => (
+export const Match = ({ path, language, ...rest }) => (
 	<IntlContextConsumer>
 		{intl => {
 			const languageLink = language || intl.language;
