@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.10.0...v1.11.0) (2025-05-08)
+
+**Note:** Version bump only for package gatsby-theme-fast-ai
+
+
+
+
+
 # [1.10.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.9.0...v1.10.0) (2025-05-07)
 
 

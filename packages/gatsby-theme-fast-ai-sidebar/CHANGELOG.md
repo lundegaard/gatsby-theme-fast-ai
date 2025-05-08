@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.10.0...v1.11.0) (2025-05-08)
+
+
+### Features
+
+* expanded nav ([c838237](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/c8382374bb2577133885a1eb77d926d8c0364908))
+* simple nav ([d11877a](https://github.com/lundegaard/gatsby-theme-fast-ai/commit/d11877a8b3ee3f2e9abd95e109265d173619a19e))
+
+
+
+
+
 # [1.10.0](https://github.com/lundegaard/gatsby-theme-fast-ai/compare/v1.9.0...v1.10.0) (2025-05-07)
 
 
