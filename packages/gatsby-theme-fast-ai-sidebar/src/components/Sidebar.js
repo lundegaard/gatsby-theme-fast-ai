@@ -29,6 +29,7 @@ const getList = links =>
 									{label}
 								</Link>
 								{match && children ? getList(children) : null}
+								{children ? getList(children) : null}
 							</li>
 						)}
 					</MatchParent>
@@ -82,8 +83,9 @@ const Sidebar = ({
 			transform: [, , 'none !important'],
 			ul: {
 				listStyle: 'none',
-				padding: 0,
+				p: 0,
 			},
+			a: { py: 1 },
 			...sx,
 		}}
 		{...rest}

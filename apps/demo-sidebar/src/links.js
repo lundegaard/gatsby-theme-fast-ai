@@ -51,8 +51,8 @@ export const links = [
 						to: '/other/images',
 						children: [
 							{
-								label: 'Images',
-								to: '/other/images',
+								label: 'Images-2',
+								to: '/other/images-2',
 							},
 							{
 								label: 'Images',
