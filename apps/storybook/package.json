@@ -20,7 +20,7 @@
 		"@storybook/addon-knobs": "^5.3.18",
 		"@storybook/addon-options": "^5.3.18",
 		"@storybook/cli": "^5.3.18",
-		"@storybook/react": "^5.3.18",
+		"@storybook/react": "^6.0.0",
 		"@storybook/theming": "^5.3.18",
 		"prop-types": "^15.8.1",
 		"ramda": "^0.27.0",
