@@ -42,7 +42,7 @@ export const getParent = link => {
 };
 
 export const MatchParent = ({ link, ...rest }) => (
-	<Match key={link.to} path={`${getParent(link)}/*`} {...rest} />
+	<Match path={`${getParent(link)}/*`} {...rest} />
 );
 
 MatchParent.propTypes = {

@@ -107,9 +107,10 @@ const theme = createTheme({
 		sidebar: { ...sidebarCommon },
 		'app-sidebar': { ...sidebarCommon, zIndex: 10000 },
 		'sidebar-dock': {
-			backgroundColor: 'transparent',
+			// backgroundColor: 'background',
 			// backgroundColor: 'white',
-			// borderRight: t => t.borders.normal,
+			borderRight: t => t.borders.normal,
+			p: 3,
 			// borderLeft: t => t.borders.normal,
 			//
 			mr: t => t.grid.gutters,
@@ -123,7 +124,6 @@ const theme = createTheme({
 			zIndex: 9999,
 		},
 		nav: {
-			color: 'inherit',
 			p: 3,
 			':hover,:focus,.active': {
 				color: 'primary',
@@ -150,6 +150,7 @@ const theme = createTheme({
 		content: {
 			minHeight: 'calc(100vh - 64px)',
 			py: [4],
+			px: [4],
 		},
 		highlighted: {
 			lineHeight: 'body',

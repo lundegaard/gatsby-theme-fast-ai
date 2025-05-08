@@ -34,7 +34,6 @@ const Navigation = ({
 			<Box
 				as="button"
 				sx={{
-					background: 'none',
 					cursor: 'pointer',
 					border: 'none',
 					display: ['flex', 'flex', 'none'],

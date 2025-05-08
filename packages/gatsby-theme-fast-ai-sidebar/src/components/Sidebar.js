@@ -6,7 +6,7 @@ import Link from './Link';
 import { MatchParent, getParent } from './Match';
 import Router from './Router';
 
-const getList = links =>
+const getList = (links, level) =>
 	links ? (
 		<ul>
 			{links.map((link, i) => {
@@ -15,7 +15,7 @@ const getList = links =>
 					<MatchParent key={`${to}_${i}`} link={link}>
 						{({ match }) => (
 							<li
-								className={[match && 'active', !children && 'leaf']
+								className={[`l${level}`, match && 'active', !children && 'leaf']
 									.filter(Boolean)
 									.join(' ')}
 							>
@@ -28,8 +28,8 @@ const getList = links =>
 								>
 									{label}
 								</Link>
-								{match && children ? getList(children) : null}
-								{children ? getList(children) : null}
+								{/* match && children ? getList(children) : null*/}
+								{children ? getList(children, level + 1) : null}
 							</li>
 						)}
 					</MatchParent>
@@ -38,7 +38,7 @@ const getList = links =>
 		</ul>
 	) : null;
 
-const Nav = ({ presentedRoutes }) => getList(presentedRoutes);
+const Nav = ({ presentedRoutes }) => getList(presentedRoutes, 0);
 
 const TabLink = ({ link, children, sx }) => (
 	<Link sx={{ ...sx, textDecoration: 'none' }} to={link.to}>
@@ -85,13 +85,11 @@ const Sidebar = ({
 				listStyle: 'none',
 				p: 0,
 			},
-			a: { py: 1 },
 			...sx,
 		}}
 		{...rest}
 	>
-		{children}
-		{render ? render() : null}
+		{render ? render() : children}
 	</Box>
 );
 
@@ -100,16 +98,23 @@ const Menu = ({ presentedRoutes, sx }) =>
 		<Box
 			sx={{
 				px: 3,
-
-				'ul > li > ul > li': {
-					borderLeft: t => `1px solid ${t.colors.gray[3]}`,
+				'li.l1 li': {
+					// borderLeft: t => `1px solid ${t.colors.gray[3]}`,
 					pl: '16px',
 				},
-				'ul > li > ul > li.active.leaf': {
-					borderLeft: t => `1px solid ${t.colors.primary}`,
+				'li.l1 li.active.leaf': {
+					// borderLeft: t => `1px solid ${t.colors.primary}`,
 				},
 				a: {
-					pl: '0px',
+					pl: 0,
+					py: 2,
+				},
+				'.l0>a': {
+					fontWeight: 'bold',
+					fontSize: 3,
+				},
+				'.l0': {
+					py: 2,
 				},
 				...sx,
 			}}
@@ -126,8 +131,16 @@ const SidebarWrapper = ({ presentedRoutes, sx, styles = {}, ...rest }) => {
 	if (!presentedRoutes || !presentedRoutes.length) {
 		return null;
 	}
+	const desktopRoutes = presentedRoutes.filter(
+		link => link.children && link.children.length,
+	);
+	const hasChildren = desktopRoutes.some(
+		x => x.children && x.children.length > 0,
+	);
+
 	return (
 		<Fragment>
+			{/*
 			<Sidebar
 				sx={{
 					...sidebarStyles,
@@ -137,25 +150,26 @@ const SidebarWrapper = ({ presentedRoutes, sx, styles = {}, ...rest }) => {
 			>
 				<Menu presentedRoutes={presentedRoutes} />
 			</Sidebar>
-			<Box
-				variant="sidebar-dock"
-				sx={{
-					display: ['none', 'none', 'block'],
-					minHeight: '100vh',
-					flexShrink: 0,
-					// container has to have height set, otherwide position:sticky do not
-					// work
-					'& > div, & > div > div': {
+			*/}
+			{hasChildren && (
+				<Box
+					variant="sidebar-dock"
+					sx={{
+						display: ['none', 'none', 'block'],
 						minHeight: '100vh',
-						height: '100%',
-					},
-					...styles.dock,
-				}}
-			>
-				<Router primary={false}>
-					{presentedRoutes
-						.filter(link => link.children && link.children.length)
-						.map((link, i) => (
+						flexShrink: 0,
+						// container has to have height set,
+						// otherwide position:sticky do not
+						// work
+						'& > div, & > div > div': {
+							minHeight: '100vh',
+							height: '100%',
+						},
+						...styles.dock,
+					}}
+				>
+					<Router primary={false}>
+						{desktopRoutes.map((link, i) => (
 							<Sidebar
 								sx={sidebarStyles}
 								path={`${getParent(link)}/*`}
@@ -164,8 +178,9 @@ const SidebarWrapper = ({ presentedRoutes, sx, styles = {}, ...rest }) => {
 								{...rest}
 							/>
 						))}
-				</Router>
-			</Box>
+					</Router>
+				</Box>
+			)}
 		</Fragment>
 	);
 };
